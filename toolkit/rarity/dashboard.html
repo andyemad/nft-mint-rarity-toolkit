@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ComboX Rarity — Your Holdings</title>
+<style>
+:root{--bg:#0d0f14;--card:#161a22;--line:#232a36;--txt:#e8ecf3;--mut:#9aa6b8;--accent:#7c5cff;--gold:#f5b942}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:24px;max-width:1100px;margin:0 auto}
+h1{font-size:26px;margin-bottom:4px} h2{font-size:18px;margin:28px 0 12px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card .k{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.card .v{font-size:22px;font-weight:700} .card .v.gold{color:var(--gold)}
+.bar-wrap{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.b-row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.b-label{width:100px;color:var(--mut);text-align:right;flex-shrink:0}
+.b-track{flex:1;background:var(--line);height:18px;border-radius:4px;overflow:hidden;position:relative}
+.b-all{position:absolute;top:0;bottom:0;left:0;background:#2a3242}
+.b-held{position:absolute;top:0;bottom:0;left:0;background:var(--accent);opacity:.95}
+.b-nums{width:120px;color:var(--mut);font-size:12px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;font-size:13px;border-bottom:1px solid var(--line)}
+th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.3px}
+tr:last-child td{border-bottom:none} .tok{font-weight:700}
+.rank-badge{display:inline-block;min-width:52px;text-align:center;padding:2px 8px;border-radius:20px;font-weight:700;font-size:12px}
+.r-top{background:#7c2d12;color:#fdba74}.r-high{background:#1e3a2f;color:#6ee7b7}
+.r-mid{background:#3b2f0f;color:#fcd34d}.r-low{background:#1f2430;color:#94a3b8}
+.tag{display:inline-block;padding:2px 7px;border-radius:5px;background:var(--line);color:var(--mut);font-size:11px;margin:1px 2px}
+.legend{color:var(--mut);font-size:12px;margin-top:8px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin:0 4px 0 8px}
+</style></head><body>
+<h1>ComboX (combox-888) Rarity</h1>
+<div class="sub">Robinhood Chain · ERC721 · 5,000 supply · Traits revealed · Mint wallet 0x1111…1111</div>
+<div class="cards">
+  <div class="card"><div class="k">Your Tokens</div><div class="v">29</div></div>
+  <div class="card"><div class="k">Best Rank</div><div class="v gold">#71</div></div>
+  <div class="card"><div class="k">Rarest Token</div><div class="v">ID 2401</div></div>
+  <div class="card"><div class="k">Avg Rank</div><div class="v">2042</div></div>
+  <div class="card"><div class="k">1/1 Mythics</div><div class="v gold">9 total</div></div>
+</div>
+<h2>Rarity distribution — your 29 vs the full 5,000</h2>
+<div class="bar-wrap">
+<div class="b-row"><div class="b-label">Top 50</div><div class="b-track"><div class="b-all" style="width:1.0%"></div><div class="b-held" style="width:0%"></div></div><div class="b-nums">49 total · 0 yours</div></div>
+<div class="b-row"><div class="b-label">51-100</div><div class="b-track"><div class="b-all" style="width:1.0%"></div><div class="b-held" style="width:22%"></div></div><div class="b-nums">50 total · 2 yours</div></div>
+<div class="b-row"><div class="b-label">101-200</div><div class="b-track"><div class="b-all" style="width:2.0%"></div><div class="b-held" style="width:11%"></div></div><div class="b-nums">100 total · 1 yours</div></div>
+<div class="b-row"><div class="b-label">201-500</div><div class="b-track"><div class="b-all" style="width:6.0%"></div><div class="b-held" style="width:22%"></div></div><div class="b-nums">300 total · 2 yours</div></div>
+<div class="b-row"><div class="b-label">501-1k</div><div class="b-track"><div class="b-all" style="width:10.0%"></div><div class="b-held" style="width:22%"></div></div><div class="b-nums">500 total · 2 yours</div></div>
+<div class="b-row"><div class="b-label">1k-2k</div><div class="b-track"><div class="b-all" style="width:20.0%"></div><div class="b-held" style="width:100%"></div></div><div class="b-nums">1000 total · 9 yours</div></div>
+<div class="b-row"><div class="b-label">2k-3k</div><div class="b-track"><div class="b-all" style="width:20.0%"></div><div class="b-held" style="width:44%"></div></div><div class="b-nums">1000 total · 4 yours</div></div>
+<div class="b-row"><div class="b-label">3k-4k</div><div class="b-track"><div class="b-all" style="width:20.0%"></div><div class="b-held" style="width:56%"></div></div><div class="b-nums">1000 total · 5 yours</div></div>
+<div class="b-row"><div class="b-label">4k+</div><div class="b-track"><div class="b-all" style="width:20.0%"></div><div class="b-held" style="width:44%"></div></div><div class="b-nums">1001 total · 4 yours</div></div>
+<div class="legend"><span class="dot" style="background:#2a3242"></span>all 5,000&nbsp;<span class="dot" style="background:var(--accent)"></span>your 29 holdings</div>
+</div>
+<h2>Your 29 holdings, rarest first</h2>
+<table><tr><th>Token</th><th>Rank</th><th>Percentile</th><th>Rarity score</th><th>Rarest traits</th></tr>
+<tr><td class="tok">#2401</td><td><span class="rank-badge r-high">#71</span></td><td>top 1.4%</td><td>1070</td><td><span class="tag">Background: BG8 stripes pink purple</span> <span class="tag">Head: Cow Horns</span> <span class="tag">Eyes: X</span></td></tr>
+<tr><td class="tok">#4931</td><td><span class="rank-badge r-high">#88</span></td><td>top 1.8%</td><td>986</td><td><span class="tag">Body: Tsathoggua 2</span> <span class="tag">Eyes: goggles 2</span> <span class="tag">Head: Mushroom</span></td></tr>
+<tr><td class="tok">#4691</td><td><span class="rank-badge r-high">#186</span></td><td>top 3.7%</td><td>665</td><td><span class="tag">Body: shoggoth</span> <span class="tag">Background: BG5 dark crimson</span> <span class="tag">Head: Turban</span></td></tr>
+<tr><td class="tok">#2733</td><td><span class="rank-badge r-high">#251</span></td><td>top 5.0%</td><td>551</td><td><span class="tag">Background: BG8 stripes navy violet</span> <span class="tag">Head: Orb with Bubles</span> <span class="tag">Body: ghoul</span></td></tr>
+<tr><td class="tok">#1953</td><td><span class="rank-badge r-high">#441</span></td><td>top 8.8%</td><td>364</td><td><span class="tag">Head: Gold Crown</span> <span class="tag">Background: BG3 cyan</span> <span class="tag">Eyes: Green Red</span></td></tr>
+<tr><td class="tok">#2728</td><td><span class="rank-badge r-mid">#842</span></td><td>top 16.8%</td><td>270</td><td><span class="tag">Eyes: goggles</span> <span class="tag">Head: Severed Liver</span> <span class="tag">Background: BG6 cyan</span></td></tr>
+<tr><td class="tok">#2737</td><td><span class="rank-badge r-mid">#864</span></td><td>top 17.3%</td><td>267</td><td><span class="tag">Background: BG4 dark crimson</span> <span class="tag">Head: Floating Diamond 2</span> <span class="tag">Eyes: Annoyed</span></td></tr>
+<tr><td class="tok">#1500</td><td><span class="rank-badge r-mid">#1133</span></td><td>top 22.7%</td><td>226</td><td><span class="tag">Body: B'gnu Thun</span> <span class="tag">Background: BG3 dark crimson</span> <span class="tag">Head: Witch Hat</span></td></tr>
+<tr><td class="tok">#4734</td><td><span class="rank-badge r-mid">#1148</span></td><td>top 23.0%</td><td>224</td><td><span class="tag">Head: Mushroom</span> <span class="tag">Background: BG2 dark purple</span> <span class="tag">Eyes: Sinister</span></td></tr>
+<tr><td class="tok">#2724</td><td><span class="rank-badge r-mid">#1220</span></td><td>top 24.4%</td><td>217</td><td><span class="tag">Background: BG5 dark blue</span> <span class="tag">Head: Cow Horns</span> <span class="tag">Eyes: Blood Shot Eyes</span></td></tr>
+<tr><td class="tok">#4751</td><td><span class="rank-badge r-mid">#1472</span></td><td>top 29.4%</td><td>186</td><td><span class="tag">Body: B'gnu Thun</span> <span class="tag">Head: Skull</span> <span class="tag">Background: BG7 dark blue</span></td></tr>
+<tr><td class="tok">#1952</td><td><span class="rank-badge r-mid">#1483</span></td><td>top 29.7%</td><td>185</td><td><span class="tag">Body: B'gnu Thun</span> <span class="tag">Head: Lightning</span> <span class="tag">Background: BG6 dark grey</span></td></tr>
+<tr><td class="tok">#2732</td><td><span class="rank-badge r-mid">#1578</span></td><td>top 31.6%</td><td>177</td><td><span class="tag">Eyes: cute with lashes</span> <span class="tag">Background: BG6 cyan</span> <span class="tag">Head: Water Effect</span></td></tr>
+<tr><td class="tok">#2730</td><td><span class="rank-badge r-mid">#1592</span></td><td>top 31.8%</td><td>176</td><td><span class="tag">Head: Spikes</span> <span class="tag">Background: BG3 dark crimson</span> <span class="tag">Eyes: Snake</span></td></tr>
+<tr><td class="tok">#4888</td><td><span class="rank-badge r-mid">#1611</span></td><td>top 32.2%</td><td>175</td><td><span class="tag">Head: Ram Horns Orange</span> <span class="tag">Eyes: Blue with Red Dot</span> <span class="tag">Background: BG7 dark crimson</span></td></tr>
+<tr><td class="tok">#2720</td><td><span class="rank-badge r-mid">#1696</span></td><td>top 33.9%</td><td>171</td><td><span class="tag">Body: chuttullu 3</span> <span class="tag">Head: Severed Liver</span> <span class="tag">Eyes: Nodemonke</span></td></tr>
+<tr><td class="tok">#4903</td><td><span class="rank-badge r-low">#2103</span></td><td>top 42.1%</td><td>150</td><td><span class="tag">Background: BG2 dark green</span> <span class="tag">Eyes: Golden Balls</span> <span class="tag">Head: Brain</span></td></tr>
+<tr><td class="tok">#117</td><td><span class="rank-badge r-low">#2395</span></td><td>top 47.9%</td><td>137</td><td><span class="tag">Head: Chef Hat</span> <span class="tag">Eyes: Black Cute</span> <span class="tag">Background: BG1 dark blue</span></td></tr>
+<tr><td class="tok">#2721</td><td><span class="rank-badge r-low">#2528</span></td><td>top 50.6%</td><td>133</td><td><span class="tag">Background: BG2 dark purple</span> <span class="tag">Head: Tiara</span> <span class="tag">Eyes: Annoyed</span></td></tr>
+<tr><td class="tok">#4893</td><td><span class="rank-badge r-low">#2617</span></td><td>top 52.3%</td><td>131</td><td><span class="tag">Head: Mushroom</span> <span class="tag">Background: BG1 dark crimson</span> <span class="tag">Eyes: Pyramid Eyes</span></td></tr>
+<tr><td class="tok">#2399</td><td><span class="rank-badge r-low">#3156</span></td><td>top 63.1%</td><td>119</td><td><span class="tag">Eyes: Blue with Red Dot</span> <span class="tag">Head: Small Horns</span> <span class="tag">Background: BG6 dark purple</span></td></tr>
+<tr><td class="tok">#4715</td><td><span class="rank-badge r-low">#3343</span></td><td>top 66.9%</td><td>116</td><td><span class="tag">Eyes: Cross</span> <span class="tag">Head: Floating Diamond 2</span> <span class="tag">Background: BG7 dark purple</span></td></tr>
+<tr><td class="tok">#4495</td><td><span class="rank-badge r-low">#3352</span></td><td>top 67.0%</td><td>116</td><td><span class="tag">Eyes: Brown with Lids</span> <span class="tag">Head: Unicorn Horn</span> <span class="tag">Background: BG1 cyan</span></td></tr>
+<tr><td class="tok">#4728</td><td><span class="rank-badge r-low">#3417</span></td><td>top 68.3%</td><td>115</td><td><span class="tag">Body: shai hulud 2</span> <span class="tag">Head: Floating Cloud</span> <span class="tag">Background: BG7 dark blue</span></td></tr>
+<tr><td class="tok">#436</td><td><span class="rank-badge r-low">#3764</span></td><td>top 75.3%</td><td>103</td><td><span class="tag">Body: nyarlathotep 2</span> <span class="tag">Head: Water Effect</span> <span class="tag">Background: BG7 dark green</span></td></tr>
+<tr><td class="tok">#4680</td><td><span class="rank-badge r-low">#4116</span></td><td>top 82.3%</td><td>93</td><td><span class="tag">Head: Floating Diamond</span> <span class="tag">Background: BG1 dark green</span> <span class="tag">Eyes: Blood Shot Eyes</span></td></tr>
+<tr><td class="tok">#2965</td><td><span class="rank-badge r-low">#4117</span></td><td>top 82.3%</td><td>93</td><td><span class="tag">Background: BG1 dark grey</span> <span class="tag">Head: Water Effect</span> <span class="tag">Eyes: Blue</span></td></tr>
+<tr><td class="tok">#2729</td><td><span class="rank-badge r-low">#4143</span></td><td>top 82.9%</td><td>93</td><td><span class="tag">Head: Skull</span> <span class="tag">Background: BG6 dark blue</span> <span class="tag">Eyes: Black Cute</span></td></tr>
+<tr><td class="tok">#2731</td><td><span class="rank-badge r-low">#4487</span></td><td>top 89.7%</td><td>90</td><td><span class="tag">Head: Witch Hat</span> <span class="tag">Background: BG7 dark grey</span> <span class="tag">Eyes: Annoyed</span></td></tr>
+</table>
+<div class="sub" style="margin-top:16px">Rarity = trait-frequency statistical score (rarity.tools method), computed from the same revealed metadata before OpenSea's rarity ranking populated. Lower rank = rarer token.</div>
+</body></html>

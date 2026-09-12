@@ -1,0 +1,46 @@
+# Secrets and environment
+.env
+.env.*
+*.key
+*_key
+secrets/
+.runtime/
+artifacts/
+
+# Private keys / wallets
+*.keystore
+keystore.json
+wallet*.json
+wallets.json
+mnemonic*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# Logs and local state
+*.log
+*.pid
+*.sqlite
+*.db
+.sessions/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Generated output
+dashboard_out.html
