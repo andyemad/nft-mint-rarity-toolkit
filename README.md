@@ -50,6 +50,12 @@ with a rarity sniper, wallet fleet manager, SeaDrop planner and queue worker) an
 source lives in separate repositories; the skills here carry the architecture,
 the pitfalls, and the acceptance criteria.
 
+**Want to run these on your own agent?** [`INSTALL.md`](INSTALL.md) is the
+full path: harden a VPS, install Hermes, connect Discord, run the gateway as a
+service, and install every skill here with one command. There is also a
+single-file landing page in [`site/`](site/) you can deploy to Vercel (or
+Cloudflare Pages) as a public download page.
+
 ---
 
 ## 2. Layout

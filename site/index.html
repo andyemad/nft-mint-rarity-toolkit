@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NFT Mint &amp; Rarity Toolkit — agent-ready on-chain playbooks</title>
+<meta name="description" content="31 agent playbooks and working code for NFT minting, rarity ranking, reveal sniping, proof-of-work mints, wallet ops and on-chain forensics. Robinhood Chain + Ethereum.">
+<meta property="og:title" content="NFT Mint & Rarity Toolkit">
+<meta property="og:description" content="Agent-ready playbooks and working code for on-chain NFT work.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛓️</text></svg>">
+<style>
+  :root{
+    --bg:#08090c; --panel:#0e1015; --line:#1d2129; --txt:#e9edf4;
+    --mut:#8b95a7; --accent:#c6ff3d; --accent2:#7c5cff; --gold:#f5b942;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 500px at 12% -8%,rgba(124,92,255,.16),transparent 60%),
+                     radial-gradient(700px 420px at 92% 4%,rgba(198,255,61,.09),transparent 60%);
+    background-repeat:no-repeat;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  header{padding:88px 0 56px}
+  .kicker{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:22px
+  }
+  h1{font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:760;max-width:17ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .lede{margin-top:22px;font-size:clamp(16px,2vw,19px);color:var(--mut);max-width:60ch}
+  .lede b{color:var(--txt);font-weight:600}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;padding:13px 21px;border-radius:9px;
+    font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;
+    transition:transform .12s ease,background .18s ease,opacity .18s ease
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#0a0c07}
+  .btn-primary:hover{opacity:.9}
+  .btn-ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{background:rgba(255,255,255,.05)}
+  .install{
+    margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:16px 18px;font-family:var(--mono);font-size:13px;color:var(--mut);
+    display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap
+  }
+  .install code{color:var(--txt);word-break:break-all}
+  .install code i{color:var(--accent);font-style:normal}
+  .copy{
+    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--txt);
+    border-radius:7px;padding:7px 13px;font-family:var(--mono);font-size:12px;cursor:pointer
+  }
+  .copy:hover{background:rgba(255,255,255,.1)}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:30px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:21px}
+  .card h3{font-size:16px;margin-bottom:8px;font-weight:640;letter-spacing:-.01em}
+  .card p{font-size:14px;color:var(--mut)}
+  .card .tag{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent2);display:block;margin-bottom:11px
+  }
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px;margin-bottom:26px}
+  .fact .n{font-size:30px;font-weight:730;letter-spacing:-.02em}
+  .fact .l{font-size:12.5px;color:var(--mut);font-family:var(--mono);letter-spacing:.06em}
+  ul.checks{list-style:none;display:grid;gap:11px}
+  ul.checks li{padding-left:26px;position:relative;font-size:15px;color:var(--mut)}
+  ul.checks li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-weight:700}
+  ul.checks b{color:var(--txt);font-weight:600}
+  .promo{
+    background:linear-gradient(135deg,rgba(198,255,61,.07),rgba(124,92,255,.09));
+    border:1px solid var(--line);border-radius:15px;padding:30px
+  }
+  .promo h3{font-size:21px;margin-bottom:9px;letter-spacing:-.015em}
+  .promo p{color:var(--mut);font-size:15px;max-width:62ch}
+  .promo .btn{margin-top:20px}
+  footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
+  footer a{color:var(--txt);text-decoration:none;border-bottom:1px solid var(--line)}
+  footer a:hover{border-color:var(--accent)}
+  .warn{background:rgba(245,185,66,.07);border:1px solid rgba(245,185,66,.24);border-radius:11px;padding:17px 19px;font-size:14px;color:#e8d9b5;margin-top:26px}
+  .warn b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Agent-ready · Robinhood Chain + Ethereum</div>
+  <h1>NFT mint &amp; rarity <em>toolkit</em></h1>
+  <p class="lede">
+    <b>31 agent playbooks and the working code behind them</b> — minting, rarity ranking that
+    matches OpenSea rank-for-rank, reveal sniping, proof-of-work mints, wallet operations and
+    on-chain forensics. Not a framework: the accumulated field notes of an agent that actually
+    minted, ranked, sniped and got burned, with every failure recorded next to the fix.
+  </p>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://github.com/andyemad/nft-mint-rarity-toolkit">View the repository →</a>
+    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip">Download ZIP</a>
+  </div>
+  <div class="install">
+    <code><i>$</i> curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh | bash</code>
+    <button class="copy" data-copy="curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh | bash">copy</button>
+  </div>
+</header>
+
+<section>
+  <h2>What you can build</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">rarity</span><h3>Rank any collection exactly</h3><p>OpenRarity information content — Σ −log₂(count/total) — validated rank-for-rank against OpenSea. Reveal detection, full-supply sweeps, holdings dashboards.</p></div>
+    <div class="card"><span class="tag">mint</span><h3>Fire a public mint at T-0</h3><p>SeaDrop multi-wallet kit: recon, fresh wallets, funding poll, eth_call pre-flight, pre-signed blast, then verify the token actually landed.</p></div>
+    <div class="card"><span class="tag">snipe</span><h3>Buy rare at the floor</h3><p>Seaport buy path via OpenSea fulfillment data, plus a read-only diagnostic that shows the real revert reason instead of guessing.</p></div>
+    <div class="card"><span class="tag">proof-of-work</span><h3>Mine the nonce</h3><p>CPU (OpenMP), CUDA and Metal miners for FAB4200- and Hashcats-style preimages, with self-checks that catch a broken hash before you rent a GPU.</p></div>
+    <div class="card"><span class="tag">wallets</span><h3>Reconstruct real P&amp;L</h3><p>FIFO matching of every acquisition and disposition across Ethereum and Robinhood Chain — mints separated from buys, gas reported as a cost.</p></div>
+    <div class="card"><span class="tag">forensics</span><h3>Audit a minter or a claim</h3><p>Wash-ring tells, holder concentration, contract-stack discovery, dev-wallet link tests and dust-token scam assessment — all without an API key.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>By the numbers</h2>
+  <div class="facts">
+    <div class="fact"><div class="n">31</div><div class="l">agent playbooks</div></div>
+    <div class="fact"><div class="n">200+</div><div class="l">reference docs</div></div>
+    <div class="fact"><div class="n">0</div><div class="l">secrets in tree</div></div>
+    <div class="fact"><div class="n">$0</div><div class="l">required API keys</div></div>
+  </div>
+  <ul class="checks">
+    <li><b>Keyless by default.</b> Public RPCs and marketplace pages for on-chain facts; a paid key only unlocks the trading paths.</li>
+    <li><b>eth_call before every broadcast.</b> Simulation is a requirement, not a nicety — it is what stops a 49-revert batch.</li>
+    <li><b>Bounded authority.</b> Per-buy, per-day and reserve caps are constants in the scripts, and live execution ships disabled behind an explicit flag.</li>
+    <li><b>Corrections kept in.</b> A wrong rarity formula, a mis-read mint price and a sniper path that reverted every time are all documented — the correction is the useful part.</li>
+  </ul>
+  <div class="warn">
+    <b>Read before spending.</b> This toolkit moves real assets on public chains. Nothing here is
+    financial advice and no strategy in it is profitable by construction. Simulate, cap, and
+    approve deliberately.
+  </div>
+</section>
+
+<section>
+  <h2>Run it on your own agent</h2>
+  <ul class="checks">
+    <li>Install <b>Hermes Agent</b> on a VPS, connect it to <b>Discord</b>, and install these skills in one command.</li>
+    <li>The full walkthrough — VPS hardening, provider setup, the Discord bot from scratch, running the gateway as a service, and the verify table — is in <b>INSTALL.md</b>.</li>
+  </ul>
+  <div class="cta">
+    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit/blob/main/INSTALL.md">Read INSTALL.md →</a>
+    <a class="btn btn-ghost" href="https://hermes-agent.nousresearch.com/docs/">Hermes docs →</a>
+  </div>
+</section>
+
+<section>
+  <div class="promo">
+    <h3>Need a model for your agent?</h3>
+    <p>
+      I run my Hermes agents on <b>OpenCode</b> — one plan covers the agent and the coding CLIs,
+      so the always-on VPS gateway stays cheap. Sign up with my link and it supports the work
+      behind this toolkit.
+    </p>
+    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Try OpenCode →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    <p>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
+      · MIT · Primary chain of record: Robinhood Chain (4663)
+    </p>
+    <p style="margin-top:9px">Playbooks and code are provided as-is. Verify every on-chain fact against the chain before you act on it.</p>
+  </div>
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = b.getAttribute('data-copy');
+    navigator.clipboard.writeText(t).then(function () {
+      var old = b.textContent; b.textContent = 'copied';
+      setTimeout(function () { b.textContent = old; }, 1400);
+    });
+  });
+});
+</script>
+</body>
+</html>
