@@ -3,7 +3,7 @@
 Hermes, Discord, the skills, Vercel, and choosing between your computer and a
 server. Copy and paste a few lines, then talk to the finished thing in Discord.
 
-About **$5 a month**, most of it optional.
+About **$10 a month**, most of it optional.
 
 Same guide as the published page: https://andyemad.github.io/nft-mint-rarity-toolkit/
 
@@ -15,7 +15,7 @@ Same guide as the published page: https://andyemad.github.io/nft-mint-rarity-too
 |---|---|---|
 | A computer | Free | Runs the agent. Windows, Mac or Linux |
 | A Discord account | Free | How you talk to the agent, from phone or desktop |
-| An OpenCode subscription | ~$5/month | The agent's brain. The only thing you have to pay for |
+| An OpenCode subscription | ~$10/month | The agent's brain. The only thing you have to pay for |
 | A Vercel account (optional) | Free | Only if you want a page or small site online |
 | A small server (optional) | ~$5/month | Only if you want it running while your computer is off |
 
@@ -288,12 +288,12 @@ something you want running while you sleep.
 |---|---|---|
 | Hermes agent | Free | Yes |
 | The 31 skills | Free | Yes |
-| OpenCode subscription | ~$5/month | Yes, this is the brain |
+| OpenCode subscription | ~$10/month | Yes, this is the brain |
 | Vercel | Free | Only if you want a page online |
 | Your own computer | Free | Fine, but it sleeps |
 | Small server | ~$5/month | Only for running around the clock |
 
-Honest total: about **$5 a month**, or $10 if you also want it awake all night.
+Honest total: about **$10 a month**, or $15 if you also want it awake all night.
 
 ---
 

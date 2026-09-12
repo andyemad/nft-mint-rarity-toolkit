@@ -4,7 +4,7 @@ Agent playbooks and working code for on-chain NFT work: minting, rarity ranking,
 reveal sniping, proof-of-work mints, wallet operations, and on-chain forensics.
 
 **New here? Start with [GUIDE.md](GUIDE.md).** It walks you from nothing to an
-agent you can talk to in Discord, with these skills installed, for about $5 a
+agent you can talk to in Discord, with these skills installed, for about $10 a
 month. No coding, no mining rig, Windows or Mac or Linux. It is also published as
 a page: https://andyemad.github.io/nft-mint-rarity-toolkit/
 
