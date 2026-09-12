@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe coding | Улучшайте навыки через разговор</title>
+<meta name="description" content="Не все навыки доведены до конца. Улучшайте, исправляйте и расширяйте их простым языком — с готовыми промптами для начала.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Vibe coding навыков">
+<meta property="og:description" content="Вы не пишете код. Вы описываете проблему, и ваш агент её исправляет.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="./">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Копировать запрос для Discord", "copy.terminal": "Копировать команду терминала", "copy.button": "Копировать", "copy.done": "Скопировано", "copy.aria": "Скопировано в буфер обмена", "toast.copied": "Скопировано. Вставьте, когда будете готовы.", "toast.manual": "Автоматическое копирование недоступно. Текст выделен, скопируйте его вручную.", "progress.count": "Готово {n} из 4", "progress.saved": "Сохранено в этом браузере", "progress.visit": "Прогресс сохранится только на время этого визита", "toast.complete": "Настройка завершена. Следующий шаг: отправьте агенту сообщение.", "skills.one": "навык", "skills.many": "навыков", "skills.ready": " готовы к работе", "skills.found": " найдено", "demo.rarity.prompt": "оцени эту коллекцию по редкости и покажи редкие", "demo.rarity.answer": "Коллекция оценена. Вот три самые редкие.", "demo.rarity.title": "Отчёт о редкости", "demo.rarity.subtitle": "Демо-коллекция", "demo.rarity.foot": "Только исследование. Транзакции не отправлялись.", "demo.mint.prompt": "проверь этот минт, прежде чем я подключу кошелёк", "demo.mint.answer": "Сначала проверю контракт, цену и объём выпуска.", "demo.mint.title": "Исследование минта", "demo.mint.subtitle": "Пример чек-листа", "demo.mint.foot": "Изучите результаты, прежде чем одобрять минт.", "demo.mint.row1": "Проверить настоящий контракт", "demo.mint.row2": "Прочитать цену минта из блокчейна", "demo.mint.row3": "Проверить остаток выпуска", "demo.mint.tag": "Сначала проверка", "demo.wallet.prompt": "что этот кошелёк покупал в последнее время?", "demo.wallet.answer": "Превращу публичную активность кошелька в отчёт.", "demo.wallet.title": "Аналитика кошелька", "demo.wallet.subtitle": "Пример отчёта", "demo.wallet.foot": "Публичные данные кошелька. Приватные ключи не нужны.", "demo.wallet.row1": "Недавние покупки", "demo.wallet.row2": "Коллекции в кошельке", "demo.wallet.row3": "Продажи и переводы", "demo.wallet.tag": "Ончейн"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">Перейти к руководству</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="Главная страница NFT-инструментов"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT-инструменты</span><span class="brand-sub">Свой собственный агент</span></a>
+    <nav class="topnav" aria-label="Основная навигация"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>RU</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="./" hreflang="ru" aria-current="true"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">Руководство</a><a href="../#list">Навыки</a><a class="pricing-nav" href="../#money">Стоимость</a><a class="pricing-nav" href="./">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="Посмотреть NFT-инструменты на GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Vibe coding</div>
+      <h1 id="vibe-title"><span>Не все навыки доведены до конца.</span><span>Доведите их разговором.</span></h1>
+      <p>Некоторые из 31 навыка сыроваты. Это сделано специально: <b>вы дорабатываете и расширяете их, просто описывая, что вам нужно</b>. Вы никогда не пишете код. Вы говорите, что сломано или что нужно добавить, а ваш агент делает это, тестирует и показывает результат.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Оформить подписку <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">Вернуться к руководству по настройке</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>Что такое vibe coding на самом деле</h2>
+      <p>Обычно, чтобы улучшить программу, разработчик читает код и правит его. Здесь вы это пропускаете. <b>Вы описываете проблему обычными словами, а агент читает и правит.</b></p>
+      <p>Навык — это просто записанный набор инструкций, которым следует ваш агент. Поэтому улучшить его — не работа с кодом, а разговор. Вы говорите «это постоянно ломается, когда кто-то даёт ссылку на Robinhood», и он идёт и исправляет это.</p>
+      <div class="note"><b>Почему это стоит делать:</b> каждый улучшенный навык остаётся улучшенным. Когда эта задача возникнет в следующий раз, агент уже знает ответ.</div>
+      <div class="note"><b>Никаких отдельных счетов.</b> Всё работает на той же подписке, которую вы уже оформили. Долгие задачи расходуют её больше, чем переписка, поэтому проверьте страницу использования на первых нескольких, а потом перестаньте об этом беспокоиться.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>Цикл из четырёх шагов</h2>
+      <div class="two">
+        <div class="card"><span class="price">ШАГ 1</span><h4>Скажите, что вы хотите</h4><p>Простым языком, в Discord. Если вы можете объяснить это человеку, вы можете объяснить это здесь.</p></div>
+        <div class="card"><span class="price">ШАГ 2</span><h4>Дайте ему поработать</h4><p>Он читает навык, понимает, что нужно изменить, и вносит правку. Попросите его объяснить одной строкой, что он сделал.</p></div>
+        <div class="card"><span class="price">ШАГ 3</span><h4>Заставьте его доказать</h4><p>Скажите «протестируй и покажи вывод». Этот шаг чаще всего пропускают, и именно он важен.</p></div>
+        <div class="card"><span class="price">ШАГ 4</span><h4>Повторяйте, пока не станет правильно</h4><p>Если получилось не так, скажите, что именно всё ещё не так. Два-три круга — это нормально.</p></div>
+      </div>
+      <div class="note warn"><b>«Готово» — это не результат.</b> Агент может сказать, что закончил работу, которая не работает. Всегда просите настоящий вывод, настоящую ошибку или настоящую ссылку. Если он не может это показать — работа не сделана.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>Промпты для начала</h2>
+      <p>В первый раз выполните их по порядку. Это займёт около десяти минут и всё настроит.</p>
+
+      <h3>Узнайте, что нужно доработать</h3>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot просмотри все навыки, которые я установил, и скажи, какие из них выглядят незаконченными, непонятными или без нужных шагов
+
+@yourbot выбери самый слабый и скажи точно, чего в нём не хватает
+
+@yourbot какой навык ты улучшил бы первым, чтобы мне стало проще, и почему?</code></pre>
+
+      <h3>Исправьте один</h3>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot навык редкости не умеет работать с коллекциями, которые ещё скрыты. добавь это и покажи, что работает
+
+@yourbot сделай вывод проверки минта понятнее, я не понимаю текущий формат
+
+@yourbot этот навык предполагает, что я знаю, что такое адрес контракта. перепиши его для того, кто не знает
+
+@yourbot улучши этот навык, используя то, что мы узнали в этом разговоре</code></pre>
+
+      <h3>Проверьте это</h3>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot протестируй это как следует и вставь настоящий вывод
+
+@yourbot дай мне реальный пример, который я могу проверить сам, чтобы убедиться, что это работает
+
+@yourbot что ещё может пойти не так с тем, что ты только что сделал?</code></pre>
+
+      <h3>Сохраните это</h3>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot сохрани то, что ты только что выяснил, как навык, чтобы ты мог повторить это без моих объяснений
+
+@yourbot запиши шаги, которые ты только что сделал, чтобы в следующий раз всё работало так же</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>Когда что-то ломается</h2>
+      <p>Это самое частое, что вы будете делать, и это совершенно нормально. Что-то выдаёт ошибку, вы вставляете ошибку обратно, он исправляет.</p>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot это не сработало. вот что он выдал: &lt;paste the whole error&gt;
+
+@yourbot то же, что и в прошлый раз, но с этим адресом кошелька: &lt;address&gt;
+
+@yourbot выясни, почему это постоянно падает, вместо того чтобы просто пробовать снова
+
+@yourbot верни, как было раньше, это изменение сделало хуже
+
+@yourbot ты сказал, что работает, но это не так. покажи доказательство, что работает, прежде чем снова это утверждать</code></pre>
+      <div class="note"><b>Вставляйте ошибку целиком, а не пересказ.</b> Этот некрасивый поток текста — именно то, что нужно. Именно из-за сокращения правка занимает четыре попытки вместо одной.</div>
+      <div class="note warn"><b>Если стало хуже, просите откат.</b> «Верни, как было» — законный и полезный промпт. Просите сохранять копию перед крупными изменениями, чтобы это всегда было возможно.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>Научите его новому</h2>
+      <p>31 навык — это отправная точка. Настоящая ценность — в своих собственных, для того, что вы делаете снова и снова.</p>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot посмотри, как я проверяю минт перед покупкой, и напиши навык, чтобы в следующий раз ты сделал это за меня
+
+@yourbot сделай навык для поиска коллекций, у которых только что упал пол
+
+@yourbot каждый раз, когда я вставляю твит, ты должен проверять, минт ли это, сколько он стоит и настоящий ли он. преврати это в навык
+
+@yourbot сделай навык, который проверяет все мои кошельки и говорит, на что стоит посмотреть
+
+@yourbot сделай что-нибудь, что сравнивает две коллекции рядом и говорит, у какой шансы лучше</code></pre>
+      <div class="note"><b>Превращайте всё повторяющееся в навык.</b> Если вы объяснили одно и то же дважды — это навык. В третий раз объяснять уже не придётся.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>Соберите целую небольшую вещь</h2>
+      <p>Та же идея, но крупнее. Вы можете поручить ему собрать рабочую страницу и выложить её в интернет — для этого и нужна часть руководства про Vercel.</p>
+      <pre data-label="Промпт для Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot сделай мне страницу со всеми коллекциями, которые у меня есть, с картинками и рангом редкости
+
+@yourbot сделай простой дашборд коллекций, за которыми я слежу, и выложи его на Vercel
+
+@yourbot сделай страницу, куда я могу вставить ссылку на коллекцию, и она всё проранжирует и покажет картинки
+
+@yourbot выложи это на Vercel и дай мне ссылку, когда всё будет действительно онлайн</code></pre>
+      <div class="note"><b>Просите живую ссылку, а не «готово».</b> Если он говорит, что сайт поднят, попросите URL и откройте его сами. Эта одна привычка ловит большинство способов, которыми всё идёт не так.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>Фразы, которые работают</h2>
+      <div class="table-scroll" role="region" aria-label="Прокручиваемая справочная таблица" tabindex="0"><table>
+        <tr><th>Скажите так</th><th>И вы получите</th></tr>
+        <tr><td>«покажи план, прежде чем начинать»</td><td>Вы видите его намерения до того, как он что-то сделает, и можете направить его</td></tr>
+        <tr><td>«протестируй и покажи вывод»</td><td>Разница между настоящей правкой и уверенной фразой</td></tr>
+        <tr><td>«объясни, что ты изменил, одной строкой»</td><td>Вы сохраняете контроль, не читая код</td></tr>
+        <tr><td>«ничего не трать / пока ничего не меняй»</td><td>Он думает, не касаясь ваших денег и файлов</td></tr>
+        <tr><td>«сделай проще»</td><td>Он убирает хитрости и оставляет то, что вы можете проследить</td></tr>
+        <tr><td>«я не понимаю, объясни как новичку»</td><td>Прямой ответ вместо жаргона</td></tr>
+        <tr><td>«верни, как было»</td><td>Отмена, когда изменение сделало хуже</td></tr>
+        <tr><td>«сохрани это как навык»</td><td>Это становится постоянным, и вы больше не объясняете</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>Как не попасть в неприятности</h2>
+      <ul>
+        <li><b>Никогда не вставляйте приватный ключ</b> в чат с агентом или куда-либо ещё. Если вы когда-то это сделали, считайте этот кошелёк скомпрометированным и переведите всё, что в нём есть.</li>
+        <li><b>Просите план перед крупными изменениями.</b> «Сначала покажи план» стоит десяти секунд и спасает от беспорядка.</li>
+        <li><b>По одному изменению за раз.</b> Три улучшения сразу — и вы не поймёте, какое из них всё сломало.</li>
+        <li><b>Держите деньги за словом «нет».</b> Скажите «ничего не трать без моего разрешения», и он не будет.</li>
+        <li><b>Сделайте резервную копию, прежде чем углубляться.</b> Сначала попросите его сохранить копию ваших навыков: «скопируй мою папку с навыками в надёжное место».</li>
+        <li><b>Если он заявляет об успехе, а вы его не видите, значит его нет.</b> Просите доказательства снова.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>Для всего этого нужно одно</h3>
+        <p>Подписка, около $10 в месяц, на deepseek v4.1 flash. Она даёт действительно щедрый лимит использования — именно благодаря этому такая переписка туда-сюда возможна весь день без слежения за счётчиком.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Оформить подписку <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">Вернуться к руководству по настройке</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>Сделано, чтобы быть вашим.</p>
+    <nav class="footer-links" aria-label="Подвал">
+      <a href="../../">Руководство по настройке</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Исходники на GitHub</a>
+    </nav>
+  </div>
+  <div class="shell"><p>Ничто здесь не является финансовым советом. Если вы улучшили навык, улучшенная версия принадлежит вам.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="./" hreflang="ru" aria-current="true">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

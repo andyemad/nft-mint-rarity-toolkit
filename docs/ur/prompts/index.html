@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe coding | Baat karke skills behtar karein</title>
+<meta name="description" content="Ye skills sab mukammal nahi hain. Inhe aasan alfaz mein theek, behtar aur extend karein, shuru karne ke liye asal prompts ke sath.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Skills ka vibe coding">
+<meta property="og:description" content="Aap code nahi likhte. Aap masla batate hain, aur aapka agent usay theek kar deta hai.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="./">
+<script type="application/json" id="i18n-data">{"copy.discord": "Discord prompt copy karein", "copy.terminal": "Terminal command copy karein", "copy.button": "Copy", "copy.done": "Copy ho gaya", "copy.aria": "Clipboard par copy ho gaya", "toast.copied": "Copy ho gaya. Jab tayyar hon to paste kar lein.", "toast.manual": "Khud se copy nahi ho saka. Text select kar diya gaya hai, aap ise copy kar sakte hain.", "progress.count": "4 mein se {n}", "progress.saved": "Is browser mein save hai", "progress.visit": "Progress sirf is visit ke liye save hai", "toast.complete": "Setup mukammal. Agla step: apne agent ko ek message bhejein.", "skills.one": "skill", "skills.many": "skills", "skills.ready": " kaam par lagane ke liye", "skills.found": " mili", "demo.rarity.prompt": "is collection ko rank karein aur rare wale dikhayein", "demo.rarity.answer": "Collection rank ho gayi. Ye teen sab se rare hain.", "demo.rarity.title": "Rarity report", "demo.rarity.subtitle": "Demo collection", "demo.rarity.foot": "Sirf research. Koi transaction nahi bheji gayi.", "demo.mint.prompt": "wallet connect karne se pehle ye mint check karein", "demo.mint.answer": "Pehle contract, price aur supply check karta hoon.", "demo.mint.title": "Mint research", "demo.mint.subtitle": "Misaal checklist", "demo.mint.foot": "Mint approve karne se pehle findings dekhein.", "demo.mint.row1": "Asal contract verify karein", "demo.mint.row2": "Onchain mint price parhein", "demo.mint.row3": "Baqi supply check karein", "demo.mint.tag": "Pehle check", "demo.wallet.prompt": "ye wallet haal hi mein kya kharid raha hai?", "demo.wallet.answer": "Wallet ki public activity ka report bana deta hoon.", "demo.wallet.title": "Wallet intelligence", "demo.wallet.subtitle": "Misaal report", "demo.wallet.foot": "Public wallet data. Private keys ki zarurat nahi.", "demo.wallet.row1": "Haal hi ki kharidari", "demo.wallet.row2": "Rakhe hue collections", "demo.wallet.row3": "Sales aur transfers", "demo.wallet.tag": "Onchain"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">Guide tak jayein</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="NFT toolkit home"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT toolkit</span><span class="brand-sub">Apna khud ka agent</span></a>
+    <nav class="topnav" aria-label="Main navigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>UR</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="./" hreflang="ur-Latn" aria-current="true"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">Guide</a><a href="../#list">Skills</a><a class="pricing-nav" href="../#money">Costs</a><a class="pricing-nav" href="./">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="NFT toolkit GitHub par dekhein"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Vibe coding</div>
+      <h1 id="vibe-title"><span>Ye skills sab mukammal nahi hain.</span><span>Baat karke inhe theek karein.</span></h1>
+      <p>31 skills mein se kuch abhi adhoore hain. Ye jaan bujh kar aisa hai: <b>aap sirf ye batayein ke aap kya chahte hain, aur aap inhe theek aur behtar karte hain</b>. Aap kabhi code nahi likhte. Aap batate hain ke kya kharab hai ya kya add karna hai, aur aapka agent wo karta hai, test karta hai, aur aapko result dikhata hai.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Subscription lein <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">Setup guide par wapas jayein</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>Vibe coding ka asal matlab kya hai</h2>
+      <p>Aam tor par software behtar karne ka matlab hota hai ke developer code padhe aur us mein change kare. Yahan aap ye step skip karte hain. <b>Aap masla apne aam alfaz mein batate hain, aur agent padhna aur change karna khud karta hai.</b></p>
+      <p>Skill sirf likhi hui hidayat ka ek set hai jise aapka agent follow karta hai. Is liye kisi skill ko behtar karna coding ka kaam nahi, ek baat cheet hai. Aap kahte hain “ye hamesha fail hota hai jab koi ise Robinhood link deta hai”, aur wo ja kar usay theek kar deta hai.</p>
+      <div class="note"><b>Ye kyun karna chahiye:</b> aap jo skill behtar karte hain wo behtar hi rehti hai. Agli bar wahi kaam aaye to agent ko jawab pehle se pata hota hai.</div>
+      <div class="note"><b>Koi alag bill nahi.</b> Ye usi subscription par chalta hai jo aapne pehle se set up ki hui hai. Lambe kaam baat cheet se zyada usage lete hain, is liye pehle kuch kaam ke baad apna usage page dekhein, phir iski fikar chhor dein.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>Chaar step ka loop</h2>
+      <div class="two">
+        <div class="card"><span class="price">STEP 1</span><h4>Jo chahte hain wo batayein</h4><p>Aasan alfaz mein, Discord mein. Agar aap kisi insaan ko bata sakte hain, to yahan bhi bata sakte hain.</p></div>
+        <div class="card"><span class="price">STEP 2</span><h4>Ise kaam karne dein</h4><p>Ye skill padhta hai, samajhta hai ke kya change karna hai, aur change kar deta hai. Ise kahein ke ek line mein bataye ke kya kiya.</p></div>
+        <div class="card"><span class="price">STEP 3</span><h4>Ise sabit karwayein</h4><p>Kahein “test karke mujhe output dikhao”. Ye wo step hai jo log skip kar dete hain, aur asal mein yahi sab se zyada ahem hai.</p></div>
+        <div class="card"><span class="price">STEP 4</span><h4>Jab tak theek na ho, dohrayein</h4><p>Agar theek nahi hua, to batayein ke ab bhi kya masla hai. Do ya teen round aam baat hai.</p></div>
+      </div>
+      <div class="note warn"><b>“Done” koi result nahi hota.</b> Agent aapko bata sakta hai ke kaam mukammal ho gaya, halanke wo chalta nahi. Hamesha asal output, asal error, ya asal link maangein. Agar wo aapko dikha nahi sakta, to kaam mukammal nahi hua.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>Shuru karne ke liye prompts</h2>
+      <p>Pehli bar ye tarteeb se karein. Ye das minute lete hain aur aapka setup ban jata hai.</p>
+
+      <h3>Pata karein kis kaam ki zaroorat hai</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot mere install kiye hue sab skills padhein aur batayein ke kaunsi adhoori, ghair wazeh ya missing steps wali lagti hain
+
+@yourbot sab se kamzor skill chunein aur batayein ke us mein asal mein kya missing hai
+
+@yourbot meri zindagi aasan banane ke liye aap pehle kaunsi skill behtar karenge, aur kyun?</code></pre>
+
+      <h3>Ek ko theek karein</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot rarity skill un collections ko handle nahi karti jo abhi hidden hain. ye add karein aur mujhe chalta hua dikhayein
+
+@yourbot mint checker ka output padhne mein aasan banayein, mujhe current format samajh nahi aata
+
+@yourbot ye skill maan leti hai ke mujhe contract address pata hai. isay us shakhs ke liye dobara likhein jise nahi pata
+
+@yourbot isi baat cheet mein jo seekha us se ye skill behtar karein</code></pre>
+
+      <h3>Ise test karein</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot isay theek se test karein aur asal output paste karein
+
+@yourbot mujhe ek asal example dein jo main khud try kar ke check kar sakoon
+
+@yourbot abhi jo banaya us mein ab bhi kya kharab ho sakta hai?</code></pre>
+
+      <h3>Ise save karein</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot jo aap ne abhi kaam kiya usko skill ke tor par save karein taake aap yeh dobara kar sakein bina mujhe samjhane ke
+
+@yourbot jo steps aap ne abhi liye wo likh dein taake agli baar bhi isi tarah kaam kare</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>Jab in mein se koi ek toot jaye</h2>
+      <p>Yeh sab se aam cheez hai jo aap karenge, aur yeh bilkul normal hai. Kuch error deta hai, aap error wapas paste karte hain, aur wo ise theek kar deta hai.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot yeh kaam nahi kiya. is ne yeh kaha: &lt;paste the whole error&gt;
+
+@yourbot pichhli baar ki tarah hi, lekin is wallet address ke saath: &lt;address&gt;
+
+@yourbot pata karein ke yeh baar baar kyun fail hota hai, sirf dobara try karne ke bajaye
+
+@yourbot wapas jaise pehle tha waisa kar dein, is change ne cheez kharab kar di
+
+@yourbot aap ne kaha yeh kaam karta hai lekin nahi kiya. dobara aisa kehne se pehle mujhe saboot dikhayein ke yeh kaam karta hai</code></pre>
+      <div class="note"><b>Poora error paste karein, summary nahi.</b> Yeh bad-soorat text ki deewar hi asal mein wahi cheez hai jiski zaroorat hai. Ise trim karna hi fixes ko ek ke bajaye chaar koshishon mein badal deta hai.</div>
+      <div class="note warn"><b>Agar yeh zyada kharab ho jaye, rollback maangein.</b> “Wapas jaise pehle tha waisa kar dein” ek jaiz aur kaam ka prompt hai. Bade changes se pehle ise ek copy save karne ke liye kahein taake yeh hamesha mumkin ho.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>Ise kuch naya sikhayein</h2>
+      <p>31 skills sirf shuruaat hai. Asal value apne skills add karne mein hai, un kaamon ke liye jo aap baar baar karte hain.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot dekhein ke main kharidne se pehle mint kaise check karta hoon, phir ek skill likhein taake agli baar aap yeh mere liye kar sakein
+
+@yourbot ek skill banayein un collections ko dhoondne ke liye jahan floor abhi gira hai
+
+@yourbot jab bhi main ek tweet paste karoon, aap check karein ke yeh mint hai ya nahi, iski qeemat kya hai, aur yeh asli hai ya nahi. ise ek skill bana dein
+
+@yourbot ek skill banayein jo mere sab wallets check kare aur batayein koi cheez jis par mujhe dekhna chahiye
+
+@yourbot kuch aisa banayein jo do collections ka side by side muqabla kare aur batayein kis mein behtar chances hain</code></pre>
+      <div class="note"><b>Har repeat hone wali cheez ko skill bana dein.</b> Agar aap ne ek hi baat do baar samjhai hai, to wo ek skill hai. Aap ko teesri baar kabhi samjhana nahi parega.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>Ek chhoti si poori cheez banwayein</h2>
+      <p>Wahi idea, bara roop. Aap ise ek kaam karta page banwa kar online dalwa sakte hain, aur isi ke liye setup guide ka Vercel wala hissa hai.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot mere liye ek page banayein jis mein wo har collection ho jo mere paas hai, images aur rarity rank ke saath
+
+@yourbot un collections ka ek simple dashboard banayein jinhein main dekh raha hoon aur ise Vercel par dal dein
+
+@yourbot ek page banayein jahan main collection link paste karoon aur wo sab kuch rank kare aur pictures dikhaye
+
+@yourbot ise Vercel par dal dein aur mujhe link dein jab yeh waqai live ho</code></pre>
+      <div class="note"><b>Live link maangein, “ho gaya” nahi.</b> Agar wo kehta hai ke site up hai, to URL maangein aur khud kholein. Yeh ek aadat is tarah ki ghaltiyon ka zyada tar hissa pakad leti hai.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>Wo phrases jo kaam karte hain</h2>
+      <div class="table-scroll" role="region" aria-label="Scroll karne wali reference table" tabindex="0"><table>
+        <tr><th>Yeh kahein</th><th>Aur aap ko milega</th></tr>
+        <tr><td>“shuru karne se pehle mujhe apna plan dikhayein”</td><td>Kuch karne se pehle aap dekh lete hain ke uska irada kya hai, aur use redirect kar sakte hain</td></tr>
+        <tr><td>“ise test karein aur mujhe output dikhayein”</td><td>Asli fix aur ek yaqeen se bhari baat mein farq</td></tr>
+        <tr><td>“ek line mein batayein ke aap ne kya change kiya”</td><td>Aap koi code parhe baghair control mein rehte hain</td></tr>
+        <tr><td>“abhi kuch kharch na karein / abhi kuch change na karein”</td><td>Yeh sochne ka kaam karta hai bina aap ke paise ya files ko chhue</td></tr>
+        <tr><td>“ise simple karein”</td><td>Yeh chalak cheezein nikaal deta hai aur kuch aisa chhor deta hai jise aap follow kar sakein</td></tr>
+        <tr><td>“mujhe yeh samajh nahi aata, ise aise samjhayein jaise main naya hoon”</td><td>Jargon ke bajaye seedha jawab</td></tr>
+        <tr><td>“wapas jaise pehle tha waisa kar dein”</td><td>Ek undo, jab kisi change ne cheezein kharab kar din</td></tr>
+        <tr><td>“ise skill ke tor par save karein”</td><td>Yeh hamesha ke liye reh jata hai, aur aap ko dobara kabhi samjhana nahi parega</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>Mushkil se door rehna</h2>
+      <ul>
+        <li><b>Private key kabhi paste na karein</b> agent ke saath chat mein, ya kisi aur jagah. Agar aap ne kabhi kiya hai, to us wallet ko jala hua samjhein aur us mein jo kuch hai wo nikal lein.</li>
+        <li><b>Bade changes se pehle plan maangein.</b> “Pehle plan dikhayein” aap ke das second leta hai aur ek badi museebat bacha leta hai.</li>
+        <li><b>Ek waqt mein ek change.</b> Teen improvements ek saath ka matlab hai aap nahi bata sakte kis ne ise torha.</li>
+        <li><b>Apne paise ko ek “nahi” ke peeche rakhein.</b> “mere poochhe baghair kuch kharch na karein” kahein aur wo nahi karega.</li>
+        <li><b>Gehrai mein jaane se pehle backup lein.</b> Pehle apne skills ki copy save karne ke liye kahein: “mere skills folder ki copy kisi mehfooz jagah rakh dein”.</li>
+        <li><b>Agar wo kamyabi ka dawa kare aur aap use dekh nahi sakte, to wo asli nahi hai.</b> Dobara saboot maangein.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>Is sab ko ek cheez chahiye</h3>
+        <p>Subscription, taqreeban $10 mahina, deepseek v4.1 flash chala raha hai. Yeh waqai bahut zyada usage deta hai, aur isi wajah se is tarah ka back-and-forth aap din bhar kar sakte hain bina meter dekhe.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Subscription lein <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">Setup guide par wapas jayein</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>Aap ke liye banaya gaya.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="../../">Setup guide</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">GitHub par source</a>
+    </nav>
+  </div>
+  <div class="shell"><p>Yahan kuch bhi financial advice nahi hai. Agar aap kisi skill ko behtar karte hain, to behtar version aap ka hai.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="./" hreflang="ur-Latn" aria-current="true">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

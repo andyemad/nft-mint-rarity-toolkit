@@ -97,14 +97,20 @@ def main():
 
     print("\n" + "=" * 74)
     print("Generated pages")
+    targets = []
     for code in CODES:
-        path = os.path.join(DOCS, "index.html") if code == "en" else os.path.join(DOCS, code, "index.html")
+        for page in ("guide", "prompts"):
+            depth = (1 if code != "en" else 0) + (1 if page == "prompts" else 0)
+            rel = ("prompts/" if page == "prompts" else "") + "index.html"
+            out = os.path.join(DOCS, rel if code == "en" else os.path.join(code, rel))
+            targets.append((code, page, out, "../" * depth, f"{code}/{page}"))
+
+    for code, page, path, prefix, label in targets:
         if not os.path.exists(path):
-            note(False, f"{code}: page missing ({os.path.relpath(path, ROOT)})")
+            note(False, f"{label}: page missing ({os.path.relpath(path, ROOT)})")
             continue
         doc = read(path)
-        prefix = "" if code == "en" else "../"
-        print(f"\n  --- {code}  ({len(doc)//1024} KB)")
+        print(f"\n  --- {label}  ({len(doc)//1024} KB)")
         html_tag = re.search(r"<html[^>]*>", doc).group(0)
         note('lang="' in html_tag, f"has lang attribute ({html_tag[:58]})")
         if code in RTL:
@@ -120,17 +126,27 @@ def main():
         prompt_blocks = doc.count('data-kind="prompt"')
         note(prompt_blocks >= 5, f"prompt blocks marked ({prompt_blocks})")
 
-        # menu links resolve on disk
-        missing = []
-        for href in set(re.findall(r'href="(\.\./)?([a-z]{2})/"', doc)):
-            target = os.path.join(DOCS, href[1], "index.html")
-            if not os.path.exists(target):
-                missing.append(href[1])
-        note(not missing, f"all language links resolve{f' (missing: {missing})' if missing else ''}")
+        # every internal link on the page must resolve to a real file: stylesheets,
+        # the other page, and each language's edition of the same page.
+        broken = []
+        for href in sorted(set(re.findall(r'(?:href|src)="([^"]+)"', doc))):
+            if href.startswith(("http://", "https://", "mailto:", "data:", "#")):
+                continue
+            target = href.split("#")[0]
+            if not target:
+                continue
+            resolved = os.path.normpath(os.path.join(os.path.dirname(path), target))
+            if target.endswith("/"):
+                resolved = os.path.join(resolved, "index.html")
+            if not os.path.exists(resolved):
+                broken.append(href)
+        note(not broken, f"every internal link resolves{f' (broken: {broken})' if broken else ''}")
 
         # Escapees. Roman Urdu keeps English technical nouns on purpose (that is how
         # Urdu speakers write), so flagging those words would be wrong. For ur the
         # meaningful check is the inverse: the page must actually read as Roman Urdu.
+        if page != "guide":
+            continue
         if code == "ur":
             markers = ["karein", "aap", "hai", "ke ", "ko ", "aur", "mein"]
             found = sum(doc.count(m) for m in markers)

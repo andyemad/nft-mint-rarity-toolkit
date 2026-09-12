@@ -73,7 +73,9 @@ def main():
     for bucket in ("attr", "head", "js"):
         if not out[bucket]:
             print(f"  warn: no {bucket} strings for {code}")
-    json.dump(out, open(existing, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    existing = os.path.join(I18N, f"{code}.json")
+    with open(existing, "w", encoding="utf-8") as fh:
+        json.dump(out, fh, ensure_ascii=False, indent=1)
     print(f"wrote {os.path.relpath(existing, ROOT)}")
 
 

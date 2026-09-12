@@ -285,7 +285,9 @@ def build(code, page="guide"):
     elif prefix:
         doc = doc.replace('href="assets/', f'href="{prefix}assets/')
         doc = doc.replace('src="assets/', f'src="{prefix}assets/')
-        doc = doc.replace('href="prompts/"', f'href="{prefix}prompts/"')
+        # NOTE: the vibe coding link stays "prompts/" on purpose. It is relative
+        # to this language's own directory, so docs/zh/ links to docs/zh/prompts/.
+
 
     # Extra stylesheet for every page, including English. Inserted as a sibling of
     # the existing link so the asset-path rewrite below carries it for free.

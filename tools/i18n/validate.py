@@ -25,6 +25,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 I18N = os.path.join(ROOT, "tools", "i18n")
 SRC = json.load(open(os.path.join(I18N, "strings.json"), encoding="utf-8"))
 
+EXPECT_SOURCE = SRC["strings"]
+
 EXPECT = {
     "text": set(SRC["strings"]),
     "attr": set(SRC["attrs"]),
@@ -53,6 +55,16 @@ SCRIPT = {
 
 def inline(s):
     return " ".join(str(s).split())
+
+
+# Strings that are correctly left alone in every language: they are literal UI
+# paths and product names, not prose.
+ALLOW_IDENTICAL = {
+    "Add New → Project",
+    "Windows, Mac & Linux",
+    "Proof of Play research",
+    "Research. Rank. Mint. Monitor.",
+}
 
 
 def main():
@@ -106,6 +118,25 @@ def main():
             if "{n}" not in got:
                 bad = True
                 print(f"  FAIL  js.{key} lost the {{n}} placeholder: {got!r}")
+
+        # A sentence that is still word-for-word English means a paragraph was
+        # never translated. Key counts alone cannot catch that: Russian passed
+        # every other check while eleven prompt blocks were still in English.
+        still_english = []
+        for src_string in EXPECT_SOURCE:
+            if len(src_string.split()) < 4:
+                continue
+            if src_string in ALLOW_IDENTICAL:
+                continue
+            if data.get("text", {}).get(src_string, "").strip() == src_string.strip():
+                still_english.append(src_string)
+        if still_english:
+            bad = True
+            print(f"  FAIL  {len(still_english)} sentence(s) still identical to English")
+            for s in still_english[:4]:
+                print(f"          {inline(s)[:84]}")
+        else:
+            print("  ok    no untranslated sentences")
 
         # script sanity
         uniq = list(dict.fromkeys(values))

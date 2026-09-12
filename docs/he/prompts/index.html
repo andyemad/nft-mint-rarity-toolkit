@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe coding | שפרו את הסקילים בשיחה</title>
+<meta name="description" content="הסקילים לא כולם גמורים. שפרו, תקנו והרחיבו אותם במילים פשוטות, עם הפרומפטים המדויקים להתחלה.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Vibe coding לסקילים">
+<meta property="og:description" content="אתם לא כותבים קוד. אתם מתארים את הבעיה, והסוכן שלכם מתקן אותה.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="./">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "העתק פרומפט ל-Discord", "copy.terminal": "העתק פקודת טרמינל", "copy.button": "העתק", "copy.done": "הועתק", "copy.aria": "הועתק ללוח", "toast.copied": "הועתק. הדבק אותו כשאתה מוכן.", "toast.manual": "ההעתקה האוטומטית לא זמינה. הטקסט מסומן כדי שתוכל להעתיק אותו.", "progress.count": "{n} מתוך 4", "progress.saved": "נשמר בדפדפן הזה", "progress.visit": "ההתקדמות נשמרת לביקור הזה", "toast.complete": "ההתקנה הושלמה. הצעד הבא שלך: שלח לסוכן הודעה.", "skills.one": "סקיל", "skills.many": "סקילים", "skills.ready": " לעבודה", "skills.found": " נמצאו", "demo.rarity.prompt": "דרג את הקולקציה הזו ותראה לי את הנדירים", "demo.rarity.answer": "הקולקציה דורגה. אלה שלושת הנדירים ביותר.", "demo.rarity.title": "דוח נדירות", "demo.rarity.subtitle": "קולקציית דמו", "demo.rarity.foot": "מחקר בלבד. לא נשלחו עסקאות.", "demo.mint.prompt": "בדוק את המינט הזה לפני שאני מחבר את הארנק", "demo.mint.answer": "אבדוק קודם את החוזה, את המחיר ואת ההיצע.", "demo.mint.title": "מחקר מינט", "demo.mint.subtitle": "רשימת בדיקות לדוגמה", "demo.mint.foot": "עבור על הממצאים לפני שאתה מאשר מינט.", "demo.mint.row1": "אימות החוזה האמיתי", "demo.mint.row2": "קריאת מחיר המינט אונצ'יין", "demo.mint.row3": "בדיקת ההיצע שנותר", "demo.mint.tag": "בדוק קודם", "demo.wallet.prompt": "מה הארנק הזה קנה לאחרונה?", "demo.wallet.answer": "אהפוך את הפעילות הציבורית של הארנק לדוח.", "demo.wallet.title": "מודיעין ארנקים", "demo.wallet.subtitle": "דוח לדוגמה", "demo.wallet.foot": "דאטה ציבורי של הארנק. בלי צורך במפתחות פרטיים.", "demo.wallet.row1": "קניות אחרונות", "demo.wallet.row2": "קולקציות מוחזקות", "demo.wallet.row3": "מכירות והעברות", "demo.wallet.tag": "אונצ'יין"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">דלג למדריך</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="דף הבית של ערכת הכלים NFT"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>ערכת כלים NFT</span><span class="brand-sub">סוכן משלך</span></a>
+    <nav class="topnav" aria-label="ניווט ראשי"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>HE</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="./" hreflang="he" aria-current="true"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">המדריך</a><a href="../#list">סקילים</a><a class="pricing-nav" href="../#money">עלויות</a><a class="pricing-nav" href="./">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="הצגת ערכת הכלים NFT ב-GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Vibe coding</div>
+      <h1 id="vibe-title"><span>הסקילים לא כולם גמורים.</span><span>תסדרו אותם בשיחה.</span></h1>
+      <p>חלק מ-31 הסקילים גסים בקצוות. זה מכוון: <b>אתם מתקנים ומרחיבים אותם בכך שאתם מתארים מה אתם רוצים</b>. אתם לא כותבים קוד בכלל. אתם אומרים מה שבור או מה להוסיף, והסוכן שלכם עושה את זה, בודק את זה ומראה לכם את התוצאה.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">קבלו את המנוי <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">חזרה למדריך ההתקנה</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>מה זה באמת Vibe coding</h2>
+      <p>בדרך כלל, שיפור תוכנה אומר שמפתח קורא קוד ועורך אותו. כאן אתם מדלגים על זה. <b>אתם מתארים את הבעיה במילים רגילות, והסוכן עושה את הקריאה ואת העריכה.</b></p>
+      <p>סקיל הוא בסך הכול סט הוראות כתובות שהסוכן שלכם פועל לפיהן. אז לשפר סקיל זה לא עבודת קידוד, זה שיחה. אתם אומרים ״זה כל הזמן נכשל כשמישהו נותן לו קישור של Robinhood״, והוא הולך ומתקן את זה.</p>
+      <div class="note"><b>למה זה שווה:</b> כל סקיל שאתם משפרים נשאר משופר. בפעם הבאה שהעבודה הזאת עולה, הסוכן כבר יודע את התשובה.</div>
+      <div class="note"><b>בלי חשבון נפרד.</b> זה רץ על אותו מנוי שכבר הגדרתם. עבודות ארוכות צורכות ממנו יותר מאשר שיחה, אז בדקו את עמוד השימוש בפעמים הראשונות, ואחר כך תפסיקו לדאוג בקשר לזה.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>הלולאה בארבעה שלבים</h2>
+      <div class="two">
+        <div class="card"><span class="price">שלב 1</span><h4>אמרו מה אתם רוצים</h4><p>במילים פשוטות, ב-Discord. אם אתם יכולים לתאר את זה לבן אדם, אתם יכולים לתאר את זה כאן.</p></div>
+        <div class="card"><span class="price">שלב 2</span><h4>תנו לו לעבוד</h4><p>הוא קורא את הסקיל, מבין מה לשנות, ומבצע את השינוי. בקשו ממנו להסביר בשורה אחת מה הוא עשה.</p></div>
+        <div class="card"><span class="price">שלב 3</span><h4>תגרמו לו להוכיח</h4><p>אמרו ״בדוק את זה והראה לי את הפלט״. זה השלב שאנשים מדלגים עליו, וזה השלב שבאמת חשוב.</p></div>
+        <div class="card"><span class="price">שלב 4</span><h4>חזרו עד שזה נכון</h4><p>אם זה לא נכון, אמרו מה עדיין לא בסדר. שניים-שלושה סבבים זה נורמלי.</p></div>
+      </div>
+      <div class="note warn"><b>״סיימתי״ זה לא תוצאה.</b> סוכן יכול לספר לכם שהוא סיים משהו שלא עובד. תמיד בקשו את הפלט האמיתי, השגיאה האמיתית או הקישור האמיתי. אם הוא לא יכול להראות לכם, זה לא גמור.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>פרומפטים להתחלה</h2>
+      <p>בפעם הראשונה עשו אותם לפי הסדר. זה לוקח בערך עשר דקות ומכין אתכם.</p>
+
+      <h3>גלו מה צריך שיפור</h3>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot קרא את כל הסקילים שהתקנתי ותגיד לי אילו מהם נראים לא גמורים, לא ברורים או חסרים שלבים
+
+@yourbot בחר את החלש מכולם ותגיד לי בדיוק מה חסר בו
+
+@yourbot איזה סקיל היית משפר קודם כדי להקל עליי, ולמה?</code></pre>
+
+      <h3>תקנו אחד</h3>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot סקיל הנדירות לא מטפל בקולקציות שעדיין מוסתרות. תוסיף את זה ותראה לי שזה עובד
+
+@yourbot תהפוך את הפלט של בודק המינט לקריא יותר, אני לא מבין את הפורמט הנוכחי
+
+@yourbot הסקיל הזה מניח שאני יודע מה זה כתובת חוזה. תכתוב אותו מחדש למישהו שלא יודע
+
+@yourbot שפר את הסקיל הזה לפי מה שלמדנו בשיחה הזאת</code></pre>
+
+      <h3>בדקו את זה</h3>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot בדוק את זה כמו שצריך והדבק את הפלט האמיתי
+
+@yourbot תביא לי דוגמה אמיתית שאני יכול לנסות בעצמי כדי לבדוק שזה עובד
+
+@yourbot מה עוד יכול להשתבש במה שבנית עכשיו?</code></pre>
+
+      <h3>שמרו את זה</h3>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot שמור את מה שהרגע הבנת כסקיל כדי שתוכל לעשות את זה שוב בלי שאסביר
+
+@yourbot רשום את השלבים שהרגע עשית כדי שזה יעבוד אותו דבר בפעם הבאה</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>כשאחד מהם נשבר</h2>
+      <p>זה הדבר הנפוץ ביותר שתעשה, וזה לגמרי נורמלי. משהו נכשל, אתה מדביק את השגיאה בחזרה, והוא מתקן.</p>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot זה לא עבד. הנה מה שזה אמר: &lt;paste the whole error&gt;
+
+@yourbot כמו בפעם שעברה אבל עם כתובת הארנק הזאת במקום: &lt;address&gt;
+
+@yourbot תגלה למה זה ממשיך להיכשל במקום סתם לנסות שוב
+
+@yourbot תחזיר למה שהיה קודם, השינוי הזה הרע את המצב
+
+@yourbot אמרת שזה עובד אבל זה לא. תראה לי הוכחה שזה עובד לפני שאתה אומר את זה שוב</code></pre>
+      <div class="note"><b>תדביק את כל השגיאה, לא סיכום.</b> קיר הטקסט המכוער הזה הוא בדיוק מה שצריך. קיצור שלו הוא מה שגורם לתיקון לקחת ארבעה ניסיונות במקום אחד.</div>
+      <div class="note warn"><b>אם המצב מחמיר, בקש חזרה אחורה.</b> ”תחזיר למה שהיה” הוא פרומפט לגיטימי ושימושי. בקש ממנו לשמור עותק לפני שינויים גדולים כדי שזה תמיד יהיה אפשרי.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>ללמד אותו משהו חדש</h2>
+      <p>31 הסקילים הם נקודת התחלה. הערך האמיתי הוא להוסיף משלך, לדברים שאתה עושה שוב ושוב.</p>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot תראה איך אני בודק מינט לפני קנייה, ואז כתוב סקיל כדי שתוכל לעשות את זה בשבילי בפעם הבאה
+
+@yourbot תכין סקיל לאיתור קולקציות שהפלור שלהן הרגע צנח
+
+@yourbot בכל פעם שאני מדביק ציוץ תבדוק אם זה מינט, כמה זה עולה, ואם זה אמיתי. תהפוך את זה לסקיל
+
+@yourbot תכין סקיל שבודק את כל הארנקים שלי ומגיד לי כל דבר שכדאי שאסתכל עליו
+
+@yourbot תבנה משהו שמשווה שתי קולקציות זו לצד זו ומגיד לי למי יש סיכויים טובים יותר</code></pre>
+      <div class="note"><b>הפוך כל דבר שחוזר על עצמו לסקיל.</b> אם הסברת את אותו הדבר פעמיים, זה סקיל. לעולם לא תצטרך להסביר אותו פעם שלישית.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>לבנות משהו קטן שלם</h2>
+      <p>אותו רעיון, גדול יותר. אתה יכול לבקש ממנו לבנות עמוד עובד ולהעלות אותו לאינטרנט, ולזה מיועד החלק של Vercel במדריך ההתקנה.</p>
+      <pre data-label="פרומפט ב-Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot תבנה לי עמוד שמציג כל קולקציה שאני מחזיק, עם תמונות ודירוג נדירות
+
+@yourbot תבנה דשבורד פשוט של הקולקציות שאני עוקב אחריהן ותעלה אותו ל-Vercel
+
+@yourbot תכין עמוד שבו אני יכול להדביק קישור לקולקציה והוא ידרג הכל ויציג תמונות
+
+@yourbot תעלה את זה ל-Vercel ותן לי את הקישור כשזה באמת באוויר</code></pre>
+      <div class="note"><b>בקש את הקישור החי, לא ”בוצע”.</b> אם הוא אומר שהאתר באוויר, בקש את ה-URL ותפתח אותו בעצמך. ההרגל הזה לבדו תופס את רוב הדרכים שבהן זה משתבש.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>משפטים שעובדים</h2>
+      <div class="table-scroll" role="region" aria-label="טבלת עזר לגלילה" tabindex="0"><table>
+        <tr><th>תגיד את זה</th><th>ותקבל</th></tr>
+        <tr><td>”תראה לי את התוכנית שלך לפני שאתה מתחיל”</td><td>אתה רואה מה הוא מתכנן לעשות לפני שהוא עושה משהו, ויכול לכוון אותו מחדש</td></tr>
+        <tr><td>”תבדוק את זה ותראה לי את הפלט”</td><td>ההבדל בין תיקון אמיתי למשפט בטוח בעצמו</td></tr>
+        <tr><td>”הסבר מה שינית, בשורה אחת”</td><td>אתה נשאר בשליטה בלי לקרוא שורת קוד</td></tr>
+        <tr><td>”אל תוציא שום דבר / אל תשנה כלום עדיין”</td><td>הוא עושה את החשיבה בלי לגעת בכסף או בקבצים שלך</td></tr>
+        <tr><td>”תעשה את זה פשוט יותר”</td><td>הוא מסיר את החוכמות ומשאיר משהו שאתה יכול לעקוב אחריו</td></tr>
+        <tr><td>”אני לא מבין את זה, תסביר כמו למישהו חדש”</td><td>תשובה ישרה במקום מונחים מקצועיים</td></tr>
+        <tr><td>”תחזיר למה שהיה”</td><td>ביטול, כששינוי הרע את המצב</td></tr>
+        <tr><td>”שמור את זה כסקיל”</td><td>זה הופך לקבוע, ולעולם לא תצטרך להסביר את זה שוב</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>להישאר מחוץ לצרות</h2>
+      <ul>
+        <li><b>לעולם אל תדביק מפתח פרטי</b> בצ'אט עם סוכן, או בכל מקום אחר. אם אי פעם עשית זאת, התייחס לארנק הזה כשרוף והעבר ממנו כל דבר.</li>
+        <li><b>בקש את התוכנית לפני שינויים גדולים.</b> ”תראה לי את התוכנית קודם” עולה לך עשר שניות וחוסך לך בלגן.</li>
+        <li><b>שינוי אחד בכל פעם.</b> שלושה שיפורים בבת אחת אומרים שלא תדע איזה מהם שבר את זה.</li>
+        <li><b>שים את הכסף שלך מאחורי ”לא”.</b> תגיד ”אל תוציא שום דבר בלי לשאול אותי” וזה לא יקרה.</li>
+        <li><b>גבה לפני שאתה מעמיק.</b> בקש ממנו לשמור קודם עותק של הסקילים שלך: ”העתק את תיקיית הסקילים שלי למקום בטוח”.</li>
+        <li><b>אם הוא טוען להצלחה ואתה לא רואה אותה, היא לא אמיתית.</b> בקש שוב את ההוכחה.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>כל זה צריך דבר אחד</h3>
+        <p>המנוי, בערך $10 בחודש, מריץ deepseek v4.1 flash. הוא נותן כמות שימוש נדיבה באמת, וזה מה שהופך שיחה דו-כיוונית כזאת למשהו שאתה יכול לעשות כל היום בלי להסתכל על מונה.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">קבלו את המנוי <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">חזרה למדריך ההתקנה</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>בנוי להיות שלך.</p>
+    <nav class="footer-links" aria-label="כותרת תחתונה">
+      <a href="../../">מדריך התקנה</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">קוד המקור ב-GitHub</a>
+    </nav>
+  </div>
+  <div class="shell"><p>שום דבר כאן אינו ייעוץ פיננסי. אם תשפר סקיל, הגרסה המשופרת היא שלך.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="./" hreflang="he" aria-current="true">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

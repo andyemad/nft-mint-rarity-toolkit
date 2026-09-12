@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NFT-набор | Ваш ончейн-агент в Discord</title>
+<meta name="description" content="Настройте собственного агента Hermes с 31 бесплатным NFT-навыком. Исследуйте минты, ранжируйте коллекции и следите за кошельками прямо из Discord. Практическое пошаговое руководство.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Ончейн-навыки. В вашем Discord.">
+<meta property="og:description" content="Свой собственный ИИ-агент. 31 бесплатный NFT-навык. Хватит одного разговора. Начните с полного руководства по настройке.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/i18n.css">
+<script src="../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ar" href="../ar/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="ru" href="./">
+<link rel="alternate" hreflang="he" href="../he/">
+<link rel="alternate" hreflang="ur-Latn" href="../ur/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Копировать запрос для Discord", "copy.terminal": "Копировать команду терминала", "copy.button": "Копировать", "copy.done": "Скопировано", "copy.aria": "Скопировано в буфер обмена", "toast.copied": "Скопировано. Вставьте, когда будете готовы.", "toast.manual": "Автоматическое копирование недоступно. Текст выделен, скопируйте его вручную.", "progress.count": "Готово {n} из 4", "progress.saved": "Сохранено в этом браузере", "progress.visit": "Прогресс сохранится только на время этого визита", "toast.complete": "Настройка завершена. Следующий шаг: отправьте агенту сообщение.", "skills.one": "навык", "skills.many": "навыков", "skills.ready": " готовы к работе", "skills.found": " найдено", "demo.rarity.prompt": "оцени эту коллекцию по редкости и покажи редкие", "demo.rarity.answer": "Коллекция оценена. Вот три самые редкие.", "demo.rarity.title": "Отчёт о редкости", "demo.rarity.subtitle": "Демо-коллекция", "demo.rarity.foot": "Только исследование. Транзакции не отправлялись.", "demo.mint.prompt": "проверь этот минт, прежде чем я подключу кошелёк", "demo.mint.answer": "Сначала проверю контракт, цену и объём выпуска.", "demo.mint.title": "Исследование минта", "demo.mint.subtitle": "Пример чек-листа", "demo.mint.foot": "Изучите результаты, прежде чем одобрять минт.", "demo.mint.row1": "Проверить настоящий контракт", "demo.mint.row2": "Прочитать цену минта из блокчейна", "demo.mint.row3": "Проверить остаток выпуска", "demo.mint.tag": "Сначала проверка", "demo.wallet.prompt": "что этот кошелёк покупал в последнее время?", "demo.wallet.answer": "Превращу публичную активность кошелька в отчёт.", "demo.wallet.title": "Аналитика кошелька", "demo.wallet.subtitle": "Пример отчёта", "demo.wallet.foot": "Публичные данные кошелька. Приватные ключи не нужны.", "demo.wallet.row1": "Недавние покупки", "demo.wallet.row2": "Коллекции в кошельке", "demo.wallet.row3": "Продажи и переводы", "demo.wallet.tag": "Ончейн"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#guide">Перейти к руководству по настройке</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14m-1-9H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Zm7-1v4m-2-2h4"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4v8"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h6"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+<symbol id="cat" viewBox="0 0 24 24"><path d="M5 11V4l6 4h2l6-4v7c2 7-2 10-7 10S3 18 5 11Z"/><path d="M8 13h1m6 0h1m-5 4h2"/></symbol>
+</svg>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="#top" aria-label="Главная NFT-набора"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT-набор инструментов</span><span class="brand-sub">Свой собственный агент</span></a>
+    <nav class="topnav" aria-label="Основная навигация"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>RU</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="./" hreflang="ru" aria-current="true"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="#guide">Руководство</a><a href="#list">Навыки</a><a class="pricing-nav" href="#money">Расходы</a><a class="pricing-nav" href="prompts/">Вайб-кодинг</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="Открыть NFT-набор на GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid shell">
+      <div class="hero-copy">
+        <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Бесплатные инструменты. Ваши в работе.</div>
+        <h1 id="hero-title"><span>Ончейн-навыки.</span><span>В вашем Discord.</span></h1>
+        <p>Превратите простое сообщение в исследование минтов, рейтинги редкости и разведку кошельков. Настройте своего агента Hermes и позвольте ему делать всю работу.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#guide">Соберите своего агента <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a><a class="btn btn-ghost" href="#list">Изучите 31 навык</a></div>
+        <div class="hero-meta"><span><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> Около 20 минут</span><span><svg class="icon" aria-hidden="true"><use href="#check"></use></svg> Windows, Mac и Linux</span></div>
+      </div>
+      <div class="agent-stage" aria-label="Пример диалога с агентом">
+        <div class="agent-window">
+          <div class="window-top"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Ваш Discord, прокачанный</span><span>Пример</span></div>
+          <div class="channel"><span class="hash" aria-hidden="true">#</span> your-onchain-agent <small>Просто спросите. И оно берётся за работу.</small></div>
+          <div class="chat-body" id="demo-response" role="region" aria-label="Пример ответа" aria-live="polite" aria-atomic="true">
+            <div class="message"><div class="avatar" aria-hidden="true">Y</div><div><div class="message-heading">Вы <small>Сегодня в 10:42</small></div><p id="demo-prompt"><span class="mention">@hermes</span> оцени эту коллекцию и покажи редкие</p></div></div>
+            <div class="message"><div class="avatar agent" aria-hidden="true"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg></div><div><div class="message-heading">Hermes <span class="app-tag">APP</span><small>Сегодня в 10:42</small></div><p id="demo-answer">Коллекция оценена. Вот три самые редкие.</p>
+              <div class="result-card"><div class="result-heading"><span id="result-title">Отчёт о редкости</span><small id="result-subtitle">Демо-коллекция</small></div><div id="result-rows" class="result-rows"><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#8b7ab5" d="M0 0h40v40H0z"/><path fill="#e3d0ee" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#5d437e" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0842</span><em>Ранг 1</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#738f8c" d="M0 0h40v40H0z"/><path fill="#c7e3c4" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#436858" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#2106</span><em>Ранг 2</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#bc977e" d="M0 0h40v40H0z"/><path fill="#ecd7b6" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#82563f" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0391</span><em>Ранг 3</em></div></div><div class="result-foot"><svg class="icon" aria-hidden="true"><use href="#shield"></use></svg><span id="result-foot">Только исследование. Транзакции не отправлялись.</span></div></div>
+            </div></div>
+          </div>
+          <div class="sample-composer" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"></use></svg><span>Одно сообщение. Целый новый набор навыков.</span><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg></div>
+        </div>
+        <div class="skill-sticker" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg><div><strong>31 навык, готовы к работе</strong><small>Исследуйте. Оценивайте. Минуйте. Отслеживайте.</small></div></div>
+        <div class="demo-controls" role="group" aria-label="Выберите пример" hidden><button type="button" data-demo="rarity" aria-pressed="true" aria-controls="demo-response">Рейтинги редкости</button><button type="button" data-demo="mint" aria-pressed="false" aria-controls="demo-response">Проверки минтов</button><button type="button" data-demo="wallet" aria-pressed="false" aria-controls="demo-response">Разведка кошельков</button></div>
+      </div>
+    </div>
+    <div class="hero-bottom shell"><span>Инструменты под капотом вашего агента</span><div class="stack"><span><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> Hermes</span><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Discord</span><span><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> OpenCode</span></div><span>Открытый исходный код. Без подписки на набор инструментов.</span></div>
+  </section>
+  <nav class="journey" aria-label="Настройка в три шага"><div class="journey-grid shell">
+    <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>Дайте ему мозг</strong><small>Установите Hermes и подключите модель.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Приведите его в Discord</strong><small>Ваш агент — на расстоянии одного сообщения.</small></div></a>
+    <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>Заставьте навыки работать</strong><small>Установите набор инструментов. Просите что угодно.</small></div></a>
+  </div></nav>
+  <div class="guide-layout shell" id="guide">
+    <aside class="guide-sidebar" aria-label="Навигация по руководству">
+      <details open id="guide-menu"><summary>В этом руководстве <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
+        <nav class="toc" aria-label="Главы руководства">
+          <span class="toc-label">Запустите и начните работу</span><ol>
+            <li><a href="#need"><span>01</span>Что вам понадобится</a></li><li><a href="#hermes"><span>02</span>Настройте Hermes</a></li><li><a href="#discord"><span>03</span>Подключите Discord</a></li><li><a href="#skills"><span>04</span>Установите навыки</a></li>
+          </ol><span class="toc-label">Сделайте его полезным</span><ol start="5">
+            <li><a href="#list"><span>05</span>Библиотека навыков</a></li><li><a href="#hashcats"><span>06</span>Минтите Hashcats</a></li><li><a href="#prompts"><span>07</span>Что у него спрашивать</a></li>
+          </ol><span class="toc-label">Пойдите немного дальше</span><ol start="8">
+            <li><a href="#vercel"><span>08</span>Публикуйте через Vercel</a></li><li><a href="#localvps"><span>09</span>Где это запускать</a></li><li><a href="#money"><span>10</span>Сколько это стоит</a></li><li><a href="#stuck"><span>11</span>Решение проблем</a></li>
+          </ol>
+        </nav>
+        <div class="setup-progress" hidden><div class="progress-caption"><label for="setup-meter">Ваш прогресс настройки</label><span id="progress-count">0 из 4</span></div><progress id="setup-meter" max="4" value="0"></progress><p class="progress-help" id="progress-help">Сохранено в этом браузере</p></div>
+      </details>
+    </aside>
+    <div class="guide-content">
+      <div class="guide-intro"><div><h2>Немного настройки. Потом просто переписка.</h2><p>Начните здесь. Всё, что нужно, в нужном порядке.</p></div><span class="reading-time"><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> ~20 мин на настройку</span></div>
+<section id="need">
+  <div class="section-title"><h2 class="step"><span>01</span>Что вам понадобится</h2><label class="completion" hidden><input type="checkbox" data-complete="need" aria-label="Отметить «Что понадобится» как выполненное"> Готово</label></div>
+  <div class="table-scroll" role="region" aria-label="Прокручиваемая таблица" tabindex="0"><table>
+    <tr><th scope="col">Вам понадобится</th><th scope="col">Стоимость</th><th scope="col">Для чего это нужно</th></tr>
+    <tr><td>Компьютер</td><td>Бесплатно</td><td>Запускает агента. Windows, Mac или Linux — подойдёт что угодно за последние несколько лет</td></tr>
+    <tr><td>Аккаунт Discord</td><td>Бесплатно</td><td>Способ общаться с агентом — с телефона или компьютера</td></tr>
+    <tr><td>Подписка OpenCode</td><td>~$10/месяц</td><td>Мозг агента. Единственное, за что действительно приходится платить</td></tr>
+    <tr><td>Аккаунт Vercel <i>(необязательно)</i></td><td>Бесплатно</td><td>Только если вы хотите разместить страницу или небольшой сайт в интернете</td></tr>
+    <tr><td>Небольшой сервер <i>(необязательно)</i></td><td>~$5/месяц</td><td>Только если хотите, чтобы агент работал, пока ваш компьютер выключен</td></tr>
+    <tr><td>Аккаунт Nous Portal <i>(необязательно)</i></td><td>Цены на Портале</td><td>Nous может разместить агента за вас, так что вам вообще не придётся трогать сервер</td></tr>
+  </table></div>
+  <p>
+    Начните с первых трёх. Vercel и сервер идут позже, и любой из них можно
+    пропустить.
+  </p>
+</section>
+
+<section id="hermes">
+  <div class="section-title"><h2 class="step"><span>02</span>Настройте Hermes</h2><label class="completion" hidden><input type="checkbox" data-complete="hermes" aria-label="Отметить «Установка Hermes» как выполненную"> Готово</label></div>
+  <p>
+    Hermes — это и есть агент. Вы вставляете одну строку в окно терминала, и он сам
+    устанавливается. Это самое техническое действие во всём руководстве.
+  </p>
+
+<div class="os-tabs" role="tablist" aria-label="Ваша операционная система" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+  <p>Откройте меню «Пуск», введите <b>PowerShell</b>, откройте его и вставьте это:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+
+</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+  <p>Нажмите <b>Command + Space</b>, введите <b>Terminal</b>, нажмите Enter и вставьте:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+  <p>Откройте терминал и вставьте:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div>  <div class="note">
+    Он сам скачает всё необходимое, это займёт несколько минут. Пусть текст
+    прокручивается, читать его не нужно.
+  </div>
+
+  <h3>Проверьте, что всё сработало</h3>
+  <p>Закройте окно, откройте новое и введите:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
+  <p>Он выведет чек-лист. Зелёный цвет означает, что всё в порядке. Если чего-то не хватает,
+    он подскажет точную команду для исправления.</p>
+
+  <h3>Дайте ему мозг</h3>
+  <p>
+    Агенту нужна модель для размышлений, и это та самая подписка за $10. Зарегистрируйтесь
+    здесь: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a>.
+  </p>
+  <p>Затем добавьте ключ, который он вам выдаст, в файл настроек.</p>
+  <span class="os">Windows</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
+  <p>Добавьте эту строку внизу, заменив <code>YOUR_KEY_HERE</code> на ваш ключ,
+    затем сохраните и закройте:</p>
+  <pre data-label="Файл настроек" data-kind="terminal"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
+  <span class="os">Mac и Linux</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <p>Теперь скажите ему использовать подписку, и поздоровайтесь:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes model
+hermes chat -q "hello, what model are you?"</code></pre>
+  <p>Если он отвечает, агент работает. Всё дальнейшее — просто добавление к нему новых возможностей.</p>
+</section>
+
+<section id="discord">
+  <div class="section-title"><h2 class="step"><span>03</span>Настройте Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="Отметить «Настройка Discord» как выполненную"> Готово</label></div>
+  <p>
+    Именно эта часть делает его полезным. После неё терминал вам больше
+    не понадобится. Вы просто пишете ему сообщения.
+  </p>
+  <p>
+    Discord время от времени меняет свои меню, так что если кнопка переехала,
+    ищите наиболее подходящий вариант.
+  </p>
+  <ol>
+    <li>Перейдите на <a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> и нажмите <b>New
+      Application</b>. Дайте ему любое имя.</li>
+    <li>В левом меню нажмите <b>Bot</b>. Прокрутите до <b>Привилегированные интенты
+      шлюза</b> и переключите <b>Интент содержимого сообщений</b> в положение <b>ВКЛ</b>. Это самый важный
+      пункт: пропустите его, и ваш бот будет выглядеть полностью сломанным.</li>
+    <li>Оставаясь на той же странице, нажмите <b>Сбросить токен</b> и скопируйте то, что появится. Он
+      показывается только один раз. Относитесь к нему как к паролю.</li>
+    <li>В левом меню нажмите <b>Установка</b>. Включите <b>Guild Install</b>, и
+      убедитесь, что среди областей доступа есть <b>bot</b> и <b>applications.commands</b>. Скопируйте
+      ссылку для установки, которую он вам покажет.</li>
+    <li>Откройте эту ссылку в браузере и добавьте бота на свой сервер. Вам нужно
+      владеть этим сервером или управлять им.</li>
+    <li>Найдите свой собственный ID пользователя. В Discord перейдите в <b>Настройки → Дополнительно</b>, включите
+      <b>Режим разработчика</b>, затем щёлкните правой кнопкой по своему имени и выберите <b>Копировать ID
+      пользователя</b>. Это длинное число.</li>
+    <li>Запустите настройку и вставьте токен и ID пользователя:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <p>Когда появится вопрос, выберите Discord. Затем запустите его и проверьте:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    Оставьте это окно открытым и отправьте боту личное сообщение в Discord. Он должен
+    ответить. Как только он это сделает, нажмите <b>Ctrl + C</b> чтобы остановить его, и выполните эти две строки, чтобы
+    с этого момента он запускался сам:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>В личных сообщениях</b> он отвечает на всё. <b>В канале сервера</b> он
+    отвечает только тогда, когда вы упоминаете его через @, поэтому он никогда не засыпает сообщениями ваших друзей.
+  </div>
+  <div class="note warn">
+    <b>Если он вообще не отвечает</b>, то почти всегда дело в одном из двух: интент содержимого
+    сообщений всё ещё отключён, или ID пользователя скопирован неверно. Повторите шаги 2 и 6.
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title"><h2 class="step"><span>04</span>Скачайте навыки</h2><label class="completion" hidden><input type="checkbox" data-complete="skills" aria-label="Отметить «Загрузка навыков» как выполненную"> Готово</label></div>
+  <p>Три строки. Они скачивают навыки и устанавливают их в вашего агента:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
+  <p>
+    Проверить их можно в любой момент с помощью <code>hermes skills list</code>. Запустить установщик
+    снова позже безопасно, он ничего не сломает.
+  </p>
+  <div class="note">
+    <b>Git не установлен или не уверены?</b> Скачайте ZIP по
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">этой ссылке</a>,
+    распакуйте его, откройте терминал в этой папке и выполните <code>bash install.sh</code>.
+  </div>
+  <p>Последнее: три небольшие вспомогательные утилиты, которые нужны навыкам для кошелька и торговли:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+</section>
+
+<section id="list">
+  <div class="section-title"><h2 class="step"><span>05</span>Библиотека ончейн-навыков</h2></div>
+  <p>
+    Вам не нужно запоминать их. Агент сам выбирает нужный.
+    Это для того, чтобы вы знали, о чём можно попросить.
+  </p>
+
+<div class="library-tools" hidden><div class="search-wrap"><svg class="icon" aria-hidden="true"><use href="#search"></use></svg><label class="sr-only" for="skill-search">Поиск среди 31 навыка</label><input id="skill-search" type="search" placeholder="Попробуйте редкость, кошельки или минтинг…" autocomplete="off" aria-controls="skill-results"></div><div class="filter-list" role="group" aria-label="Фильтр навыков по категории"><button type="button" data-filter="all" aria-pressed="true">Все навыки</button><button type="button" data-filter="Minting" aria-pressed="false">Минт</button><button type="button" data-filter="Rarity and buying" aria-pressed="false">Редкость</button><button type="button" data-filter="Is this thing real?" aria-pressed="false">Проверка</button><button type="button" data-filter="Wallets" aria-pressed="false">Кошельки</button><button type="button" data-filter="Making your own collection" aria-pressed="false">Создание</button><button type="button" data-filter="Tools and research" aria-pressed="false">Исследования и инструменты</button></div><p class="library-count" id="skill-count" role="status">31 навык в работе</p></div><div id="skill-results"><h3 class="cat">Минт</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-mint-recon</span><h4>Выясняет, что на самом деле представляет собой минт</h4><p>Находит настоящий смарт-контракт, настоящую цену, открыт ли минт на самом деле и в какой сети он проходит. Тот самый навык, который не даёт мошенникам обмануть вас поддельной ценой.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-mint-recon">Посмотреть плейбук<span class="sr-only"> для nft-mint-recon</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">seadrop-rapid-mint</span><h4>Минтит с многих кошельков одновременно</h4><p>Для дропов, которые раскупают за секунды. Создаёт кошельки, точно говорит, сколько положить в каждый, и запускает их в тот момент, когда минт открывается.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/seadrop-rapid-mint">Посмотреть плейбук<span class="sr-only"> для seadrop-rapid-mint</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-floor-sweep</span><h4>Считает стоимость покупки всего флора</h4><p>Складывает все дешёвые лоты в коллекции и показывает реальную итоговую сумму, прежде чем вы скупите их все.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-floor-sweep">Посмотреть плейбук<span class="sr-only"> для nft-floor-sweep</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>Выясняет, как получить клейм</h4><p>Для страниц, предлагающих бесплатный минт, возврат средств или эйрдроп. Он разбирается, что сайт делает на самом деле, прежде чем вы подключите кошелёк.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-claim-reverse-engineering">Посмотреть плейбук<span class="sr-only"> для onchain-claim-reverse-engineering</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Редкость и покупка</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-rarity-engine</span><h4>Ранжирует коллекцию по редкости</h4><p>Оценивает каждый NFT и расставляет их по порядку, используя ту же математику, что и OpenSea, поэтому ранги совпадают. Он может поймать ревил раньше, чем OpenSea обновит данные.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-rarity-engine">Посмотреть плейбук<span class="sr-only"> для nft-rarity-engine</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>Покупает редкие экземпляры дёшево</h4><p>После ревила находит самые редкие предметы, выставленные по обычным ценам флора, и покупает их, пока никто не заметил.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/rh-chain-rarity-sniping">Посмотреть плейбук<span class="sr-only"> для rh-chain-rarity-sniping</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-secondary-buy</span><h4>Покупает выставленный на продажу NFT за вас</h4><p>Покупает на вторичном рынке, всегда сначала проверяя покупку, чтобы неудачный ордер никогда не стоил вам комиссии.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-secondary-buy">Посмотреть плейбук<span class="sr-only"> для nft-secondary-buy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Это вообще настоящее?</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>Проверяет, были ли покупатели настоящими</h4><p>Смотрит, кто минтил, и говорит, были ли это настоящие люди или несколько кошельков, имитирующих интерес, чтобы выглядеть популярно.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-minter-legitimacy-audit">Посмотреть плейбук<span class="sr-only"> для nft-minter-legitimacy-audit</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">web3-claim-verification</span><h4>Проверяет заявления проекта на факты</h4><p>Когда проект говорит «мы сделали X», это проверяет блокчейн, чтобы увидеть, правда ли это.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/web3-claim-verification">Посмотреть плейбук<span class="sr-only"> для web3-claim-verification</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-market-analysis</span><h4>Честно читает рынок</h4><p>Флор, продажи, держатели, как быстро всё перепродаётся. Что на самом деле говорят цифры.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-market-analysis">Посмотреть плейбук<span class="sr-only"> для nft-market-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-collection-price-analysis</span><h4>Оценивает коллекцию</h4><p>Сколько она стоит, что может пойти не так после покупки и оправдана ли цена с учётом риска.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-price-analysis">Посмотреть плейбук<span class="sr-only"> для nft-collection-price-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-exit-discipline</span><h4>Когда продавать</h4><p>Правила фиксации прибыли вместо вечного удержания. Скучный навык, который экономит больше всего денег.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-exit-discipline">Посмотреть плейбук<span class="sr-only"> для nft-exit-discipline</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Кошельки</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-wallet-operations</span><h4>Создаёт кошельки и перемещает средства безопасно</h4><p>Создаёт новые кошельки, правильно сохраняет резервные копии ключей и перемещает токены, никогда их не раскрывая.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-wallet-operations">Посмотреть плейбук<span class="sr-only"> для ethereum-wallet-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">wallet-radar-operations</span><h4>Следит за кошельками, которые вам важны</h4><p>Отслеживает конкретные кошельки и уведомляет вас, когда они что-то покупают.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/wallet-radar-operations">Посмотреть плейбук<span class="sr-only"> для wallet-radar-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>Превращает кошельки в таблицу</h4><p>Берёт список кошельков и выдаёт вам чистую таблицу, которой можно поделиться.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/productivity/public-wallet-xlsx-delivery">Посмотреть плейбук<span class="sr-only"> для public-wallet-xlsx-delivery</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pseudonym-identity-research</span><h4>Связывает анонимные аккаунты</h4><p>Связывает анонимные ники и кошельки, принадлежащие одному и тому же человеку.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/pseudonym-identity-research">Посмотреть плейбук<span class="sr-only"> для pseudonym-identity-research</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Создание собственной коллекции</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-collection-production</span><h4>Создаёт коллекцию с нуля</h4><p>План по арту, трейты, ценообразование, страница минта и механика смарт-контракта — всё в одном месте.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-production">Посмотреть плейбук<span class="sr-only"> для nft-collection-production</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-taxonomy</span><h4>Упорядочивает свойства</h4><p>Сохраняет каждый атрибут согласованным и сгруппированным, чтобы ваши метаданные не превратились в беспорядок.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-taxonomy">Посмотреть плейбук<span class="sr-only"> для nft-trait-taxonomy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-curation</span><h4>Проверяет качество свойств</h4><p>Проверяет каждое свойство на дубликаты и всё, что выглядит подозрительно, ещё до запуска.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-curation">Посмотреть плейбук<span class="sr-only"> для nft-trait-curation</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Инструменты и исследования</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-data-pipelines</span><h4>Читает блокчейн бесплатно</h4><p>Вытаскивает ончейн-данные, не платя за API. Движок, на котором работает многое из остального.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-data-pipelines">Посмотреть плейбук<span class="sr-only"> для ethereum-data-pipelines</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-mint-command-center</span><h4>Диспетчерская минта</h4><p>Локальная панель для минта: спланировать минт, отрепетировать его, управлять набором кошельков, следить за флором и смотреть, что было потом.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/rh-mint-command-center">Посмотреть плейбук<span class="sr-only"> для rh-mint-command-center</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">mint-field-guide</span><h4>Панель минта</h4><p>Экран только для чтения с предстоящими минтами и движением рынка, где отмечено, откуда взялось каждое число.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/mint-field-guide">Посмотреть плейбук<span class="sr-only"> для mint-field-guide</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pow-mint-mining</span><h4>Разбирается с минтами, где нужно решить задачу</h4><p>Hashcats, FAB4200 и другие подобные дают вам предмет за найденное счастливое число, а не за деньги. Это запускает такой поиск за вас.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/pow-mint-mining">Посмотреть плейбук<span class="sr-only"> для pow-mint-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-mining</span><h4>Перемалывает числа</h4><p>Запускает этот поиск на вашей машине или на арендованном железе, с проверками, чтобы никогда не потратить транзакцию впустую.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-mining">Посмотреть плейбук<span class="sr-only"> для onchain-puzzle-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-solving</span><h4>Решает минты, которые заставляют подумать</h4><p>Загадки и скрытые подсказки, закрывающие некоторые дропы, находятся при чтении кода самой игры.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-solving">Посмотреть плейбук<span class="sr-only"> для onchain-puzzle-solving</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Разбирает экономику игры</h4><p>Разбирает ончейн-игру на части, чтобы показать, откуда берётся ценность.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/onchain-game-economy-analysis">Посмотреть плейбук<span class="sr-only"> для onchain-game-economy-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">polymarket</span><h4>Читает рынки прогнозов</h4><p>Смотрит, что рынки ставок закладывают в цену события.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/polymarket">Посмотреть плейбук<span class="sr-only"> для polymarket</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">proof-of-play-archive</span><h4>Исследование Proof of Play</h4><p>Фоновое исследование по Proof of Play и Pirate Nation.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/proof-of-play-archive">Посмотреть плейбук<span class="sr-only"> для proof-of-play-archive</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">agent-protocol-identity</span><h4>Даёт агенту личность</h4><p>Позволяет агенту доказывать, кто он, когда публикуется в сети, чтобы настоящего можно было отличить от поддельного.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/agent-protocol-identity">Посмотреть плейбук<span class="sr-only"> для agent-protocol-identity</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">flop-technocore-agent-ops</span><h4>Ведение агента публично</h4><p>Как дать агенту собственный аккаунт и заставить его публиковать посты, ничего не раскрывая из приватного.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/flop-technocore-agent-ops">Посмотреть плейбук<span class="sr-only"> для flop-technocore-agent-ops</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">internet-computer-development</span><h4>Разработка на Internet Computer</h4><p>Заметки по другому блокчейну — Internet Computer.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/internet-computer-development">Посмотреть плейбук<span class="sr-only"> для internet-computer-development</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+</div><div class="empty-state" id="empty-skills" hidden><p>Подходящих навыков нет. Попробуйте другое слово или категорию.</p><button type="button" id="reset-search">Показать все навыки</button></div></section>
+
+<section id="hashcats">
+  <div class="section-title"><h2 class="step"><span>06</span>Минтить Hashcats (и похожие дропы)</h2></div>
+  <p>
+    У некоторых дропов нет цены. Вместо оплаты вам нужно найти счастливое
+    число, и тот, кто найдёт его первым, получает кота. Именно это имеют в виду,
+    когда говорят, что минт «решают», а не покупают.
+  </p>
+  <p>
+    Ваш ноутбук справится, но на это уйдут дни, а люди с большими арендованными
+    машинами находят их за минуты. Поэтому вы арендуете машину на несколько минут. Это
+    единственная причина всего этого.
+  </p>
+
+  <h3>Арендовать машину на несколько минут (начать бесплатно)</h3>
+  <p>
+    <b>Modal</b> сдаёт машины в аренду посекундно. Вы ничего не покупаете. Вы регистрируетесь,
+    и вам сразу дают <b>$30 бесплатных вычислений каждый месяц</b>, а это примерно семь
+    часов их быстрых машин по цене около $4 в час. При редких попытках вы,
+    скорее всего, вообще ничего не заплатите.
+  </p>
+  <ol>
+    <li>Зарегистрируйтесь бесплатно на <a href="https://modal.com" style="color:var(--accent)">modal.com</a>.
+      $30 уже включены.</li>
+    <li>Затем один раз выполните эти две команды:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install modal
+modal setup</code></pre>
+  <p>Вторая открывает браузер и привязывает ваш аккаунт. На этом вся настройка.</p>
+
+  <h3>Что написать в Discord</h3>
+  <p>Это вся операция. Упомяните своего бота и вставьте это:</p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используйте навык pow-mint-mining на hashcats. покажите текущий раунд и всё подготовьте, но пока ничего не тратьте</code></pre>
+  <p>Он сообщает вам номер раунда обратно. Когда вы захотите действительно пойти на это:</p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot запускайте майнинг текущего раунда. остановитесь, когда найдёте, или через 15 минут</code></pre>
+  <p>А чтобы увидеть, как всё прошло:</p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot мы поймали один? покажите транзакцию</code></pre>
+
+  <h3>Что он берёт на себя за вас</h3>
+  <ul>
+    <li>Сначала проверяет всю настройку, поэтому запуск никогда не начинается с поломки</li>
+    <li>Поиск выполняется на арендованной машине, а не на вашей</li>
+    <li>Проверяет каждый ответ, прежде чем что-то потратить, поэтому опоздавший ответ никогда не стоит вам комиссии</li>
+    <li>Отправляет транзакцию с вашего кошелька и даёт вам ссылку</li>
+  </ul>
+
+  <h3>Две вещи, которые можете сделать только вы</h3>
+  <ul>
+    <li><b>Положите немного ETH в свой кошелёк.</b> Победа всё равно стоит несколько центов комиссии. Этот шаг никто не может сделать за вас.</li>
+    <li><b>Делайте попытки короткими.</b> Раунды сменяются постоянно, и работа, сделанная для уже закончившегося раунда, потрачена впустую. Короткие и частые попытки лучше одного долгого запуска.</li>
+  </ul>
+
+  <div class="note warn">
+    <b>Будьте честны насчёт шансов.</b> Вы соревнуетесь со всеми остальными, кто пробует тот же
+    дроп, и платите за вычисления независимо от победы или проигрыша. Для этого и
+    нужен бесплатный кредит. Используйте его, делайте попытки короткими и не пополняйте
+    счёт в ожидании гарантированного кота.
+  </div>
+
+  <h3>Другие дропы, где это работает</h3>
+  <p>
+    Та же идея и тот же тип подсказки. Просто назовите тот, который вам нужен:
+  </p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используйте навык pow-mint-mining на FAB4200 и скажите, во сколько это мне обойдётся</code></pre>
+
+</section>
+
+<section id="prompts">
+  <div class="section-title"><h2 class="step"><span>07</span>Что у него спрашивать</h2></div>
+  <p>
+    Никаких особых формулировок нет. <b>Вставьте ссылку и скажите, чего вы хотите.</b> Ссылка
+    на OpenSea, твит, сайт минта, адрес кошелька, адрес смарт-контракта.
+    Если он не может понять, что вы имеете в виду, он спросит вас.
+  </p>
+
+  <h3>Вставьте ссылку на OpenSea</h3>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot оцените всю эту коллекцию по редкости и покажите топ-20
+@yourbot какие редкие сейчас выставлены дёшево?
+@yourbot какой здесь флор и он растёт или падает?
+@yourbot кошельки, которые это минтили, — люди или боты?
+@yourbot стоит ли покупать по текущему флору?
+@yourbot сколько людей это держат и насколько концентрированно?</code></pre>
+
+  <h3>Вставьте твит со словами «mint this»</h3>
+  <p>
+    Это самый полезный случай. Вставьте твит, и он выяснит, что это за минт,
+    сколько он на самом деле стоит, открыт ли он ещё и выглядит ли проект
+    настоящим, прежде чем что-либо коснётся вашего кошелька.
+  </p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; заминтите это
+@yourbot &lt;tweet link&gt; что это за минт и он настоящий?
+@yourbot &lt;tweet link&gt; можно заминтить бесплатно?
+@yourbot &lt;tweet link&gt; сколько реально будет стоить заминтить 3 штуки?
+@yourbot &lt;tweet link&gt; это настоящий контракт или копия?
+@yourbot &lt;tweet link&gt; сообщите мне, как только он откроется</code></pre>
+  <div class="note">
+    Он не станет просто запускать транзакцию. Он читает твит, находит
+    смарт-контракт, проверяет цену и предложение ончейн, показывает вам, что нашёл,
+    и ждёт, пока вы скажете «давай».
+  </div>
+
+  <h3>Вставьте сайт минта или просто адрес смарт-контракта</h3>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot это можно заминтить бесплатно? &lt;link&gt;
+@yourbot какая здесь настоящая цена? на странице написано 0.05
+@yourbot этот минт ещё открыт или всё раскуплено?
+@yourbot сколько кошельков уже заминтили?
+@yourbot этот контракт — копия другой коллекции?
+@yourbot что этот контракт вообще делает? &lt;address&gt;</code></pre>
+
+  <h3>Вставьте адрес кошелька</h3>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot что этот кошелёк покупал в последнее время? &lt;address&gt;
+@yourbot этот кошелёк реально в плюсе или просто активен?
+@yourbot следите за этим кошельком и скажите, как только он что-то купит
+@yourbot в какие коллекции этот кошелёк зашёл рано?
+@yourbot этот кошелёк похож на бота или на человека?</code></pre>
+
+  <h3>Попросите его что-нибудь отслеживать за вас</h3>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot следите за этой коллекцией и напишите мне сразу после раскрытия
+@yourbot сообщите, когда флор опустится ниже 0.01
+@yourbot напишите, если кто-то выставит ниже 0.005 в этой коллекции
+@yourbot проверяйте каждые десять минут и пишите только если что-то изменилось
+@yourbot напомните мне через час, когда откроется этот минт</code></pre>
+
+  <h3>Попросите его купить или сминтить за вас</h3>
+  <p>
+    Каждая из этих команд сначала всё проверяет и сообщает вам стоимость, прежде чем что-либо сделать.
+    Ничего не проходит, пока вы не скажете «давай».
+  </p>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot заминтите 1 для меня, покажите стоимость и ждите моего согласия
+@yourbot купите самый дешёвый редкий, до 0.01
+@yourbot купите 3, но чтобы всего вышло не больше 0.03
+@yourbot не тратьте ничего без моего разрешения
+@yourbot что сейчас в моём кошельке? &lt;address&gt;</code></pre>
+
+  <h3>Попросите его что-нибудь объяснить</h3>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot объясните простыми словами, что такое минт с доказательством работы
+@yourbot почему здесь такой низкий флор?
+@yourbot что здесь означает «раскрытие»?
+@yourbot как люди накручивают объём в коллекции?
+@yourbot в чём разница между минтингом и покупкой?</code></pre>
+
+  <div class="note">
+    <b>Общее правило:</b> если вы можете это вставить, он, скорее всего, сможет это изучить. Ссылки,
+    скриншоты, адреса, твиты, таблицы. Если вы не уверены, как спросить,
+    просто опишите, чего вы пытаетесь добиться, и пусть он сам разберётся с остальным.
+  </div>
+
+  <div class="note">
+    <b>Хотите изменить, как работает сам навык?</b> Это отдельная страница, потому что
+    это самое полезное, чему здесь можно научиться:
+    <a href="prompts/" style="color:var(--accent)">улучшать навыки через разговор</a>.
+  </div>
+</section>
+
+<section id="vercel">
+  <div class="section-title"><h2 class="step"><span>08</span>Настройка Vercel</h2></div>
+  <p>
+    Vercel бесплатно выкладывает сайт или страницу в интернет. Он не нужен вам, чтобы
+    запускать агента. Он нужен, если вы хотите свою публичную страницу: ссылку, которой можно
+    поделиться, портфолио, страницу документации, это руководство.
+  </p>
+
+  <h3>Создайте аккаунт</h3>
+  <p>
+    Зарегистрируйтесь на <a href="https://vercel.com/signup" style="color:var(--accent)">vercel.com/signup</a>
+    через GitHub, Google или email. Бесплатного плана достаточно для всего здесь.
+  </p>
+
+  <h3>Простой способ: подключить проект на GitHub</h3>
+  <ol>
+    <li>В Vercel нажмите <b>Добавить новый → Проект</b>.</li>
+    <li>Подключите свою учётную запись GitHub и выберите репозиторий, который хотите разместить в сети.</li>
+    <li>Если ваши веб-файлы лежат в папке, а не в корне, укажите <b>Root
+      Directory</b> в этом поле. Для страницы из этого руководства искомая папка —
+      <code>docs</code>.</li>
+    <li>Нажмите <b>Deploy</b>. Через минуту у вас появится рабочая ссылка.</li>
+  </ol>
+  <p>
+    С этого момента при каждой отправке в GitHub Vercel сам пересобирает сайт.
+    Вот и весь процесс.
+  </p>
+
+  <h3>Способ через терминал</h3>
+  <p>Если вы предпочитаете разворачивать прямо со своего компьютера:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
+vercel login
+
+<span class="c"># then, from inside the folder you want online</span>
+vercel --prod</code></pre>
+  <p>В первый раз он задаст пару вопросов, а затем выведет вашу рабочую ссылку.</p>
+
+  <h3>Разверните страницу из этого руководства для проверки</h3>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod</code></pre>
+
+  <h3>Свой домен</h3>
+  <p>
+    Необязательно. В настройках проекта <b>Settings → Domains</b> вы можете добавить свой домен
+    или принять бесплатный <code>your-project.vercel.app</code> адрес, который он вам даёт.
+  </p>
+
+  <div class="note warn">
+    <b>Чего Vercel не умеет:</b> запускать вашего агента. Vercel отдаёт только сайты,
+    которые загружаются по запросу. Ваш агент — это программа, которая должна постоянно работать, поэтому
+    она живёт на вашем компьютере или на сервере. Если вы когда-нибудь увидите, что развёртывание падает с
+    <b>402</b> ошибкой, значит аккаунт превысил бесплатный лимит трафика.
+    Создайте новый проект или используйте GitHub Pages либо Cloudflare Pages — они отдают те же
+    файлы.
+  </div>
+</section>
+
+<section id="localvps">
+  <div class="section-title"><h2 class="step"><span>09</span>Ваш компьютер, сервер или хостинг?</h2></div>
+  <p>
+    Оба варианта работают. Единственная существенная разница — что происходит, когда вы закрываете ноутбук.
+  </p>
+  <div class="two">
+    <div class="card">
+      <span class="price">БЕСПЛАТНО</span>
+      <h4>На вашем компьютере</h4>
+      <ul>
+        <li>Настраивать больше нечего, кроме установки, которую вы уже сделали</li>
+        <li>Полная скорость, и он может пользоваться тем, что есть только у вас: вашим браузером, вашими файлами, вашими кошельками</li>
+        <li><b>Останавливается, когда вы закрываете крышку</b> или отправляете его в спящий режим</li>
+        <li>Любая задача по расписанию, оповещение или ночное наблюдение пропускают своё время</li>
+        <li>Подходит для: экспериментов, дневного использования, всего, за чем вы следите сами</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">~$5 / МЕСЯЦ</span>
+      <h4>На небольшом сервере</h4>
+      <ul>
+        <li>Никогда не спит. Запущенный один раз, он продолжает работать</li>
+        <li>Наблюдения, оповещения и задачи по времени действительно срабатывают в 4 утра</li>
+        <li>Вы можете добраться до него с телефона через Discord откуда угодно</li>
+        <li>Нет экрана, поэтому вы не видите его работу иначе как через чат</li>
+        <li>Подходит для: задач по расписанию, ночных наблюдений, всего, что должно работать постоянно</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">ЦЕНЫ НА ПОРТАЛЕ</span>
+      <h4>Или пусть Nous разместит его у себя</h4>
+      <ul>
+        <li><b>Hermes Cloud</b> запускает экземпляр за вас</li>
+        <li>Не нужно самому настраивать сервер, обновлять его или перезапускать</li>
+        <li>Запускайте, останавливайте и перезапускайте его с веб-страницы или просто попросив своего агента</li>
+        <li>Та же настройка Discord, что и везде</li>
+        <li>Подходит для: тех, кто вообще не хочет запускать сервер</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Или пусть Nous разместит его за вас</h3>
+  <p>
+    Если запуск сервера кажется вам работой, которой не хочется заниматься, <b>Nous Research размещает
+    экземпляры Hermes Cloud</b>. Вы получаете агента, который всегда включён, без
+    выбора провайдера, настройки безопасности сервера и его постоянного обновления.
+  </p>
+  <ol>
+    <li>Создайте <b>Nous Portal</b> учётную запись на
+      <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
+    <li>Откройте страницу <b>Agents</b> и создайте экземпляр. Дайте ему имя.</li>
+    <li>Подключите к нему Discord точно так же, как в шаге 03. Те же команды, выполненные
+      на экземпляре.</li>
+  </ol>
+  <p>С этого момента вы управляете им с той веб-страницы. Запускайте, останавливайте, перезапускайте или удаляйте
+    его там. Цены указаны на Портале рядом с тарифами.</p>
+  <div class="note">
+    <b>Одна подписка может покрыть обе задачи.</b> Тариф Портала может также быть
+    мозгом агента вместо отдельной подписки на модель: он включает большой
+    каталог моделей, а также управляемый веб-поиск, генерацию изображений и голос — всё
+    через один вход. Выполните <code>hermes setup --portal</code> и он настроится
+    сам. Если вы уже платите за OpenCode, вам не нужно и то, и другое.
+  </div>
+  <div class="note">
+    <b>Уже запускаете агента локально?</b> Вы можете управлять своими облачными экземплярами,
+    просто спрашивая его, вместо того чтобы кликать по сайту. Одна команда подключает вашего
+    локального агента к Порталу:
+  </div>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <p>После этого можно сказать «покажи моих облачных агентов», «сколько мне стоит этот экземпляр»
+    или «перезапусти остановленный».</p>
+
+  <h3>Переезд на сервер</h3>
+  <ol>
+    <li>Возьмите его у Hetzner или DigitalOcean, около $5 в месяц. Выберите <b>Ubuntu</b> в качестве
+      системы. Самого маленького варианта более чем достаточно.</li>
+    <li>Выполните ту же команду установки для Linux из шага 02 на этом сервере, а не
+      на своём компьютере.</li>
+    <li>Повторите там шаги с Discord и навыками. Это те же три команды.</li>
+    <li>Можно запускать оба. Ваш компьютер и сервер — отдельные агенты, и каждый
+      получает свой токен бота Discord, если хотите.</li>
+  </ol>
+  <div class="note">
+    <b>Разумный подход:</b> начните на своём компьютере сегодня и арендуйте
+    сервер только тогда, когда появится то, что должно работать, пока вы спите.
+  </div>
+</section>
+
+<section id="money">
+  <div class="section-title"><h2 class="step"><span>10</span>Сколько это стоит</h2></div>
+  <div class="table-scroll" role="region" aria-label="Прокручиваемая таблица" tabindex="0"><table>
+    <tr><th scope="col">Что</th><th scope="col">Стоимость</th><th scope="col">Нужно?</th></tr>
+    <tr><td>Агент Hermes</td><td>Бесплатно</td><td>Да</td></tr>
+    <tr><td>31 навык</td><td>Бесплатно</td><td>Да</td></tr>
+    <tr><td>Подписка OpenCode</td><td>~$10/месяц</td><td>Да, это мозг</td></tr>
+    <tr><td>Vercel</td><td>Бесплатно</td><td>Только если вы хотите страницу в сети</td></tr>
+    <tr><td>Свой компьютер</td><td>Бесплатно</td><td>Подойдёт, но он спит</td></tr>
+    <tr><td>Небольшой сервер</td><td>~$5/месяц</td><td>Только для работы круглосуточно</td></tr>
+    <tr><td>Modal — для решения дропов вроде Hashcats <i>(необязательно)</i></td><td>Бесплатно, включено $30 в месяц</td><td>Только если вы хотите охотиться за такими дропами</td></tr>
+    <tr><td>Nous Portal, хостинг включён <i>(необязательно)</i></td><td>Указано на Портале</td><td>Вместо своего сервера, и он тоже может быть мозгом</td></tr>
+  </table></div>
+  <p>
+    Честный итог: <b>около $10 в месяц</b>, или $15, если хотите, чтобы он бодрствовал всю
+    ночь.
+  </p>
+</section>
+
+<section id="stuck">
+  <div class="section-title"><h2 class="step"><span>11</span>Если что-то идёт не так</h2></div>
+  <div class="table-scroll" role="region" aria-label="Прокручиваемая таблица" tabindex="0"><table>
+    <tr><th scope="col">Что вы видите</th><th scope="col">Что делать</th></tr>
+    <tr><td><code>hermes</code> не распознаётся</td><td>Закройте терминал и откройте новый. Всё ещё не работает? Перезагрузите компьютер и попробуйте снова.</td></tr>
+    <tr><td>Бот в сети, но никогда не отвечает</td><td>В настройках разработчика Discord отключён Message Content Intent. Это причина номер один.</td></tr>
+    <tr><td>Отвечает в личных сообщениях, молчит на сервере</td><td>Это нормально. На серверах он отвечает только тогда, когда вы упоминаете его через @.</td></tr>
+    <tr><td>Он говорит, что вам не разрешено</td><td>Ваш ID пользователя Discord неверен. Скопируйте его снова, включив режим разработчика.</td></tr>
+    <tr><td>Развёртывание на Vercel падает с ошибкой 402</td><td>Этот аккаунт превысил бесплатный лимит трафика. Создайте новый проект либо используйте GitHub Pages или Cloudflare Pages.</td></tr>
+    <tr><td>Агент остановился за ночь</td><td>Он был на вашем компьютере. Это ожидаемо. Перенесите его на сервер, если он должен быть всегда включён.</td></tr>
+    <tr><td>Он просит у вас ещё денег</td><td>Проверьте страницу использования OpenCode. Долгие задачи расходуют больше, чем переписка.</td></tr>
+    <tr><td>Навыки не отображаются</td><td><code>hermes skills list</code> чтобы убедиться, что они установились, затем <code>/reload-skills</code> в чате.</td></tr>
+    <tr><td>Вы заблудились</td><td>Выполните <code>hermes chat</code> и просто опишите, чего вы пытаетесь добиться.</td></tr>
+  </table></div>
+</section>
+      <section class="closing" aria-label="Начать"><div class="hook"><h3>Ваш агент в одной настройке от вас.</h3><p>Руководство и все 31 навык бесплатны. Подключите подписку на модель, пройдите шаги — и сделайте его своим.</p><div class="hero-actions"><a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Получить OpenCode <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a><a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">Получить набор инструментов <svg class="icon" aria-hidden="true"><use href="#github"></use></svg></a></div><p style="font-size:11px;margin-top:17px">Ссылка на OpenCode — реферальная. Регистрация по ней поддерживает этот проект.</p></div></section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT-набор инструментов</a><div class="footer-links"><span>Создано, чтобы быть вашим.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Исходный код на GitHub</a><a href="prompts/">Вайб-кодинг навыков</a><a href="#guide">Назад к руководству</a></div></div><p>Бесплатно и с открытым исходным кодом. Ничто здесь не является финансовым советом. Минтинг и торговля могут привести к потере денег. Установите лимит перед началом и никогда не используйте деньги, которые вам нужны.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="./" hreflang="ru" aria-current="true">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<a class="top" href="#top" aria-label="Наверх" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
