@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Set up your own minting agent — the complete guide</title>
-<meta name="description" content="Step by step: get an AI agent running on your own computer or a cheap server, talk to it in Discord, and download 31 ready-made NFT skills. Windows, Mac and Linux.">
-<meta property="og:title" content="Set up your own minting agent">
-<meta property="og:description" content="An AI agent in your Discord with 31 NFT skills. $5/month, no rig needed.">
+<title>Set up your own AI agent — Hermes, Discord, skills, Vercel</title>
+<meta name="description" content="Step by step: install Hermes, connect it to Discord, install 31 NFT skills, put a page on Vercel, and choose between running on your own computer or a server.">
+<meta property="og:title" content="Set up your own AI agent">
+<meta property="og:description" content="Hermes, Discord, 31 NFT skills, Vercel. About $5 a month.">
 <meta property="og:type" content="article">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 <style>
@@ -69,6 +69,11 @@
   .cat{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:30px 0 4px}
   .hook{background:linear-gradient(135deg,rgba(198,255,61,.08),rgba(124,92,255,.10));border:1px solid var(--line);border-radius:15px;padding:28px;margin:34px 0}
   .hook h3{margin-top:0;font-size:20px}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:18px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px}
+  .card h4{font-size:16.5px;margin-bottom:10px}
+  .card ul{margin:0 0 0 20px;font-size:14.3px}
+  .card .price{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;display:block;margin-bottom:10px}
   footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
   footer a{color:var(--txt);text-decoration:none;border-bottom:1px solid var(--line)}
   footer a:hover{border-color:var(--accent)}
@@ -81,19 +86,17 @@
 <div class="wrap">
 
 <header>
-  <div class="kicker">Complete setup guide</div>
-  <h1>Your own AI agent, living in <em>your Discord</em>, with 31 NFT skills.</h1>
+  <div class="kicker">Setup guide</div>
+  <h1>Your own AI agent, in <em>your Discord</em>, with 31 NFT skills.</h1>
   <p class="lede">
-    You do not need to code, and you do not need a mining rig. You copy a few lines
-    into a terminal, and about 20 minutes later you have an assistant you can talk
-    to from Discord that can check collections, rank rarity, watch mints and buy
-    things for you. <b>Total cost: about $5 a month.</b>
+    Install the agent, connect it to Discord, drop in the skills, and put a page on
+    Vercel. You copy and paste a few lines, and you talk to the finished thing in
+    Discord like a normal chat. <b>About $5 a month.</b>
   </p>
   <div class="meta">
-    <span class="pill"><b>31</b> skills included</span>
+    <span class="pill"><b>31</b> skills</span>
     <span class="pill"><b>$5</b>/month</span>
     <span class="pill">Windows · Mac · Linux</span>
-    <span class="pill">No rig needed</span>
     <span class="pill">~20 min</span>
   </div>
   <div class="cta">
@@ -105,350 +108,348 @@
 <nav class="toc">
   <h2>What you will do</h2>
   <ol>
-    <li><a href="#what">What you are actually building</a></li>
-    <li><a href="#need">What you need (a short list)</a></li>
-    <li><a href="#install">Install the agent — Windows, Mac or Linux</a></li>
-    <li><a href="#brain">Give it a brain — the $5 subscription</a></li>
-    <li><a href="#skills">Download the 31 skills</a></li>
-    <li><a href="#discord">Connect Discord (how you talk to it)</a></li>
-    <li><a href="#gpu">Free GPU minting — the $30 credit</a></li>
-    <li><a href="#list">What every skill does, explained</a></li>
+    <li><a href="#need">What you need</a></li>
+    <li><a href="#hermes">Set up Hermes</a></li>
+    <li><a href="#discord">Set up Discord</a></li>
+    <li><a href="#skills">Download the skills</a></li>
+    <li><a href="#list">What each skill does</a></li>
+    <li><a href="#vercel">Set up Vercel</a></li>
+    <li><a href="#localvps">Your computer or a server?</a></li>
     <li><a href="#money">What it costs</a></li>
     <li><a href="#stuck">If something goes wrong</a></li>
   </ol>
 </nav>
 
-<section id="what">
-  <h2 class="step"><span>01</span>What you are actually building</h2>
-  <p>
-    Hermes is an AI assistant that runs on your own computer. Unlike ChatGPT, it can
-    actually <b>do things</b>: open pages, read the blockchain, run a script, watch a
-    collection overnight and message you when something happens.
-  </p>
-  <p>
-    This guide adds <b>31 ready-made skills</b> to it. A skill is just instructions
-    the assistant loads when a job comes up. You do not run them yourself. You type
-    in Discord, in normal English:
-  </p>
-  <div class="note">
-    <b>You type:</b> "rank everything in this collection by rarity and tell me which
-    ones are listed cheap"<br>
-    <b>It does:</b> reads the collection, scores every NFT, pulls the listings, and
-    answers you in the chat.
-  </div>
-  <p>
-    You never have to touch a terminal again after setup. Discord is where you live.
-    The terminal is just how you turn it on the first time.
-  </p>
-</section>
-
 <section id="need">
-  <h2 class="step"><span>02</span>What you need</h2>
+  <h2 class="step"><span>01</span>What you need</h2>
   <table>
-    <tr><th>You need</th><th>What it costs</th><th>Why</th></tr>
-    <tr><td>A computer, or a rented server</td><td>$0, or about $5/month for a server</td><td>Your own computer works fine. A server just means the agent keeps running when you shut your laptop.</td></tr>
-    <tr><td>A Discord account</td><td>Free</td><td>This is how you talk to the agent, from your phone or desktop.</td></tr>
-    <tr><td>An OpenCode subscription</td><td>About $5/month</td><td>This is the agent's brain. It is the only thing you actually have to pay for.</td></tr>
-    <tr><td>A Modal account (only for GPU minting)</td><td>Free, includes $30/month of compute</td><td>Some mints need a lot of computer power to solve. You rent it by the second instead of buying a machine.</td></tr>
+    <tr><th>You need</th><th>Cost</th><th>What it is for</th></tr>
+    <tr><td>A computer</td><td>Free</td><td>Runs the agent. Windows, Mac or Linux, anything from the last few years</td></tr>
+    <tr><td>A Discord account</td><td>Free</td><td>How you talk to the agent, from your phone or desktop</td></tr>
+    <tr><td>An OpenCode subscription</td><td>~$5/month</td><td>The agent's brain. The only thing you actually have to pay for</td></tr>
+    <tr><td>A Vercel account <i>(optional)</i></td><td>Free</td><td>Only if you want to put a page or a small site online</td></tr>
+    <tr><td>A small server <i>(optional)</i></td><td>~$5/month</td><td>Only if you want the agent running while your computer is off</td></tr>
   </table>
-  <div class="note warn">
-    <b>You do not need a mining rig, a GPU, or expensive hardware.</b> Everything in
-    this guide runs on an ordinary laptop. When a mint needs heavy computing, you
-    borrow it for a few minutes on the free credits instead.
-  </div>
+  <p>
+    Start with the first three. Vercel and the server come later and you can skip
+    either of them.
+  </p>
 </section>
 
-<section id="install">
-  <h2 class="step"><span>03</span>Install the agent</h2>
+<section id="hermes">
+  <h2 class="step"><span>02</span>Set up Hermes</h2>
   <p>
-    You are going to paste one line into a terminal window. That is the hardest part
-    of the whole guide, and it is just copy and paste.
+    Hermes is the agent. You paste one line into a terminal window and it installs
+    itself. That is the most technical thing in this whole guide.
   </p>
 
   <h3>Windows</h3>
-  <p>Open the <b>Start</b> menu, type <b>PowerShell</b>, click it, and paste this in:</p>
+  <p>Open the Start menu, type <b>PowerShell</b>, open it, and paste this in:</p>
   <pre><button class="copy">copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
   <h3>Mac</h3>
-  <p>Press <b>Command + Space</b>, type <b>Terminal</b>, hit Enter, and paste:</p>
+  <p>Press <b>Command + Space</b>, type <b>Terminal</b>, press Enter, and paste:</p>
   <pre><button class="copy">copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
   <h3>Linux</h3>
-  <p>Same as Mac. Open your terminal and paste:</p>
+  <p>Same as Mac:</p>
   <pre><button class="copy">copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
   <div class="note">
-    <b>Either way, the installer does the rest.</b> It downloads everything it needs
-    on its own. It takes a few minutes and you can ignore the text scrolling past.
+    It downloads everything it needs on its own and takes a few minutes. Let the text
+    scroll past, you do not need to read it.
   </div>
 
   <h3>Check it worked</h3>
-  <p>Close the terminal window, open a fresh one, and type:</p>
+  <p>Close the window, open a new one, and type:</p>
   <pre><button class="copy">copy</button><code>hermes doctor</code></pre>
-  <p>This prints a checklist of everything it needs. Green means fine. If it says
-    something is missing, run the exact command it suggests.</p>
+  <p>This prints a checklist. Green means fine. If anything is missing it tells you
+    the exact command to fix it.</p>
 
-  <h3>Do you want it running 24/7?</h3>
+  <h3>Give it a brain</h3>
   <p>
-    Your own computer is fine, but the agent stops when you shut it down. If you want
-    it awake at 4am watching a reveal while you sleep, rent a small server for about
-    $5 a month from Hetzner or DigitalOcean and pick <b>Ubuntu</b> when they ask
-    which system. Then run the Linux line above on that server instead. That is the
-    whole difference.
+    The agent needs a model to think with, and that is the $5 subscription. Sign up
+    here: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a>.
   </p>
-</section>
-
-<section id="brain">
-  <h2 class="step"><span>04</span>Give it a brain (about $5/month)</h2>
-  <p>
-    An AI agent needs a model to think with, and that is what you pay for. The cheap
-    one that works well here is <b>OpenCode</b> at around $5 a month, running a model
-    called <b>deepseek-v4.1-flash</b>. People are using it for far more than this.
-  </p>
-  <ol>
-    <li>Subscribe here: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a></li>
-    <li>Copy the key it shows you. It is a long line of letters and numbers.</li>
-    <li>Put the key in the agent's settings file.</li>
-  </ol>
-
+  <p>Then add the key it gives you to the settings file.</p>
   <span class="os">Windows</span>
-  <p>Open the settings file in Notepad and paste your key on its own line at the bottom:</p>
   <pre><button class="copy">copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
-  <p>Add this line, replacing <code>YOUR_KEY_HERE</code> with your key, then save and close:</p>
+  <p>Add this line at the bottom, replacing <code>YOUR_KEY_HERE</code> with your key,
+    then save and close:</p>
   <pre><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
-
   <span class="os">Mac and Linux</span>
-  <p>Run these two lines, replacing <code>YOUR_KEY_HERE</code> with your key:</p>
-  <pre><button class="copy">copy</button><code>hermes config env-path
-printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
-
-  <div class="note">
-    The first line just prints where the settings file lives, in case you want to
-    check the key went in. It should look like <code>C:\Users\YourName\.hermes\.env</code>
-    on Windows, or <code>/Users/YourName/.hermes/.env</code> on a Mac.
-  </div>
-  <ol start="4">
-    <li>Tell the agent to use it, and say hello:</li>
-  </ol>
+  <pre><button class="copy">copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <p>Now tell it to use the subscription and say hello:</p>
   <pre><button class="copy">copy</button><code>hermes model
 hermes chat -q "hello, what model are you?"</code></pre>
-  <p>
-    If it answers you, you have a working agent. Everything after this is just
-    teaching it new tricks.
-  </p>
-  <div class="note warn">
-    <b>Watch your usage the first week.</b> Your OpenCode dashboard shows a 5-hour
-    window and a weekly one. Long autonomous jobs use more than chatting, so check
-    the percentage after your first big run.
-  </div>
-</section>
-
-<section id="skills">
-  <h2 class="step"><span>05</span>Download the 31 skills</h2>
-  <p>Two lines. The first downloads, the second installs them:</p>
-  <pre><button class="copy">copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
-cd nft-mint-rarity-toolkit
-./install.sh</code></pre>
-  <p>
-    That copies all 31 skills into your agent. You can see the list any time with
-    <code>hermes skills list</code>. Running it again later is safe, it will not
-    break anything.
-  </p>
-  <div class="note">
-    <b>No git installed?</b> Download the ZIP instead from
-    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">this link</a>,
-    unzip it, open a terminal inside that folder, and run <code>./install.sh</code>.
-    On Windows use <code>bash install.sh</code>.
-  </div>
-  <p>
-    Some skills that touch wallets or trading need three extra pieces of software.
-    Run this once and forget it:
-  </p>
-  <pre><button class="copy">copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+  <p>If it answers, the agent works. Everything after this is adding things to it.</p>
 </section>
 
 <section id="discord">
-  <h2 class="step"><span>06</span>Connect Discord</h2>
+  <h2 class="step"><span>03</span>Set up Discord</h2>
   <p>
-    This is the part that makes it feel like a real product. After this, you can talk
-    to your agent from your phone.
+    This is the part that makes it useful. After this you never need the terminal
+    again. You just message it.
+  </p>
+  <p>
+    Discord changes its own menus now and then, so if a button has moved, look for
+    the closest match.
   </p>
   <ol>
     <li>Go to <a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> and click <b>New
-      Application</b>. Name it whatever you want.</li>
-    <li>In the left menu click <b>Bot</b>. Scroll down to <b>Privileged Gateway
-      Intents</b> and switch <b>Message Content Intent</b> to ON. This one matters:
-      without it your bot looks completely broken.</li>
-    <li>Still on the Bot page, click <b>Reset Token</b> and copy what it gives you.
-      Treat it like a password.</li>
-    <li>In the left menu click <b>Installation</b>, turn on <b>Guild Install</b>, and
-      make sure the scopes include <b>bot</b> and <b>applications.commands</b>.</li>
-    <li>Copy the install link it shows you, open it in your browser, and add the bot
-      to your server. You need to own or manage that server.</li>
-    <li>Get your own Discord user ID. In Discord go to <b>Settings → Advanced</b>,
-      turn on <b>Developer Mode</b>, then right-click your own name and choose
-      <b>Copy User ID</b>. It is a long number.</li>
-    <li>Now run the setup and paste in the two things you copied:</li>
+      Application</b>. Give it any name.</li>
+    <li>In the left menu click <b>Bot</b>. Scroll to <b>Privileged Gateway
+      Intents</b> and switch <b>Message Content Intent</b> to <b>ON</b>. This one
+      matters most: skip it and your bot looks totally broken.</li>
+    <li>Still on that page, click <b>Reset Token</b> and copy what appears. It is
+      shown once. Treat it like a password.</li>
+    <li>In the left menu click <b>Installation</b>. Turn on <b>Guild Install</b>, and
+      make sure the scopes include <b>bot</b> and <b>applications.commands</b>. Copy
+      the install link it shows you.</li>
+    <li>Open that link in your browser and add the bot to your server. You need to
+      own or manage that server.</li>
+    <li>Find your own user ID. In Discord go to <b>Settings → Advanced</b>, turn on
+      <b>Developer Mode</b>, then right-click your own name and choose <b>Copy User
+      ID</b>. It is a long number.</li>
+    <li>Run the setup and paste in the token and the user ID:</li>
   </ol>
   <pre><button class="copy">copy</button><code>hermes gateway setup</code></pre>
-  <p>Choose Discord when it asks. Then start it:</p>
-  <pre><button class="copy">copy</button><code>hermes gateway run       <span class="c"># leave this window open and test it</span></code></pre>
+  <p>Pick Discord when it asks. Then start it and test it:</p>
+  <pre><button class="copy">copy</button><code>hermes gateway run</code></pre>
   <p>
-    Open Discord and send the bot a direct message. It should answer. Once you are
-    happy, stop it with <b>Ctrl + C</b> and run these two lines so it starts by
-    itself from now on:
+    Leave that window open and send the bot a direct message in Discord. It should
+    answer. Once it does, press <b>Ctrl + C</b> to stop it and run these two lines so
+    it starts on its own from then on:
   </p>
   <pre><button class="copy">copy</button><code>hermes gateway install
 hermes gateway start</code></pre>
   <div class="note">
-    <b>How it behaves:</b> in direct messages it replies to everything. In a server
-    channel it only replies when you @mention it, so it does not spam your friends.
+    <b>In direct messages</b> it answers everything. <b>In a server channel</b> it
+    only answers when you @mention it, so it never spams your friends.
   </div>
   <div class="note warn">
-    <b>If it never replies</b>, nine times out of ten it is one of these two: Message
-    Content Intent is still off, or the user ID you pasted is wrong. Redo steps 2
-    and 6.
+    <b>If it never replies</b>, it is almost always one of two things: Message
+    Content Intent is still off, or the user ID was copied wrong. Redo steps 2 and 6.
   </div>
 </section>
 
-<section id="gpu">
-  <h2 class="step"><span>07</span>Free GPU minting — the $30 credit</h2>
+<section id="skills">
+  <h2 class="step"><span>04</span>Download the skills</h2>
+  <p>Three lines. This downloads the skills and installs them into your agent:</p>
+  <pre><button class="copy">copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
   <p>
-    Some NFTs are not sold, they are <b>solved</b>. Instead of paying a price, you
-    have to find a lucky number, and the only way to find it is to try millions of
-    them. That is what people mean by a proof-of-work mint, and it is where Hashcats,
-    FAB4200 and similar drops come from.
-  </p>
-  <p>
-    Your laptop can do this, but it would take days. A rented graphics card does it
-    in minutes. <b>You do not have to buy one.</b>
+    Check them any time with <code>hermes skills list</code>. Running the installer
+    again later is safe, it will not break anything.
   </p>
   <div class="note">
-    <b>Modal gives you $30 of free computing every month on their free plan.</b> That
-    is roughly <b>7 hours of the fastest graphics cards</b> they rent, at around
-    $4 an hour. For occasional mint attempts, you will likely never pay.
+    <b>No git installed, or not sure?</b> Download the ZIP from
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">this link</a>,
+    unzip it, open a terminal inside that folder and run <code>bash install.sh</code>.
   </div>
-  <ol>
-    <li>Make a free account at <a href="https://modal.com" style="color:var(--accent)">modal.com</a>. The free plan already includes the
-      $30.</li>
-    <li>Install what you need and connect your account:</li>
-  </ol>
-  <pre><button class="copy">copy</button><code>pip install modal
-modal setup</code></pre>
-  <ol start="3">
-    <li>Check that the fast part works, then try a practice run that spends
-      nothing:</li>
-  </ol>
-  <pre><button class="copy">copy</button><code>cd toolkit/pow/hashcats-farm
-modal run hashcats_modal.py --mode probe
-python3 farm.py --shards 2 --minutes 5 --dry</code></pre>
-  <p>
-    The practice run finds the lucky numbers and checks them, but never sends
-    anything. When you want to do it for real you run the same command without
-    <code>--dry</code>, using a wallet that has a little ETH in it.
-  </p>
-  <div class="note warn">
-    <b>Be honest with yourself about this one.</b> GPU minting is a race against
-    everyone else trying the same drop, and you pay for the computing time even when
-    you lose. Use the free credits, keep your attempts short, and do not top up
-    expecting a guaranteed win.
-  </div>
+  <p>Last thing, three small helpers that the wallet and trading skills need:</p>
+  <pre><button class="copy">copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
 </section>
 
 <section id="list">
-  <h2 class="step"><span>08</span>What every skill does</h2>
+  <h2 class="step"><span>05</span>What each skill does</h2>
   <p>
-    These are the 31 skills you just installed. You do not need to memorise them.
-    The agent picks the right one automatically. This list is so you know what to ask
-    for.
+    You do not have to memorise these. The agent picks the right one on its own.
+    This is so you know what you can ask for.
   </p>
 
   <div class="cat">Minting</div>
   <div class="skills">
-    <div class="skill"><span class="name">nft-mint-recon</span><h4>Works out what a mint really is</h4><p>Before you spend anything it finds the real contract, the real price, whether the mint is actually open, and what network it is on. This is the one that stops you from getting scammed by a fake price.</p></div>
-    <div class="skill"><span class="name">seadrop-rapid-mint</span><h4>Mints from many wallets at once</h4><p>For drops that sell out in seconds. It creates fresh wallets, tells you exactly how much to put in each, and fires them all at the moment the mint opens.</p></div>
-    <div class="skill"><span class="name">pow-mint-mining</span><h4>Handles proof-of-work mints</h4><p>The drops where you have to find a lucky number instead of paying. Covers the setup, the rented GPU, and the checking so you never waste a transaction.</p></div>
-    <div class="skill"><span class="name">onchain-puzzle-mining</span><h4>Does the number crunching</h4><p>The actual search for that lucky number, on your machine or on rented hardware, with a self-check so it never runs for hours chasing a broken calculation.</p></div>
-    <div class="skill"><span class="name">onchain-puzzle-solving</span><h4>Solves mints that make you think</h4><p>Riddles, puzzles and hidden clues that gate some drops. It digs through the game's own code to find the answers.</p></div>
-    <div class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>Works out how to claim</h4><p>For pages that promise a free mint, a refund or an airdrop. It figures out what the site is actually doing before you connect your wallet.</p></div>
-    <div class="skill"><span class="name">nft-floor-sweep</span><h4>Prices up buying a whole floor</h4><p>Adds up every cheap listing in a collection and tells you the real total before you commit to buying them all.</p></div>
+    <div class="skill"><span class="name">nft-mint-recon</span><h4>Works out what a mint really is</h4><p>Finds the real contract, the real price, whether the mint is actually open, and which network it is on. The one that stops you getting scammed by a fake price.</p></div>
+    <div class="skill"><span class="name">seadrop-rapid-mint</span><h4>Mints from many wallets at once</h4><p>For drops that sell out in seconds. Creates the wallets, tells you exactly how much to put in each, and fires them the moment the mint opens.</p></div>
+    <div class="skill"><span class="name">nft-floor-sweep</span><h4>Prices up buying a whole floor</h4><p>Adds up every cheap listing in a collection and gives you the real total before you buy them all.</p></div>
+    <div class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>Works out how to claim</h4><p>For pages offering a free mint, a refund or an airdrop. It figures out what the site is really doing before you connect a wallet.</p></div>
   </div>
 
-  <div class="cat">Rarity and sniping</div>
+  <div class="cat">Rarity and buying</div>
   <div class="skills">
-    <div class="skill"><span class="name">nft-rarity-engine</span><h4>Ranks a collection by rarity</h4><p>Scores every single NFT and puts them in order, using the same maths OpenSea uses, so the ranks match. It can even catch a collection right as it reveals, before OpenSea updates.</p></div>
-    <div class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>Buys the rare ones cheap</h4><p>After a reveal, finds the rarest items that are listed at normal floor prices and buys them before anyone else notices.</p></div>
-    <div class="skill"><span class="name">nft-secondary-buy</span><h4>Buys a listed NFT for you</h4><p>Buys from the resale market automatically, always testing the purchase first so a broken order never costs you a fee.</p></div>
+    <div class="skill"><span class="name">nft-rarity-engine</span><h4>Ranks a collection by rarity</h4><p>Scores every NFT and puts them in order using the same maths OpenSea uses, so the ranks match. It can catch a reveal before OpenSea updates itself.</p></div>
+    <div class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>Buys the rare ones cheap</h4><p>After a reveal, finds the rarest items listed at normal floor prices and buys them before anyone notices.</p></div>
+    <div class="skill"><span class="name">nft-secondary-buy</span><h4>Buys a listed NFT for you</h4><p>Buys from the resale market, always testing the purchase first so a broken order never costs you a fee.</p></div>
   </div>
 
   <div class="cat">Is this thing real?</div>
   <div class="skills">
-    <div class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>Checks if the buyers were real</h4><p>Looks at who minted a collection and tells you whether they were real people or a handful of wallets faking interest to make it look popular.</p></div>
-    <div class="skill"><span class="name">web3-claim-verification</span><h4>Fact-checks a project's claims</h4><p>When a project says "we did X", this checks the blockchain to see if that is actually true.</p></div>
-    <div class="skill"><span class="name">nft-market-analysis</span><h4>Reads the market honestly</h4><p>Floors, sales, holders, how fast things flip. Tells you what the numbers really say instead of what the project wants you to think.</p></div>
-    <div class="skill"><span class="name">nft-collection-price-analysis</span><h4>Sizes up a collection</h4><p>What it is worth, what could go wrong after you buy, and whether the entry price makes sense for the risk.</p></div>
-    <div class="skill"><span class="name">nft-exit-discipline</span><h4>When to sell</h4><p>Rules for getting out instead of holding forever. The boring skill that saves the most money.</p></div>
+    <div class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>Checks if the buyers were real</h4><p>Looks at who minted and tells you whether they were real people or a few wallets faking interest to look popular.</p></div>
+    <div class="skill"><span class="name">web3-claim-verification</span><h4>Fact-checks a project's claims</h4><p>When a project says "we did X", this checks the blockchain to see if it is true.</p></div>
+    <div class="skill"><span class="name">nft-market-analysis</span><h4>Reads the market honestly</h4><p>Floors, sales, holders, how fast things flip. What the numbers actually say.</p></div>
+    <div class="skill"><span class="name">nft-collection-price-analysis</span><h4>Sizes up a collection</h4><p>What it is worth, what can go wrong after you buy, and whether the price makes sense for the risk.</p></div>
+    <div class="skill"><span class="name">nft-exit-discipline</span><h4>When to sell</h4><p>Rules for taking profit instead of holding forever. The boring one that saves the most money.</p></div>
   </div>
 
   <div class="cat">Wallets</div>
   <div class="skills">
-    <div class="skill"><span class="name">ethereum-wallet-operations</span><h4>Creates and moves wallets safely</h4><p>Makes new wallets, backs the keys up properly, and moves tokens between them without ever exposing your keys.</p></div>
-    <div class="skill"><span class="name">wallet-radar-operations</span><h4>Watches wallets you care about</h4><p>Follows specific wallets and pings you when they buy something, so you can see what the good traders are doing.</p></div>
-    <div class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>Turns wallets into a spreadsheet</h4><p>Takes a list of wallets and hands you a clean, shareable spreadsheet instead of a wall of text.</p></div>
-    <div class="skill"><span class="name">pseudonym-identity-research</span><h4>Connects anonymous accounts</h4><p>Links up anonymous social accounts, handles and wallets that belong to the same person.</p></div>
+    <div class="skill"><span class="name">ethereum-wallet-operations</span><h4>Creates and moves wallets safely</h4><p>Makes new wallets, backs the keys up properly, and moves tokens without ever exposing them.</p></div>
+    <div class="skill"><span class="name">wallet-radar-operations</span><h4>Watches wallets you care about</h4><p>Follows specific wallets and pings you when they buy something.</p></div>
+    <div class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>Turns wallets into a spreadsheet</h4><p>Takes a list of wallets and hands you a clean, shareable spreadsheet.</p></div>
+    <div class="skill"><span class="name">pseudonym-identity-research</span><h4>Connects anonymous accounts</h4><p>Links anonymous handles and wallets that belong to the same person.</p></div>
   </div>
 
   <div class="cat">Making your own collection</div>
   <div class="skills">
-    <div class="skill"><span class="name">nft-collection-production</span><h4>Builds a collection from scratch</h4><p>Everything for launching your own: the art plan, the traits, the pricing, the mint page, and the contract mechanics.</p></div>
-    <div class="skill"><span class="name">nft-trait-taxonomy</span><h4>Organises the traits</h4><p>Keeps every attribute consistent and logically grouped, so your metadata does not turn into a mess.</p></div>
-    <div class="skill"><span class="name">nft-trait-curation</span><h4>Checks the trait quality</h4><p>Audits each trait for duplicates, broken ones, and anything that looks off before you launch.</p></div>
+    <div class="skill"><span class="name">nft-collection-production</span><h4>Builds a collection from scratch</h4><p>The art plan, the traits, the pricing, the mint page and the contract mechanics, all in one place.</p></div>
+    <div class="skill"><span class="name">nft-trait-taxonomy</span><h4>Organises the traits</h4><p>Keeps every attribute consistent and grouped so your metadata does not turn into a mess.</p></div>
+    <div class="skill"><span class="name">nft-trait-curation</span><h4>Checks the trait quality</h4><p>Audits each trait for duplicates and anything that looks wrong before you launch.</p></div>
   </div>
 
-  <div class="cat">Data, research and building</div>
+  <div class="cat">Tools and research</div>
   <div class="skills">
-    <div class="skill"><span class="name">ethereum-data-pipelines</span><h4>Reads the blockchain for free</h4><p>Pulls on-chain data without paying for an API. This is the engine under a lot of the other skills.</p></div>
-    <div class="skill"><span class="name">rh-mint-command-center</span><h4>The mint control room</h4><p>A whole local dashboard for minting: plan a mint, rehearse it, manage a set of wallets, watch the floor, and see exactly what happened afterwards.</p></div>
-    <div class="skill"><span class="name">mint-field-guide</span><h4>The mint dashboard</h4><p>A read-only screen showing upcoming mints, market movement, and what is trending, with a clear note on where every number came from.</p></div>
-    <div class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Maps a game's economy</h4><p>Takes an on-chain game apart to show where value comes from and how it flows.</p></div>
+    <div class="skill"><span class="name">ethereum-data-pipelines</span><h4>Reads the blockchain for free</h4><p>Pulls on-chain data without paying for an API. The engine under a lot of the others.</p></div>
+    <div class="skill"><span class="name">rh-mint-command-center</span><h4>The mint control room</h4><p>A local dashboard for minting: plan a mint, rehearse it, manage a set of wallets, watch the floor, and see what happened afterwards.</p></div>
+    <div class="skill"><span class="name">mint-field-guide</span><h4>The mint dashboard</h4><p>A read-only screen of upcoming mints and market movement, noting where every number came from.</p></div>
+    <div class="skill"><span class="name">pow-mint-mining</span><h4>Handles solved mints</h4><p>Some drops give you the item for finding a lucky number instead of paying. This runs that search for you.</p></div>
+    <div class="skill"><span class="name">onchain-puzzle-mining</span><h4>The number crunching</h4><p>Runs that search on your machine or on rented hardware, with checking so it never wastes a transaction.</p></div>
+    <div class="skill"><span class="name">onchain-puzzle-solving</span><h4>Solves mints that make you think</h4><p>Riddles and hidden clues that gate some drops, found by reading the game's own code.</p></div>
+    <div class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Maps a game's economy</h4><p>Takes an on-chain game apart to show where value comes from.</p></div>
     <div class="skill"><span class="name">polymarket</span><h4>Reads prediction markets</h4><p>Checks what the betting markets are pricing for an event.</p></div>
-    <div class="skill"><span class="name">proof-of-play-archive</span><h4>Proof of Play research</h4><p>Background research on Proof of Play and Pirate Nation for reference.</p></div>
-    <div class="skill"><span class="name">agent-protocol-identity</span><h4>Gives an agent its own identity</h4><p>Lets an AI agent prove who it is when it posts online, so a real one can be told apart from a fake.</p></div>
+    <div class="skill"><span class="name">proof-of-play-archive</span><h4>Proof of Play research</h4><p>Background research on Proof of Play and Pirate Nation.</p></div>
+    <div class="skill"><span class="name">agent-protocol-identity</span><h4>Gives an agent an identity</h4><p>Lets an agent prove who it is when it posts online, so a real one can be told from a fake.</p></div>
     <div class="skill"><span class="name">flop-technocore-agent-ops</span><h4>Running an agent in public</h4><p>How to give an agent its own account and have it post without leaking anything private.</p></div>
-    <div class="skill"><span class="name">internet-computer-development</span><h4>Building on the Internet Computer</h4><p>Notes and references for a different blockchain, the Internet Computer.</p></div>
+    <div class="skill"><span class="name">internet-computer-development</span><h4>Building on the Internet Computer</h4><p>Notes for a different blockchain, the Internet Computer.</p></div>
+  </div>
+</section>
+
+<section id="vercel">
+  <h2 class="step"><span>06</span>Set up Vercel</h2>
+  <p>
+    Vercel puts a website or a page on the internet for free. You do not need it to
+    run the agent. You need it if you want a public page of your own: a link you can
+    share, a portfolio, a documentation page, this guide.
+  </p>
+
+  <h3>Make an account</h3>
+  <p>
+    Sign up at <a href="https://vercel.com/signup" style="color:var(--accent)">vercel.com/signup</a>
+    with GitHub, Google or email. The free plan is enough for everything here.
+  </p>
+
+  <h3>The easy way: connect a GitHub project</h3>
+  <ol>
+    <li>In Vercel click <b>Add New → Project</b>.</li>
+    <li>Connect your GitHub account and pick the repository you want online.</li>
+    <li>If your web files live in a folder rather than the top level, set <b>Root
+      Directory</b> to that folder. For this guide's page that folder is
+      <code>docs</code>.</li>
+    <li>Click <b>Deploy</b>. A minute later you have a live link.</li>
+  </ol>
+  <p>
+    From then on, every time you push to GitHub, Vercel rebuilds the site by itself.
+    That is the whole workflow.
+  </p>
+
+  <h3>The terminal way</h3>
+  <p>If you would rather deploy straight from your computer:</p>
+  <pre><button class="copy">copy</button><code>npm install -g vercel
+vercel login
+
+<span class="c"># then, from inside the folder you want online</span>
+vercel --prod</code></pre>
+  <p>It asks a couple of questions the first time and then prints your live link.</p>
+
+  <h3>Deploy this guide's page as a test run</h3>
+  <pre><button class="copy">copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod</code></pre>
+
+  <h3>Your own domain</h3>
+  <p>
+    Optional. In the project's <b>Settings → Domains</b> you can add a domain you
+    own, or accept the free <code>your-project.vercel.app</code> address it gives
+    you.
+  </p>
+
+  <div class="note warn">
+    <b>What Vercel cannot do:</b> run your agent. Vercel only serves websites that
+    are loaded on demand. Your agent is a program that has to stay switched on, so it
+    lives on your computer or on a server. If you ever see a deploy fail with a
+    <b>402</b> error, that account has gone past the free plan's transfer allowance.
+    Make a new project, or use GitHub Pages or Cloudflare Pages, which serve the same
+    files.
+  </div>
+</section>
+
+<section id="localvps">
+  <h2 class="step"><span>07</span>Your computer or a server?</h2>
+  <p>
+    Both work. The only real difference is what happens when you close your laptop.
+  </p>
+  <div class="two">
+    <div class="card">
+      <span class="price">FREE</span>
+      <h4>On your own computer</h4>
+      <ul>
+        <li>Nothing to set up beyond the install you already did</li>
+        <li>Full speed, and it can use things only you have: your browser, your files, your wallets</li>
+        <li><b>Stops when you shut the lid</b> or put it to sleep</li>
+        <li>Any scheduled job, alert or overnight watch misses its window</li>
+        <li>Good for: trying things out, daytime use, anything you are watching yourself</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">~$5 / MONTH</span>
+      <h4>On a small server</h4>
+      <ul>
+        <li>Never sleeps. Started once, it stays up</li>
+        <li>Watches, alerts and timed jobs actually fire at 4am</li>
+        <li>You reach it from your phone through Discord from anywhere</li>
+        <li>No screen, so you cannot see it working except through chat</li>
+        <li>Good for: scheduled jobs, overnight watches, anything you want running all the time</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Moving to a server</h3>
+  <ol>
+    <li>Get one from Hetzner or DigitalOcean, about $5/month. Pick <b>Ubuntu</b> as
+      the system. The smallest option is plenty.</li>
+    <li>Follow the same Linux install line from step 02 on that server instead of
+      your computer.</li>
+    <li>Repeat the Discord and skills steps there. It is the same three commands.</li>
+    <li>You can run both. Your computer and the server are separate agents, and each
+      gets its own Discord bot token if you want.</li>
+  </ol>
+  <div class="note">
+    <b>Sensible way to do it:</b> start on your own computer today, and only rent a
+    server once you have something you want running while you sleep.
   </div>
 </section>
 
 <section id="money">
-  <h2 class="step"><span>09</span>What it costs</h2>
+  <h2 class="step"><span>08</span>What it costs</h2>
   <table>
-    <tr><th>Thing</th><th>Cost</th><th>Do you need it?</th></tr>
-    <tr><td>Hermes agent</td><td>Free</td><td>Yes, it is the whole point</td></tr>
+    <tr><th>Thing</th><th>Cost</th><th>Needed?</th></tr>
+    <tr><td>Hermes agent</td><td>Free</td><td>Yes</td></tr>
     <tr><td>The 31 skills</td><td>Free</td><td>Yes</td></tr>
     <tr><td>OpenCode subscription</td><td>~$5/month</td><td>Yes, this is the brain</td></tr>
-    <tr><td>Your own computer</td><td>Free</td><td>Works fine, stops when you shut it down</td></tr>
-    <tr><td>Small server, if you want 24/7</td><td>~$5/month</td><td>Optional</td></tr>
-    <tr><td>Modal, for GPU minting</td><td>Free, $30/month included</td><td>Optional, only if you want to solve proof-of-work drops</td></tr>
-    <tr><td>Gas fees when you actually mint</td><td>Usually cents</td><td>Only when you mint, paid from your own wallet</td></tr>
+    <tr><td>Vercel</td><td>Free</td><td>Only if you want a page online</td></tr>
+    <tr><td>Your own computer</td><td>Free</td><td>Fine, but it sleeps</td></tr>
+    <tr><td>Small server</td><td>~$5/month</td><td>Only for running around the clock</td></tr>
   </table>
   <p>
-    So the honest answer is <b>about $5 a month</b>, and possibly another $5 if you
-    want it awake all night. Everything else is optional and most of it is free.
+    Honest total: <b>about $5 a month</b>, or $10 if you also want it awake all
+    night.
   </p>
 </section>
 
 <section id="stuck">
-  <h2 class="step"><span>10</span>If something goes wrong</h2>
+  <h2 class="step"><span>09</span>If something goes wrong</h2>
   <table>
     <tr><th>What you see</th><th>What to do</th></tr>
-    <tr><td><code>hermes</code> is not recognised</td><td>Close the terminal and open a new one. If it still fails, restart your computer and try again.</td></tr>
-    <tr><td>The bot is online but never answers</td><td>Turn on <b>Message Content Intent</b> in the Discord developer page. This is the number one cause.</td></tr>
-    <tr><td>It answers in DMs but not in your server</td><td>That is normal. In servers it only replies when you @mention it.</td></tr>
-    <tr><td>It says you are not allowed</td><td>Your Discord user ID is wrong. Copy it again with Developer Mode on.</td></tr>
-    <tr><td>It stops when you close your laptop</td><td>Expected if you are running it on your own computer. Get the $5 server for 24/7.</td></tr>
-    <tr><td>It asks for more money</td><td>Check your OpenCode usage page. Long jobs use more than chatting. Give it simpler tasks or upgrade.</td></tr>
-    <tr><td>The skills do not show up</td><td>Run <code>hermes skills list</code> to check they installed, then <code>/reload-skills</code> in a chat.</td></tr>
-    <tr><td>You are lost</td><td>Ask the agent. Type <code>hermes chat</code> and just tell it what you are trying to do in plain English.</td></tr>
+    <tr><td><code>hermes</code> is not recognised</td><td>Close the terminal and open a new one. Still failing after that? Restart the computer and try again.</td></tr>
+    <tr><td>Bot online but never answers</td><td>Message Content Intent is off in the Discord developer page. This is the number one cause.</td></tr>
+    <tr><td>Answers in DMs, silent in a server</td><td>Normal. In servers it only answers when you @mention it.</td></tr>
+    <tr><td>It says you are not allowed</td><td>Your Discord user ID is wrong. Copy it again with Developer Mode turned on.</td></tr>
+    <tr><td>Vercel deploy fails with 402</td><td>That account went past the free transfer allowance. New project, or use GitHub Pages or Cloudflare Pages.</td></tr>
+    <tr><td>The agent stopped overnight</td><td>It was on your computer. That is expected. Move it to a server if you need it always on.</td></tr>
+    <tr><td>It asks you for more money</td><td>Check your OpenCode usage page. Long jobs use more than chatting does.</td></tr>
+    <tr><td>Skills do not show up</td><td><code>hermes skills list</code> to confirm they installed, then <code>/reload-skills</code> in a chat.</td></tr>
+    <tr><td>You are lost</td><td>Run <code>hermes chat</code> and just describe what you are trying to do.</td></tr>
   </table>
 </section>
 
@@ -456,8 +457,8 @@ python3 farm.py --shards 2 --minutes 5 --dry</code></pre>
   <div class="hook">
     <h3>Start with the subscription</h3>
     <p>
-      The guide and the skills are free. The only thing you need is the brain,
-      around $5 a month, and that one plan also covers the coding tools. Signing up
+      The guide and all 31 skills are free. The only thing you need is the brain,
+      about $5 a month, and that one plan also covers the coding tools. Signing up
       through this link is what supports the work behind all of it.
     </p>
     <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get OpenCode →</a>
@@ -468,12 +469,11 @@ python3 farm.py --shards 2 --minutes 5 --dry</code></pre>
 <footer>
   <p>
     <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
-    · Free and open source · Robinhood Chain and Ethereum
+    · Free and open source
   </p>
   <p style="margin-top:9px">
     Nothing here is financial advice. Minting and trading lose money for most people
-    who try it. Set yourself a limit before you start, and never mint with money you
-    need.
+    who try it. Set a limit before you start and never use money you need.
   </p>
 </footer>
 

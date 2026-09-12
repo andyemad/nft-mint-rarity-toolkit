@@ -1,54 +1,31 @@
-# Set up your own minting agent
+# Set up your own AI agent
 
-A step by step guide to running an AI agent on your own computer (or a cheap
-server), talking to it through Discord, and giving it 31 ready-made NFT skills.
+Hermes, Discord, the skills, Vercel, and choosing between your computer and a
+server. Copy and paste a few lines, then talk to the finished thing in Discord.
 
-You do not need to code. You do not need a mining rig. The total cost is about
-**$5 a month**, and most of the optional extras are free.
+About **$5 a month**, most of it optional.
 
-This file is the same guide as the published page at
-https://andyemad.github.io/nft-mint-rarity-toolkit/
+Same guide as the published page: https://andyemad.github.io/nft-mint-rarity-toolkit/
 
 ---
 
-## What you are actually building
+## 1. What you need
 
-Hermes is an AI assistant that runs on your own machine. Unlike a chat website, it
-can do things: open pages, read the blockchain, run a script, watch a collection
-overnight and message you when something happens.
-
-This toolkit adds 31 skills to it. A skill is a set of instructions the agent loads
-when a job comes up. You never run them yourself. You type in Discord, in normal
-English:
-
-> **You type:** "rank everything in this collection by rarity and tell me which ones
-> are listed cheap"
->
-> **It does:** reads the collection, scores every NFT, pulls the listings, and
-> answers in the chat.
-
-After setup you never have to open a terminal again. Discord is where you live.
-
----
-
-## What you need
-
-| You need | Cost | Why |
+| You need | Cost | What it is for |
 |---|---|---|
-| A computer, or a rented server | $0, or ~$5/month for a server | Your own computer works. A server means it keeps running when you shut the laptop |
-| A Discord account | Free | How you talk to the agent, from your phone or desktop |
+| A computer | Free | Runs the agent. Windows, Mac or Linux |
+| A Discord account | Free | How you talk to the agent, from phone or desktop |
 | An OpenCode subscription | ~$5/month | The agent's brain. The only thing you have to pay for |
-| A Modal account (GPU minting only) | Free, includes $30/month of compute | Some mints need heavy computing. You rent it by the second instead of buying hardware |
+| A Vercel account (optional) | Free | Only if you want a page or small site online |
+| A small server (optional) | ~$5/month | Only if you want it running while your computer is off |
 
-**You do not need a mining rig or an expensive graphics card.** Everything runs on
-an ordinary laptop. When a mint needs heavy computing you borrow it for a few
-minutes on the free credits.
+Start with the first three. The last two come later and you can skip either.
 
 ---
 
-## 1. Install the agent
+## 2. Set up Hermes
 
-You paste one line into a terminal. That is the hardest part of the guide.
+You paste one line into a terminal. It installs itself.
 
 **Windows** — open the Start menu, type `PowerShell`, open it, paste:
 
@@ -56,7 +33,7 @@ You paste one line into a terminal. That is the hardest part of the guide.
 iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-**Mac** — press Command + Space, type `Terminal`, open it, paste:
+**Mac** — Command + Space, type `Terminal`, press Enter, paste:
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
@@ -68,32 +45,28 @@ curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
-The installer fetches everything it needs on its own. It takes a few minutes. Close
-the window, open a fresh one, and check it worked:
+It downloads what it needs and takes a few minutes. Let the text scroll.
+
+Close the window, open a new one, and check it worked:
 
 ```bash
 hermes doctor
 ```
 
-That prints a checklist of everything it needs. Green means fine.
+That prints a checklist. Green is fine. If something is missing it tells you the
+exact command to fix it.
 
-**Want it running 24/7?** Your own computer is fine, but the agent stops when you
-shut it down. Rent a small server for about $5/month from Hetzner or DigitalOcean,
-choose Ubuntu when they ask, and run the Linux line on that server instead.
+### Give it a brain
 
----
+Subscribe at **https://opencode.ai/go?ref=0N4C2C5TNK**, then add the key you get.
 
-## 2. Give it a brain (about $5/month)
-
-1. Subscribe at **https://opencode.ai/go?ref=0N4C2C5TNK**
-2. Copy the key it shows you.
-3. Put the key in the settings file.
-
-Windows — open the file in Notepad and add your key on its own line at the bottom:
+Windows — open the settings file in Notepad:
 
 ```powershell
 notepad $env:USERPROFILE\.hermes\.env
 ```
+
+Add this line at the bottom, then save and close:
 
 ```
 OPENCODE_GO_API_KEY=YOUR_KEY_HERE
@@ -102,24 +75,57 @@ OPENCODE_GO_API_KEY=YOUR_KEY_HERE
 Mac and Linux:
 
 ```bash
-hermes config env-path
 printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' >> ~/.hermes/.env
 ```
 
-4. Tell the agent to use it and say hello:
+Then:
 
 ```bash
 hermes model
 hermes chat -q "hello, what model are you?"
 ```
 
-If it answers, you have a working agent. Watch your usage the first week: the
-OpenCode dashboard shows a 5-hour window and a weekly one, and long autonomous jobs
-use more than chatting.
+If it answers, the agent works.
 
 ---
 
-## 3. Download the 31 skills
+## 3. Set up Discord
+
+After this you never need the terminal again, you just message it.
+
+1. Go to https://discord.com/developers/applications and click **New Application**.
+2. Left menu → **Bot**. Under **Privileged Gateway Intents** turn **Message Content
+   Intent** ON. Skip this and your bot looks totally broken.
+3. On that same page click **Reset Token** and copy it. Shown once. Treat it like a
+   password.
+4. Left menu → **Installation**. Enable **Guild Install**, make sure the scopes
+   include `bot` and `applications.commands`, and copy the install link.
+5. Open that link and add the bot to your server. You need to manage that server.
+6. Get your user ID: Discord → **Settings → Advanced** → Developer Mode ON, then
+   right-click your own name → **Copy User ID**.
+7. Run the setup and paste in the token and the ID:
+
+```bash
+hermes gateway setup
+```
+
+Test it, then make it permanent:
+
+```bash
+hermes gateway run       # leave open, DM the bot in Discord
+hermes gateway install   # Ctrl+C first, then these two
+hermes gateway start
+```
+
+In direct messages it answers everything. In a server channel it only answers when
+you @mention it.
+
+If it never replies, it is almost always the Message Content Intent being off, or a
+wrong user ID.
+
+---
+
+## 4. Download the skills
 
 ```bash
 git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
@@ -127,14 +133,13 @@ cd nft-mint-rarity-toolkit
 ./install.sh
 ```
 
-That copies all 31 skills into your agent. Check them any time with
-`hermes skills list`. Running it again later is safe.
+Check them any time with `hermes skills list`. Re-running the installer is safe.
 
-No git installed? Download the ZIP from
+No git? Download the ZIP from
 https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip,
-unzip it, open a terminal inside the folder, and run `bash install.sh`.
+unzip it, open a terminal in that folder, run `bash install.sh`.
 
-Extra pieces needed by the wallet and trading skills:
+Three helpers the wallet and trading skills need:
 
 ```bash
 pip install eth-account coincurve pycryptodome
@@ -142,181 +147,171 @@ pip install eth-account coincurve pycryptodome
 
 ---
 
-## 4. Connect Discord
+## 5. What each skill does
 
-1. Go to https://discord.com/developers/applications and click **New Application**.
-2. Click **Bot** in the left menu. Under **Privileged Gateway Intents** turn
-   **Message Content Intent** ON. Without it the bot looks completely broken.
-3. Still on the Bot page, click **Reset Token** and copy it. Treat it like a password.
-4. Click **Installation**, enable **Guild Install**, and make sure the scopes include
-   `bot` and `applications.commands`.
-5. Open the install link it shows you and add the bot to your server.
-6. Get your user ID: Discord → **Settings → Advanced** → turn on **Developer Mode**,
-   then right-click your own name and choose **Copy User ID**.
-7. Run the setup and paste in the token and the ID:
-
-```bash
-hermes gateway setup
-```
-
-Then start it and test:
-
-```bash
-hermes gateway run
-```
-
-Send the bot a direct message in Discord. It should answer. When you are happy,
-press Ctrl + C and make it start on its own from now on:
-
-```bash
-hermes gateway install
-hermes gateway start
-```
-
-In direct messages it replies to everything. In a server channel it only replies
-when you @mention it, so it does not spam your friends.
-
-If it never replies, it is almost always the Message Content Intent being off, or a
-wrong user ID.
-
----
-
-## 5. Free GPU minting (the $30 credit)
-
-Some NFTs are not sold, they are solved. Instead of paying a price you search for a
-lucky number, millions of times. That is a proof-of-work mint, and it is where
-Hashcats, FAB4200 and similar drops come from.
-
-Your laptop can do it, but it would take days. A rented graphics card does it in
-minutes, and you do not have to buy one:
-
-**Modal gives you $30 of free computing every month on their free plan.** That is
-roughly **7 hours of their fastest graphics cards**, at around $4/hour. For
-occasional mint attempts you will likely never pay.
-
-1. Make a free account at https://modal.com. The $30 is included.
-2. Install and connect:
-
-```bash
-pip install modal
-modal setup
-```
-
-3. Check the fast part works, then do a practice run that spends nothing:
-
-```bash
-cd toolkit/pow/hashcats-farm
-modal run hashcats_modal.py --mode probe
-python3 farm.py --shards 2 --minutes 5 --dry
-```
-
-The practice run finds lucky numbers and checks them but never sends anything. Drop
-`--dry` to do it for real, with a wallet holding a little ETH.
-
-Be honest with yourself about this one. GPU minting is a race against everyone else
-trying the same drop, and you pay for computing time even when you lose. Use the
-free credits, keep attempts short, and do not top up expecting a guaranteed win.
-
----
-
-## 6. What every skill does
-
-You do not need to memorise these. The agent picks the right one automatically.
-This list is so you know what to ask for.
+You do not need to memorise these. The agent picks the right one. This is so you
+know what to ask for.
 
 ### Minting
 
 | Skill | What it does |
 |---|---|
-| `nft-mint-recon` | Works out what a mint really is: the real contract, the real price, whether it is actually open, and which network. The one that stops you getting scammed by a fake price. |
-| `seadrop-rapid-mint` | Mints from many wallets at once for drops that sell out in seconds. Creates the wallets, tells you exactly how much to fund each one, and fires at the opening moment. |
-| `pow-mint-mining` | Handles proof-of-work drops where you find a lucky number instead of paying. Setup, rented GPU, and the checking so you never waste a transaction. |
-| `onchain-puzzle-mining` | The actual number crunching, on your machine or rented hardware, with a self-check so it never runs for hours on a broken calculation. |
-| `onchain-puzzle-solving` | Solves the riddles and puzzles some drops use as a gate, by reading the game's own code. |
-| `onchain-claim-reverse-engineering` | Works out how a claim, free mint or refund page really works before you connect a wallet. |
+| `nft-mint-recon` | Finds the real contract, the real price, whether the mint is open, and which network. Stops you getting scammed by a fake price. |
+| `seadrop-rapid-mint` | Mints from many wallets at once for drops that sell out in seconds. Creates the wallets and tells you how much to fund each. |
 | `nft-floor-sweep` | Adds up every cheap listing in a collection and gives you the real total before you buy them all. |
+| `onchain-claim-reverse-engineering` | Works out how a claim, free mint or refund page really works before you connect a wallet. |
 
-### Rarity and sniping
+### Rarity and buying
 
 | Skill | What it does |
 |---|---|
-| `nft-rarity-engine` | Ranks every NFT in a collection by rarity using the same maths OpenSea uses, so the ranks match. Can catch a reveal before OpenSea updates. |
-| `rh-chain-rarity-sniping` | After a reveal, buys the rarest items that are listed at normal floor prices. |
-| `nft-secondary-buy` | Buys a listed NFT from the resale market, always testing the purchase first so a broken order never costs a fee. |
+| `nft-rarity-engine` | Ranks every NFT by rarity using the same maths OpenSea uses, so the ranks match. Can catch a reveal before OpenSea updates. |
+| `rh-chain-rarity-sniping` | After a reveal, buys the rarest items listed at normal floor prices. |
+| `nft-secondary-buy` | Buys a listed NFT from the resale market, testing the purchase first so a broken order never costs a fee. |
 
 ### Is this thing real?
 
 | Skill | What it does |
 |---|---|
-| `nft-minter-legitimacy-audit` | Tells you whether the wallets that minted were real people or a few wallets faking interest. |
+| `nft-minter-legitimacy-audit` | Tells you whether the minters were real people or a few wallets faking interest. |
 | `web3-claim-verification` | Checks a project's claims against the blockchain. |
 | `nft-market-analysis` | Floors, sales, holders, flip speed. What the numbers really say. |
-| `nft-collection-price-analysis` | What a collection is worth, and what can go wrong after you buy. |
+| `nft-collection-price-analysis` | What a collection is worth and what can go wrong after you buy. |
 | `nft-exit-discipline` | Rules for taking profit instead of holding forever. |
 
 ### Wallets
 
 | Skill | What it does |
 |---|---|
-| `ethereum-wallet-operations` | Creates wallets, backs up keys properly, moves tokens without exposing keys. |
+| `ethereum-wallet-operations` | Creates wallets, backs up keys properly, moves tokens without exposing them. |
 | `wallet-radar-operations` | Watches wallets you care about and pings you when they buy. |
 | `public-wallet-xlsx-delivery` | Turns a list of wallets into a clean shareable spreadsheet. |
-| `pseudonym-identity-research` | Links anonymous accounts, handles and wallets belonging to the same person. |
+| `pseudonym-identity-research` | Links anonymous handles and wallets belonging to the same person. |
 
 ### Making your own collection
 
 | Skill | What it does |
 |---|---|
-| `nft-collection-production` | Everything for launching your own: art plan, traits, pricing, mint page, contract mechanics. |
-| `nft-trait-taxonomy` | Keeps every trait consistent and grouped so your metadata does not become a mess. |
-| `nft-trait-curation` | Audits each trait for duplicates and anything that looks off before launch. |
+| `nft-collection-production` | Art plan, traits, pricing, mint page, contract mechanics, all in one place. |
+| `nft-trait-taxonomy` | Keeps every attribute consistent and grouped so metadata does not become a mess. |
+| `nft-trait-curation` | Audits each trait for duplicates and anything that looks wrong before launch. |
 
-### Data, research and building
+### Tools and research
 
 | Skill | What it does |
 |---|---|
 | `ethereum-data-pipelines` | Reads the blockchain without paying for an API. The engine under a lot of the others. |
-| `rh-mint-command-center` | A full local mint control room: plan, rehearse, manage wallets, watch the floor, and audit what happened. |
-| `mint-field-guide` | A read-only dashboard of upcoming mints and market movement, with the source noted for every number. |
+| `rh-mint-command-center` | A local mint control room: plan, rehearse, manage wallets, watch the floor, audit results. |
+| `mint-field-guide` | A read-only dashboard of upcoming mints and market movement. |
+| `pow-mint-mining` | Handles drops where you find a lucky number instead of paying. Runs that search for you. |
+| `onchain-puzzle-mining` | The search itself, on your machine or rented hardware, with checking so nothing is wasted. |
+| `onchain-puzzle-solving` | Solves the riddles some drops use as a gate, by reading the game's own code. |
 | `onchain-game-economy-analysis` | Takes an on-chain game apart to show where value comes from. |
 | `polymarket` | Reads prediction-market prices. |
 | `proof-of-play-archive` | Background research on Proof of Play and Pirate Nation. |
-| `agent-protocol-identity` | Gives an AI agent a verifiable identity when it posts online. |
-| `flop-technocore-agent-ops` | How to run an agent with its own public account without leaking anything private. |
+| `agent-protocol-identity` | Lets an agent prove who it is when it posts online. |
+| `flop-technocore-agent-ops` | Running an agent with its own public account without leaking anything private. |
 | `internet-computer-development` | Notes for building on the Internet Computer blockchain. |
 
 ---
 
-## 7. What it costs
+## 6. Set up Vercel
+
+Vercel puts a page or a website online for free. You do not need it to run the
+agent. You need it if you want a public link of your own.
+
+Sign up at https://vercel.com/signup. The free plan covers everything here.
+
+### The easy way
+
+1. Vercel → **Add New → Project**
+2. Connect GitHub and pick the repository
+3. If your web files live in a folder, set **Root Directory** to it (for this
+   guide's page that folder is `docs`)
+4. **Deploy**
+
+Every push to GitHub after that rebuilds the site automatically.
+
+### The terminal way
+
+```bash
+npm install -g vercel
+vercel login
+vercel --prod          # from inside the folder you want online
+```
+
+### Try it with this guide's page
+
+```bash
+git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod
+```
+
+### Your own domain
+
+Optional. Project **Settings → Domains**, add a domain you own, or keep the free
+`your-project.vercel.app` address.
+
+**What Vercel cannot do:** run your agent. It only serves websites loaded on demand.
+The agent is a program that has to stay switched on. If a deploy fails with a
+**402** error, that account went past the free plan's transfer allowance. Make a new
+project, or use GitHub Pages or Cloudflare Pages, which serve the same files.
+
+---
+
+## 7. Your computer or a server?
+
+Both work. The difference is what happens when you close your laptop.
+
+| | On your own computer | On a small server |
+|---|---|---|
+| Cost | Free | ~$5/month |
+| Stays on when you shut the lid | No | Yes |
+| Scheduled jobs and overnight alerts | Miss their window | Fire on time |
+| Reach it from your phone | Only while the computer is on | Always |
+| Setup | Already done | Same three commands on the server |
+
+**Moving to a server:** get one from Hetzner or DigitalOcean, pick **Ubuntu**, take
+the smallest option, and run the same Linux install line from step 2 on it. Then
+repeat the Discord and skills steps. Your computer and the server are separate
+agents, and each gets its own Discord bot token.
+
+Sensible order: start on your own computer today, rent a server once you have
+something you want running while you sleep.
+
+---
+
+## 8. What it costs
 
 | Thing | Cost | Needed? |
 |---|---|---|
 | Hermes agent | Free | Yes |
 | The 31 skills | Free | Yes |
 | OpenCode subscription | ~$5/month | Yes, this is the brain |
-| Your own computer | Free | Fine, but it stops when you shut down |
-| Small server for 24/7 | ~$5/month | Optional |
-| Modal for GPU minting | Free, $30/month included | Optional |
-| Gas fees when you actually mint | Usually cents | Only when you mint, from your own wallet |
+| Vercel | Free | Only if you want a page online |
+| Your own computer | Free | Fine, but it sleeps |
+| Small server | ~$5/month | Only for running around the clock |
 
-The honest answer is **about $5 a month**, maybe $10 if you want it awake all night.
+Honest total: about **$5 a month**, or $10 if you also want it awake all night.
 
 ---
 
-## 8. If something goes wrong
+## 9. If something goes wrong
 
 | What you see | What to do |
 |---|---|
 | `hermes` is not recognised | Close the terminal and open a new one. Still failing? Restart and retry. |
-| Bot online but never answers | Turn on Message Content Intent in the Discord developer page |
-| Answers in DMs but not in a server | Normal. In servers it answers only when @mentioned |
+| Bot online but never answers | Message Content Intent is off. The number one cause. |
+| Answers in DMs, silent in a server | Normal. In servers it only answers when @mentioned |
 | It says you are not allowed | Your Discord user ID is wrong. Copy it again with Developer Mode on |
-| It stops when you close the laptop | Expected on your own computer. Get the $5 server for 24/7 |
-| It asks for more money | Check your OpenCode usage page. Long jobs use more than chat |
+| Vercel deploy fails with 402 | Past the free transfer allowance. New project, or GitHub Pages / Cloudflare Pages |
+| The agent stopped overnight | It was on your computer. Move it to a server if you need it always on |
+| It asks for more money | Check your OpenCode usage page. Long jobs use more than chatting |
 | Skills do not show up | `hermes skills list` to confirm, then `/reload-skills` in a chat |
-| You are lost | Run `hermes chat` and just say what you are trying to do |
+| You are lost | Run `hermes chat` and describe what you are trying to do |
 
 ---
 
 Nothing here is financial advice. Minting and trading lose money for most people
-who try it. Set a limit before you start and never mint with money you need.
+who try it. Set a limit before you start and never use money you need.
