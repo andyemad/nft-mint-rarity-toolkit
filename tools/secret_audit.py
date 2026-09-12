@@ -38,6 +38,9 @@ PUBLIC_CONSTANTS = {
     # padded selectors
     "0xc87b56dd0000000000000000000000000000000000000000000000000000000000000001",  # tokenURI(uint256)
     "0xc87b56dd00000000000000000000000000000000000000000000000000000000",
+    # fixed probe nonce used to compare the CUDA kernel against the CPU
+    # reference (the deadbeef pattern is the tell)
+    "0x0000000000000000000000000000000000000000000000000000deadbeef1234",
     # evidence transactions cited in skills
     "0x4a29d4f120507dd576ed721b221a076a994a871e9d9ed66b6bb108d2e0cf01b3",
     "0x4e90fa304d950e9944ffe93405497ba16bccd4afb826503429b3c841c95fc447",

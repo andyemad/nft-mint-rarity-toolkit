@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NFT Mint &amp; Rarity Toolkit</title>
-<meta name="description" content="Agent playbooks and working code for NFT minting, rarity ranking, reveal sniping, proof-of-work mints, wallet operations and on-chain forensics.">
-<meta property="og:title" content="NFT Mint &amp; Rarity Toolkit">
-<meta property="og:description" content="Agent playbooks and working code for on-chain NFT work.">
-<meta property="og:type" content="website">
+<title>Can't mint Hashcats? — the complete Hermes agent setup</title>
+<meta name="description" content="Set up a Hermes agent that mints, snipes and ranks on-chain NFT launches. Includes GPU proof-of-work mining, the full skill pack, and the tooling. One OpenCode sub is the only paid requirement.">
+<meta property="og:title" content="Can't mint Hashcats? — the complete Hermes agent setup">
+<meta property="og:description" content="GPU proof-of-work minting, mint recon, rarity ranking and sniping, on a $5/month agent.">
+<meta property="og:type" content="article">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛓️</text></svg>">
 <style>
   :root{
-    --bg:#08090c; --panel:#0e1015; --line:#1d2129; --txt:#e9edf4;
+    --bg:#08090c; --panel:#0e1015; --panel2:#12151c; --line:#1d2129; --txt:#e9edf4;
     --mut:#8b95a7; --accent:#c6ff3d; --accent2:#7c5cff; --gold:#f5b942;
     --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
   }
@@ -20,174 +20,383 @@
   body{
     background:var(--bg); color:var(--txt);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
-    line-height:1.6; -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(900px 500px at 12% -8%,rgba(124,92,255,.16),transparent 60%),
-                     radial-gradient(700px 420px at 92% 4%,rgba(198,255,61,.09),transparent 60%);
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 520px at 10% -8%,rgba(124,92,255,.17),transparent 60%),
+                     radial-gradient(760px 440px at 94% 2%,rgba(198,255,61,.10),transparent 60%);
     background-repeat:no-repeat;
   }
-  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
-  header{padding:88px 0 56px}
-  .kicker{
-    font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:22px
-  }
-  h1{font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:760;max-width:17ch}
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px}
+  header{padding:72px 0 40px}
+  .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  h1{font-size:clamp(32px,5.4vw,54px);line-height:1.06;letter-spacing:-.03em;font-weight:770;max-width:20ch}
   h1 em{font-style:normal;color:var(--accent)}
-  .lede{margin-top:22px;font-size:clamp(16px,2vw,19px);color:var(--mut);max-width:62ch}
+  .lede{margin-top:20px;font-size:clamp(16px,1.9vw,18.5px);color:var(--mut);max-width:66ch}
   .lede b{color:var(--txt);font-weight:600}
-  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;padding:13px 21px;border-radius:9px;
-    font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;
-    transition:transform .12s ease,background .18s ease,opacity .18s ease
-  }
+  .meta{margin-top:22px;display:flex;flex-wrap:wrap;gap:9px}
+  .pill{font-family:var(--mono);font-size:11.5px;color:var(--mut);border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:rgba(255,255,255,.02)}
+  .pill b{color:var(--accent)}
+  .cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:9px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .12s ease,background .18s ease,opacity .18s ease}
   .btn:hover{transform:translateY(-1px)}
   .btn-primary{background:var(--accent);color:#0a0c07}
-  .btn-primary:hover{opacity:.9}
   .btn-ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
   .btn-ghost:hover{background:rgba(255,255,255,.05)}
-  .install{
-    margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:11px;
-    padding:16px 18px;font-family:var(--mono);font-size:13px;color:var(--mut);
-    display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap
-  }
-  .install code{color:var(--txt);word-break:break-all}
-  .install code i{color:var(--accent);font-style:normal}
-  .copy{
-    background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--txt);
-    border-radius:7px;padding:7px 13px;font-family:var(--mono);font-size:12px;cursor:pointer
-  }
-  .copy:hover{background:rgba(255,255,255,.1)}
-  section{padding:56px 0;border-top:1px solid var(--line)}
-  h2{font-size:13px;font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:30px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:14px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:21px}
-  .card h3{font-size:16px;margin-bottom:8px;font-weight:640;letter-spacing:-.01em}
-  .card p{font-size:14px;color:var(--mut)}
-  .card .tag{
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent2);display:block;margin-bottom:11px
-  }
-  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:28px;margin-bottom:26px}
-  .fact .n{font-size:30px;font-weight:730;letter-spacing:-.02em}
-  .fact .l{font-size:12.5px;color:var(--mut);font-family:var(--mono);letter-spacing:.06em}
-  ul.checks{list-style:none;display:grid;gap:11px}
-  ul.checks li{padding-left:26px;position:relative;font-size:15px;color:var(--mut)}
-  ul.checks li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-weight:700}
-  ul.checks b{color:var(--txt);font-weight:600}
-  .promo{
-    background:linear-gradient(135deg,rgba(198,255,61,.07),rgba(124,92,255,.09));
-    border:1px solid var(--line);border-radius:15px;padding:30px
-  }
-  .promo h3{font-size:21px;margin-bottom:9px;letter-spacing:-.015em}
-  .promo p{color:var(--mut);font-size:15px;max-width:62ch}
-  .promo .btn{margin-top:20px}
+  nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin:38px 0 10px}
+  nav.toc h2{font-size:12px;font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+  nav.toc ol{margin-left:18px;display:grid;gap:7px;font-size:14.5px}
+  nav.toc a{color:var(--txt);text-decoration:none;border-bottom:1px solid transparent}
+  nav.toc a:hover{border-color:var(--accent)}
+  section{padding:42px 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  h2.step{font-size:clamp(21px,3vw,27px);letter-spacing:-.02em;margin-bottom:6px;font-weight:700}
+  h2.step span{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.14em;display:block;margin-bottom:9px}
+  h3{font-size:17px;margin:26px 0 9px;font-weight:650;letter-spacing:-.01em}
+  p{color:var(--mut);margin:11px 0}
+  p b,li b{color:var(--txt);font-weight:600}
+  ul,ol{margin:12px 0 12px 22px;display:grid;gap:8px;color:var(--mut)}
+  li code,p code,td code{font-family:var(--mono);font-size:.89em;background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--txt)}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:16px 18px;overflow-x:auto;margin:15px 0;position:relative}
+  pre code{font-family:var(--mono);font-size:12.9px;line-height:1.62;color:var(--txt);background:none;border:none;padding:0;white-space:pre}
+  pre .c{color:var(--mut)}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.3px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-family:var(--mono)}
+  td{color:var(--mut)}
+  .note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:10px;padding:15px 18px;margin:18px 0;font-size:14.6px;color:var(--mut)}
+  .note.warn{border-left-color:var(--gold)}
+  .note b{color:var(--txt)}
+  .hook{background:linear-gradient(135deg,rgba(198,255,61,.08),rgba(124,92,255,.10));border:1px solid var(--line);border-radius:15px;padding:28px;margin:34px 0}
+  .hook h3{margin-top:0;font-size:20px}
   footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
   footer a{color:var(--txt);text-decoration:none;border-bottom:1px solid var(--line)}
   footer a:hover{border-color:var(--accent)}
-  .warn{background:rgba(245,185,66,.07);border:1px solid rgba(245,185,66,.24);border-radius:11px;padding:17px 19px;font-size:14px;color:#e8d9b5;margin-top:26px}
-  .warn b{color:var(--gold)}
+  .top{position:fixed;right:18px;bottom:18px;background:var(--panel);border:1px solid var(--line);color:var(--mut);border-radius:9px;padding:9px 13px;font-size:12.5px;text-decoration:none;font-family:var(--mono)}
+  .copy{position:absolute;top:9px;right:9px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--mut);border-radius:6px;padding:4px 9px;font-family:var(--mono);font-size:11px;cursor:pointer}
+  .copy:hover{background:rgba(255,255,255,.12);color:var(--txt)}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <div class="kicker">Robinhood Chain + Ethereum</div>
-  <h1>NFT mint &amp; rarity <em>toolkit</em></h1>
+  <div class="kicker">The complete setup</div>
+  <h1>Can't mint Hashcats? <em>Run an agent that can.</em></h1>
   <p class="lede">
-    <b>31 agent playbooks and the code behind them:</b> minting, rarity ranking that
-    matches OpenSea rank for rank, reveal sniping, proof-of-work mints, wallet
-    operations, and on-chain forensics. This is what one agent learned doing the
-    work for real, with the scripts that did it and the failures kept alongside
-    the fixes. Works with any LLM provider; no API keys required for the
-    read-only paths.
+    This is the full setup for a Hermes agent that mints, snipes, ranks and audits
+    on-chain NFT launches. It includes the <b>GPU proof-of-work mining farm</b>, the
+    skill pack distilled from real on-chain work, and the tooling to run it.
+    <b>One OpenCode subscription is the only thing you pay for.</b>
   </p>
-  <div class="cta">
-    <a class="btn btn-primary" href="https://github.com/andyemad/nft-mint-rarity-toolkit">View the repository →</a>
-    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip">Download ZIP</a>
+  <div class="meta">
+    <span class="pill"><b>31</b> skills</span>
+    <span class="pill"><b>$5</b>/mo for the model</span>
+    <span class="pill">Robinhood Chain + Ethereum</span>
+    <span class="pill">VPS or laptop</span>
+    <span class="pill">~30 min setup</span>
   </div>
-  <div class="install">
-    <code><i>$</i> curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh | bash</code>
-    <button class="copy" data-copy="curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh | bash">copy</button>
+  <div class="cta">
+    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">1. Get OpenCode Go →</a>
+    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">2. Get the repo →</a>
   </div>
 </header>
 
-<section>
-  <h2>What it covers</h2>
-  <div class="grid">
-    <div class="card"><span class="tag">rarity</span><h3>Rank a collection</h3><p>OpenRarity information content, validated rank for rank against OpenSea on a 5000-token collection. Includes reveal detection, full-supply sweeps, and a holdings dashboard.</p></div>
-    <div class="card"><span class="tag">mint</span><h3>Fire a public mint</h3><p>SeaDrop kit for many wallets at once: recon, fresh wallets, funding check, eth_call pre-flight, pre-signed blast, then confirmation that the token landed.</p></div>
-    <div class="card"><span class="tag">snipe</span><h3>Buy rare at the floor</h3><p>Seaport buy path through OpenSea fulfillment data, plus a read-only diagnostic that prints the actual revert reason so you are not guessing.</p></div>
-    <div class="card"><span class="tag">proof-of-work</span><h3>Mine the nonce</h3><p>CPU, CUDA, and Metal miners for FAB4200 and Hashcats style preimages, with self-checks that catch a broken hash before you rent a GPU.</p></div>
-    <div class="card"><span class="tag">wallets</span><h3>Reconstruct P&amp;L</h3><p>FIFO matching of every acquisition and disposition across Ethereum and Robinhood Chain. Mints are separated from buys, and gas is counted as a cost.</p></div>
-    <div class="card"><span class="tag">forensics</span><h3>Audit a launch</h3><p>Wash-ring tells, holder concentration, contract-stack discovery, developer-wallet link tests, and dust-token scam assessment, all without an API key.</p></div>
-  </div>
-</section>
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#what">What you end up with</a></li>
+    <li><a href="#hermes">Install Hermes</a></li>
+    <li><a href="#opencode">Connect OpenCode Go (~$5/mo)</a></li>
+    <li><a href="#skills">Install the skills</a></li>
+    <li><a href="#pow">GPU proof-of-work minting</a></li>
+    <li><a href="#toolkit">The rest of the toolkit</a></li>
+    <li><a href="#discord">Connect Discord</a></li>
+    <li><a href="#verify">Verify it works</a></li>
+    <li><a href="#breaks">What breaks, and why</a></li>
+  </ol>
+</nav>
 
-<section>
-  <h2>What is in the repository</h2>
-  <div class="facts">
-    <div class="fact"><div class="n">31</div><div class="l">agent playbooks</div></div>
-    <div class="fact"><div class="n">200+</div><div class="l">reference docs</div></div>
-    <div class="fact"><div class="n">0</div><div class="l">secrets in tree</div></div>
-    <div class="fact"><div class="n">$0</div><div class="l">required API keys</div></div>
-  </div>
-  <ul class="checks">
-    <li><b>Keyless where it can be.</b> Public RPCs and marketplace pages carry the on-chain facts. A paid key only unlocks the trading paths.</li>
-    <li><b>Simulation before broadcast.</b> Every spending script runs eth_call first. It is what stopped a batch of 49 reverts.</li>
-    <li><b>Caps in the code.</b> Per-buy, per-day, and reserve limits are constants, and live execution ships disabled behind an explicit flag.</li>
-    <li><b>Corrections kept in.</b> A rarity formula that was wrong, a mint price that was misread, and a sniper path that reverted every time are all still in the skills, because the correction is what makes them useful.</li>
+<section id="what">
+  <h2 class="step"><span>01</span>What you end up with</h2>
+  <p>
+    A Hermes agent is a process with a shell, a scheduler and a set of tools. With
+    this setup it has:
+  </p>
+  <ul>
+    <li><b>31 skills</b> built from real on-chain work: mint execution, rarity
+      ranking that matches OpenSea rank for rank, reveal sniping, secondary buys,
+      wallet forensics, contract and minter analysis, collection production.</li>
+    <li><b>A rundown toolkit</b>: rarity engines, a SeaDrop multi-wallet mint tool,
+      a Seaport buy path with a fill diagnostic, wallet P&amp;L reconstruction,
+      keyless volume and minter-legitimacy analysis, and Solidity drop mechanics.</li>
+    <li><b>Proof-of-work minting that scales</b>: a CUDA kernel verified against a CPU
+      reference, plus a Modal farm that mines Hashcats across N H100 shards and
+      checks every solution before it broadcasts.</li>
+    <li><b>A scheduler</b>, so a watch job can ping you when a collection reveals
+      while you are asleep.</li>
   </ul>
-  <div class="warn">
-    <b>Read this before you spend anything.</b> The toolkit moves real assets on public
-    chains. Nothing here is financial advice, and no strategy in it is profitable by
-    construction. Simulate first, set caps, and approve deliberately.
+  <p>It runs the same on a laptop and on a server. A server just means it keeps
+    working when you close the lid, which is what you want for anything on a timer.</p>
+</section>
+
+<section id="hermes">
+  <h2 class="step"><span>02</span>Install Hermes</h2>
+
+  <h3>On a VPS, if you want it always on</h3>
+  <p>Ubuntu 22.04 or 24.04, 2 vCPU, 4 GB RAM, 40 GB disk. Two gigabytes is enough
+    for the agent alone. Take four if you also want a browser running.</p>
+  <pre><button class="copy">copy</button><code>ssh root@YOUR_SERVER_IP
+
+adduser hermes &amp;&amp; usermod -aG sudo hermes
+rsync --archive --chown=hermes:hermes ~/.ssh /home/hermes/
+ufw allow OpenSSH &amp;&amp; ufw enable
+loginctl enable-linger hermes     <span class="c"># without this, your bot dies when SSH closes</span>
+
+su - hermes
+sudo apt update &amp;&amp; sudo apt install -y git curl tmux build-essential python3-venv</code></pre>
+
+  <h3>On your own machine</h3>
+  <p>Skip to the install. macOS, Linux and WSL2 all work.</p>
+
+  <h3>The install</h3>
+  <pre><button class="copy">copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+source ~/.bashrc
+hermes --version
+hermes doctor</code></pre>
+  <p>The installer handles Python, Node, ripgrep, ffmpeg, the clone and the virtual
+    environment. <code>hermes doctor</code> tells you what else it needs.</p>
+</section>
+
+<section id="opencode">
+  <h2 class="step"><span>03</span>Connect OpenCode Go (~$5/mo)</h2>
+  <p>This is the part that keeps the cost down. Around $5 a month running
+    <code>deepseek-v4.1-flash</code>, which is fast and cheap enough to leave on a
+    scheduler.</p>
+  <ol>
+    <li>Subscribe at <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai/go?ref=0N4C2C5TNK</a></li>
+    <li>Copy the API key from the dashboard.</li>
+    <li>Put it in the environment file:</li>
+  </ol>
+  <pre><button class="copy">copy</button><code>hermes config env-path       <span class="c"># prints the file, usually ~/.hermes/.env</span>
+printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env
+chmod 600 ~/.hermes/.env</code></pre>
+  <ol start="4">
+    <li>Select the provider and model, then confirm it answers:</li>
+  </ol>
+  <pre><button class="copy">copy</button><code>hermes model                 <span class="c"># choose OpenCode Go, then deepseek-v4.1-flash</span>
+hermes chat -q "reply with OK and name the model you are"</code></pre>
+  <div class="note">
+    <b>Watch the usage windows.</b> The dashboard tracks a 5-hour window and a weekly
+    one, with the reset time on each. Tool-heavy runs cost more than chat, so check
+    it after your first long autonomous run.
   </div>
 </section>
 
-<section>
-  <h2>Run it on your own agent</h2>
-  <ul class="checks">
-    <li>Install <b>Hermes Agent</b> on a VPS, connect it to Discord, and install the skills with a single command.</li>
-    <li><b>INSTALL.md</b> covers the rest: VPS hardening, provider setup, the Discord bot from scratch, the gateway as a service, a verification checklist, and security notes.</li>
-  </ul>
-  <div class="cta">
-    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit/blob/main/INSTALL.md">Read INSTALL.md →</a>
-    <a class="btn btn-ghost" href="https://hermes-agent.nousresearch.com/docs/">Hermes docs →</a>
+<section id="skills">
+  <h2 class="step"><span>04</span>Install the skills</h2>
+  <pre><button class="copy">copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
+  <p>That copies all 31 skills into <code>~/.hermes/skills/</code>. <code>--profile
+    NAME</code> installs into a named profile, <code>--dry-run</code> previews, and
+    re-running is safe because conflicting skills are moved aside rather than
+    overwritten.</p>
+  <pre><button class="copy">copy</button><code>hermes skills list | head -40
+hermes chat -s nft-rarity-engine -q "what does this skill let you do"
+
+<span class="c"># extra dependencies for the signing and trading paths</span>
+pip install eth-account coincurve pycryptodome</code></pre>
+</section>
+
+<section id="pow">
+  <h2 class="step"><span>05</span>GPU proof-of-work minting</h2>
+  <p>This is the part most people ask about, so here is the whole loop.</p>
+
+  <h3>What the contract is asking for</h3>
+  <p>You get a target and you search for a nonce whose hash lands under it. Two
+    schemes are covered, both single-Keccak-block preimages, which is why a GPU
+    kernel beats a CPU by orders of magnitude:</p>
+  <pre><code>Hashcats   keccak256( miner(20) ‖ nonce(32) ‖ prev(32) ‖ anchor(32) ) &lt; target
+FAB4200    keccak256( chainid(32) ‖ contract(20) ‖ minter(20) ‖ nonce(32) ) &lt; target</code></pre>
+  <p>Hashcats links each token to the last one through <code>prev</code> and pins the
+    round to a block with <code>anchor</code>, so the token chain is sequential and
+    cannot be parallelized across tokens.</p>
+
+  <h3>Why a CPU does not work</h3>
+  <p>At 40 bits the expected work is around <b>1.1e12 hashes per solve</b>. A laptop
+    does tens of millions per second. An H100 does about <b>7 GH/s</b>. One of those
+    finishes in minutes.</p>
+
+  <h3>Check the kernel before you rent anything</h3>
+  <pre><button class="copy">copy</button><code>cd toolkit/pow
+./hcminer selfcheck 0x&lt;miner&gt; 0x&lt;prev&gt; 0x&lt;anchor&gt;</code></pre>
+  <p>That compares the optimised path against an independent reference Keccak over
+    200,000 nonces. A kernel with an endianness bug mines forever and finds nothing,
+    and you pay for every second of it. The two bugs to know: the nonce has to be
+    byte-swapped before it is XORed into the state word, and the leading-zero test
+    has to run against the digest word in the right byte order. Both are fixed in
+    the shipped source.</p>
+
+  <h3>The farm</h3>
+  <p><code>toolkit/pow/hashcats-farm/</code> is the full loop: verified CUDA kernel,
+    Modal H100 shards, local signing and broadcast.</p>
+  <pre><button class="copy">copy</button><code>pip install modal eth-account pycryptodome coincurve
+modal setup
+
+modal run hashcats_modal.py --mode probe         <span class="c"># kernel vs CPU reference</span>
+modal run hashcats_modal.py --mode bench         <span class="c"># GH/s on an H100</span>
+python3 hashcats.py state                        <span class="c"># current round</span>
+python3 farm.py --shards 4 --minutes 30 --dry    <span class="c"># verify + simulate, no spend</span>
+python3 farm.py --shards 8 --minutes 30 --key ~/.hermes/secrets/hashcats_key</code></pre>
+  <p>Every candidate is verified against a Python keccak and re-checked against the
+    live round before broadcast, so a stale nonce never costs gas.</p>
+
+  <div class="note warn">
+    <b>Two things that will stop you.</b> A working farm with an unfunded broadcasting
+    wallet produces nothing, so fund the wallet first. And read the round once, then
+    mine: the Robinhood RPC rate-limits per IP on reads and writes, so a shard
+    polling in a loop gets 429s and looks like a protocol failure.
   </div>
+
+  <div class="note warn">
+    <b>Costs, plainly.</b> A GPU mint is a contest entry, not a button. You pay for
+    compute whether or not you land a token, and other miners race the same round.
+    Do the arithmetic on your own spend, and stop when the round goes stale.
+  </div>
+
+  <h3>Build it yourself</h3>
+  <pre><button class="copy">copy</button><code>gcc -O3 -fopenmp -o hcminer hcminer.c
+nvcc -O3 -o hcminer_cuda hcminer.cu</code></pre>
+  <p>Skip <code>-march=native</code> on a cloud build: the build host is not the
+    execution host and the binary dies with SIGILL. On macOS, clang has no OpenMP,
+    so install <code>libomp</code> or build single-threaded with the stub in
+    <code>toolkit/pow/README.md</code>.</p>
+</section>
+
+<section id="toolkit">
+  <h2 class="step"><span>06</span>The rest of the toolkit</h2>
+  <pre><button class="copy">copy</button><code>cd toolkit
+
+<span class="c"># rarity: rank a collection, matching OpenSea's numbers</span>
+python3 rarity/rarity_engine.py compute
+HELD="12,44,91" python3 rarity/gen_dash.py
+
+<span class="c"># recon before spending anything</span>
+python3 analysis/collection_volume.py &lt;contract&gt; 3000000
+python3 analysis/minter_legitimacy.py &lt;contract&gt; &lt;deploy_block&gt;
+python3 analysis/sweep_scope.py &lt;opensea-slug&gt;
+
+<span class="c"># SeaDrop public mint across many wallets</span>
+python3 mint/seadrop_fire.py recon  &lt;collection&gt;
+python3 mint/seadrop_fire.py wallet &lt;collection&gt; 3
+python3 mint/seadrop_fire.py fire   &lt;collection&gt; --keyfile ~/.hermes/secrets/x_key --quantity 1
+
+<span class="c"># buy from secondary — dry run first, --live spends</span>
+python3 sniper/buy_secondary.py &lt;slug&gt; --target-eth 0.001
+
+<span class="c"># wallet P&amp;L: mints separated from buys, gas counted</span>
+python3 wallets/wallet_recon.py &lt;address&gt;</code></pre>
+  <p>Every spending path simulates with <code>eth_call</code> first and needs an
+    explicit flag to broadcast. That is deliberate, and it is what stops a batch of
+    reverts.</p>
+  <p>For launches like SpawnHood, the useful skills are <code>nft-mint-recon</code>
+    for working out what the mint actually is, <code>ethereum-data-pipelines</code>
+    for reverse-engineering an unknown mint site, and
+    <code>rh-chain-rarity-sniping</code> for getting rare ones at the floor after a
+    reveal.</p>
+</section>
+
+<section id="discord">
+  <h2 class="step"><span>07</span>Connect Discord</h2>
+  <p>Worth doing if you want to talk to the agent from your phone instead of a
+    terminal.</p>
+  <ol>
+    <li><a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> → New Application. The bot reads
+      <b>message text</b>, so it needs <b>Message Content Intent</b> under the Bot tab
+      or it will look completely dead. Reset the token and copy it.</li>
+    <li>Invite it with scopes <code>bot</code> and <code>applications.commands</code>,
+      and permissions <code>274878286912</code>:</li>
+  </ol>
+  <pre><code>https://discord.com/oauth2/authorize?client_id=YOUR_APP_ID&amp;scope=bot+applications.commands&amp;permissions=274878286912</code></pre>
+  <ol start="3">
+    <li>Copy your user ID: Settings → Advanced → Developer Mode, then right-click
+      your name → Copy User ID.</li>
+    <li>Configure and run:</li>
+  </ol>
+  <pre><button class="copy">copy</button><code>hermes gateway setup        <span class="c"># choose Discord, paste token + user ID</span>
+hermes gateway run          <span class="c"># foreground test first</span>
+hermes gateway install      <span class="c"># then as a service</span>
+hermes gateway start</code></pre>
+  <p>Without <code>DISCORD_ALLOWED_USERS</code> the gateway denies everyone. In
+    server channels the bot answers only when mentioned, unless you add the channel
+    to <code>DISCORD_FREE_RESPONSE_CHANNELS</code>.</p>
+</section>
+
+<section id="verify">
+  <h2 class="step"><span>08</span>Verify it works</h2>
+  <pre><button class="copy">copy</button><code>hermes --version                       <span class="c"># 1. installed</span>
+hermes doctor                          <span class="c"># 2. dependencies and config</span>
+hermes chat -q "reply with OK"         <span class="c"># 3. provider and key</span>
+hermes skills list | grep rarity       <span class="c"># 4. skills present</span>
+hermes gateway status                  <span class="c"># 5. Discord service up</span>
+tail -20 ~/.hermes/logs/gateway.log    <span class="c"># 6. gateway connected</span></code></pre>
+  <p>Then an end-to-end test that spends nothing:</p>
+  <pre><button class="copy">copy</button><code>cd toolkit
+python3 rarity/rarity_engine.py compute         <span class="c"># needs an OpenSea key</span>
+modal run pow/hashcats_modal.py --mode probe    <span class="c"># kernel agrees with CPU</span>
+python3 pow/hashcats-farm/farm.py --shards 2 --minutes 5 --dry</code></pre>
+</section>
+
+<section id="breaks">
+  <h2 class="step"><span>09</span>What breaks, and why</h2>
+  <table>
+    <tr><th>Symptom</th><th>Cause</th></tr>
+    <tr><td>Bot online, silent</td><td>Not mentioned, or Message Content Intent is off</td></tr>
+    <tr><td>Gateway up, everyone denied</td><td><code>DISCORD_ALLOWED_USERS</code> missing or wrong</td></tr>
+    <tr><td>Bot dies when SSH closes</td><td><code>loginctl enable-linger</code> missing, or stale service definition</td></tr>
+    <tr><td>403 from the Robinhood RPC</td><td>Python <code>urllib</code> without a browser <code>User-Agent</code></td></tr>
+    <tr><td>429 from the Robinhood RPC</td><td>It rate-limits per IP on reads and writes. Batch and back off</td></tr>
+    <tr><td>Kernel mines forever, finds nothing</td><td>Nonce endianness in the state XOR, or the leading-zero test on the wrong byte order. Run <code>selfcheck</code></td></tr>
+    <tr><td>Farm finds solutions, nothing mints</td><td>The broadcasting wallet is unfunded</td></tr>
+    <tr><td>GPU build dies with SIGILL</td><td><code>-march=native</code> built on a different host</td></tr>
+    <tr><td>Rarity disagrees with OpenSea</td><td>Trait-frequency heuristic used instead of OpenRarity information content</td></tr>
+    <tr><td>Skills installed, not loading</td><td><code>/reload-skills</code> in a running session</td></tr>
+  </table>
 </section>
 
 <section>
-  <div class="promo">
-    <h3>Need a model to run it on?</h3>
+  <div class="hook">
+    <h3>Get the model first</h3>
     <p>
-      I run my Hermes agents on <b>OpenCode</b>. One plan covers the agent and the coding
-      CLIs, which keeps an always-on VPS gateway affordable. Signing up with my link
-      supports the work behind this toolkit.
+      The guide is free. You need an OpenCode subscription to run it, around $5 a
+      month, and that covers the agent and the coding CLIs together. Signing up
+      through this link is what supports the work behind the toolkit.
     </p>
-    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Try OpenCode →</a>
+    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get OpenCode Go →</a>
+    <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">Browse the repo →</a>
   </div>
 </section>
 
 <footer>
-  <div class="wrap" style="padding:0">
-    <p>
-      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
-      · MIT · Primary chain: Robinhood Chain (4663)
-    </p>
-    <p style="margin-top:9px">The playbooks and code are provided as-is. Check every on-chain fact against the chain before you act on it.</p>
-  </div>
+  <p>
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
+    · MIT · Robinhood Chain (4663) and Ethereum
+  </p>
+  <p style="margin-top:9px">
+    Nothing here is financial advice, and no strategy in it is profitable by
+    construction. Every one has a real loss mode documented next to it. Check
+    on-chain facts against the chain before acting.
+  </p>
 </footer>
 
 </div>
+<a class="top" href="#">↑ top</a>
 <script>
-document.querySelectorAll('.copy').forEach(function (b) {
+document.querySelectorAll('pre .copy').forEach(function (b) {
   b.addEventListener('click', function () {
-    var t = b.getAttribute('data-copy');
-    navigator.clipboard.writeText(t).then(function () {
-      var old = b.textContent; b.textContent = 'copied';
-      setTimeout(function () { b.textContent = old; }, 1400);
+    var pre = b.parentElement, code = pre.querySelector('code').innerText;
+    navigator.clipboard.writeText(code).then(function () {
+      b.textContent = 'copied';
+      setTimeout(function () { b.textContent = 'copy'; }, 1400);
     });
   });
 });
