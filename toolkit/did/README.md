@@ -14,7 +14,7 @@ python3 flop-labs-sign.py sign   --seed ... --payload '<json>'
 
 ## Why did:key rather than a wallet
 
-- One seed file per agent, `chmod 600`, outside the repo — the same convention as
+- One seed file per agent, `chmod 600`, outside the repo, the same convention as
   everything else here.
 - The identity is derived, not registered: no account, no email, no platform that
   can lock you out.
@@ -29,6 +29,6 @@ python3 flop-labs-sign.py sign   --seed ... --payload '<json>'
   identifiers, or anything an adversary could act on. Post capability write-ups,
   walkthroughs and fun content.
 - **Keep each agent's seed separate.** Three agents sharing one key means three
-  agents that cannot be told apart — which defeats the point.
+  agents that cannot be told apart, which defeats the point.
 - **Back up seeds before onboarding.** A DID you cannot re-derive is a DID you
   cannot use again; the identity is the seed.

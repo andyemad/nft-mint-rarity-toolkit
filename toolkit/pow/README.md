@@ -10,7 +10,7 @@ make the economics positive.
 
 ## Schemes implemented
 
-**FAB4200-style** (`pow_miner.c`, `fabminer_gpu.cu`) — Robinhood Chain 4663,
+**FAB4200-style** (`pow_miner.c`, `fabminer_gpu.cu`), Robinhood Chain 4663,
 contract `0xEF08089e4E082071AA39Ce99C460c0250744d758`:
 
 ```
@@ -18,7 +18,7 @@ preimage  = chainid_u32_be(32) || contract(20) || minter(20) || nonce_u256_be(32
 accept if keccak256(preimage) has >= target leading zero bits
 ```
 
-**Hashcats-style** (`hcminer.c`, `hcminer.cu`) — sequential work chain:
+**Hashcats-style** (`hcminer.c`, `hcminer.cu`), a sequential work chain:
 
 ```
 preimage  = miner(20) || nonce_u256_be(32) || prev(32) || anchor(32)                // 116 bytes = ONE keccak block
@@ -27,10 +27,10 @@ prev      = the work value of the previous token; the chain is sequential
 ```
 
 Both are one Keccak-f permutation on a single 136-byte block, so the inner loops
-are hand-unrolled and keep the state pre-absorbed — that is where the throughput
+are hand-unrolled and keep the state pre-absorbed, which is where the throughput
 comes from.
 
-**`metal_sha256_bruteforce.swift`** — a Metal SHA-256 brute-forcer, correct and
+**`metal_sha256_bruteforce.swift`** is a Metal SHA-256 brute-forcer, correct and
 verified (hashes `"abc"` to `ba7816bf…`). Copy it and change the target prefixes
 and wordlist path.
 
@@ -45,7 +45,7 @@ gcc -O3 -fopenmp -o hcminer hcminer.c
 nvcc -O3 -o hcminer_cuda hcminer.cu
 ```
 
-**Do not use `-march=native` for a cloud build** — the build host is not the
+**Do not use `-march=native` for a cloud build.** The build host is not the
 execution host, and the binary dies with SIGILL (`rc=-4`). Verified the hard way.
 
 **macOS:** stock clang has no OpenMP, so `-fopenmp` fails with
@@ -83,7 +83,7 @@ clang -O2 -Wno-unknown-pragmas -Ishim -o powminer pow_miner.c shim/omp_stub.c
 
 `powminer` prints `FOUND nonce=N bits=B hash=0x…` plus the ready calldata
 `0xa0712d68…` (`mint(uint256)`). Broadcast it with
-`../mint/send_mint_tx.py <keyfile> <nonce>` — dry-run first.
+`../mint/send_mint_tx.py <keyfile> <nonce>`. Dry-run first.
 
 ## Verification status
 
@@ -107,8 +107,8 @@ clang -O2 -Wno-unknown-pragmas -Ishim -o powminer pow_miner.c shim/omp_stub.c
 - **Difficulty is per-sender on some contracts.** Read `targetFor(msg.sender)` /
   `currentTarget()` rather than assuming a constant.
 - **Confirm plumbing without spending.** `eth_estimateGas` on the mint call with
-  a dummy nonce reverts with the contract's own difficulty error — for FAB4200
+  a dummy nonce reverts with the contract's own difficulty error. For FAB4200
   `BelowFloor(uint8,uint8)`, selector `0xfcf93064`, with got/need in the data.
   That one call proves calldata, from-address, gas path and live difficulty.
-- **Never leave a broadcast-capable script in a loop unattended** — the next
+- **Never leave a broadcast-capable script in a loop unattended.** The next
   round starts the moment the last one resolves.

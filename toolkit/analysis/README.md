@@ -4,9 +4,9 @@ Answer "what really happened here" from on-chain data, with no API keys.
 
 | File | Question it answers |
 |---|---|
-| `collection_volume.py` | "How much has this collection traded on secondary?" — full-history volume from public RPC logs. |
-| `minter_legitimacy.py` | "Are these minters real, or a wash ring?" — mint vs secondary classification, recipient/submitter concentration, payment mix by real `tx.value`, wash-ring tells. |
-| `sweep_scope.py` | "What would sweeping this floor cost?" — a zero-spend scoping pass over a collection's listings. |
+| `collection_volume.py` | All-time secondary volume for a collection, from public RPC logs. |
+| `minter_legitimacy.py` | Mint versus secondary classification, recipient and submitter concentration, payment mix by real `tx.value`, and wash-ring tells. |
+| `sweep_scope.py` | Zero-spend scoping pass over a collection's listings. |
 
 ```bash
 python3 collection_volume.py <contract> [blocks_back] [rpc_url]
@@ -15,7 +15,7 @@ python3 sweep_scope.py <opensea_slug> [--usd <eth_price>]
 ```
 
 `collection_volume.py` and `minter_legitimacy.py` scan `eth_getLogs` from deploy
-to head — run them in the background for wide ranges, and expect 429s from any
+to head. Run them in the background for wide ranges, and expect 429s from any
 public RPC on a large span.
 
 ## Sale heuristic (and its limits)
@@ -27,7 +27,7 @@ simple and it is honest for native-ETH sales. It **misses**:
 - WETH-denominated sales (no native value on the tx)
 - protocol-mediated purchases where the wallet only receives a residual or a
   refund while a semantic event records the full purchase
-- bundles and sweeps (one tx, many tokens — collapse them into one purchase or
+- bundles and sweeps, where one tx carries many tokens. Collapse them into one purchase, or
   you will invent volume)
 - account-abstraction / relay mints whose outer `tx.value` is zero
 
@@ -48,7 +48,7 @@ event before valuing anything from raw transfers.
 - **Label provenance.** Separate what you *read*, what you *computed*, and what
   you *inferred*. "Contract says X", "I derived Y from logs", "this suggests Z".
 - **One source is not corroboration.** Cross-check a number against a second
-  source before publishing it — and when a first number was wrong, keep the
+  source before publishing it. When a first number was wrong, keep the
   correction in the write-up. That is the useful part.
 - **Never publish** local paths, keys, session metadata, private chat identifiers
   or third-party wallet labels.

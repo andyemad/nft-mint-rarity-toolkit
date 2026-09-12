@@ -107,7 +107,7 @@ def main():
     print(f"scanned {files} text files under {ROOT}\n")
 
     if hits:
-        print(f"HARD FAIL — {len(hits)} hit(s):")
+        print(f"HARD FAIL: {len(hits)} hit(s)")
         for rel, ln, name, sample in hits:
             print(f"  {rel}:{ln}  [{name}]  {sample}")
     else:
@@ -115,7 +115,7 @@ def main():
 
     print()
     if unknown:
-        print(f"UNREVIEWED 64-hex strings — {len(unknown)} (triage by reading context):")
+        print(f"UNREVIEWED 64-hex strings: {len(unknown)} (triage by reading context)")
         for h, c in sorted(unknown.items(), key=lambda x: -x[1]):
             print(f"  x{c}  {h}")
     else:

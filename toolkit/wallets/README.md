@@ -20,7 +20,7 @@ python3 wallet_recon.py <address>
 - **Keys are files, not arguments.** Key material in an argument lands in shell
   history and in `ps`. Read it from a path at runtime.
 - **Print the address, never the key.** After writing a key, re-read the file and
-  derive the address again — if that fails, the backup is worthless.
+  derive the address again. If that fails, the backup is worthless.
 - **`chmod 600` and a `700` directory.** Anything looser is a finding, not a
   preference.
 - **Never import a user's existing wallet key into a script just to move
@@ -32,7 +32,7 @@ python3 wallet_recon.py <address>
 - **WETH is the cleanest money-flow source** on Ethereum: exact gross ERC-20
   transfers with no gas entanglement. Use it when the trade is WETH-denominated.
 - **On Robinhood Chain, use the state-change coin delta**, not the
-  internal-transfers endpoint — that endpoint *misses* Seaport sweep proceeds and
+  internal-transfers endpoint. That endpoint *misses* Seaport sweep proceeds and
   silently understates every bundle purchase.
 - **Mints are not buys.** A token received for free or for gas only is not a
   market purchase; conflating the two inflates cost basis and destroys the P&L.

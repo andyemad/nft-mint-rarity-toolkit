@@ -11,7 +11,7 @@ lower score = rarer
 
 This matches OpenSea's rarity tab rank-for-rank (verified on a 5000-token
 collection). A `1/percent` trait-frequency heuristic is NOT the same thing and
-was empirically wrong — don't ship it.
+was wrong in testing, so do not ship it.
 
 ## Files
 
@@ -50,7 +50,7 @@ python3 trait_sampler.py --rpc https://eth.rpc.blxrbdn.com \
 
 Each engine has module-level constants at the top: `CONTRACT`, `CHAIN`,
 `SUPPLY`, `RPC`, `BASE` (where JSON state is written) and `WALLET`. Edit them, or
-copy the file and treat it as a template — that is how they were written.
+copy the file and treat it as a template. That is how they were written.
 
 Data is cached on disk (`~/.hermes/rarity/<collection>/{traits,scores}.json`) so
 a re-rank costs nothing.

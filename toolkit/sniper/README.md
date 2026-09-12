@@ -1,7 +1,6 @@
 # Sniper
 
-Buy from the secondary market programmatically — and diagnose exactly why a fill
-fails before spending anything.
+Buy from the secondary market programmatically, and find out exactly why a fill fails before you spend anything.
 
 ## Files
 
@@ -14,7 +13,7 @@ fails before spending anything.
 ```bash
 python3 buy_secondary.py <collection_slug>                     # dry-run, no spend
 python3 buy_secondary.py <collection_slug> --target-eth 0.001  # only under this price
-python3 buy_secondary.py <collection_slug> --live              # spends — approval first
+python3 buy_secondary.py <collection_slug> --live              # spends, approval first
 ```
 
 ## The path
@@ -29,7 +28,7 @@ events feed  ->  /listings/fulfillment_data  ->  ABI-encode  ->  eth_call  ->  s
    with a valid key; `/api/v2/events/collection/{slug}?event_type=listing` works.
 2. **Fetch fulfillment data** for the specific listing hash and chain.
 3. **Encode and simulate.** `eth_call` from the *funded* address. If it reverts,
-   read the revert data — an encoding bug, a stale order, a taken order, and a
+   read the revert data. An encoding bug, a stale order, a taken order, and a
    wrong-chain order all look identical until you decode.
 4. **Only then sign and broadcast**, with the fee fields set from live
    `baseFee`/`maxPriorityFee`, and a hard cap on what you are willing to pay.
@@ -54,11 +53,11 @@ events feed  ->  /listings/fulfillment_data  ->  ABI-encode  ->  eth_call  ->  s
   `calldata_suffix` field OpenSea returns is not the function selector.
 - **Listings on a wrapped/native mix:** on Ethereum mainnet settlement can be
   native ETH *or* WETH; do not assume one.
-- **`next` cursors are opaque base64** and must be passed as `&next=` — appending
+- **`next` cursors are opaque base64** and must be passed as `&next=`. Appending
   them as a standalone URL parameter set silently returns page 1 forever.
 - **A revert is not always an error in your code.** A missing operator approval,
   a taken order and a restricted-zone transfer rule (ERC-721-C) all present
   differently on-chain; identify which one you have before rewriting the encoder.
   Some collections (ERC-721-C with a transfer-security registry) reject *all*
-  operator/helper/conduit transfers no matter who signs — only an owner-initiated
+  operator/helper/conduit transfers no matter who signs. Only an owner-initiated
   transfer can pass, which makes an automated flip impossible by design.

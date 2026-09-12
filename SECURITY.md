@@ -15,7 +15,7 @@ Wallet addresses that appear in the code are **placeholders**
 (`0x1111111111111111111111111111111111111111`,
 `0x2222222222222222222222222222222222222222`, `0x1111…1111`). They are not real
 accounts and hold nothing. Contract addresses, event topics and transaction
-hashes are public chain data and are kept deliberately — they are the evidence
+hashes are public chain data and are kept deliberately, because they are the evidence
 the skills cite.
 
 ## The key-handling convention used throughout

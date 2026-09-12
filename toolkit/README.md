@@ -1,4 +1,4 @@
-# toolkit — runnable code
+# toolkit
 
 Grouped by the job to be done. Each directory has its own README with usage,
 verified constants and the failure modes that were actually hit.
@@ -7,10 +7,10 @@ verified constants and the failure modes that were actually hit.
 |---|---|
 | [`rarity/`](rarity/) | Rank a collection by rarity (OpenRarity information content), detect reveals, render a dashboard |
 | [`mint/`](mint/) | SeaDrop multi-wallet public mint; local signer/broadcaster for value-zero mints |
-| [`pow/`](pow/) | Proof-of-work nonce miners — CPU (OpenMP), CUDA, Metal; FAB4200- and Hashcats-style preimages |
+| [`pow/`](pow/) | Proof-of-work nonce miners in CPU (OpenMP), CUDA and Metal; FAB4200 and Hashcats style preimages |
 | [`sniper/`](sniper/) | Secondary-market buys via Seaport, plus a read-only fill diagnostic that shows the real revert |
 | [`wallets/`](wallets/) | Wallet creation/key handling and multi-chain NFT P&L reconstruction |
-| [`analysis/`](analysis/) | Secondary volume, minter legitimacy, sweep scoping — all keyless |
+| [`analysis/`](analysis/) | Secondary volume, minter legitimacy and sweep scoping, all keyless |
 | [`contracts/`](contracts/) | Solidity drop mechanics (reset-on-mint decaying price) |
 | [`did/`](did/) | did:key agent identity + signed writes |
 

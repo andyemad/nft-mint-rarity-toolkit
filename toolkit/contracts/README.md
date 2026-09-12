@@ -3,7 +3,7 @@
 Solidity sources for the drop mechanics described in
 `skills/web3/nft-collection-production/`.
 
-## `DecayedMint.sol` — reset-on-mint decaying price
+## `DecayedMint.sol`: reset-on-mint decaying price
 
 An ERC-721 that starts at a high price, decays toward a floor every block, and
 **resets to the start price on every mint**. Early minters pay more; the decay
@@ -41,6 +41,6 @@ python3 compile_check_sol.py DecayedMint.sol
   a `price_proof.js` that replays the curve block by block).
 - **Never deploy a real-money mint before the distribution/demand gate passes.**
   The lifecycle documented in `nft-collection-production` is distribution first,
-  deploy second — a contract has never sold a collection.
+  deploy second. A contract has never sold a collection.
 - Sanity-check royalty and metadata-replacement authority before mint day: who
   can change the base URI after sale, and does the marketplace respect it?

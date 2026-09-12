@@ -12,7 +12,7 @@ value-zero PoW mints.
 
 ## SeaDrop flow
 
-The order matters — every step exists because skipping it cost a real drop.
+The order matters. Every step is here because skipping it cost a real drop.
 
 ```bash
 # 1. recon: is it open, price, cap, window, fee recipient, supply left
@@ -43,7 +43,7 @@ revert):
 
 **Before any broadcast, always:** compare `totalSupply()` to `maxSupply()`. A
 closed or sold-out stage is the most common reason a "working" mint script fails
-— and it fails after you have already paid for the attempt.
+and it fails after you have already paid for the attempt.
 
 **Pre-sign at T-1, blast at T-0.** Signing inside the race costs the race. Keep
 the signed raw transactions ready and submit the moment the window opens.
@@ -53,7 +53,7 @@ the signed raw transactions ready and submit the moment the window opens.
 `send_mint_tx.py` reads a raw-hex key from a file path (never from `argv`),
 derives the address, estimates gas, prints the full cost breakdown, and only
 broadcasts with `--send`. Reverting with `0xfcf93064…` on a PoW contract is a
-*success* signal for the plumbing — it is the contract telling you the nonce did
+*success* signal for the plumbing. It is the contract telling you the nonce did
 not meet difficulty yet.
 
 ```bash
@@ -68,7 +68,7 @@ Requires `pip install eth-account coincurve pycryptodome`.
 - **Robinhood Chain RPC rate-limits per IP** (429 on reads and writes). Batch
   balance checks; do not poll a wallet list in a tight loop.
 - **Python `urllib` needs a browser `User-Agent`** or the RPC and the OpenSea API
-  answer 403 — even with a valid key. `curl` hides this by sending one.
+  answer 403 even with a valid key. `curl` hides this by sending one.
 - **Fund the wallet you will actually mint with**, and re-check the balance right
   before the run. A dispatch gate that verified the on-chain balance first
   converted "buy as many as you can" into a correct, affordable plan.

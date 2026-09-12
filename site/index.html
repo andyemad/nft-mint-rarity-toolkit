@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NFT Mint &amp; Rarity Toolkit — agent-ready on-chain playbooks</title>
-<meta name="description" content="31 agent playbooks and working code for NFT minting, rarity ranking, reveal sniping, proof-of-work mints, wallet ops and on-chain forensics. Robinhood Chain + Ethereum.">
-<meta property="og:title" content="NFT Mint & Rarity Toolkit">
-<meta property="og:description" content="Agent-ready playbooks and working code for on-chain NFT work.">
+<title>NFT Mint &amp; Rarity Toolkit</title>
+<meta name="description" content="Agent playbooks and working code for NFT minting, rarity ranking, reveal sniping, proof-of-work mints, wallet operations and on-chain forensics.">
+<meta property="og:title" content="NFT Mint &amp; Rarity Toolkit">
+<meta property="og:description" content="Agent playbooks and working code for on-chain NFT work.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛓️</text></svg>">
 <style>
@@ -33,7 +33,7 @@
   }
   h1{font-size:clamp(34px,6vw,60px);line-height:1.04;letter-spacing:-.03em;font-weight:760;max-width:17ch}
   h1 em{font-style:normal;color:var(--accent)}
-  .lede{margin-top:22px;font-size:clamp(16px,2vw,19px);color:var(--mut);max-width:60ch}
+  .lede{margin-top:22px;font-size:clamp(16px,2vw,19px);color:var(--mut);max-width:62ch}
   .lede b{color:var(--txt);font-weight:600}
   .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
   .btn{
@@ -93,13 +93,15 @@
 <div class="wrap">
 
 <header>
-  <div class="kicker">Agent-ready · Robinhood Chain + Ethereum</div>
+  <div class="kicker">Robinhood Chain + Ethereum</div>
   <h1>NFT mint &amp; rarity <em>toolkit</em></h1>
   <p class="lede">
-    <b>31 agent playbooks and the working code behind them</b> — minting, rarity ranking that
-    matches OpenSea rank-for-rank, reveal sniping, proof-of-work mints, wallet operations and
-    on-chain forensics. Not a framework: the accumulated field notes of an agent that actually
-    minted, ranked, sniped and got burned, with every failure recorded next to the fix.
+    <b>31 agent playbooks and the code behind them:</b> minting, rarity ranking that
+    matches OpenSea rank for rank, reveal sniping, proof-of-work mints, wallet
+    operations, and on-chain forensics. This is what one agent learned doing the
+    work for real, with the scripts that did it and the failures kept alongside
+    the fixes. Works with any LLM provider; no API keys required for the
+    read-only paths.
   </p>
   <div class="cta">
     <a class="btn btn-primary" href="https://github.com/andyemad/nft-mint-rarity-toolkit">View the repository →</a>
@@ -112,19 +114,19 @@
 </header>
 
 <section>
-  <h2>What you can build</h2>
+  <h2>What it covers</h2>
   <div class="grid">
-    <div class="card"><span class="tag">rarity</span><h3>Rank any collection exactly</h3><p>OpenRarity information content — Σ −log₂(count/total) — validated rank-for-rank against OpenSea. Reveal detection, full-supply sweeps, holdings dashboards.</p></div>
-    <div class="card"><span class="tag">mint</span><h3>Fire a public mint at T-0</h3><p>SeaDrop multi-wallet kit: recon, fresh wallets, funding poll, eth_call pre-flight, pre-signed blast, then verify the token actually landed.</p></div>
-    <div class="card"><span class="tag">snipe</span><h3>Buy rare at the floor</h3><p>Seaport buy path via OpenSea fulfillment data, plus a read-only diagnostic that shows the real revert reason instead of guessing.</p></div>
-    <div class="card"><span class="tag">proof-of-work</span><h3>Mine the nonce</h3><p>CPU (OpenMP), CUDA and Metal miners for FAB4200- and Hashcats-style preimages, with self-checks that catch a broken hash before you rent a GPU.</p></div>
-    <div class="card"><span class="tag">wallets</span><h3>Reconstruct real P&amp;L</h3><p>FIFO matching of every acquisition and disposition across Ethereum and Robinhood Chain — mints separated from buys, gas reported as a cost.</p></div>
-    <div class="card"><span class="tag">forensics</span><h3>Audit a minter or a claim</h3><p>Wash-ring tells, holder concentration, contract-stack discovery, dev-wallet link tests and dust-token scam assessment — all without an API key.</p></div>
+    <div class="card"><span class="tag">rarity</span><h3>Rank a collection</h3><p>OpenRarity information content, validated rank for rank against OpenSea on a 5000-token collection. Includes reveal detection, full-supply sweeps, and a holdings dashboard.</p></div>
+    <div class="card"><span class="tag">mint</span><h3>Fire a public mint</h3><p>SeaDrop kit for many wallets at once: recon, fresh wallets, funding check, eth_call pre-flight, pre-signed blast, then confirmation that the token landed.</p></div>
+    <div class="card"><span class="tag">snipe</span><h3>Buy rare at the floor</h3><p>Seaport buy path through OpenSea fulfillment data, plus a read-only diagnostic that prints the actual revert reason so you are not guessing.</p></div>
+    <div class="card"><span class="tag">proof-of-work</span><h3>Mine the nonce</h3><p>CPU, CUDA, and Metal miners for FAB4200 and Hashcats style preimages, with self-checks that catch a broken hash before you rent a GPU.</p></div>
+    <div class="card"><span class="tag">wallets</span><h3>Reconstruct P&amp;L</h3><p>FIFO matching of every acquisition and disposition across Ethereum and Robinhood Chain. Mints are separated from buys, and gas is counted as a cost.</p></div>
+    <div class="card"><span class="tag">forensics</span><h3>Audit a launch</h3><p>Wash-ring tells, holder concentration, contract-stack discovery, developer-wallet link tests, and dust-token scam assessment, all without an API key.</p></div>
   </div>
 </section>
 
 <section>
-  <h2>By the numbers</h2>
+  <h2>What is in the repository</h2>
   <div class="facts">
     <div class="fact"><div class="n">31</div><div class="l">agent playbooks</div></div>
     <div class="fact"><div class="n">200+</div><div class="l">reference docs</div></div>
@@ -132,23 +134,23 @@
     <div class="fact"><div class="n">$0</div><div class="l">required API keys</div></div>
   </div>
   <ul class="checks">
-    <li><b>Keyless by default.</b> Public RPCs and marketplace pages for on-chain facts; a paid key only unlocks the trading paths.</li>
-    <li><b>eth_call before every broadcast.</b> Simulation is a requirement, not a nicety — it is what stops a 49-revert batch.</li>
-    <li><b>Bounded authority.</b> Per-buy, per-day and reserve caps are constants in the scripts, and live execution ships disabled behind an explicit flag.</li>
-    <li><b>Corrections kept in.</b> A wrong rarity formula, a mis-read mint price and a sniper path that reverted every time are all documented — the correction is the useful part.</li>
+    <li><b>Keyless where it can be.</b> Public RPCs and marketplace pages carry the on-chain facts. A paid key only unlocks the trading paths.</li>
+    <li><b>Simulation before broadcast.</b> Every spending script runs eth_call first. It is what stopped a batch of 49 reverts.</li>
+    <li><b>Caps in the code.</b> Per-buy, per-day, and reserve limits are constants, and live execution ships disabled behind an explicit flag.</li>
+    <li><b>Corrections kept in.</b> A rarity formula that was wrong, a mint price that was misread, and a sniper path that reverted every time are all still in the skills, because the correction is what makes them useful.</li>
   </ul>
   <div class="warn">
-    <b>Read before spending.</b> This toolkit moves real assets on public chains. Nothing here is
-    financial advice and no strategy in it is profitable by construction. Simulate, cap, and
-    approve deliberately.
+    <b>Read this before you spend anything.</b> The toolkit moves real assets on public
+    chains. Nothing here is financial advice, and no strategy in it is profitable by
+    construction. Simulate first, set caps, and approve deliberately.
   </div>
 </section>
 
 <section>
   <h2>Run it on your own agent</h2>
   <ul class="checks">
-    <li>Install <b>Hermes Agent</b> on a VPS, connect it to <b>Discord</b>, and install these skills in one command.</li>
-    <li>The full walkthrough — VPS hardening, provider setup, the Discord bot from scratch, running the gateway as a service, and the verify table — is in <b>INSTALL.md</b>.</li>
+    <li>Install <b>Hermes Agent</b> on a VPS, connect it to Discord, and install the skills with a single command.</li>
+    <li><b>INSTALL.md</b> covers the rest: VPS hardening, provider setup, the Discord bot from scratch, the gateway as a service, a verification checklist, and security notes.</li>
   </ul>
   <div class="cta">
     <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit/blob/main/INSTALL.md">Read INSTALL.md →</a>
@@ -158,11 +160,11 @@
 
 <section>
   <div class="promo">
-    <h3>Need a model for your agent?</h3>
+    <h3>Need a model to run it on?</h3>
     <p>
-      I run my Hermes agents on <b>OpenCode</b> — one plan covers the agent and the coding CLIs,
-      so the always-on VPS gateway stays cheap. Sign up with my link and it supports the work
-      behind this toolkit.
+      I run my Hermes agents on <b>OpenCode</b>. One plan covers the agent and the coding
+      CLIs, which keeps an always-on VPS gateway affordable. Signing up with my link
+      supports the work behind this toolkit.
     </p>
     <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Try OpenCode →</a>
   </div>
@@ -172,9 +174,9 @@
   <div class="wrap" style="padding:0">
     <p>
       <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
-      · MIT · Primary chain of record: Robinhood Chain (4663)
+      · MIT · Primary chain: Robinhood Chain (4663)
     </p>
-    <p style="margin-top:9px">Playbooks and code are provided as-is. Verify every on-chain fact against the chain before you act on it.</p>
+    <p style="margin-top:9px">The playbooks and code are provided as-is. Check every on-chain fact against the chain before you act on it.</p>
   </div>
 </footer>
 

@@ -1,16 +1,17 @@
-# Run Hermes on a VPS, connect it to Discord, and host this toolkit for download
+# Run Hermes on a VPS, connect it to Discord, and host this toolkit
 
-A complete, copy-paste path from a blank VPS to an agent that answers you in
+Everything you need to go from a blank server to an agent that answers you in
 Discord with these skills installed.
 
-Two things to understand up front, because they decide the architecture:
+Two decisions shape the whole setup:
 
-- **The agent must run on a machine that stays on.** Hermes is a long-lived
-  process with a live gateway, a scheduler, and a terminal. A VPS is the right
-  home for it. **Vercel cannot host the agent** — it is serverless, nothing stays
-  resident, and there is no shell. Vercel hosts the *download page*.
-- **Skills are plain files.** Installing this toolkit means copying
-  `skills/**` into your Hermes skills directory. `install.sh` does exactly that.
+- **The agent needs a machine that stays on.** Hermes is a long-running process
+  with a live gateway, a scheduler, and a shell. That is a VPS.
+- **Vercel cannot host the agent.** It is serverless, nothing stays resident, and
+  there is no shell. Vercel hosts the download page.
+
+Skills are files. Installing this toolkit copies `skills/**` into your Hermes
+skills directory, and `install.sh` does that.
 
 ```
  ┌──────────────┐        ┌────────────────────────┐        ┌──────────────┐
@@ -20,173 +21,164 @@ Two things to understand up front, because they decide the architecture:
                             permanent process               static page
 ```
 
----
-
-## Part 0 — What you need
+## What you need
 
 | Thing | Notes |
 |---|---|
-| VPS | Ubuntu 22.04/24.04, 2 vCPU, **4 GB RAM**, 40 GB disk. 2 GB runs a gateway-only agent; 4 GB is needed the moment you use browser automation or a local Whisper model. |
-| Domain | Optional. Only needed if you want the webhook routes publicly reachable. |
-| LLM API key | Any supported provider. [OpenCode](https://opencode.ai/go?ref=0N4C2C5TNK) is a cheap way in (see Part 3). |
-| Discord account | You need **Manage Server** on the server you want the bot in. |
-| GitHub account | Only if you fork the toolkit to your own account. |
+| VPS | Ubuntu 22.04 or 24.04, 2 vCPU, 4 GB RAM, 40 GB disk. 2 GB is enough for a gateway-only agent. You want 4 GB the moment you use browser automation or a local Whisper model. |
+| Domain | Optional. Only if you want webhook routes reachable from outside. |
+| LLM API key | Any supported provider. [OpenCode](https://opencode.ai/go?ref=0N4C2C5TNK) is a cheap way in. See the provider section below. |
+| Discord account | You need Manage Server on the server the bot will join. |
+| GitHub account | Only if you fork the toolkit. |
 
----
-
-## Part 1 — Provision and harden the VPS
+## 1. Provision and harden the VPS
 
 ```bash
-# 1. Create the box (Hetzner CX22 / DigitalOcean 2vCPU-4GB / any equivalent).
-#    Add your SSH public key at creation time — do not use password auth.
+# Create the box (Hetzner CX22, DigitalOcean 2vCPU-4GB, or similar).
+# Add your SSH public key at creation time. Do not use password auth.
 
-# 2. First login
+# First login
 ssh root@YOUR_SERVER_IP
 
-# 3. Create a non-root user with sudo
+# Create a non-root user with sudo
 adduser hermes
 usermod -aG sudo hermes
 
-# 4. Copy your SSH key over so you can log in as that user
+# Copy your SSH key over so you can log in as that user
 rsync --archive --chown=hermes:hermes ~/.ssh /home/hermes/
 
-# 5. Firewall: SSH only, everything else closed
+# Firewall: SSH only
 ufw allow OpenSSH
 ufw enable
 
-# 6. Make services survive logout (this is the #1 cause of "my bot died")
+# Let services survive logout. Skipping this is the usual reason a bot
+# goes offline the moment you close your SSH session.
 loginctl enable-linger hermes
 
-# 7. Log in as the agent user from here on
+# Log in as the agent user from here on
 su - hermes
 ```
 
-Housekeeping that saves pain later:
+Then update and add the basics:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git curl tmux build-essential python3-venv
-# 2 GB box only: add swap so a heavy build does not OOM-kill the gateway
-sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile \
-  && sudo mkswap /swapfile && sudo swapon /swapfile \
-  && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
----
+On a 2 GB box, add swap so a heavy build cannot OOM-kill the gateway:
 
-## Part 2 — Install Hermes Agent
+```bash
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+## 2. Install Hermes Agent
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
-This installs Python, Node, ripgrep, ffmpeg, clones the repo, builds the venv and
-puts `hermes` on your PATH. Then:
+The installer handles Python, Node, ripgrep, ffmpeg, the repo clone, the virtual
+environment, and the `hermes` command. Then:
 
 ```bash
-# reload your shell so the hermes command is found
-source ~/.bashrc
-
-hermes --version      # confirms the install
-hermes doctor         # checks dependencies and config — fix anything it flags
+source ~/.bashrc       # so the hermes command is on your PATH
+hermes --version       # confirm the install
+hermes doctor          # check dependencies and config, fix what it flags
 ```
 
-Install layout: code in `~/.hermes/hermes-agent/`, binary via
-`~/.local/bin/hermes`, data in `~/.hermes/` (`config.yaml`, `.env`, `skills/`,
-`sessions/`, `logs/`).
+Layout: code in `~/.hermes/hermes-agent/`, binary via `~/.local/bin/hermes`,
+data in `~/.hermes/` (`config.yaml`, `.env`, `skills/`, `sessions/`, `logs/`).
 
----
-
-## Part 3 — Pick a model provider
+## 3. Pick a model provider
 
 ```bash
-hermes setup          # guided wizard: model, terminal, gateway, tools
-# or, to just change the model/provider later:
-hermes model
+hermes setup          # wizard for model, terminal, gateway, tools
+hermes model          # change model or provider later
 ```
 
-For a cheap always-on agent, an OpenCode plan works well:
+An OpenCode plan is a cheap way to run an always-on agent:
 
 1. Sign up at **https://opencode.ai/go?ref=0N4C2C5TNK**
 2. Copy the API key from the dashboard.
-3. Put it in the environment file (**secrets live in `.env`, never in
-   `config.yaml`**):
+3. Put it in the environment file. Secrets go in `.env`, never in `config.yaml`:
 
 ```bash
-hermes config env-path                    # prints the file to edit, usually ~/.hermes/.env
+hermes config env-path     # prints the file, usually ~/.hermes/.env
 printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' >> ~/.hermes/.env
 chmod 600 ~/.hermes/.env
 ```
 
-4. Select the provider and model:
+4. Select it and confirm it answers:
 
 ```bash
-hermes model            # choose OpenCode Go, then a model
+hermes model
 hermes chat -q "say hi and tell me which model you are"
 ```
 
-Any other provider works identically — `OPENROUTER_API_KEY`,
-`ANTHROPIC_API_KEY`, `DEEPSEEK_API_KEY`, or OAuth via `hermes auth add <provider>
---type oauth`. Verify auth with `hermes status --all`.
+Other providers work the same way. Set `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`,
+or `DEEPSEEK_API_KEY` in `.env`, or use OAuth with
+`hermes auth add <provider> --type oauth`. Check auth with `hermes status --all`.
 
-**Cost control on a VPS:** the gateway bills for every message it processes. Set a
-sensible default model rather than your most expensive one, and leave reasoning
-effort low unless a task needs more.
+The gateway bills for every message it processes, so pick a sensible default
+model rather than your most expensive one, and leave reasoning effort low unless a
+task needs more.
 
----
-
-## Part 4 — Install this toolkit's skills
+## 4. Install the toolkit skills
 
 ```bash
-# Option A — from a clone (recommended: you get toolkit/ code too)
+# From a clone (recommended, you also get toolkit/ code)
 git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
 cd nft-mint-rarity-toolkit
-./install.sh                      # -> ~/.hermes/skills/
-./install.sh --profile work       # -> ~/.hermes/profiles/work/skills/
+./install.sh                      # into ~/.hermes/skills/
+./install.sh --profile work       # into ~/.hermes/profiles/work/skills/
 ./install.sh --dry-run            # preview, write nothing
 
-# Option B — one-liner, no clone
+# Or one line, no clone
 curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh | bash
 ```
 
-The installer backs up any same-named skill to `<name>.bak-<timestamp>` instead
-of overwriting it, and re-running it is a no-op. Verify:
+The installer moves a same-named skill to `<name>.bak-<timestamp>` instead of
+overwriting it, and running it twice does nothing the second time. To confirm:
 
 ```bash
 hermes skills list | head -40
 hermes chat -s nft-rarity-engine -q "summarise what this skill lets you do"
 ```
 
-Optional extra dependencies for the signing and trading paths:
+Extra dependencies for the signing and trading paths:
 
 ```bash
 pip install eth-account coincurve pycryptodome
 ```
 
-**Secrets stay out of the tree, always.** Keys go in `~/.hermes/secrets/` with
-`chmod 600` — see `SECURITY.md`. Never commit a key file.
+Keys stay out of the tree. They go in `~/.hermes/secrets/` at `chmod 600`, as
+described in `SECURITY.md`.
 
----
+## 5. Create the Discord bot
 
-## Part 5 — Create the Discord bot
-
-1. Go to **https://discord.com/developers/applications** → **New Application** →
-   name it → **Create**.
-2. **Bot** tab:
-   - **Public Bot**: ON if you want to use the Installation tab to generate the
-     invite; OFF is fine if you build the invite URL manually.
-   - **Privileged Gateway Intents** → enable **Message Content Intent**.
-     *Without this the bot sees no message text and appears completely dead.*
-   - **Reset Token** → copy the token. It is shown **once**. Treat it as a
-     password: anyone with it controls the bot.
-3. **Installation** tab (or build the URL manually):
-   - Installation Contexts → enable **Guild Install**
-   - Install Link → **Discord Provided Link**
+1. Go to **https://discord.com/developers/applications**, click **New
+   Application**, name it, and create it.
+2. On the **Bot** tab:
+   - **Public Bot**: ON if you want to use the Installation tab for the invite.
+     OFF is fine if you build the invite URL by hand.
+   - **Privileged Gateway Intents**: enable **Message Content Intent**. Without
+     it the bot receives no message text and looks completely broken.
+   - **Reset Token**, then copy the token. Discord shows it once. Anyone with it
+     controls the bot, so store it somewhere safe.
+3. On the **Installation** tab (or build the URL yourself):
+   - Installation Contexts: enable **Guild Install**
+   - Install Link: **Discord Provided Link**
    - Scopes: **bot** and **applications.commands**
-   - Permissions: **View Channels, Send Messages, Embed Links, Attach Files,
-     Read Message History** (+ *Send Messages in Threads*, *Add Reactions*)
+   - Permissions: View Channels, Send Messages, Embed Links, Attach Files, Read
+     Message History. Add Send Messages in Threads and Add Reactions if you want
+     the bot to work in threads and react for acknowledgements.
 
-   Manual URL form, if you prefer:
+   Manual URL:
 
    ```
    https://discord.com/oauth2/authorize?client_id=YOUR_APP_ID&scope=bot+applications.commands&permissions=274878286912
@@ -197,80 +189,77 @@ pip install eth-account coincurve pycryptodome
    | Minimal | `117760` |
    | Recommended (used above) | `274878286912` |
 
-4. Open the invite URL, pick your server, **Authorize** (needs **Manage Server**).
-   The bot shows as offline until the gateway starts.
-5. Get your **user ID**: Discord → **Settings → Advanced → Developer Mode ON**,
-   then right-click your name → **Copy User ID** (a long number). Do the same for
-   a channel if you want to set a home channel.
+4. Open the invite URL, pick your server, and authorize. You need Manage Server
+   on that server. The bot shows as offline until the gateway starts.
+5. Get your user ID: in Discord, go to **Settings → Advanced**, turn **Developer
+   Mode** on, then right-click your name and choose **Copy User ID**. It is a long
+   number. You can copy channel and server IDs the same way.
 6. Configure Hermes:
 
 ```bash
-hermes gateway setup      # select Discord, paste the bot token + your user ID
+hermes gateway setup      # choose Discord, paste the bot token and your user ID
 ```
 
-   Or manually, in `~/.hermes/.env`:
+   Or edit `~/.hermes/.env` directly:
 
 ```bash
 DISCORD_BOT_TOKEN=your-bot-token
-DISCORD_ALLOWED_USERS=284102345871466496        # comma-separate for more
-DISCORD_HOME_CHANNEL=123456789012345678         # optional: where cron/reminders land
+DISCORD_ALLOWED_USERS=284102345871466496        # comma-separate for more than one
+DISCORD_HOME_CHANNEL=123456789012345678         # optional: where cron and reminders land
 ```
 
-   Without `DISCORD_ALLOWED_USERS` (or `DISCORD_ALLOWED_ROLES`), the gateway
-   **denies everyone** — this is the second most common "it's not responding".
-7. Test it live before you daemonize:
+   Without `DISCORD_ALLOWED_USERS` or `DISCORD_ALLOWED_ROLES`, the gateway denies
+   everyone. This is the second most common "it isn't responding".
+
+7. Run it in the foreground once, before you set up the service:
 
 ```bash
-hermes gateway run        # foreground; Ctrl-C to stop
+hermes gateway run        # Ctrl-C to stop
 ```
 
-   DM the bot (DMs need no @mention) or @mention it in a channel it can see.
+   DM the bot, or mention it in a channel it can see.
 
 ### How it behaves in a server
 
 | Context | Behaviour |
 |---|---|
-| DMs | Always answers, no mention needed, own session per DM |
-| Server channels | Answers only when **@mentioned** (unless the channel is in `DISCORD_FREE_RESPONSE_CHANNELS`) |
-| Threads | Replies in-thread; own session namespace, isolated from the parent channel |
-| Multiple users | Session history is per-user per-channel by default (`group_sessions_per_user`) |
+| DMs | Always answers, no mention needed, one session per DM |
+| Server channels | Answers only when mentioned, unless the channel is listed in `DISCORD_FREE_RESPONSE_CHANNELS` |
+| Threads | Replies in the thread with its own session namespace, separate from the parent channel |
+| Multiple users | History is per-user per-channel by default (`group_sessions_per_user`) |
 
-Useful toggles, all in `.env`: `DISCORD_REQUIRE_MENTION=false`,
+Other toggles, all in `.env`: `DISCORD_REQUIRE_MENTION=false`,
 `DISCORD_FREE_RESPONSE_CHANNELS=<ids>`, `DISCORD_AUTO_THREAD`,
 `DISCORD_IGNORE_NO_MENTION`.
 
----
-
-## Part 6 — Run the gateway as a service
+## 6. Run the gateway as a service
 
 ```bash
-hermes gateway install     # writes the systemd/launchd service
+hermes gateway install
 hermes gateway start
 hermes gateway status
 ```
 
-Operate it:
+Day to day:
 
 ```bash
 hermes gateway restart
-journalctl --user -u hermes-gateway -f           # live service log
+journalctl --user -u hermes-gateway -f
 grep -i "failed to send\|error" ~/.hermes/logs/gateway.log | tail -20
 ```
 
-If the bot goes offline after you close SSH, linger (Part 1, step 6) is missing
-or the service definition is stale — re-run `hermes gateway install`.
+If the bot goes offline when you close SSH, linger from step 1 is missing or the
+service definition is stale. Re-run `hermes gateway install`.
 
-**Do not restart the gateway casually on a box that is mid-task.** An in-flight
-session dies with it, and cron jobs miss their tick. Prefer `/restart` from chat,
-which drains first.
+Do not restart the gateway casually while it is mid-task. An in-flight session
+dies with it and cron jobs miss their tick. Use `/restart` from chat, which drains
+first.
 
----
+## 7. Host the download page on Vercel
 
-## Part 7 — Host this toolkit for download (Vercel)
-
-The gateway cannot run on Vercel. The download/landing page can, and that is what
-you want: a public URL where someone reads the capability map and grabs the ZIP
-or the one-line installer.
+The gateway cannot run on Vercel. The download page can, which is what you want: a
+public URL where someone reads what the toolkit does and grabs the ZIP or the
+one-line installer.
 
 ```bash
 mkdir -p ~/toolkit-site && cd ~/toolkit-site
@@ -278,78 +267,72 @@ mkdir -p ~/toolkit-site && cd ~/toolkit-site
 npx vercel@latest deploy --prod
 ```
 
-Or connect the GitHub repo to Vercel in the dashboard and set the **Root
-Directory** to `site/` — every push then redeploys the page.
+Or connect the repo in the Vercel dashboard and set the Root Directory to `site/`.
+Every push then redeploys the page.
 
-**Before you rely on Vercel, check your account is actually deploying.** A
-project that exceeds the Hobby plan's included transfer gets soft-blocked and
-every deploy returns **HTTP 402** while the dashboard still looks healthy. Confirm
-with a throwaway deploy; if you are blocked, use Cloudflare Pages instead — same
-static files, no account block:
+Vercel's Hobby plan soft-blocks a project that exceeds its included transfer
+allowance. When that happens every deploy returns HTTP 402 while the dashboard
+still looks healthy. Test with a throwaway deploy before you rely on it. If you
+are blocked, Cloudflare Pages serves the same static files:
 
 ```bash
 npx wrangler@latest pages deploy site --project-name=nft-mint-rarity-toolkit
 ```
 
-Either way the artifacts people download are the same:
+The downloads are the same either way:
 
 | Artifact | URL |
 |---|---|
 | Source ZIP | `https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip` |
 | One-line installer | `curl -fsSL https://raw.githubusercontent.com/andyemad/nft-mint-rarity-toolkit/main/install.sh \| bash` |
-| Skills only | the `skills/` directory in the repo |
+| Skills only | the `skills/` directory |
 
----
+## 8. Verify the whole chain
 
-## Part 8 — Verify the whole chain
-
-Work down this list; each row isolates one layer, so a failure tells you where to
-look rather than "the bot is broken".
+Work down this list. Each step isolates one layer, so a failure tells you where to
+look rather than just "the bot is broken".
 
 ```bash
 hermes --version                       # 1. binary on PATH
-hermes doctor                          # 2. dependencies + config
-hermes chat -q "reply with OK"         # 3. model provider + key
+hermes doctor                          # 2. dependencies and config
+hermes chat -q "reply with OK"         # 3. provider and key
 hermes skills list | grep rarity       # 4. toolkit skills present
-hermes gateway status                  # 5. service up
+hermes gateway status                  # 5. service running
 tail -20 ~/.hermes/logs/gateway.log    # 6. gateway connected to Discord
 ```
 
-Then in Discord: DM the bot, and @mention it in a channel.
+Then DM the bot, and mention it in a channel.
 
 | Symptom | Cause |
 |---|---|
-| Bot is online but never replies in channels | Not @mentioned — mention it, or add the channel to `DISCORD_FREE_RESPONSE_CHANNELS` |
-| Bot appears dead everywhere | **Message Content Intent** not enabled in the Developer Portal |
-| Gateway up, everyone denied | `DISCORD_ALLOWED_USERS` missing or wrong ID |
+| Online but silent in channels | Not mentioned. Mention it, or add the channel to `DISCORD_FREE_RESPONSE_CHANNELS` |
+| Appears dead everywhere | Message Content Intent is not enabled in the Developer Portal |
+| Gateway up, everyone denied | `DISCORD_ALLOWED_USERS` is missing or wrong |
 | Died after closing SSH | `sudo loginctl enable-linger $USER`, then reinstall the service |
-| "No models provided" / 401 | Wrong or missing provider key in `~/.hermes/.env`; re-run `hermes model` |
-| Skills not loading | `hermes skills list` to confirm, `/reload-skills` in a running session |
-| Bot dies during long tasks | 2 GB RAM OOM — add swap (Part 1) or resize to 4 GB |
+| "No models provided" or 401 | Wrong or missing provider key in `~/.hermes/.env`, re-run `hermes model` |
+| Skills not loading | `hermes skills list` to confirm, then `/reload-skills` in a running session |
+| Dies during long tasks | 2 GB RAM ran out. Add swap or resize to 4 GB |
 
----
+## 9. Security for a public-facing agent
 
-## Part 9 — Security notes for a public-facing agent
+Hermes runs real shell commands, so treat the box accordingly.
 
-- **Never expose the terminal backend's host.** Hermes runs real shell commands.
-  Keep the VPS firewalled to SSH, and do not enable the API Server adapter or
-  webhook routes until you need them and understand the auth model.
-- **Use `DISCORD_ALLOWED_USERS`, not `DISCORD_ALLOW_ALL_USERS`.** In a public
-  server, allow-all means strangers can drive a shell on your box.
-- **Approvals stay on.** Leave `approvals.mode` at `manual` (or `smart`) so
-  destructive commands require a human yes.
-- **Keys live in `~/.hermes/secrets/` at `chmod 600`,** never in the repo, never
-  pasted into a chat.
-- **Back up** `~/.hermes/` (config, skills, sessions, memory) somewhere off the
-  box. `hermes profile export` produces a tar.gz you can move.
-- **Update deliberately:** `hermes update` — then re-check `hermes doctor`.
+- Keep the VPS firewalled to SSH. Do not enable the API Server adapter or webhook
+  routes until you need them and understand the auth model.
+- Use `DISCORD_ALLOWED_USERS`, not `DISCORD_ALLOW_ALL_USERS`. In a public server,
+  allow-all means strangers can drive a shell on your machine.
+- Leave `approvals.mode` at `manual` or `smart` so destructive commands need a
+  human yes.
+- Keys live in `~/.hermes/secrets/` at `chmod 600`. Never in a repo, never pasted
+  into a chat.
+- Back up `~/.hermes/` off the box. `hermes profile export` produces a tar.gz you
+  can move somewhere else.
+- Update deliberately with `hermes update`, then re-check `hermes doctor`.
 
----
-
-## Appendix — OpenCode
+## OpenCode
 
 Sign up with my referral link: **https://opencode.ai/go?ref=0N4C2C5TNK**
 
-Use it as the Hermes provider (Part 3) or as a standalone coding agent. The key
-goes in `~/.hermes/.env` as `OPENCODE_GO_API_KEY`, then select it with
+Use it as the Hermes provider from step 3, or as a standalone coding agent. The
+key goes in `~/.hermes/.env` as `OPENCODE_GO_API_KEY`, then select it with
 `hermes model`.
