@@ -155,3 +155,57 @@ html[lang="ur-Latn"] .table-scroll:after { content: "Poora table dekhne ke liye 
 
 /* the sticky table hint is pinned with left:0 in styles.css */
 [dir="rtl"] .table-scroll:after { left: auto; right: 0 }
+
+/* ------------------------------------------------- translated copy runs longer
+   The English hero was written to fit; other languages are not, so three things
+   that are fixed-size in styles.css have to give on translated pages only. The
+   English page keeps every rule in styles.css untouched. */
+
+/* 1. Headline lines are nowrap blocks. "Des compétences onchain." cannot be, and
+   when it is forced the grid column grows and squeezes the agent window beside
+   it (which is what made the demo chips wrap three lines in French). */
+html:not([lang="en"]) h1 span{white-space:normal}
+
+/* 2. The sticker is positioned from the stage bottom, which assumes the chip row
+   under the window is exactly one line tall. Put the sticker in the window's
+   grid cell instead, so it hangs off the window's corner whatever the chips do.
+   Offsets reproduce styles.css: right:-19/-10/-4/-3px and 4px below the window
+   (8px on phones, where the stage gains 5px side padding and a taller chip row). */
+html:not([lang="en"]) .agent-stage{display:grid;grid-template-columns:minmax(0,1fr)}
+html:not([lang="en"]) .agent-window,
+html:not([lang="en"]) .skill-sticker{grid-row:1;grid-column:1}
+html:not([lang="en"]) .demo-controls{grid-row:2;grid-column:1}
+html:not([lang="en"]) .skill-sticker{
+  position:relative;right:auto;bottom:auto;left:auto;
+  align-self:end;justify-self:end;z-index:2;
+  transform:translate(19px,4px) rotate(3deg)
+}
+html:not([lang="en"])[dir="rtl"] .skill-sticker{transform:translate(-19px,4px) rotate(-3deg)}
+@media(max-width:1150px){
+  html:not([lang="en"]) .skill-sticker{transform:translate(10px,4px) rotate(3deg)}
+  html:not([lang="en"])[dir="rtl"] .skill-sticker{transform:translate(-10px,4px) rotate(-3deg)}
+}
+@media(max-width:900px){
+  html:not([lang="en"]) .skill-sticker{transform:translate(4px,4px) rotate(3deg)}
+  html:not([lang="en"])[dir="rtl"] .skill-sticker{transform:translate(-4px,4px) rotate(-3deg)}
+}
+@media(max-width:700px){
+  html:not([lang="en"]) .skill-sticker{transform:translate(8px,8px) rotate(3deg)}
+  html:not([lang="en"])[dir="rtl"] .skill-sticker{transform:translate(-8px,8px) rotate(-3deg)}
+}
+
+/* 3. The header: a translated site name plus the language menu no longer fit
+   beside the section links on a phone (Russian needs 476px of a 350px bar), and
+   Russian overruns a tablet bar by 19px. Tighten the tablet spacing; on phones
+   keep the name, the language menu and GitHub, and drop the two section links,
+   which the sticky contents panel already provides there. */
+@media(max-width:900px){
+  html:not([lang="en"]) .topbar{gap:16px}
+  html:not([lang="en"]) .topnav{gap:16px;font-size:12px}
+}
+@media(max-width:700px){
+  html:not([lang="en"]) .topnav{gap:12px}
+  html:not([lang="en"]) .topnav>a:not(.github-link){display:none}
+  html:not([lang="en"]) .brand{min-width:0}
+  html:not([lang="en"]) .brand>span:first-of-type{overflow:hidden;text-overflow:ellipsis}
+}
