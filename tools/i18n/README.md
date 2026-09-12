@@ -1,7 +1,8 @@
 # Translations
 
-The site is published in nine languages: English, Simplified Chinese, Arabic,
-Spanish, French, German, Russian, Hebrew, and Roman Urdu (Urdu in Latin script).
+The site is published in eleven languages: English, Simplified Chinese, Japanese,
+Korean, Arabic, Spanish, French, German, Russian, Hebrew, and Roman Urdu (Urdu in
+Latin script).
 
 ## The one rule
 
