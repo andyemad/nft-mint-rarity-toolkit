@@ -524,7 +524,7 @@
   "@BotFather": "@BotFather",
   ",\n    send": ",\n    שלח",
   "/newbot": "/newbot",
-  ", and answer its two questions. The username has to end in": ", וענה על שתי השאלות שלו. שם המשתמש חייב להסתיים ב-",
+  ", and answer its two questions. The username has to end in": ", וענה על שתי השאלות שלו. שם המשתמש חייב להסתיים במילה",
   ". It hands you a token: shown once, treat it like a password. Then\n    message": ". הוא נותן לך טוקן: מוצג פעם אחת, תתייחס אליו כמו לסיסמה. ואז\n    שלח הודעה ל-",
   "@userinfobot": "@userinfobot",
   "to get your user ID, which is a number. Choose": "כדי לקבל את מזהה המשתמש שלך, שהוא מספר. בחר",
