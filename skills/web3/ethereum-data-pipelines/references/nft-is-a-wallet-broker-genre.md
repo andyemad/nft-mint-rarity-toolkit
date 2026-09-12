@@ -1,6 +1,6 @@
 # ERC-6551 token-bound-account "broker" NFT genre + clone detection
 
-Refined 2026-08-23 on Emad's request to deep-dive **InkBrokers** (inkbrokers.com,
+Refined 2026-08-23 on the user's request to deep-dive **InkBrokers** (inkbrokers.com,
 Ink chain) and judge whether it's a genuine project or "just a StonkBrokers clone."
 This is a reusable recipe for a recurring NFT genre: the **NFT-is-a-wallet**
 collection where the token is an ERC-6551 token-bound account that holds its own
@@ -56,7 +56,7 @@ payout.** When hype says "token launches in ~12/24h," verify WHICH token:
 - $INK TGE: Kraken blog "integrating-ink-token" (Jul 24 2025) declares intent + airdrop;
   as of Aug 19 2026 still NO precise date from the Ink Foundation. Watch Kraken/Ink blog
   + `airdrops.io/ink-chain` as the date firms.
-- X reads: `~/.hermes/skills/research/terminal-web-research` twitter_watch / fxtwitter
+- X reads: `~/.hermes/the curl-based fallback in your own toolkit` twitter_watch / fxtwitter
   / logged-out x.com relay regex all work here (verified 2026-08-23).
 
 ## Verification kit (all keyless, used this session)

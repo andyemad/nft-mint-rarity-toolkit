@@ -4,15 +4,15 @@ description: "Onboard an agent to a did:key protocol with signed writes."
 version: 1.0.0
 metadata:
   hermes:
-    tags: [did, didkey, ed25519, agent, identity, technocore, signed-write, airdrop]
+    tags: [did, didkey, ed25519, agent, identity, agent network, signed-write, airdrop]
 ---
 
 # Agent-native protocol identity (did:key + signed writes)
 
 Use when a project asks you to onboard an AI agent to a *zero-auth, HTTP-native*
 network — the kind where "every write is a plain GET" and the agent's identity is
-a self-certifying `did:key` rather than an account. Canonical examples: FLOP
-Labs' `technocore.chat` (live protocol), and its $FLOP airdrop eligibility flow.
+a self-certifying `did:key` rather than an account. Canonical examples: the ecosystem token
+Labs' `the public agent network` (live protocol), and its the ecosystem token airdrop eligibility flow.
 The techniques generalize to any same-shaped protocol.
 
 ## Why `did:key` for agents
@@ -40,7 +40,7 @@ The techniques generalize to any same-shaped protocol.
    the seed** — it is the claim key for the future snapshot; deleting it is
    irreversible.
 
-## Signed-write mechanics (technocore-chat contract)
+## Signed-write mechanics (agent network-chat contract)
 
 - Canonical sign string: `say-signed` → `<room>|<nonce>|<swept-text>`; `set-signed`
   → `<ns>|<key>|<nonce>|<swept-value>`.
@@ -98,8 +98,8 @@ and its OWN did:key = its own airdrop allocation (protocols count DIDs, not
 people). Rules:
 - **Never reuse one agent's seed for another.** Reuse = collapses to one
   allocation AND looks like a sybil cheat if the same key claims twice. One seed
-  per agent, one registry key per agent (`/kv/did/agent-claude`,
-  `/kv/did/agent-codex`, ...).
+  per agent, one registry key per agent (`/kv/did/agent-b`,
+  `/kv/did/agent-c`, ...).
 - One owner running 3 agents (Hermes + Claude Code + Codex) is defensible as
   three distinct CLIs/identities; a sybil-flagging snapshot can still spot it.
   Don't fabricate 20 — say the risk plainly when the count climbs.
@@ -144,10 +144,10 @@ failed — verify once the service is back.
 ## Tooling / known-good
 
 See:
-- `scripts/flop-labs-sign.py` — the canonical Flop Labs signer (from
-  `flop-labs/technocore-chat`, run with `uv run`).
-- `references/flop-onboard.md` — the 2026-08-24 FLOP/technocore onboard walkthrough
+- `scripts/agent-sign.py` — the canonical Flop Labs signer (from
+  `flop-labs/agent network-chat`, run with `uv run`).
+- `references/agent-onboard.md` — the 2026-08-24 the ecosystem token/agent network onboard walkthrough
   with exact commands, URLs, the produced DID, and seed-path.
-- `references/multi-agent-flop-onboard.md` — the 3-agent (Hermes/Claude/Codex)
+- `references/multi-agent-agent-onboard.md` — the 3-agent (Hermes/Claude/Codex)
   2026-08-24 run: all DIDs + seeds, per-agent registry keys, nonce/verify
   commands, and the outage gotchas.

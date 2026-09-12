@@ -56,7 +56,7 @@ A single marketplace transaction can contain multiple NFT orders. Attribute only
 
 ### Robinhood Chain specifics (WETH settlements + state-changes)
 
-On Robinhood Chain, NFT sales settle in **WETH** (wrapped ETH, contract `0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73`), not native ETH. Consequences:
+On Robinhood Chain, NFT sales settle in **WETH** (wrapped ETH, contract `0x1111111111111111111111111111111111111111`), not native ETH. Consequences:
 
 - `internal-transactions` shows **zero native ETH** for these sales. Do not read empty internal ETH as "the seller was not paid" — it is a WETH settlement.
 - `/transactions/{hash}/state-changes` is the authoritative source: it lists the wallet's native `coin` change (gas) and its `token` (WETH) balance change together, with `balance_before` / `balance_after`. Sum the positive WETH `change` rows for the wallet to get seller proceeds.

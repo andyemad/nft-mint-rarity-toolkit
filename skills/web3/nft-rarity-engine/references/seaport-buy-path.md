@@ -1,16 +1,16 @@
 # Seaport Buy Path on Robinhood Chain — verified working primitive
 
-Status as of 2026-08-24: fulfillment encoding VERIFIED on a live Clay StonKz order —
+Status as of 2026-08-24: fulfillment encoding VERIFIED on a live the test collection order —
 `eth_call` dry-run of `fulfillAdvancedOrder` returned `0x1` (would fill cleanly,
 no spend) on token #1081 @ 0.0135 ETH. This upgrades the earlier THE POOL
 `eth_estimateGas` evidence (08-22) to a full zero-spend simulation on a second,
 different collection, and proves the **advanced-order path specifically** works on
 RH (not just basic orders). Real broadcast still gated behind a clean live fill +
-Emad approval before any permanent auto-buy arms.
+the user approval before any permanent auto-buy arms.
 
 ## The big post-mortem correction
 
-bunker-snipe's buy path reverted 49/49 and the standing theory was "hand-rolled Seaport
+the sniper project's buy path reverted 49/49 and the standing theory was "hand-rolled Seaport
 encoding is broken." WRONG. This session re-tested the same encoder against a fresh
 live order: it simulates clean. The 49/49 failures were order-state (orders already
 filled/cancelled/dead), not encoding. Lesson: before rewriting a "broken" encoder,
@@ -24,7 +24,7 @@ simulate against an order you just fetched seconds ago.
   3.5s/600; 200 is meaningfully faster for a reveal window.)
 - A live, fresh order is the only reliable simulation input: re-pull
   `fulfillment_data` immediately before each fill so the order is still valid.
-- Full auto-buy daemon reference: `~/Projects/bunker-snipe/clay_sniper.py`
+- Full auto-buy daemon reference: `~/Projects/sniper/clay_sniper.py`
   (guarded: eth_call dry-run before every broadcast, hard caps 3 buys /
   0.010/buy / 0.030/day / 0.050 reserve).
 
@@ -52,10 +52,10 @@ simulate against an order you just fetched seconds ago.
 
 ## Code locations
 
-- Reusable guarded module: `~/Projects/rh-mint-command-center/scripts/buy.py`
+- Reusable guarded module: `~/Projects/mint-control-room/scripts/buy.py`
   CLI: `buy.py simulate <order_hash>` / `buy.py buy <order_hash> --max 0.0015`.
-- Bunker origin (same encoder): `~/Projects/bunker-snipe/autoflip.py` lines ~150-230.
-- Run with: `PYTHONPATH= ~/Projects/bunker-snipe/.venv/bin/python3 …`
+- Bunker origin (same encoder): `~/Projects/sniper/autoflip.py` lines ~150-230.
+- Run with: `PYTHONPATH= ~/Projects/sniper/.venv/bin/python3 …`
   (empty PYTHONPATH is required — see SKILL.md gotcha).
 
 ## Key facts
@@ -73,6 +73,6 @@ simulate against an order you just fetched seconds ago.
 
 ## Buying policy (never violate)
 
-Buying is ALWAYS a separate explicit Emad approval, even inside a snipe workflow he asked
+Buying is ALWAYS a separate explicit the user approval, even inside a snipe workflow he asked
 for. Auto-buy mode requires: UI-authorized bounds (price cap/token, rank cutoff, daily cap)
 AND one clean confirmed test fill first.

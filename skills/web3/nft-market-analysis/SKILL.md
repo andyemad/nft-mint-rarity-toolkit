@@ -12,7 +12,7 @@ metadata:
 
 Use for “is this collection a buy?”, launch/post-mint technical analysis, floor-price predictions, and entry/exit decisions. The goal is a fast, live, decision-grade answer—not a generic project summary.
 
-## Operating rule for Emad
+## Operating rule for the user
 
 When a live entry looks attractive, do two things in parallel:
 1. Finish the assessment.
@@ -121,9 +121,9 @@ Then provide:
 - Whether a dry-run approval slate was prepared.
 - Whether monitoring exists (normally: no, snapshot only).
 
-## Archive output for Emad
+## Archive output for the user
 
-When Emad asks for the Argonauts `/chat/` format, deliver a fixed line-by-line research archive—not an editorial dashboard or a replacement for an existing report. Include:
+When the user asks for the Argonauts `/chat/` format, deliver a fixed line-by-line research archive—not an editorial dashboard or a replacement for an existing report. Include:
 - line numbers and readable section headings;
 - copy-full-analysis control and raw `.txt` download;
 - snapshot timestamp plus a prominent “not live” warning;

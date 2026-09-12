@@ -1,7 +1,7 @@
 # Porting an existing REST app (FastAPI + React) to ICP — verified recipe 2026-08
 
 Verified end-to-end locally (frontend asset canister + Rust backend canister serving the
-real ALM tracker: 47 dealers, 10,742 vehicles, 48k events, 4 leads).
+real the inventory tracker: 47 dealers, 10,742 vehicles, 48k events, 4 leads).
 
 ## Architecture that worked
 
@@ -87,7 +87,7 @@ refresh-driven app, wrong for latency-sensitive APIs.
 
 ```python
 import sqlite3, json
-db = sqlite3.connect('alm.db'); db.row_factory = sqlite3.Row
+db = sqlite3.connect('inventory.db'); db.row_factory = sqlite3.Row
 open('dealers.json','w').write(json.dumps([dict(r) for r in db.execute('SELECT * FROM dealers')]))
 ```
 Watch: bools come out as ints, timestamps as "YYYY-MM-DD HH:MM:SS.ffffff" strings,

@@ -1,6 +1,6 @@
 # Wallet classification: exchange hot wallet vs trader/settlement wallet (2026-09)
 
-Worked example: Arbitrage Ape ($AA, Robinhood Chain) funding-tree forensics, 2026-09-04. Emad challenged an early label ("the funding wallet is a hyperactive trader") with "are you sure the funding wallet is not an exchange, and an actual trader wallet?" — the label had been inferred from activity volume alone, not from discriminating tests. The tests below settled it: NOT an exchange, a settlement hub of a micro-cap trading shop.
+Worked example: Arbitrage Ape ($AA, Robinhood Chain) funding-tree forensics, 2026-09-04. the user challenged an early label ("the funding wallet is a hyperactive trader") with "are you sure the funding wallet is not an exchange, and an actual trader wallet?" — the label had been inferred from activity volume alone, not from discriminating tests. The tests below settled it: NOT an exchange, a settlement hub of a micro-cap trading shop.
 
 ## Why activity volume is not enough
 

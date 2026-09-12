@@ -1,7 +1,7 @@
 # "Analyze this collection + the artist (use Moni credits)" recipe
 
 Verified 2026-08-22 on GOOFYZ (`g00fyz`, RH chain, `0xfcf7…decc`). Use when
-Emad drops an OpenSea collection URL and asks to analyze it AND its associated
+the user drops an OpenSea collection URL and asks to analyze it AND its associated
 Twitter/artist, explicitly authorizing Moni API credit spend. This is the
 market+social combined pass; `nft-collection-call-due-diligence.md` covers the
 narrative/claim-verification side.
@@ -20,7 +20,7 @@ narrative/claim-verification side.
    (same key). Returns asset_events with payment.quantity (wei), buyer, seller,
    nft{}. From a 200-sale page compute: price distribution, top buyers (repeat
    accumulators), top sellers (dumpers), recency window.
-4. **Artist via Moni** (credit spend pre-authorized by Emad's ask):
+4. **Artist via Moni** (credit spend pre-authorized by the user's ask):
    `GET https://api.discover.getmoni.io/api/v3/accounts/<handle>/info/full/`,
    header `Api-Key`. Returns meta.accountAgeDays,
    smartEngagement{smartsCount, moniScore, mentionsCount, smartMentionsCount},

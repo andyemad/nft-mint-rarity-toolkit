@@ -1,6 +1,6 @@
 # SeaDrop upcoming-schedule parity (verified 2026-08-13)
 
-Verified while building the mint-field-guide Upcoming/Schedules acceptance slice (SC-01–SC-09 foundations, plus SC-11/SC-12 schedule alerts + stage lifecycle).
+Verified while building the mint-market-dashboard Upcoming/Schedules acceptance slice (SC-01–SC-09 foundations, plus SC-11/SC-12 schedule alerts + stage lifecycle).
 
 ## Event identity (the part that is easy to get wrong)
 

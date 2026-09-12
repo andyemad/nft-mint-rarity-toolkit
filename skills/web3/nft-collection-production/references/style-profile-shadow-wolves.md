@@ -1,6 +1,6 @@
 # Style profile: Shadow Wolves (Cool Cats ecosystem) + reference-profiling workflow
 
-Session 2026-08-22: Emad began a new "learn from examples → design my own
+Session 2026-08-22: the user began a new "learn from examples → design my own
 collection" engagement by submitting Shadow Wolves
 (https://opensea.io/collection/shadow-wolves, CA 0x858df9f84c73e01c55a2dfb95825401242a65d64,
 6,250 supply, verified, Cool Cats' mid-tier "Super Cool" membership PFP).
@@ -118,7 +118,7 @@ Lane matrix for choosing direction:
 | Palette | Dark + loud solid bg | Neon + patterned bg | Pastel + soft bg |
 | Silhouette | Spiky fur tufts | Structural variety | Extreme roundness |
 
-## Engagement shape Emad set (2026-08-22)
+## Engagement shape the user set (2026-08-22)
 
 He wants to feed multiple example collections so a style profile accumulates,
 then have original art built "based on high quality art." Rules agreed:
@@ -126,7 +126,7 @@ he curates which examples count as the standard; after profiling, produce
 ONE sample piece for his verdict before ANY trait-set/generator work (same
 benchmark gate as the main skill's tool gate step 2).
 
-**Framing correction from Emad (same session):** when he submits reference
+**Framing correction from the user (same session):** when he submits reference
 collections, "it's more about the traits and variants and how these all come
 together with those so you can learn from the bits and parts not the whole."
 Lead with trait anatomy — slot structure, variant pools, weighting,

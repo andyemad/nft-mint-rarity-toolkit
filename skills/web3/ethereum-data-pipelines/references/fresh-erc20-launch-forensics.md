@@ -126,7 +126,7 @@ failure into a zero.
   sanity-check two or three addresses before generalising a flat ratio).
 - **Then say where the thesis actually trades.** With a $2.6k pool, no DEX listing,
   no UI and a chain the user's stack does not cover, the token is not a venue — the
-  NFT floor is. Emad's framing: state the tradeable instrument, not the narrative.
+  NFT floor is. the user's framing: state the tradeable instrument, not the narrative.
 - Note the airdrop snapshot problem: a one-shot push to holders on day one means
   later buyers receive nothing; compare NFT-holder count vs token-holder count
   (1,940 vs 1,261 here) to flag who is excluded and whether a future claim is plausible.

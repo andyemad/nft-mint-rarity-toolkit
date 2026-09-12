@@ -55,7 +55,7 @@ a 10-minute authorization, then mint (2 per wallet).
 
 ### Flag these to the user BEFORE agreeing to mint — three distinct gates
 1. **Legal/geoblock.** The passport is a signed declaration that the minter is not a US
-   person and not accessing from the US. For an Emad-in-Georgia user that assertion is
+   person and not accessing from the US. For an the user-in-Georgia user that assertion is
    FALSE. Do not script around it or fabricate it — state plainly this is a signed legal
    attestation to bypass a geoblock and let him decide; do not build the bypass.
 2. **Social/consent.** The X-ceremony posts to his account and tags two unconsented real

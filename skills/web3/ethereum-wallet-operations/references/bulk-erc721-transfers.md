@@ -59,7 +59,7 @@ This recovery pattern was verified during a 40-token Robinhood Chain transfer: t
 
 ## ERC721-C / transfer-security-registry collections break operator batch routes
 
-Verified 2026-09-09 on HoodPepes (RH 4663): some collections are ERC721-C and deploy a
+Verified 2026-09-09 on the target collection (RH 4663): some collections are ERC721-C and deploy a
 **transfer security registry** that rejects ANY transfer where the immediate caller is not the
 owner. This silently kills every operator/helper/conduit batch route — including the
 documented OpenSea TransferHelper + conduit path — with `StrictAuthorizedTransferSecurityRegistry__UnauthorizedTransfer()`
@@ -83,7 +83,7 @@ Working fallback:
   a registry constraint, not a signer limitation; do not lose time re-proving it. If the owner
   wants fewer confirmations, the only alternative is selling via OpenSea (SignedZone Seaport
   order), which carries listing fees — it is not a free batch-gift path.
-- Size the real cost honestly: `perTxGas * count * boundedGasPrice`. For HoodPepes that was
+- Size the real cost honestly: `perTxGas * count * boundedGasPrice`. For the target collection that was
   ~53.5k gas/tx, ~0.0005 ETH for 50 total.
 
 ## Pitfall: hex-encode token IDs when building calldata by hand

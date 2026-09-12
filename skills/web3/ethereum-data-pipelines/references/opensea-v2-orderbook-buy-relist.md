@@ -85,7 +85,7 @@ orderbook + fulfillment endpoints return `401 Missing an API Key` without it.
 - Use `eth-account` + `eth-abi` + `pycryptodome` (keccak) in a venv (`uv venv`, `uv pip install ...`).
 - `opensea-py` pip package (0.0.2) is a stub with no usable module — don't rely on it.
 
-## User expectations (Emad)
+## User expectations (the user)
 Deep-discount-ONLY snipes (well under floor, e.g. 0.001 vs 0.0038 Epic floor); NO at-floor noise.
 Alert threshold must be a real misprice, not the floor itself. Strict per-buy + daily caps
 (0.0015/0.02). Mandatory non-broadcast safe test shown before any live money. He notices both

@@ -1,6 +1,6 @@
 ---
 name: nft-mint-recon
-description: Use when Emad shares an NFT mint link to recon headlessly.
+description: Use when the user shares an NFT mint link to recon headlessly.
 version: 1.0.0
 author: Hermes
 license: MIT
@@ -111,7 +111,7 @@ fee-capped signing, pending-transaction handling, and receipt/post-state proof.
 - **Deriving a wallet address from a stored key is safe** (read-only): load
   key from ~/.hermes/secrets/, derive with coincurve/eth_account, print only
   the ADDRESS, never echo the key.
-- **A stop or manual-takeover message ends recon immediately.** If Emad says
+- **A stop or manual-takeover message ends recon immediately.** If the user says
   "stop," "I fixed it," "I switched networks," or "I minted manually," halt
   all reads, simulations, wallet inventory, and broadcast preparation. Confirm
   only that nothing was signed/broadcast and give the shortest already-verified

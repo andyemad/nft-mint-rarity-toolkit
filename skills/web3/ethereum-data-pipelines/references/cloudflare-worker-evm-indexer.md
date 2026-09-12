@@ -105,7 +105,7 @@ Writes then stay bounded by #collections × #minutes + feed size (~15–45M/mo),
 minter/tx in a minute that straddles two 5-min cycles (negligible), and `mintCount`
 becomes total quantity rather than distinct mint-event count. A complete self-contained
 implementation spec (migration SQL, repository methods, worker cursor-based rewrite,
-verify steps) is checked into the mint-field-guide repo as `GO-BIG-HANDOFF.md`.
+verify steps) is checked into the mint-market-dashboard repo as `GO-BIG-HANDOFF.md`.
 
 ## RPC failover (the 429 problem)
 
@@ -181,6 +181,6 @@ but it changes the getLogs budget:
   the working pattern (executed on remote D1, 12 commands, ~0.5s) is: `CREATE TABLE
   x_new` (same columns, no FK) → `INSERT INTO x_new SELECT * FROM x` → `DROP TABLE x` →
   `ALTER TABLE x_new RENAME TO x` → recreate indexes. Safe only when nothing else
-  references the renamed table; check the schema first (in mint-field-guide nothing
+  references the renamed table; check the schema first (in mint-market-dashboard nothing
   references `mint_facts`/`chain_cursors`, but `raw_logs`/`sale_facts` still FK to
   `canonical_blocks`).

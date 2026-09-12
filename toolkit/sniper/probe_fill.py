@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Diagnose RH-chain Seaport fill: fetch fulfillment_data for a LIVE Clay StonKz
+"""Diagnose RH-chain Seaport fill: fetch fulfillment_data for a LIVE the test collection
 listing with full HTTP error bodies, encode, and eth_call dry-run to capture the
 exact revert reason. No broadcast. Read-only."""
 import json, sys, urllib.request, urllib.error
@@ -10,7 +10,7 @@ BASE = "https://api.opensea.io/api/v2"
 RW = "https://rpc.mainnet.chain.robinhood.com"
 PROTOCOL = "0x0000000000000068f116a894984e2db1123eb395"
 CHAIN = "robinhood"
-SLUG = "claystonkz"
+SLUG = "testcollection"
 WALLET = "0x1111111111111111111111111111111111111111"
 
 def api_key():

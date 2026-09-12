@@ -9,7 +9,7 @@ rolling watchlists (`nft-smart-wallet-watchlists.md`) — here the unit of analy
 **the wallet set that recurs across collections**, plus per-wallet P&L and handles.
 
 Verified 2026-09-11 on the Robinhood-Chain quartet DogiHood / ALIENS /
-Robinhooders / HoodPepes (21,416 mints + 17,986 sales, 5,211 distinct wallets).
+Robinhooders / the target collection (21,416 mints + 17,986 sales, 5,211 distinct wallets).
 Working dir: `~/Projects/rh-wallet-forensics/`.
 
 ---
@@ -33,15 +33,15 @@ def pay(ev):
     return 0.0, 0.0
 ```
 
-Measured damage — HoodPepes sale events by symbol:
+Measured damage — the target collection sale events by symbol:
 `{'ETH': 7.7999 (5867 sales), 'WETH': 1.3336 (1432), 'USDG': 81.52 (435)}`.
 
-A wallet that sold five HoodPepes for `0.34 + 0.19 + 0.18 + 0.18 + 0.18` USDG
+A wallet that sold five the target collection for `0.34 + 0.19 + 0.18 + 0.18 + 0.18` USDG
 (= ~$1.07) was reported as **+1.07 ETH ≈ +$2,640** when the symbol was ignored. It was
 the single biggest "winner" in the dataset and it was pure denomination error.
 This bug has now fired twice; treat the symbol check as mandatory plumbing, not a nicety.
 When reporting, give **net ETH and net stablecoin in separate columns**, and say which
-launches are affected (here only HoodPepes had USDG sales; the other three are ETH/WETH only).
+launches are affected (here only the target collection had USDG sales; the other three are ETH/WETH only).
 
 ## 2. Defining "early" changes the answer by 4x — pick deliberately
 
@@ -71,7 +71,7 @@ first event.* If you used a different cut, say so — the count swings by hundre
 Before narrowing, always compute participation at all: per collection, collect every
 distinct `to_address` from mint events and every `buyer`/`seller` from sale events.
 
-On this data: DogiHood 1,762 / HoodPepes 1,710 / Robinhooders 1,468 / ALIENS 940
+On this data: DogiHood 1,762 / the target collection 1,710 / Robinhooders 1,468 / ALIENS 940
 distinct participants; **5,211 wallets total**, of which 4,794 joined exactly one launch,
 415 joined two, 72 joined three, **10 joined all four**. Report this ladder first — it is
 what makes the smaller cohort list legible instead of arbitrary.
@@ -113,12 +113,12 @@ Run all of these; they answer "find more patterns" without hand-waving:
    later launch's early set. Measured 9.1%, 9.0%, **3.6%** — the crowd thins as the
    series goes on; the freshest launch drew the fewest returning wallets.
 3. **Supply concentration** — top-15 minters' share of each launch's mints. This is the
-   launch-fairness tell and it varied enormously: **ALIENS 21.9%**, HoodPepes 10.2%,
+   launch-fairness tell and it varied enormously: **ALIENS 21.9%**, the target collection 10.2%,
    DogiHood 6.7%, **Robinhooders 1.5%**. High share ≈ big allowlist allocations to few
    wallets, low share ≈ flat public mint.
 4. **Per-wallet mint-count fingerprint** — the modal exact mint count per collection.
    Here a hard **5-per-wallet cap** dominates (750 DogiHood, 942 Robinhooders, 847
-   HoodPepes wallets minted exactly 5) while ALIENS used 10/20/50 allocations. A recurring
+   the target collection wallets minted exactly 5) while ALIENS used 10/20/50 allocations. A recurring
    cap is the signature of one mint engine / one allowlist policy, not of one person.
 5. **Flip speed** — first-sale minus first-mint per wallet: median, p25/p75, and % sold
    under 30 min / under 3 h. Median here 142–146 min on three launches; Robinhooders had
@@ -141,11 +141,11 @@ Run all of these; they answer "find more patterns" without hand-waving:
   **+1.475 ETH (~$3.6k)**; 325 profitable vs 162 underwater; the largest single ETH winner
   was ~+0.15 ETH. Say the absolute number, not the multiple.
 
-## 8. Deliverable shape (Emad's correction — embed this)
+## 8. Deliverable shape (the user's correction — embed this)
 
-He asked for "a list of wallets that were early in all of these projects… in a list that
-i can understand" and rejected a methodology-first answer, then pushed back with
-*"i need more than that, there have to be more… find more patterns"*.
+The demand was for a readable list of wallets that were early across all of these
+projects. A methodology-first answer was rejected, and a thin list was pushed back on:
+there had to be more patterns than the obvious ones.
 
 Therefore:
 

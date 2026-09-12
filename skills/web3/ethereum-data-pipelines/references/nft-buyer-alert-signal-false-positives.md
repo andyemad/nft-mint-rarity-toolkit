@@ -44,7 +44,7 @@ free-recipient activity but as its own **labeled** category, and never call free
 the codebase's recurring bug class is "a partial measurement presented as the whole."
 
 ## Sufficient fix at the SOURCE: per-acquisition-source tracking (mint-paid/free vs secondary)
-Verified 2026-08-24, live production in mint-field-guide (eCalm Suites) alpha-group alert.
+Verified 2026-08-24, live production in mint-market-dashboard (the case-study collection Suites) alpha-group alert.
 
 The alert's count today is `wallet_positions.last_acquired_at`, which a member's **mint** and a
 member's **secondary buy** BOTH update — so a free mint still reads as "buying" even after the
@@ -60,7 +60,7 @@ source acquired. Fix = stop conflating at the storage layer.
   timestamp silently transfers a threshold between two different statistics (the exact trap the
   repo documents above `getAlphaGroupActivity`). The split is a REPORTING difference, never a
   replacement of the calibrating statistic.
-- Source-aware headline (Emad's chosen format, both webhook and board must agree): show each
+- Source-aware headline (the user's chosen format, both webhook and board must agree): show each
   non-empty bucket with the slug leading the FIRST part only. `funkari minting (2/2) ·
   buying on secondary (1/2)`; mint-only = `funkari minting (2/2)`; secondary-only =
   `funkari buying on secondary (3/2)`. Paid-vs-free is a sub-distinction OF the minting bucket →

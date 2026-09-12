@@ -1,6 +1,6 @@
 # Exchange off-ramp tracing — confirmed addresses & workflow notes
 
-Gathered 2026-08-11 while tracing off-ramps from `0xeE38297ed7C0e96849Ec8581128033f99F48650d` (Ethereum mainnet). These labels were verified by parsing the Etherscan address page title / Public Name Tag, NOT by keyword grep (the sidebar pollutes every page with Coinbase/Gate/etc.).
+Gathered 2026-08-11 while tracing off-ramps from `0x2222222222222222222222222222222222222222` (Ethereum mainnet). These labels were verified by parsing the Etherscan address page title / Public Name Tag, NOT by keyword grep (the sidebar pollutes every page with Coinbase/Gate/etc.).
 
 ## Confirmed labeled addresses (Ethereum mainnet)
 

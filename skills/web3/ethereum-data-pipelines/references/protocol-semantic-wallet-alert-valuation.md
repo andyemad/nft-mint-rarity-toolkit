@@ -17,7 +17,7 @@ If a verified semantic event exposes the protocol's full purchased quantity, pre
 
 ## Verified Robinhood example: CacheFlow `RunStarted`
 
-A Wallet Radar alert reported Czar bought about `$2.67` of CACHE in transaction:
+A the wallet watcher alert reported Czar bought about `$2.67` of CACHE in transaction:
 
 `0xb409c0dc0dfdece7beb61c3f318ef04498efe49e14d5cbd754737266f705b5b1`
 

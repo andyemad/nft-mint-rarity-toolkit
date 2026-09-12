@@ -19,11 +19,11 @@ ranking, listing cross-reference, and guarded purchase.
    Pre-reveal collections point ALL tokens at one shared IPFS CID. Watcher
    pattern: script exits silently (empty stdout) while URIs are still
    unrevealed; cron delivers only when stdout is non-empty. Working watchers:
-   `~/Projects/rh-mint-command-center/scripts/thepool_reveal_watch.py`,
-   `~/.hermes/scripts/claystonkz_reveal_watch.py`,
+   `~/Projects/mint-control-room/scripts/thepool_reveal_watch.py`,
+   `~/.hermes/scripts/testcollection_reveal_watch.py`,
    `~/.hermes/scripts/rhoodmfers_reveal_watch.py`.
    Sample ~8 tokens spread across the supply (not just token 1) before
-   declaring pre-reveal — the Mint Room /api/rarity-gallery probe samples 8
+   declaring pre-reveal — the the control room /api/rarity-gallery probe samples 8
    and reports "all N sampled tokens share one metadata file" (verified on
    robinhood-mfers 8/22). A reveal watcher cron must be approved via the
    concierge gate (cron.create slate) even when the user says "yes" casually;
@@ -35,7 +35,7 @@ ranking, listing cross-reference, and guarded purchase.
    **CRITICAL: check HOW the shared CID is used before writing the equality
    test (bit rhoodmfers 8/23).** Two pre-reveal shapes exist:
    - Exact-shared URI: every token returns the IDENTICAL string
-     (`ipfs://bafkrei…`) — Clay StonKz, THE POOL style. Equality works.
+     (`ipfs://bafkrei…`) — the test collection, THE POOL style. Equality works.
    - Per-token path under a shared base: each token returns
      `ipfs://QmNSUpFq…/<tokenId>` — HOOD MFERS style. An
      `uri != PRE_REVEAL_URI` comparison sees a different string per token and
@@ -52,7 +52,7 @@ ranking, listing cross-reference, and guarded purchase.
    that actually resolves (see Pitfalls).
 3. **Rank** — OpenRarity info-content: score = Σ over traits of
    `-log2(count_of_trait_value / total_supply)`. This matched OpenSea ranks
-   exactly on ComboX (5000 tokens) and is the same formula OpenSea uses.
+   exactly on the rarity-test collection (5000 tokens) and is the same formula OpenSea uses.
 4. **Cross-reference listings** — pull live listings BEFORE reveal
    (`/listings/collection/{slug}/best`, needs API key) and snapshot token→price.
    After ranking, diff: "rank #N listed cheap" = target. Speed matters because
@@ -84,27 +84,27 @@ ranking, listing cross-reference, and guarded purchase.
 
 ## Buy path (verified working 2026-08-22)
 
-The old "49/49 revert" blocker in bunker-snipe was MISDIAGNOSED — encoding was
+The old "49/49 revert" blocker in the sniper project was MISDIAGNOSED — encoding was
 never broken; those were dead orders. A live basic-order fill simulated clean:
 gas 144718, while garbage calldata reverted, proving RPC honesty.
 
-Working module: `~/Projects/rh-mint-command-center/scripts/buy.py`
-Full guarded daemon (reveal→rank→match→buy with caps): `~/Projects/bunker-snipe/clay_sniper.py`
+Working module: `~/Projects/mint-control-room/scripts/buy.py`
+Full guarded daemon (reveal→rank→match→buy with caps): `~/Projects/sniper/clay_sniper.py`
 — now MULTI-COLLECTION (v2, 8/25): a `COLLECTIONS` list processed as parallel
 threads each tick, shared wallet-level caps across collections, dual-channel
 reveal detection (on-chain URI flip OR OS traits — the latter is the ONLY
 signal for gated contracts). Details + Clay reveal post-mortem in
-`references/clay-reveal-postmortem-multicol-sniper-v2.md`. Also see
-`references/clay-stonkz-sniper-2026-08-24.md` for the v1 single-collection
-walkthrough and Mint Room integration notes. When arming the
-daemon, ALSO surface it inside Mint Room — Emad's standing preference is that
-Mint Room (rh-mint-command-center, live on :3000) is the SINGLE all-in-one
+`references/testcollection-reveal-postmortem-multicol-sniper-v2.md`. Also see
+`references/test-collection-sniper-2026-08-24.md` for the v1 single-collection
+walkthrough and the control room integration notes. When arming the
+daemon, ALSO surface it inside the control room — the user's standing preference is that
+the control room (mint-control-room, live on :3000) is the SINGLE all-in-one
 suite. When he asked for a visual of the running sniper, I first shipped a
 throwaway standalone page (sniper_status_server.py, port 8139); he corrected
-me: integrate it INTO Mint Room, not a separate probe. So: build the status
-as a real Mint Room module (see `references/clay-stonkz-sniper-2026-08-24.md`
-→ "Integrating a module into Mint Room"). Do NOT spin up a separate localhost
-page for something Mint Room should host — that's a durable preference. The
+me: integrate it INTO the control room, not a separate probe. So: build the status
+as a real the control room module (see `references/test-collection-sniper-2026-08-24.md`
+→ "Integrating a module into the control room"). Do NOT spin up a separate localhost
+page for something the control room should host — that's a durable preference. The
 8139 standalone exists only as a quick throwaway, never the deliverable.
 ```
 buy.py simulate <order_hash>            # dry-run: eth_estimateGas, no broadcast
@@ -123,7 +123,7 @@ Rules:
 - Any actual buy requires its own explicit user approval slate. Ranking,
   sweeping, simulating are read-only and need none.
 
-**Re-verified on a fresh collection 8/24 (claystonkz):** the encode-fill +
+**Re-verified on a fresh collection 8/24 (testcollection):** the encode-fill +
 `eth_call` dry-run gate, integrated into a long-running daemon, produced
 `result 0x…1` (would fill) against a live 0.0135 ETH order. The `--arm` daemon
 (clay_sniper.py) pattern: poll reveal → rank via OpenSea traits → match
@@ -131,7 +131,7 @@ top-N rarest × floor-listings → for each candidate `eth_call` dry-run MUST
 pass → only then broadcast, with HARD caps (3 buys, ≤0.010/buy, ≤0.030/day,
 wallet reserve). Auto-buy is a separate explicit approval from the reveal
 watcher — do not arm spending off a casual "yes" once the UI overhaul is
-running elsewhere. Note: old bunker-snipe logs showed most failures were
+running elsewhere. Note: old the sniper project logs showed most failures were
 `fulfillment_data` HTTPError 400 (dead order) before any tx — consistent with
 the dead-order-first diagnosis; capture the full HTTPError body, don't assume
 it's your encoder.
@@ -189,7 +189,7 @@ next `hermes cron list`. Only do this to restore a previously-approved job.
 **Rankings are noise if the user doesn't hold the collection.** Before leading
 with "top 10", check whether the user owns any tokens. For a snipe target,
 lead with rank×listing cross-reference ("rank #20 listed at floor") instead of
-raw rankings. (Emad called this out explicitly 8/22.)
+raw rankings. (the user called this out explicitly 8/22.)
 
 **Cross-reference type gotcha:** listing identifiers come back as STRINGS;
 ranked-token keys may be ints. `{str(t): rank}` both sides or you get a silent
@@ -256,8 +256,8 @@ slow through IPFS at all, switch to the OpenSea traits path below instead.
 
 The primary sweep can be even faster than paged `/nfts`: `limit=200` works on
 the chain/contract form (`GET /api/v2/chain/robinhood/contract/{CA}/nfts?limit=200`)
-— 200 tokens ≈ 0.2s, full 5000-token ComboX in ~5s across 25 pages, traits
-included, no IPFS, no RPC. Pre-reveal tokens return `traits: []` (claystonkz
+— 200 tokens ≈ 0.2s, full 5000-token the rarity-test collection in ~5s across 25 pages, traits
+included, no IPFS, no RPC. Pre-reveal tokens return `traits: []` (testcollection
 showed 0 traits while sharing the placeholder URI); post-reveal the same
 endpoint populates traits — that's the moment to switch ranking on. GH: pass
 the raw `[{'trait_type', 'value'}, …]` list straight into the info-content
@@ -274,18 +274,18 @@ in ETH (18 dec — 0.0135 ETH = `13499900000000000`), but some list in USDG
 comes out ~1e12× wrong or ~0. Normalize every listing by its OWN
 `decimals`/`currency` and only count ETH-native listings when the play is "buy
 at floor in ETH" — a stablecoin listing is a different payment rail and cannot
-be a floor-snipe target. On the target collection (claystonkz) ETH listings
+be a floor-snipe target. On the target collection (testcollection) ETH listings
 parsed clean: 50 active ETH orders, floor ≈ 0.0135.
 
-## Reveal day: artist announcement ≠ on-chain reveal (proven 8/24 claystonkz)
+## Reveal day: artist announcement ≠ on-chain reveal (proven 8/24 testcollection)
 
 The artist tweeted the reveal while every tokenURI on-chain was still the
-placeholder. Emad relayed it twice ("the artist said it revealed", "dude it's
+placeholder. the user relayed it twice ("the artist said it revealed", "dude it's
 revealed"). Do NOT take his word or the tweet as the flip signal — sample
 tokenURIs across start/middle/end of supply (~300 tokens, threaded) and report
 what the chain says. When it did flip, URIs changed to a NEW per-token base
 (`ipfs://Qm…/<id>` hash-style), so the watcher's equality-vs-PRE_URI test still
-worked — but re-check the shape at reveal time anyway. Emad's reports skew
+worked — but re-check the shape at reveal time anyway. the user's reports skew
 EARLY by minutes-to-hours; the sniper firing on its own is the source of truth.
 
 **GATED contracts break URI-based detection entirely (8/25).** Some contracts
@@ -296,11 +296,11 @@ and check whether ANY returned nft has non-empty `traits` (one request, ~0.1s,
 needs API key). Use OS-traits as channel B in all detectors; on-chain URI
 comparison is only an optimization when a known PRE_URI exists.
 
-**Speed lesson from losing the claystonkz race (8/24):** OpenSea indexed all
-traits before our daemon finished its detection+rank pipeline, and Emad saw
+**Speed lesson from losing the testcollection race (8/24):** OpenSea indexed all
+traits before our daemon finished its detection+rank pipeline, and the user saw
 ranks live on OpenSea first. Detection must be dual-channel and ranking must
 race OS-traits vs chain+IPFS with OS usually winning. Post-mortem:
-`references/clay-reveal-postmortem-multicol-sniper-v2.md`.
+`references/testcollection-reveal-postmortem-multicol-sniper-v2.md`.
 
 **Live param edits (caps/poll): params.json IS hot-reloaded** — the daemon
 calls `load_params()` fresh every tick, so cap/filter/poll changes land within
@@ -342,7 +342,7 @@ lives at `protocol_data.parameters.offer[].identifierOrCriteria` (itemType 2)
 (itemType 0/1) ÷ 1e18. Sum ALL consideration entries rather than taking one,
 or fees get dropped from the cost.
 
-**Mint Room rarity API 503 ("metadata not fetchable") = OS-key/gateway bug,
+**the control room rarity API 503 ("metadata not fetchable") = OS-key/gateway bug,
 not a reveal lag (8/25):** `/api/rarity` used only the dead nftstorage.link
 gateway; `/api/rarity-gallery` checked only a nonexistent env var for the OS
 key instead of the secrets-file fallback in `lib/server/opensea-listings.ts`.
@@ -353,8 +353,8 @@ processes on :3000, kickstart) in `references/rarity-api-osprimary-fix-2026-08-2
 trait-type accordion with per-value count+% (rarest-first), multi-select
 (OR within type, AND across types), stacks with Snipe-view floor sorting.
 Client-side over the LOADED PAGE of tokens only (60/page) — for
-collection-wide filtering a server-side param is still needed; Emad knows.
-Emad supplies UI references as screenshots (Gem etc.) — when he says "like
+collection-wide filtering a server-side param is still needed; the user knows.
+the user supplies UI references as screenshots (Gem etc.) — when he says "like
 this", vision_analyze the image first, then mirror layout/behavior in Mint
 Room's dark theme rather than inventing an equivalent.
 

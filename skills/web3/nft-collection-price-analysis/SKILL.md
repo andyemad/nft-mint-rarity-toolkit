@@ -12,7 +12,7 @@ metadata:
 
 ## Trigger
 
-Use when Emad asks whether an NFT collection is a buy, requests technical analysis or price predictions, or shares a live marketplace collection link for evaluation.
+Use when the user asks whether an NFT collection is a buy, requests technical analysis or price predictions, or shares a live marketplace collection link for evaluation.
 
 This skill produces a source-grounded market-microstructure analysis, contract/supply audit, probabilistic forecast, and action-framed trade verdict. It does not buy, bid, list, post, or create a watcher without the required approval.
 
@@ -249,7 +249,7 @@ Frame the recommendation around liquidity and risk/reward:
 - `WAIT`: require a specific breakout or stabilization condition.
 - `AVOID`: contract, supply, legitimacy, or liquidity fails.
 
-Emad dislikes illiquid NFT positions. Prefer liquid collections and fast, explicit exits.
+the user dislikes illiquid NFT positions. Prefer liquid collections and fast, explicit exits.
 
 If the entry is attractive during the assessment:
 

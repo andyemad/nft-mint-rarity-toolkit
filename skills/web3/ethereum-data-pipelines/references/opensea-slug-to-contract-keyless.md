@@ -44,13 +44,13 @@ query strings, and an `os:<slug>` shorthand. Slugify to lowercase.
 
 ## Production implementation (reuse, don't re-derive)
 
-Mint Room ships a tested TS version:
-`~/Projects/rh-mint-command-center/lib/server/opensea-resolve.ts`
+the control room ships a tested TS version:
+`~/Projects/mint-control-room/lib/server/opensea-resolve.ts`
 with `tests/opensea-resolve.test.ts` (5 tests). Exports: `parseCollectionInput`
 (address | URL | `os:` shorthand → discriminated union), `extractContractsFromOpenSeaHtml`
 (string-aware brace-count parser + slug/chain walk), `resolveOpenSeaSlug` (fetches the
 page, prefers RH chain, throws plain-language errors on 404/no-address). Wired into
-`app/api/plan/route.ts` so pasting ANY of {CA, OpenSea URL, os:slug} into Mint Room's
+`app/api/plan/route.ts` so pasting ANY of {CA, OpenSea URL, os:slug} into the control room's
 single collection box just works; junk input gets "Enter a valid contract address or
 OpenSea collection link." Verified live 2026-08-21: bakemono-crayons URL →
 `0x4Ff63Dd0…2B29`, raw MUGS CA still adapter-detected, foreign-origin POSTs still 400.

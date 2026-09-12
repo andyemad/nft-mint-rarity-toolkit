@@ -35,6 +35,8 @@ EXPECT = {
 }
 
 CJK = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff]")
+KANA = re.compile(r"[\u3040-\u309f\u30a0-\u30ff]")
+HANGUL = re.compile(r"[\uac00-\ud7af\u1100-\u11ff]")
 ARABIC = re.compile(r"[\u0600-\u06ff\u0750-\u077f]")
 HEBREW = re.compile(r"[\u0590-\u05ff]")
 CYRILLIC = re.compile(r"[\u0400-\u04ff]")
@@ -43,6 +45,9 @@ LATIN = re.compile(r"[A-Za-z]")
 # script expectation: (regex that must appear in a good share of values, label)
 SCRIPT = {
     "zh": (CJK, "Han characters"),
+    # Japanese prose carries kana alongside kanji; Korean prose is Hangul.
+    "ja": (KANA, "kana characters"),
+    "ko": (HANGUL, "Hangul characters"),
     "ar": (ARABIC, "Arabic characters"),
     "he": (HEBREW, "Hebrew characters"),
     "ru": (CYRILLIC, "Cyrillic characters"),
@@ -69,7 +74,7 @@ ALLOW_IDENTICAL = {
 
 def main():
     problems = 0
-    codes = [c for c in ("zh", "ar", "fr", "de", "ru", "es", "he", "ur")
+    codes = [c for c in ("zh", "ja", "ko", "ar", "fr", "de", "ru", "es", "he", "ur")
              if os.path.exists(os.path.join(I18N, f"{c}.json"))]
     if not codes:
         print("no translation files found yet")

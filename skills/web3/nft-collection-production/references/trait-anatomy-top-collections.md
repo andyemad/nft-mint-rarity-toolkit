@@ -1,6 +1,6 @@
 # Trait-system architecture: what the bits and parts look like in top collections
 
-Emad's framing (2026-08-22), which corrects how style study should be framed:
+the user's framing (2026-08-22), which corrects how style study should be framed:
 "it's more about the traits and variants and how these all come together with
 those so you can learn from the bits and parts not the whole." When profiling
 a reference collection, the deliverable is TRAIT ANATOMY — slot structure,

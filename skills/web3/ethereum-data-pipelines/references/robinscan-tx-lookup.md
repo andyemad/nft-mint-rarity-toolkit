@@ -1,6 +1,6 @@
 # Robinscan tx lookup: dexscreener pair link -> swap tx hash (keyless)
 
-Verified 2026-08-31 pulling the tx for a `vanta sweeping` QUOTRON/WETH buy (2,999,987,455,304,605 tokens) off a Wallet Radar Discord alert.
+Verified 2026-08-31 pulling the tx for a `vanta sweeping` QUOTRON/WETH buy (2,999,987,455,304,605 tokens) off a the wallet watcher Discord alert.
 
 ## Robinscan is a KEYLESS live JSON API on the main host
 
@@ -34,7 +34,7 @@ Given a dexscreener link `dexscreener.com/<chain>/<pair>`:
 
 ## Time-lag gotcha
 
-An alerting bot (e.g. Wallet Radar) posts a message MINUTES after the on-chain timestamp — on 8/31 the alert read 19:59:03Z while the actual tx was 19:56:36Z. Do not reject a candidate tx for a timestamp mismatch; match on amount + transfers instead.
+An alerting bot (e.g. the wallet watcher) posts a message MINUTES after the on-chain timestamp — on 8/31 the alert read 19:59:03Z while the actual tx was 19:56:36Z. Do not reject a candidate tx for a timestamp mismatch; match on amount + transfers instead.
 
 ## Robinscan quirk vs Blockscout
 

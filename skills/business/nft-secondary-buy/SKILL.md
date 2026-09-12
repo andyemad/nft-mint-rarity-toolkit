@@ -48,7 +48,7 @@ The script:
 2. Pulls best listings via `/listings/collection/{slug}/best`.
 3. Grabs `/listings/fulfillment_data` for the cheapest candidate.
 4. Encodes Seaport `fulfillAdvancedOrder` (reuse the encode logic from
-   `~/Projects/bunker-snipe/encode_test.py`).
+   `~/Projects/sniper/encode_test.py`).
 5. `eth_call` dry-runs the fill from the bot wallet — **no spend**.
 6. In `--live`, signs and broadcasts.
 
@@ -66,7 +66,7 @@ Select steps by iterating for the key name, not `steps[0]` (order varies).
 Verify listings live via `GET /listings/collection/{slug}/best` (check each token+price).
 
 ## Rug-risk gate (RUN BEFORE ANY SWEEP — do not skip)
-Fresh anonymous floor-stuffed collections are the #1 recurring loss for Emad
+Fresh anonymous floor-stuffed collections are the #1 recurring loss for the user
 (e.g. bakemono-crayons 8/19: 1-day-old, no roadmap/community, floor-stuffer stacked
 then dumped under everyone's entry — exact in-wash rug). Before sweeping or buying
 a low-liquidity floor, check and state:
@@ -77,7 +77,7 @@ a low-liquidity floor, check and state:
    about to dump on you. Cross-check maker against `owner`.
 4. Presence of roadmap / community (discord/twitter populated? activity real?).
 5. ONLY after these pass does the normal buy flow / approval gate apply.
-Prefer liquid, higher-volume collections. If Emad is chasing another anonymous
+Prefer liquid, higher-volume collections. If the user is chasing another anonymous
 fresh floor, say so plainly and refuse to auto-sweep without his explicit go.
 
 ## Approval gate (MANDATORY — never skip)
@@ -89,7 +89,7 @@ Buying spends real ETH. A live broadcast is an external financial consequence:
    → run `--live` → read back tx receipt → `workspace_receipt`.
 
 Never batch-fill or spend past the approved cap. Never let "buy as many as you
-can" override a needed hard budget — get a number from Emad first.
+can" override a needed hard budget — get a number from the user first.
 
 ## Known blocker (see status below)
 The OLD advanced-order path (`fulfillAdvancedOrder` for orderbook fills) reverted

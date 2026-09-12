@@ -57,7 +57,7 @@ Recurring user question: how much has a collection's dev made from mint + royalt
 6. **Dev inventory**: `eth_call` `balanceOf(dev)` on the NFT contract — unsold
    or withheld tokens are an asset, not revenue.
 
-## ComboX / combox-888 worked numbers (2026-08-19, RH chain 4663)
+## the rarity-test collection / raritytest-888 worked numbers (2026-08-19, RH chain 4663)
 
 - 5,000 supply, sold out same-day launch. Contract `0x512faa1354c8d634cd0e78e6ec5ba1d9fe19d55c`
   (ERC721). Stages (hydration JSON `SEADROP_V1_ERC721`): stage 1 FREE "TEAM" signed presale

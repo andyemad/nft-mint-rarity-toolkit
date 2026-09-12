@@ -70,7 +70,7 @@ ERC-20 shares the ERC-721 topic0 but emits only three topics; require exactly fo
 
 ## Public-RPC limits must be chain-specific
 
-Validated production settings from the Wallet Radar deployment:
+Validated production settings from the the wallet watcher deployment:
 
 | Chain/provider | Working endpoint | `eth_getLogs` chunk | Max JSON-RPC calls per HTTP batch | Blocks per poll |
 |---|---|---:|---:|---:|

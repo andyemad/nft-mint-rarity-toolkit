@@ -4,11 +4,11 @@ CLASS: given an already-revealed collection and a wallet, rank the wallet's held
 tokens by statistical trait-frequency rarity. The rarity rank determines which
 pieces carry the only plausible exit value.
 
-Validated on TWO collections back-to-back (ComboX, 5000 supply; Bakemono
+Validated on TWO collections back-to-back (the rarity-test collection, 5000 supply; Bakemono
 Crayons, 2026-08-19) — the pattern is reusable, not one-off.
 
 ## Re-usable engines (source of truth)
-- `~/Projects/rarity-engine/combox_rarity.py` — single-collection rarity.
+- `~/Projects/rarity-engine/raritytest_rarity.py` — single-collection rarity.
 - `~/Projects/rarity-engine/bakemono_rarity.py` — GENERALIZED: adds a `held`
   fetch (wallet's tokens in the collection) and a `mine` command that prints the
   user's holdings rarest-first with rank/pct/score/contributing traits.

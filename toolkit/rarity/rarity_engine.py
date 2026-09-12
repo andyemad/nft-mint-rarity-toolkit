@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ComboX rarity engine + reveal watcher (Robinhood Chain).
+"""the rarity-test collection rarity engine + reveal watcher (Robinhood Chain).
 
 Re-usable scaffold: collection config + rarity computation + wallet compare.
 Beats OpenSea's rarity tab by computing trait-frequency rarity the moment
@@ -22,7 +22,7 @@ WALLET = "0x1111111111111111111111111111111111111111"
 # Provide comma-separated: HELD="12,44,91" python3 <script>.py ...
 HELD = [int(x) for x in os.environ.get("HELD", "").split(",") if x.strip()]
 
-BASE = os.path.expanduser("~/.hermes/rarity/combox")
+BASE = os.path.expanduser("~/.hermes/rarity/raritytest")
 META_DIR = os.path.join(BASE, "metadata")
 os.makedirs(META_DIR, exist_ok=True)
 SCORE_FILE = os.path.join(BASE, "scores.json")
@@ -154,7 +154,7 @@ def load_scores():
 
 # ---------------- Commands ----------------
 def cmd_watch():
-    print(f"ComboX reveal watcher on {CHAIN} ({SUPPLY} supply). Polling tokenURI divergence...")
+    print(f"the rarity-test collection reveal watcher on {CHAIN} ({SUPPLY} supply). Polling tokenURI divergence...")
     while True:
         rev, uris, failed = is_revealed()
         print(f"  [{time.strftime('%H:%M:%S')}] revealed={rev} distinct_uris={len(uris)} failed={failed}")
@@ -204,7 +204,7 @@ def cmd_holdings():
         print("No scores yet. Run compute first.")
         return
     held_sorted = sorted(HELD, key=lambda t: scores.get(str(t),{}).get("rank",10**9))
-    print(f"Your {len(HELD)} ComboX holdings ranked (rarest first):")
+    print(f"Your {len(HELD)} the rarity-test collection holdings ranked (rarest first):")
     for tid in held_sorted:
         s = scores.get(str(tid)) or scores.get(tid,{})
         rank = s.get("rank","?")

@@ -1,6 +1,6 @@
 # Competitor Launch Forensics + Verified Launch Playbook (Cyclops Eyrix case, 2026-08-15)
 
-Use when Emad drops an X handle or collection and says "devise a plan like
+Use when the user drops an X handle or collection and says "devise a plan like
 this". The workflow: forensics first, honest math, then the playbook.
 
 ## Step 1 — Profile timeline via logged-out X scrape
@@ -53,12 +53,12 @@ $10-20K gross. Cyclops numbers are the floor, not the target.
 
 ## Verified launch playbook (the D-count ladder)
 
-The pattern that actually ran, with Emad's tightening:
+The pattern that actually ran, with the user's tightening:
 
 - **D-21..D-8 SETUP**: anonymous X account + matching name on OpenSea/Discord,
   daily art WIP posts (no links), follow+engage 50-100 mint accounts via
   replies/likes (not DMs), Discord skeleton. **KILL GATE: 300+ engaged
-  followers by D-8 or cancel** — Emad's distribution-first gate.
+  followers by D-8 or cancel** — the user's distribution-first gate.
 - **D-7**: full art drop teasers, 3-4 hero images + rarity table preview.
 - **D-5**: WL giveaway — like + repost + tag 1 friend + drop ETH wallet.
   20-50 spots, 24h only, scarcity in the post.
@@ -76,7 +76,7 @@ Mechanics: RH chain, SeaDrop ERC-721, $0.19-0.50 mint, 10K supply, 5-10%
 royalty, mint page 30-60s to feel hot. Never list below break-even
 (mint / 0.89).
 
-## Parody/likeness boundary (Emad's idea-space)
+## Parody/likeness boundary (the user's idea-space)
 
 - Real extremist/hate-figure likeness (e.g. Nick Fuentes): hard no — OpenSea
   prohibited-content policy delists mid-mint, zero audience overlap, right-of-

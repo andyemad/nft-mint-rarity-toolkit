@@ -1,13 +1,12 @@
 # Platform / ecosystem deep-dive (multi-source, one conversation)
 
-Verified 2026-08-23 on agents4.fun + DePunks Club (Emad: "i need a deep-dive on
-this … dev loop + implement spec / multi agent research"). Use when Emad points
+Verified 2026-08-23 on agents4.fun + DePunks Club (The request:). Use when the user points
 at a whole PLATFORM (mint site, allowlist engine, agent registry) rather than a
 single collection, and wants mechanics + team signal + a verdict.
 
 ## Takeover rule after a session reset
 
-When a gateway session dies mid-task and Emad says "continue your task" /
+When a gateway session dies mid-task and the user says "continue your task" /
 "this was your task": **do the remaining legs yourself, in-conversation**. Do
 not re-narrate dead subagent dispatches or wait for children that will never
 report back. First move: check `/tmp/<task-prefix>*` — subagent artifacts

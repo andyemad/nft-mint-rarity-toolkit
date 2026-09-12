@@ -23,7 +23,7 @@ DOCS = os.path.join(ROOT, "docs")
 CSS = os.path.join(DOCS, "assets", "styles.css")
 I18N_CSS = os.path.join(DOCS, "assets", "i18n.css")
 
-CODES = ["en", "zh", "ar", "fr", "de", "ru", "es", "he", "ur"]
+CODES = ["en", "zh", "ja", "ko", "ar", "fr", "de", "ru", "es", "he", "ur"]
 RTL = {"ar", "he"}
 
 # Physical properties that must be mirrored on an RTL page. Centering tricks

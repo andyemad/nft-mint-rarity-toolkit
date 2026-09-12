@@ -1,6 +1,6 @@
 # NFT Mint-Bot Landscape (open-source sniper + commercial SaaS)
 
-Surveyed 2026-08-15 while planning eCalm's mint tooling. Two reference points:
+Surveyed 2026-08-15 while planning the case-study collection's mint tooling. Two reference points:
 the open-source SeaDrop sniper (morsyxbt/nft-public-mint) and the commercial
 browser SaaS umi.bot. Both are "execute a mint faster than other people" tools;
 know what each does, what it CANNOT do, and what the shared race dynamics are.
@@ -28,7 +28,7 @@ know what each does, what it CANNOT do, and what the shared race dynamics are.
     (README admits this).
   - No custom mint contracts (any drop with its own `mint()` is invisible);
   - No RH launchpad fee-split paid mints (the pattern detected in
-    mint-field-guide via fixed-recipient ERC20/ETH transfers);
+    mint-market-dashboard via fixed-recipient ERC20/ETH transfers);
   - No discovery/automation (paste a link manually), no retry/gas-bump,
     no private mempool send, no post-mint exit automation.
 - **License trap:** package.json says MIT but the repo has NO LICENSE file —
@@ -72,7 +72,7 @@ know what each does, what it CANNOT do, and what the shared race dynamics are.
   signature/payload per wallet. That is the key fork in the road between the
   open-source tool (public only) and commercial tools (allowlist-capable).
 
-## Defense takeaway for eCalm's OWN drops
+## Defense takeaway for the case-study collection's OWN drops
 
 The same knowledge that builds a sniper tells you how to stop one:
 allowlist/mintSigned stages, per-wallet caps (`maxTotalMintableByWallet`),
@@ -83,8 +83,8 @@ surprise/last-minute timing; monitor for dev-fronted mint + wash rings (see
 
 ## Related project files (2026-08-15)
 
-- `~/Projects/ecalm-mint-sniper/PLAN-claude-review.md` —
+- `~/Projects/casestudy-mint-sniper/PLAN-claude-review.md` —
   fork+harden plan (M0-M6, defense first, kill-gates) for Claude review.
-- `~/Projects/ecalm-mint-sniper/COLLECTION-NOTES-PLAN-v2.md`
+- `~/Projects/casestudy-mint-sniper/COLLECTION-NOTES-PLAN-v2.md`
   — the collection-forensics pipeline (BRHD-style notes on demand) plan +
   Claude review prompt.

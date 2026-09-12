@@ -51,7 +51,7 @@ For exact order-book depth, use these active routes rather than filtering histor
   on anything at/below the floor — see threshold lesson below).
 - Silent when nothing qualifies; only emit the alert + OpenSea link when triggered.
 - Reference implementation: `~/.hermes/cron/output/bunker_monitor_state.json` state +
-  `~/Projects/bunker-snipe/monitor.py`.
+  `~/Projects/sniper/monitor.py`.
 
 ## Pitfalls (learned the hard way 2026-08-18)
 

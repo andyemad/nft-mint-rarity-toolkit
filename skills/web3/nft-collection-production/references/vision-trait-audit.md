@@ -1,7 +1,7 @@
 # Vision-assisted trait audit of an existing collection
 
 Workflow for building or correcting a trait taxonomy over already-minted art
-(eCalm Suites mirror, 2026-08-21). Also applies when Emad asks to "sort out
+(the case-study collection Suites mirror, 2026-08-21). Also applies when the user asks to "sort out
 the metadata traits" of any collection with local images.
 
 ## The multi-pass pipeline (validated end-to-end)

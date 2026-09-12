@@ -18,7 +18,7 @@ was wrong in testing, so do not ship it.
 | File | What it does |
 |---|---|
 | `rarity_engine.py` | Generic scaffold: reveal watcher + full rarity computation + wallet comparison. Start here. |
-| `combox_rarity.py` | Full-supply sweep via the OpenSea v2 paginated endpoint, then rank; `fetch` / `rank` / `mine`. |
+| `raritytest_rarity.py` | Full-supply sweep via the OpenSea v2 paginated endpoint, then rank; `fetch` / `rank` / `mine`. |
 | `bakemono_rarity.py` | Same engine plus a wallet-holdings fetch, so you can rank *your* tokens against the supply. |
 | `adambomb_rarity.py` | Ingest a large reference collection (traits + token copy) for studying trait architecture. |
 | `gen_dash.py` | Turns `scores.json` + `traits.json` into a single-file dark HTML dashboard with rank bands. |
@@ -32,8 +32,8 @@ python3 rarity_engine.py watch
 python3 rarity_engine.py compute
 
 # full sweep of a revealed collection
-python3 combox_rarity.py fetch     # -> traits.json
-python3 combox_rarity.py rank      # -> scores.json
+python3 raritytest_rarity.py fetch     # -> traits.json
+python3 raritytest_rarity.py rank      # -> scores.json
 
 # rank the tokens you hold (comma-separated token ids)
 HELD="12,44,91" python3 bakemono_rarity.py mine

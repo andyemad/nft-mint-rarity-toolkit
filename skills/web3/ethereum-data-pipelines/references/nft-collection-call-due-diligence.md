@@ -1,8 +1,8 @@
 # NFT collection-call due diligence (keyless) + keyless X/tweet reading
 
-Refined 2026-08-18 on Emad's Maksae/GIWA "alphas" call (Upbit-backed Korean
+Refined 2026-08-18 on the user's Maksae/GIWA "alphas" call (Upbit-backed Korean
 L2, mascot NFT on Robinhood Chain) and his request to verify a holding-claim
-tweet. Use whenever Emad shares a mint/collection call and asks "is this a
+tweet. Use whenever the user shares a mint/collection call and asks "is this a
 good opportunity?" or wants a specific claim verified. Complements
 `nft-mint-market-analysis.md` (which covers market data); this covers the
 *narrative-and-claim* verification side and sizes the position.

@@ -10,7 +10,7 @@ file is the DEV-side forensic chain.
 ## Answer shape (verdict first)
 
 Organic vs manufactured launch, dev's actual take, the ring evidence, then the
-plain-money read for Emad (net $ / time / risk — no percentage-ROI dressing).
+plain-money read for the user (net $ / time / risk — no percentage-ROI dressing).
 
 ## Recipe (no keys: OpenSea page + public RPC + Blockscout)
 

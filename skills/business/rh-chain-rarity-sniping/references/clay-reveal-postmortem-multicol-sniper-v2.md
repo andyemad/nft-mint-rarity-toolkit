@@ -1,15 +1,14 @@
-# Clay StonKz reveal 8/24-25 — post-mortem + multi-collection sniper v2
+# the test collection reveal 8/24-25 — post-mortem + multi-collection sniper v2
 
 ## What happened at the reveal (the loss)
 
-Timeline: artist announced reveal → Emad relayed twice → daemon was still
+Timeline: artist announced reveal → the user relayed twice → daemon was still
 logging "pre-reveal" while OpenSea had ALREADY indexed all 6889 tokens with
 traits. The daemon's OS-traits ranking source returned "0 tokens w/traits
 across 35 pages" — a false negative caused by stale in-process state, not the
 endpoint. Meanwhile IPFS fallback failed because nftstorage.link 403s. Net:
-Emad's Mint Room rarity page showed the 503 "Reveal seen but metadata not
-fetchable yet" and ranks appeared on OpenSea before our tooling. Emad: "rarity
-loaded on opensea before you were able to do shit."
+the user's the control room rarity page showed the 503 "Reveal seen but metadata not
+fetchable yet" and ranks appeared on OpenSea before our tooling. The request:
 
 Root causes, in order of impact:
 
@@ -22,21 +21,21 @@ Root causes, in order of impact:
    Diagnostic order that works: direct endpoint test with the key → reproduce
    function in isolation → restart daemon. Don't conclude "not indexed yet"
    until step 1 passes.
-3. **Mint Room /api/rarity used ONLY nftstorage.link for metadata** (dead
+3. **the control room /api/rarity used ONLY nftstorage.link for metadata** (dead
    gateway) and **/api/rarity-gallery read only `process.env.OPENSEA_API_KEY`**
    which doesn't exist — the key fallback lives in
    `lib/server/opensea-listings.ts apiKey()` reading
    `~/.hermes/secrets/opensea_key`. Both routes now use OS-primary +
    pinata-fallback and share the secret-file key loader.
 
-## Multi-collection sniper v2 (bunker-snipe/clay_sniper.py)
+## Multi-collection sniper v2 (sniper/clay_sniper.py)
 
 Rewritten from single-collection to a COLLECTIONS list processed as parallel
 threads each tick:
 
 ```python
 COLLECTIONS = [
-    {"name": "claystonkz", "contract": "0xde0ace…1b44", "slug": "claystonkz",
+    {"name": "testcollection", "contract": "0xde0ace…1b44", "slug": "testcollection",
      "supply": 6969,
      "pre_uri": "ipfs://bafkreiavsv…3itq"},
     {"name": "bandits",    "contract": "0x2e0a87e6…355a", "slug": "the-bandits",

@@ -22,9 +22,9 @@ to `skills/`.
 - **Load when:** Use when creating, backing up, or sending assets from EVM wallets. Handles local keys, verification, and safe transfers.
 - **Depth:** 121 lines of playbook, 5 supporting files
 
-### `flop-technocore-agent-ops`
-- **Path:** `skills/web3/flop-technocore-agent-ops`
-- **Load when:** Use for technocore.chat / FLOP: DIDs, posts, checks, X spread via @bidetusersunite.
+### `agent-public-identity-ops`
+- **Path:** `skills/web3/agent-public-identity-ops`
+- **Load when:** Use for the public agent network / the ecosystem token: DIDs, posts, checks, X spread via @the-agent-account.
 - **Depth:** 206 lines of playbook, 2 supporting files
 
 ### `internet-computer-development`
@@ -44,7 +44,7 @@ to `skills/`.
 
 ### `nft-exit-discipline`
 - **Path:** `skills/web3/nft-exit-discipline`
-- **Load when:** Use when Emad trades or sells NFTs, or decides on an exit.
+- **Load when:** Use when the user trades or sells NFTs, or decides on an exit.
 - **Depth:** 43 lines of playbook, 0 supporting files
 
 ### `nft-market-analysis`
@@ -92,9 +92,9 @@ to `skills/`.
 - **Load when:** Fire SeaDrop public mints fast with a fresh funded wallet.
 - **Depth:** 39 lines of playbook, 0 supporting files
 
-### `wallet-radar-operations`
-- **Path:** `skills/web3/wallet-radar-operations`
-- **Load when:** Use when operating, debugging, or changing Wallet Radar wallets, classifiers, alerts, valuation, delivery, or its live daemon.
+### `wallet-watcher-operations`
+- **Path:** `skills/web3/wallet-watcher-operations`
+- **Load when:** Use when operating, debugging, or changing the wallet watcher wallets, classifiers, alerts, valuation, delivery, or its live daemon.
 - **Depth:** 277 lines of playbook, 9 supporting files
 
 ### `web3-claim-verification`
@@ -111,7 +111,7 @@ to `skills/`.
 
 ### `nft-mint-recon`
 - **Path:** `skills/business/nft-mint-recon`
-- **Load when:** Use when Emad shares an NFT mint link to recon headlessly.
+- **Load when:** Use when the user shares an NFT mint link to recon headlessly.
 - **Depth:** 130 lines of playbook, 4 supporting files
 
 ### `nft-secondary-buy`
@@ -155,20 +155,20 @@ to `skills/`.
 
 ## Flagship application builds
 
-### `mint-field-guide`
-- **Path:** `skills/software-development/mint-field-guide`
-- **Load when:** Use when adding/editing code or tests in mint-field-guide.
+### `mint-market-dashboard`
+- **Path:** `skills/software-development/mint-market-dashboard`
+- **Load when:** Use when adding/editing code or tests in mint-market-dashboard.
 - **Depth:** 324 lines of playbook, 15 supporting files
 
-### `rh-mint-command-center`
-- **Path:** `skills/software-development/rh-mint-command-center`
-- **Load when:** Use when editing Mint Room code or running its mint engines.
+### `mint-control-room`
+- **Path:** `skills/software-development/mint-control-room`
+- **Load when:** Use when editing the control room code or running its mint engines.
 - **Depth:** 1269 lines of playbook, 30 supporting files
 
 ## Delivery tooling
 
 ### `public-wallet-xlsx-delivery`
 - **Path:** `skills/productivity/public-wallet-xlsx-delivery`
-- **Load when:** Use when Emad pastes wallets. Deliver a public XLSX.
+- **Load when:** Use when the user pastes wallets. Deliver a public XLSX.
 - **Depth:** 49 lines of playbook, 0 supporting files
 

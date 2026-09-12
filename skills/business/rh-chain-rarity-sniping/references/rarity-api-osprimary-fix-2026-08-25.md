@@ -1,4 +1,4 @@
-# Mint Room rarity API 503 fix (8/25) — OpenSea-primary traits + key fallback
+# the control room rarity API 503 fix (8/25) — OpenSea-primary traits + key fallback
 
 ## Symptom
 
@@ -35,7 +35,7 @@ TypeScript gotcha: annotating `let data: {...} | null = null` then casting
 
 ## Deploy mechanics (launchd service — critical)
 
-Mint Room runs under launchd `com.patelai.rh-mint-room` as a PRODUCTION
+the control room runs under launchd `com.the agent.rh-mint-room` as a PRODUCTION
 `next start`, NOT `next dev`. Consequences:
 
 - Dev-mode hot reload does NOT apply; you MUST `npx next build` after route
@@ -45,7 +45,7 @@ Mint Room runs under launchd `com.patelai.rh-mint-room` as a PRODUCTION
 - There may be ORPHANED next-server processes squatting on :3000 with stale
   code (ppid 1). Diagnose: `lsof -nP -iTCP:3000 -sTCP:LISTEN` + check
   `ps -p <pid> -o lstart=` vs your edit time. Kill strays, then
-  `launchctl kickstart -k gui/$(id -u)/com.patelai.rh-mint-room`.
+  `launchctl kickstart -k gui/$(id -u)/com.the agent.rh-mint-room`.
 - Logs: `.runtime/logs/launchd.{out,err}.log`. MODULE_NOT_FOUND there = rebuild needed.
 
 Verified post-fix: `/api/rarity` → `{"revealed":true,"totalRanked":6889,…}` in

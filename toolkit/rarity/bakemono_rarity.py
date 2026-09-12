@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bakemono Crayons rarity engine (OpenSea API source).
 Statistical trait-frequency rarity over full supply, then cross-refs your held
-token ids (0x1111…1111). Same method as combox_rarity.py.
+token ids (0x1111…1111). Same method as raritytest_rarity.py.
 Usage: bakemono_rarity.py fetch | rank | mine | both
 """
 import json, os, sys, time, urllib.request

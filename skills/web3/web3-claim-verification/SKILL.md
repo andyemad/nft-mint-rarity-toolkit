@@ -93,7 +93,7 @@ Orchestration rules that make this work:
 
 ## Phase 5 — Operator wallet forensics ("who is really behind this")
 
-Emad's standard follow-ups after the claim verdict: *"check previous deployed coins, twitter link connections"* and *"are you sure the funding wallet is not an exchange?"* Run these on the deployer/keeper/funder EOAs the earlier phases surfaced. Verified 2026-09 on Arbitrage Ape.
+the user's standard follow-ups after the claim verdict: *"check previous deployed coins, twitter link connections"* and *"are you sure the funding wallet is not an exchange?"* Run these on the deployer/keeper/funder EOAs the earlier phases surfaced. Verified 2026-09 on Arbitrage Ape.
 
 1. **Full tx-history scan of each controller EOA** (blockscout `/api/v2/addresses/<addr>/transactions`, paginate to the end). Histogram distinct `to` + `method` per wallet. Prior-launch detection = any `CREATE` (contract creation) tx or any call to a launchpad factory (Pons `launchAndBuy`-style). A clean operator wallet shows 100% of txs against ONE project's contracts.
 2. **Funding-tree reconstruction**: the earliest tx of a fresh wallet shows who funded it. Follow the chain up (funder → its funder → …) to the root. For a brand-new project, a root whose FIRST-EVER L1 tx is the same day as the launch = fresh same-day money on-ramped for this project — a strong anonymity/recency signal worth stating plainly.

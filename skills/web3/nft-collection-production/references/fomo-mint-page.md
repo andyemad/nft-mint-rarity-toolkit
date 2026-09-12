@@ -1,10 +1,9 @@
 # FOMO mint page — the pressure-trigger stack (STILL UP case, 2026-08-19)
 
-Emad explicitly wants a mint page engineered to exploit the degenerate FOMO
-impulse: "people are degenerate and will FOMO if you make it good enough."
+A mint page engineered around the FOMO impulse. The premise is uncomfortable but sound: a small supply can still sell itself if the pressure is designed well.
 The honest-gate caveat lives in SKILL.md — but once he says build, this is
 the pattern that makes a page sell itself, even on a small supply. Reference:
-`~/Projects/still-up-mint/index.html` (the FOMO rebuild).
+`~/Projects/mint-page/index.html` (the FOMO rebuild).
 
 ## The six pressure triggers (all on one page)
 
@@ -31,15 +30,15 @@ because it's not an argument, it's a pressure field.
 
 ## Wire it as a scaffold first
 Build the page self-playing (setInterval spawning simulated mints at a realistic
-cadence, e.g. 85% chance per 2.6s) so Emad can SEE it work before any contract
+cadence, e.g. 85% chance per 2.6s) so the user can SEE it work before any contract
 deploy. When deployed, the fake feed rows/price/jackpot swap to real reads via
 `eth_newHeads` / `getLogs` — the JS writes to the same DOM ids either way.
 Serve locally with `python3 -m http.server <port>` for review (localhost only,
 nothing public, nothing on-chain); `open http://127.0.0.1:<port>/`.
 
-## Interactive MINT CURVE EXPLORER (teach Emad how the curve works)
+## Interactive MINT CURVE EXPLORER (teach the user how the curve works)
 
-When Emad says some variant of \"help me visualize how the mint price goes up\",
+When the user says some variant of \"help me visualize how the mint price goes up\",
 don't just let the auto-play feed run — add a **drag-to-mint slider** he can
 move to FEEL the ladder. This landed well 2026-08-19. It's a plain `<input
 type=range min=0 max=SUPPLY>` plus a readout row, all driven by one recompute
@@ -60,7 +59,7 @@ function bound to the slider's `input` event:
 
 Teach with a specific drag sequence: 44 (still FREE) → 45 ($0.005, revenue
 begins) → 500 (~$0.18) → 2500 (~$1) → 4444 ($4.40, ~3.9 ETH). Reference:
-`~/Projects/still-up-mint/index.html` (explorer block + `exPaint()`).
+`~/Projects/mint-page/index.html` (explorer block + `exPaint()`).
 
 **Pitfall (real): the auto-play feed and the explorer draw the SAME curve SVG
 and fight.** The page's live `paint()` rewrites `#curveLine` every spawn while

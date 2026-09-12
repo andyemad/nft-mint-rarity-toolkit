@@ -9,7 +9,7 @@ Usage:
   python3 buy_secondary.py <collection_slug> --target-eth 0.001
   python3 buy_secondary.py <collection_slug> --live          # approval REQUIRED first
 
-Layered on the know-how in ~/Projects/bunker-snipe/encode_test.py + autoflip.py.
+Layered on the know-how in ~/Projects/sniper/encode_test.py + autoflip.py.
 """
 import json, sys, os, time, urllib.request, argparse
 
@@ -75,7 +75,7 @@ def chain_ok():
     return int(rpc("eth_chainId", [])["result"], 16) == CHAIN_ID
 
 
-# --- Seaport fulfillAdvancedOrder encoding (from bunker-snipe/encode_test.py) ---
+# --- Seaport fulfillAdvancedOrder encoding (from sniper/encode_test.py) ---
 ORDER_PARAMS = ("(address,address,(uint8,address,uint256,uint256,uint256)[],"
                 "(uint8,address,uint256,uint256,uint256,address)[],uint8,"
                 "uint256,uint256,bytes32,uint256,bytes32,uint256)")

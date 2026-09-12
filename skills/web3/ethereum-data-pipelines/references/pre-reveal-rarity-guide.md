@@ -1,19 +1,19 @@
 # Pre-reveal Rarity Guide (beat OpenSea's rarity tab)
 
-When Emad asks for a rarity guide that "formulates before OpenSea shows it" for a
+When the user asks for a rarity guide that "formulates before OpenSea shows it" for a
 brand-new collection, the edge is real but GATED on the reveal actually having
 dropped. Rarity is computed from per-token trait data; if the collection is still
 on its reveal placeholder there are no traits to rank yet. Do NOT claim you can
 produce a rarity ranking for an unrevealed collection — first verify reveal state.
 
-## Verified reveal-state diagnostic (2026-08-19, ComboX / combox-888, RH chain)
+## Verified reveal-state diagnostic (2026-08-19, the rarity-test collection / raritytest-888, RH chain)
 
 Worked example contract `0x512faa1354c8d634cd0e78e6ec5ba1d9fe19d55c` (ERC721,
-totalSupply = 0x1388 = 5000, name/symbol "ComboX"). A collection is still PRE-REVEAL
+totalSupply = 0x1388 = 5000, name/symbol "the rarity-test collection"). A collection is still PRE-REVEAL
 when ALL of the following hold:
 
 1. **`tokenURI()` returns the SAME metadata CID for every token id.** Probe several
-   ids (1, 2, 100, 4999): identical CID string = single shared placeholder. (ComboX
+   ids (1, 2, 100, 4999): identical CID string = single shared placeholder. (the rarity-test collection
    returned `ipfs://bafkreibtlk…yluyui` for all.)
 2. **OpenSea API shows one identical placeholder media + no traits.** `/api/v2/chain/
    robinhood/contract/{addr}/nfts/{id}` returns the same `image_url` for every token,
@@ -44,21 +44,21 @@ to build the reveal-watcher instead.
   key-gated.
 - **IPFS gateways are unreliable for these placeholder CIDs**: `ipfs.io`, `gateway.
   ipfs.io`, `w3s.link`, `dweb.link`, `nftstorage.link`, `4everland.io`, `cf-ipfs.com`
-  all returned blocked/Cloudflare-challenge/empty for the ComboX CID. Do not burn
+  all returned blocked/Cloudflare-challenge/empty for the the rarity-test collection CID. Do not burn
   time chasing the placeholder through IPFS — read the on-chain tokenURI + OpenSea
   page JSON instead, which is authoritative on reveal state.
 
-## Second verified example + gateway-variance lesson (2026-08-21, Clay StonKz)
+## Second verified example + gateway-variance lesson (2026-08-21, the test collection)
 
-Clay StonKz (`0xde0acefc89d4cf5f4ce45a4fb8a51aa355091b44`, slug `claystonkz`, RH chain,
+the test collection (`0xde0acefc89d4cf5f4ce45a4fb8a51aa355091b44`, slug `testcollection`, RH chain,
 artist Brrrbon/@Brrrbon_) confirmed the diagnostic on a second collection: 6969/6969
 minted, every token's `tokenURI()` = one shared placeholder
 (`ipfs://bafkreiavsv…3itq`, "Pre-Reveal"), name() reads fine but OpenSea shows no traits.
 Same verdict flow applies — verify state, say so plainly, offer the watcher.
 
-New lessons vs the ComboX run:
+New lessons vs the the rarity-test collection run:
 
-- **Gateway availability is per-day/per-CID, not absolute.** The ComboX notes above
+- **Gateway availability is per-day/per-CID, not absolute.** The the rarity-test collection notes above
   said every gateway was blocked; on 2026-08-21 the SAME list still failed
   (`ipfs.io`, `dweb.link`, `w3s.link`, `cf-ipfs.com`) but **`nftstorage.link`
   served the placeholder JSON first try**. Always loop the full gateway list per
@@ -74,10 +74,10 @@ New lessons vs the ComboX run:
   ≈ 180 ms. A 2-minute cron probing 3–5 sample ids detects divergence within one tick;
   the full 6969-token sweep takes ~21 min single-threaded — plan concurrent batches
   (or accept the lag) and say so in the alert rather than implying instant coverage.
-  (The armed Clay StonKz watcher uses ThreadPoolExecutor(12) → sweep ≈ 2 min.)
+  (The armed the test collection watcher uses ThreadPoolExecutor(12) → sweep ≈ 2 min.)
 - **Python urllib against RH RPC needs the full browser UA** — not just `User-Agent:
   Mozilla/5.0`; send a full Chrome UA string + `Accept: application/json` or the call
-  403s (hit 2026-08-21 in claystonkz_reveal_watch.py; plain "Mozilla/5.0" was NOT
+  403s (hit 2026-08-21 in testcollection_reveal_watch.py; plain "Mozilla/5.0" was NOT
   enough that day — if you get 403 from urllib, escalate to the full Chrome UA).
 - OpenSea V2 keyed list-NFTs (`/api/v2/chain/robinhood/contract/{addr}/nfts?limit=50`)
   works pre-reveal too (returns the placeholder metadata rows) — usable as a
@@ -99,13 +99,13 @@ Design for the "rank before OpenSea populates its rarity tab" edge:
 4. **Produce a ranked table**: tokens ordered rarest-first, plus trait breakdowns
    (per-trait value counts/percentages) and top-N summary for under-priced mints.
 
-This is a DESIGN captured pre-validation — the reveal had not dropped for ComboX, so the
+This is a DESIGN captured pre-validation — the reveal had not dropped for the rarity-test collection, so the
 engine itself is not yet verified end-to-end. Verify against a revealed collection before
 trusting rank output.
 
-## VALIDATED 2026-08-19 (ComboX reveal DID drop mid-session) — engine end-to-end, VERIFIED
+## VALIDATED 2026-08-19 (the rarity-test collection reveal DID drop mid-session) — engine end-to-end, VERIFIED
 
-The ComboX reveal dropped live while building, and the engine was built, run, and verified.
+The the rarity-test collection reveal dropped live while building, and the engine was built, run, and verified.
 `tokenURI()` flipped from the shared placeholder CID to per-token `ipfs://QmT14…/<id>`
 across all 5000 ids (probe: distinct URIs = revealed). This session confirmed:
 
@@ -118,21 +118,21 @@ across all 5000 ids (probe: distinct URIs = revealed). This session confirmed:
   `traits[]` (trait_type/value). This returns ALL revealed tokens key-gated but cheap and
   reliable (5000 tokens in ~100 pages, ~0.3s pace). OpenSea has already indexed the
   revealed metadata by then — the edge is v. OpenSea's *rarity tab*, not v. its raw data.
-- **Script (re-usable engine)**: `~/Projects/rarity-engine/combox_rarity.py`
-  — `fetch` (pull all 5000 traits → `~/.hermes/rarity/combox/traits.json`), `rank`
-  (statistical trait-frequency rarity → `scores.json`), `mine` (rank Emad's held ids).
+- **Script (re-usable engine)**: `~/Projects/rarity-engine/raritytest_rarity.py`
+  — `fetch` (pull all 5000 traits → `~/.hermes/rarity/raritytest/traits.json`), `rank`
+  (statistical trait-frequency rarity → `scores.json`), `mine` (rank the user's held ids).
   Runtime ~2-3 min for 5000 tokens.
 - **Rarity score**: sum over traits of `1/(count/n)` — higher = rarer. Works: top tokens
   are `1/1` mythics (`Body:1/1`, ~9 of them) with identical max score; then a long tail of
   realistically rare combos. Average held rank was ~2042/5000 (his bag was above-average),
   rarest held token #71.
-- **Wallet holdings comparison**: for Emad's mint wallet, enumerate token ids via
+- **Wallet holdings comparison**: for the user's mint wallet, enumerate token ids via
   `eth_getLogs` `Transfer` topic[2]=wallet (from-block = creation), then confirm current
   ownership per id with `ownerOf` (`0x6352211e`) — balanceOf alone gives a count, not the
   ids, and received ≠ still-held (34 received → 29 held; 5 were sold).
 - **OpenSea's V2 `traits` endpoint 404s** even with a key; the list-NFTs endpoint is the
   trait source of truth once you have the key.
-- **Emad's delivery preference** (learned here): give the bottom line up front (rarity of
+- **the user's delivery preference** (learned here): give the bottom line up front (rarity of
   his holdings, ranks, which are the 1/1s), then exact Path-Finder absolute paths for the
   files. Offer a follow-up (arm floor/list-price watcher) rather than assuming he wants one.
 
@@ -140,8 +140,8 @@ across all 5000 ids (probe: distinct URIs = revealed). This session confirmed:
 
 When he asks "help me visualize it" after a rarity run, generate a **single-file interactive
 HTML dashboard** from `scores.json` + `traits.json` so he can open it in a browser (no server).
-Done here: `~/Projects/rarity-engine/combox_dashboard.html`, generated by
-`gen_dash.py` (same dir). What Emad wants on the page:
+Done here: `~/Projects/rarity-engine/raritytest_dashboard.html`, generated by
+`gen_dash.py` (same dir). What the user wants on the page:
 
 1. **Top stat cards** — total tokens held, best rank, rarest token id, average rank, and the
    count of 1/1 mythics in the whole collection (the mythics are the headline).
@@ -160,7 +160,7 @@ are **strings** — use `str(t)` when indexing by int token id. Deliver Path-Fin
 
 ## Rarity FORMULA correction (2026-08-21 — user-caught discrepancy, now the standard)
 
-Emad noticed "SOME discrepancy" between our ComboX ranks and OpenSea's. Two root causes,
+the user noticed "SOME discrepancy" between our the rarity-test collection ranks and OpenSea's. Two root causes,
 both fixed and verified:
 
 1. **Data bug**: one token (#3787) had EMPTY traits in `traits.json` from a transient
@@ -176,29 +176,29 @@ both fixed and verified:
    aggressively; trait-frequency systematically overrates mid-rare combos.
 
 **Standard going forward: use information-content scoring for ALL rarity work** (the
-Clay StonKz watcher's `compute_rarity` already patched to this). Verify any new rarity
+the test collection watcher's `compute_rarity` already patched to this). Verify any new rarity
 output by sampling 3–5 tokens' `"rarity":{"rank":N}` from their OpenSea item pages
 (`opensea.io/item/robinhood/<ca>/<id>`, embedded in hydration JSON) — exact match =
-done. Corrected ComboX held-bag numbers (8/21): #4931→rank 18, #4691→87, #2733→163,
+done. Corrected the rarity-test collection held-bag numbers (8/21): #4931→rank 18, #4691→87, #2733→163,
 #2401→353; avg #155 (NOT ~2042 as the old formula claimed).
 
-## Armed-watcher pattern (2026-08-21, Clay StonKz — third verified run)
+## Armed-watcher pattern (2026-08-21, the test collection — third verified run)
 
 The full watcher→sweep→rank pipeline is now BUILT, ARMED, and dry-run VERIFIED as a
-standalone cron script: `~/.hermes/scripts/claystonkz_reveal_watch.py`
-(cron `claystonkz-reveal-watch`, every 2m forever, no-agent, deliver local). Reuse this
+standalone cron script: `~/.hermes/scripts/testcollection_reveal_watch.py`
+(cron `testcollection-reveal-watch`, every 2m forever, no-agent, deliver local). Reuse this
 shape instead of rebuilding:
 
 - **Probe phase**: 8 sample token ids via concurrent `eth_call` tokenURI; any URI ≠ the
   shared placeholder = reveal. All-probes-failed → exit silent (retry next tick), never
   treat RPC failure as reveal.
-- **One-shot alert guard**: state file `~/.hermes/rarity/claystonkz/reveal_state.json`;
+- **One-shot alert guard**: state file `~/.hermes/rarity/testcollection/reveal_state.json`;
   once alerted, script exits silently forever. Ranks → `scores.json` in the same dir.
 - **Sweep**: ThreadPoolExecutor(12) over all ids; expect ~1% RPC drops (6917/6969 in
   the dry run) — rank what was captured and say so in the alert.
 - **Rarity math**: OpenRarity information-content, score = Σ −log₂(count/total) per
   trait — this EXACTLY matches OpenSea's rarity tab (see the formula-correction section
-  above; verified 5000/5000 on ComboX). Dedupe metadata by distinct URI before fetching
+  above; verified 5000/5000 on the rarity-test collection). Dedupe metadata by distinct URI before fetching
   (pre-reveal collections have ONE URI; homogeneous revealed sets can too).
 - **Delivery**: iMessage via `/usr/bin/osascript` Messages.app send to +1<operator-phone-redacted>
   (verified working). The `imsg` CLI was NOT installed and brew failed on missing Xcode
@@ -209,17 +209,17 @@ shape instead of rebuilding:
   detection fires, sweep runs against live chain, rank math asserted on synthetic data.
 
 Approval framing that worked for arming: slate describes read-only probes, one iMessage
-on reveal only, no auto-buy, cancel-anytime — Emad approved with a single "approve".
+on reveal only, no auto-buy, cancel-anytime — the user approved with a single "approve".
 
-Operational notes: run the watcher as a local poller on Emad's Mac (nothing external).
-Per Emad's build-gate, draft the plan for review before building. He wants a NEW
-re-usable engine or a ComboX-only watch — confirm scope first.
+Operational notes: run the watcher as a local poller on the user's Mac (nothing external).
+Per the user's build-gate, draft the plan for review before building. He wants a NEW
+re-usable engine or a the rarity-test collection-only watch — confirm scope first.
 
-## In-dashboard integration (2026-08-21, Mint Room `/api/rarity`)
+## In-dashboard integration (2026-08-21, the control room `/api/rarity`)
 
-When Emad said "incorporate this into our mint bot tool… like it's all one dashboard",
+When the user said "incorporate this into our mint bot tool… like it's all one dashboard",
 the watcher stayed as the push channel and a live rarity PANEL was added to the existing
-Mint Room Next.js app rather than shipping a separate page:
+the control room Next.js app rather than shipping a separate page:
 
 - **API route** (`app/api/rarity/route.ts`): loopback-guarded like every other route;
   probes sample tokenURIs → pre-reveal returns `{revealed:false, note}` (cheap, cached
@@ -234,14 +234,14 @@ Mint Room Next.js app rather than shipping a separate page:
   (rpc.ts) — check it doesn't already exist at the bottom of the file or the duplicate
   export breaks four unrelated test suites at transform time.
 - **Shape of the win**: push alert (cron + iMessage) for immediacy + pull panel
-  (dashboard) for action — Emad gets pinged wherever he is, and the ranked click-through
+  (dashboard) for action — the user gets pinged wherever he is, and the ranked click-through
   list is waiting next to his watchlist when he opens the app. Keep both channels fed by
   the same ranking logic.
 
-## Visual gallery page (2026-08-21/22 — "I want NFTs visualized on a separate page")
+## Visual gallery page (2026-08-21/22 — a text ranking list was not enough)
 
-A text list of ranks was NOT enough for Emad — he asked for a separate page with the NFTs
-visualized. Built as Mint Room `/rarity` (`app/rarity/page.tsx` + module CSS) backed by
+A text list of ranks was NOT enough for the user — he asked for a separate page with the NFTs
+visualized. Built as the control room `/rarity` (`app/rarity/page.tsx` + module CSS) backed by
 `app/api/rarity-gallery/route.ts`. Reuse this shape whenever rarity output needs to become
 a browsable gallery:
 
@@ -255,7 +255,7 @@ a browsable gallery:
   (legendary/epic/rare/common bands computed as % of collection), "Show top N" selector,
   pagination, and a click-to-open detail sheet — large preview + full trait list with
   per-value counts ("Eyes: Inferno — 1/5,000 · 0.0%") + OpenSea item link. Rank-band
-  colors do the visual sorting work; Emad reads the grid at a glance.
+  colors do the visual sorting work; the user reads the grid at a glance.
 - **React lint gotchas**: `react-hooks/set-state-in-effect` rejects setState directly in
   effect bodies — wrap the initial load in an async IIFE with a `cancelled` flag inside
   useEffect instead of calling a setState-ing helper synchronously; and delete unused
@@ -266,14 +266,14 @@ a browsable gallery:
 - Dashboard panel 03 became a LINK to `/rarity` rather than embedding ranks inline —
   one canonical surface, no duplicate ranking UI to keep in sync.
 
-## Generic scan-any-collection scanner (2026-08-22, Necrochrome live test)
+## Generic scan-any-collection scanner (2026-08-22, the test collection live test)
 
-Emad wanted the gallery to work on ANY collection: "an ability on the rarity page for me
+the user wanted the gallery to work on ANY collection: "an ability on the rarity page for me
 to just scan a collection/contract address like the mint bot". Built into
 `/api/rarity-gallery?collection=<CA-or-OpenSea-URL>` + a scan input on `/rarity`.
-Live-tested on **Necrochrome** (`0x1e6486…c9f8`, slug `necrochrome`, 2000 supply,
+Live-tested on **the test collection** (`0x1e6486…c9f8`, slug `testcollection`, 2000 supply,
 pre-reveal) — scan returned the correct pre-reveal verdict; full sweep validated on
-ComboX (5000/5000 ranked). Lessons:
+the rarity-test collection (5000/5000 ranked). Lessons:
 
 - **Reuse `parseCollectionInput`/`resolveOpenSeaSlug` from opensea-resolve.ts** for
   input handling (raw CA, full OpenSea URL with any path suffix like `/activity`,
@@ -306,12 +306,12 @@ ComboX (5000/5000 ranked). Lessons:
 - **Next.js route handler type rule**: GET must return `Response` everywhere — wrap
   plain object returns in `NextResponse.json(...)` or the generated route validator
   fails the build.
-- **pct field consistency**: ComboX staged scores carry numeric pct; scanner builds
+- **pct field consistency**: the rarity-test collection staged scores carry numeric pct; scanner builds
   string `"99.98%"`. Unify on string early or the union type breaks the build.
 
 ## Production-validated cron watcher (2026-08-22, FROGHOOD: THE POOL)
 
-`~/Projects/rh-mint-command-center/scripts/thepool_reveal_watch.py` (1777-supply RH
+`~/Projects/mint-control-room/scripts/thepool_reveal_watch.py` (1777-supply RH
 collection, contract `0xfeed66…4bed`) ran the full pipeline in production: tokenURI(1)
 probe → sweep via batched eth_call (96/call JSON-RPC array) → IPFS metadata fetch with
 gateway failover → OpenRarity information-content ranking → ranked.json + one-shot

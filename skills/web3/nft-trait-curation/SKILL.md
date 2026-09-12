@@ -7,7 +7,7 @@ description: Use when auditing or approving NFT metadata trait drafts.
 
 Class workflow for assigning human-quality trait metadata (background, skin, lips,
 motifs, clothing) to a fixed token set whose images are cached locally. Proven on
-ecalm-icp-metadata (see `references/ecalm-icp-metadata.md`); generalizes to any
+casestudy-icp-metadata (see `references/casestudy-icp-metadata.md`); generalizes to any
 collection with `<catalog>.json` + local image paths.
 
 ## Workflow (two-pass vision audit)

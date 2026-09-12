@@ -61,7 +61,7 @@ Every found nonce must be re-hashed in independent Python (`pycryptodome.keccak`
 
 ## Broadcast plumbing (verified end-to-end)
 
-Dry-run the mint tx BEFORE the nonce exists: `eth_estimateGas` with a dummy nonce returns the contract's `BelowFloor(uint8,uint8)` revert (selector 0xfcf93064, data shows got/need) — that confirms from-address, gas path, and calldata encoding are all correct without spending anything. Signer stack: `coincurve` for pubkey derivation + `eth-account` for EIP-1559 signing; neither preinstalled (`pip3 install coincurve eth-account`). Sender script pattern: read key from `~/.hermes/secrets/<wallet>_key` (chmod 600), derive address, fetch baseFee + maxPriorityFee, estimateGas, print full cost breakdown, require explicit `--send` flag to actually broadcast. Emad pasted a raw private key in chat mid-task; save it immediately to secrets with chmod 600 and derive the address to confirm it's the wallet he means.
+Dry-run the mint tx BEFORE the nonce exists: `eth_estimateGas` with a dummy nonce returns the contract's `BelowFloor(uint8,uint8)` revert (selector 0xfcf93064, data shows got/need) — that confirms from-address, gas path, and calldata encoding are all correct without spending anything. Signer stack: `coincurve` for pubkey derivation + `eth-account` for EIP-1559 signing; neither preinstalled (`pip3 install coincurve eth-account`). Sender script pattern: read key from `~/.hermes/secrets/<wallet>_key` (chmod 600), derive address, fetch baseFee + maxPriorityFee, estimateGas, print full cost breakdown, require explicit `--send` flag to actually broadcast. the user pasted a raw private key in chat mid-task; save it immediately to secrets with chmod 600 and derive the address to confirm it's the wallet he means.
 
 ## Multi-hour farm reality (2026-08-21 session)
 
@@ -74,5 +74,5 @@ Dry-run the mint tx BEFORE the nonce exists: `eth_estimateGas` with a dummy nonc
 ## Session addendum (2026-08-21 late)
 
 - Rounds 3–5: four more full/failed rounds, still no hit at 40 bits (~5.6e12 hashes total ≈ 19% chance of that drought — unlucky, not broken). Confirms the coin-flip framing; per-wallet round ledger kept in memory.
-- Modal spend limit: workspace died AGAIN with `exceeded its spend limit` even though $30 credits remained — the Workspace *budget* (usage cap, before credits) defaulted to ~$1. Docs: max settable budget scales with prior successful charges, so a card must be added first. Emad added card + raised budget to $10 after being walked through Settings → Usage & Billing step by step.
+- Modal spend limit: workspace died AGAIN with `exceeded its spend limit` even though $30 credits remained — the Workspace *budget* (usage cap, before credits) defaulted to ~$1. Docs: max settable budget scales with prior successful charges, so a card must be added first. the user added card + raised budget to $10 after being walked through Settings → Usage & Billing step by step.
 - Round 4 both farms: `RemoteError: Function call was cancelled by user or a failure` on healthy account — transient Modal flake, trivial job confirmed healthy, relaunch fixed it. Don't misread this as billing.

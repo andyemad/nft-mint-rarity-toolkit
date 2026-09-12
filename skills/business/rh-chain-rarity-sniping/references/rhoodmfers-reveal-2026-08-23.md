@@ -9,7 +9,7 @@ live 8/23; the collection was still pre-reveal at session end.
 - Supply: 6969 (totalSupply on-chain; OpenSea total_supply says 6967 — trust chain)
 - Pre-reveal URI shape: per-token paths under one base CID —
   `ipfs://QmNSUpFqwgkrsJdCG4EqhHvoWogQ4fcXpeRgKAUsiZm9rZ/<tokenId>`
-  (NOT exact-shared like Clay StonKz). Reveal detection must use
+  (NOT exact-shared like the test collection). Reveal detection must use
   `uri.startswith(BASE + "/")`, not equality.
 
 ## Watcher
@@ -23,7 +23,7 @@ live 8/23; the collection was still pre-reveal at session end.
   per 8/22-8/23 gateway behavior), ranks by OpenRarity info-content
   (-log2(count/total)), and writes:
   - `~/.hermes/rarity/rhoodmfers/scores.json` (ranked list w/ trait breakdowns)
-  - `~/.hermes/rarity/rhoodmfers/images.json` (tokenId → image URI for Mint Room /rarity)
+  - `~/.hermes/rarity/rhoodmfers/images.json` (tokenId → image URI for the control room /rarity)
 
 ## Approval note
 The original "yes" for this cron died with a gateway crash mid-turn; the
@@ -35,12 +35,12 @@ executing on the old transcript.
 Cron `cafb9710f834` recreated as a NO-AGENT script job (the original agent-mode
 job errored every tick on the provider messages[0].content bug). Runtime copy:
 `~/.hermes/scripts/rhoodmfers_reveal_watch.py`; identical repo copy:
-`~/Projects/rh-mint-command-center/scripts/rhoodmfers_reveal_watch.py`. Simplified contract vs earlier sweep
+`~/Projects/mint-control-room/scripts/rhoodmfers_reveal_watch.py`. Simplified contract vs earlier sweep
 version: samples 8 tokenURIs, prints ONLY the single line "ROBINHOOD MFERS
-REVEALED — open Mint Room /rarity and hit Scan" on divergence, then best-effort
+REVEALED — open the control room /rarity and hit Scan" on divergence, then best-effort
 `hermes cron disable/remove rhoodmfers-reveal-watch` + state-file one-shot
 guard at ~/.hermes/cron/output/rhoodmfers_reveal_state.json. Rarity sweep/rank
-on reveal is Mint Room /rarity Scan's job (per Emad's revised spec).
+on reveal is the control room /rarity Scan's job (per the user's revised spec).
 Pitfall: testing main() end-to-end WILL fire disable_cron_job() against the
 live job — stub STATE_FILE AND the disable step in tests. (It actually fired
 8/23 and removed cafb9710f834 mid-test; had to re-create it — see SKILL.md

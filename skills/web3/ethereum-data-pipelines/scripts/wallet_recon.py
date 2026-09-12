@@ -27,7 +27,7 @@ from decimal import Decimal as D
 from collections import defaultdict, Counter
 
 ZERO = '0x0000000000000000000000000000000000000000'
-WETH_RH  = '0x0bd7d308f8e1639fab988df18a8011f41eacad73'
+WETH_RH  = '0x1111111111111111111111111111111111111111'
 WETH_ETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
 
 UA = {'User-Agent': 'Mozilla/5.0'}

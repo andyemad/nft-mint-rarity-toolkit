@@ -46,12 +46,15 @@ LANGS = {
     "es": ("es", "ltr", "ES"),
     "he": ("he", "rtl", "HE"),
     "ur": ("ur-Latn", "ltr", "UR"),
+    "ja": ("ja", "ltr", "JA"),
+    "ko": ("ko", "ltr", "KO"),
 }
-ORDER = ["en", "zh", "ar", "es", "fr", "de", "ru", "he", "ur"]
+ORDER = ["en", "zh", "ja", "ko", "ar", "es", "fr", "de", "ru", "he", "ur"]
 ENGLISH_NAMES = {
     "en": "English", "zh": "\u4e2d\u6587", "ar": "\u0627\u0644\u0639\u0631\u0628\u064a\u0629",
     "fr": "Fran\u00e7ais", "de": "Deutsch", "ru": "\u0420\u0443\u0441\u0441\u043a\u0438\u0439",
     "es": "Espa\u00f1ol", "he": "\u05e2\u05d1\u05e8\u05d9\u05ea", "ur": "Urdu (Roman)",
+    "ja": "\u65e5\u672c\u8a9e", "ko": "\ud55c\uad6d\uc5b4",
 }
 
 

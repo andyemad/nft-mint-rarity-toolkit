@@ -148,14 +148,14 @@ looking at images instead of on-chain attributes.
 
 ## References
 
-- `references/ecalm-trait-case-study.md` — concrete category definitions,
+- `references/casestudy-trait-case-study.md` — concrete category definitions,
   verified assignments, and the contradiction log from a full 200-token
   collection audit.
-- `references/ecalm-eye-color-audit.md` — verified per-token iris-color
+- `references/casestudy-eye-color-audit.md` — verified per-token iris-color
   verdicts from the Eye Style correction audit (colored-iris table, resolved
   black-eye false positives, unresolved items at pause).
-- `references/ecalm-skin-color-audit.md` — Skin Color re-audit: 9 coarse
+- `references/casestudy-skin-color-audit.md` — Skin Color re-audit: 9 coarse
   buckets → 19 shade-precise values, pixel-probe method, flip-flop log.
-- `references/ecalm-headwear-audit.md` — Headwear promotion from Motif to
+- `references/casestudy-headwear-audit.md` — Headwear promotion from Motif to
   exclusive 19-value category: per-token zoom verdicts, flip-flop log, and the
   builder/test migration mechanics.

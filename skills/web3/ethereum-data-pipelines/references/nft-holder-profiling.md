@@ -9,7 +9,7 @@ re-verified 2026-08-26 on The Sunday Society
 All data below is keyless: RPC (`rpc.mainnet.chain.robinhood.com`, UA required) +
 Blockscout v2 (`https://robinhoodchain.blockscout.com`) + OpenSea public page.
 
-**Wallet exclusion rule:** when Emad asks for a holder analysis, his own wallet
+**Wallet exclusion rule:** when the user asks for a holder analysis, his own wallet
 (0x1111…1111 and any he names) must be filtered out of the holder list, the
 profiling loop, and the report — never analyzed or mentioned
 ("do not analyze or mention mine"). Apply the filter BEFORE profiling.
@@ -76,7 +76,7 @@ replaces steps 3–5 below as the default; keep the RPC getLogs path only as fal
    Sherwood ~0.005 ETH). Whale test: any top holder with >5 ETH or known ENS? 43/60 holding
    $100+ USDG = real buyers with dry powder.
 
-## Deliverable shape (matches Emad's read)
+## Deliverable shape (matches the user's read)
 
 - **Basics**: supply sold out?, mint price, floor, volume (all-time + hour), owners/listed %,
   verified/socials, and the collection CONCEPT (2-3 lines).

@@ -1,6 +1,6 @@
 ---
 name: public-wallet-xlsx-delivery
-description: "Use when Emad pastes wallets. Deliver a public XLSX."
+description: "Use when the user pastes wallets. Deliver a public XLSX."
 version: 1.0.0
 author: Hermes Agent
 metadata:
@@ -12,13 +12,13 @@ metadata:
 
 ## Trigger
 
-Use whenever Emad states a wallet target, begins pasting wallet addresses, or says a wallet batch is done.
+Use whenever the user states a wallet target, begins pasting wallet addresses, or says a wallet batch is done.
 
 ## Inputs
 
-- Optional target count stated by Emad.
+- Optional target count stated by the user.
 - Wallet addresses pasted individually or in batches.
-- Completion signal: target count reached or Emad says `done`.
+- Completion signal: target count reached or the user says `done`.
 
 ## Steps
 
@@ -28,8 +28,8 @@ Use whenever Emad states a wallet target, begins pasting wallet addresses, or sa
 4. Acknowledge tersely: `#N — logged`. For a batch, acknowledge the range. Do not ask mid-collection questions.
 5. Always deliver a real `.xlsx`, never a Google Doc, Google-native Sheet, CSV, or TXT. Create a numbered `Wallets` sheet with headers `#` and `Wallet`; format wallet cells as text.
 6. Reopen and verify the workbook: exact count, order, strings, uniqueness, sheet, and dimensions.
-7. Google Drive upload and public sharing require one consolidated approval per batch. When a target is known, obtain that one approval for upload plus `anyone-with-link` reader sharing. Never auto-approve for Emad.
-8. Once approved, immediately upload when the target is reached or Emad says done; do not ask again if that approval remains valid.
+7. Google Drive upload and public sharing require one consolidated approval per batch. When a target is known, obtain that one approval for upload plus `anyone-with-link` reader sharing. Never auto-approve for the user.
+8. Once approved, immediately upload when the target is reached or the user says done; do not ask again if that approval remains valid.
 9. Verify Drive metadata, permission readback, and public reachability without login.
 10. Reply with the public link and absolute local `.xlsx` path.
 

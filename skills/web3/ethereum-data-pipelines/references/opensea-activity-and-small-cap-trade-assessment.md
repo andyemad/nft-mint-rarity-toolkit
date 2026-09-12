@@ -30,7 +30,7 @@ Compare rolling volumes: 1m, 5m, 15m, 1h, and 24h. If nearly all lifetime or dai
 
 ## Cost and risk framing for this user
 
-Emad is an experienced NFT trader who reports prior gains around 45 ETH. Judge current opportunities by net dollars, time, risk, and scalable liquidity—not percentage ROI alone. A triple-digit return that produces one or two dollars is economically negligible in Buford and should not be praised as a successful income result.
+the user is an experienced NFT trader who reports prior gains around 45 ETH. Judge current opportunities by net dollars, time, risk, and scalable liquidity—not percentage ROI alone. A triple-digit return that produces one or two dollars is economically negligible in Buford and should not be praised as a successful income result.
 
 Separate:
 - realized proceeds and profit, including known gas, failed fills, and approvals

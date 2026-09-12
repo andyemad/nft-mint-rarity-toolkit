@@ -1,6 +1,6 @@
 # Jackpot / prize-pool mechanics & marketplace-terms risk
 
-When Emad says "add a jackpot" (a prize pool to drive FOMO), the BIG decision
+When the user says "add a jackpot" (a prize pool to drive FOMO), the BIG decision
 is the PAYOUT SHAPE, not whether to have one. Shape drives BOTH the FOMO
 impact AND whether the mechanic gets flagged/banned on OpenSea / RH. Verified
 2026-08-19 while sizing a 4444-supply STILL UP launch.
@@ -19,7 +19,7 @@ impact AND whether the mechanic gets flagged/banned on OpenSea / RH. Verified
 
 ## Why "every 888 mints split the pool equally" is a trap
 
-Emad's instinct (4444 supply → split a pool among each 888-mint cohort) sounds
+the user's instinct (4444 supply → split a pool among each 888-mint cohort) sounds
 fair but tests poorly on BOTH axes:
 
 - Split too thin → worthless reward. At a 10% cut, 888-way split paid each
@@ -67,7 +67,7 @@ jackpot entirely and keep just the curve + free wave (cleanest, creator keeps
 
 ## Pitfall: don't lecture, offer the safe/bold fork
 
-Present the risk + the numbers once, then hand Emad the choice between the
+Present the risk + the numbers once, then hand the user the choice between the
 safe shape and dropping it. Don't re-argue distribution; he wants a working
 FOMO design. (See `nft-collection-production` honest-gate: state race/cost
 once, then build.)

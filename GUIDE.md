@@ -222,7 +222,7 @@ know what to ask for.
 | Skill | What it does |
 |---|---|
 | `ethereum-wallet-operations` | Creates wallets, backs up keys properly, moves tokens without exposing them. |
-| `wallet-radar-operations` | Watches wallets you care about and pings you when they buy. |
+| `wallet-watcher-operations` | Watches wallets you care about and pings you when they buy. |
 | `public-wallet-xlsx-delivery` | Turns a list of wallets into a clean shareable spreadsheet. |
 | `pseudonym-identity-research` | Links anonymous handles and wallets belonging to the same person. |
 
@@ -239,8 +239,8 @@ know what to ask for.
 | Skill | What it does |
 |---|---|
 | `ethereum-data-pipelines` | Reads the blockchain without paying for an API. The engine under a lot of the others. |
-| `rh-mint-command-center` | A local mint control room: plan, rehearse, manage wallets, watch the floor, audit results. |
-| `mint-field-guide` | A read-only dashboard of upcoming mints and market movement. |
+| `mint-control-room` | A local mint control room: plan, rehearse, manage wallets, watch the floor, audit results. |
+| `mint-market-dashboard` | A read-only dashboard of upcoming mints and market movement. |
 | `pow-mint-mining` | Hashcats, FAB4200 and others like them give you the item for finding a lucky number instead of paying. Runs that search for you. |
 | `onchain-puzzle-mining` | The search itself, on your machine or rented hardware, with checking so nothing is wasted. |
 | `onchain-puzzle-solving` | Solves the riddles some drops use as a gate, by reading the game's own code. |
@@ -248,7 +248,7 @@ know what to ask for.
 | `polymarket` | Reads prediction-market prices. |
 | `proof-of-play-archive` | Background research on Proof of Play and Pirate Nation. |
 | `agent-protocol-identity` | Lets an agent prove who it is when it posts online. |
-| `flop-technocore-agent-ops` | Running an agent with its own public account without leaking anything private. |
+| `agent-public-identity-ops` | Running an agent with its own public account without leaking anything private. |
 | `internet-computer-development` | Notes for building on the Internet Computer blockchain. |
 
 ---

@@ -6,7 +6,7 @@ Robinhood-Chain-specific findings from a live intraday flip/session review (2026
 ## Sale settlement quirks (Blockscout v2)
 
 - **Sales often settle in WETH, not native ETH.** Canonical WETH on Robinhood Chain:
-  `0x0Bd7D308f8E1639FAb988df18A8011f41EAcAD73` (18 decimals). A sale's native `value`
+  `0x1111111111111111111111111111111111111111` (18 decimals). A sale's native `value`
   field is frequently zero; the seller is paid via an ERC-20 WETH transfer in the receipt.
   Always scan the receipt's ERC-20 transfers for WETH before concluding "no proceeds".
 - **Lowercase every address before comparing.** Blockscout returns checksummed (mixed-case)

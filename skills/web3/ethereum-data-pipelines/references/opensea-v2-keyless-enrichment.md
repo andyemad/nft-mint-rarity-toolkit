@@ -1,6 +1,6 @@
 # OpenSea v2 no-key collection enrichment + indexer feed pitfalls (verified 2026-08-14)
 
-How the mint-field-guide worker turned raw contract addresses into real collection
+How the mint-market-dashboard worker turned raw contract addresses into real collection
 names + thumbnails with zero API keys, plus two bounded-store bugs found while wiring it.
 
 ## OpenSea v2 endpoint matrix (no API key)
@@ -10,7 +10,7 @@ names + thumbnails with zero API keys, plus two bounded-store bugs found while w
 | `GET /api/v2/chain/robinhood/contract/{addr}` | **200 keyless** | `{ name, collection: "<slug>", contract_standard }` |
 | `GET /api/v2/collections/{slug}` | **200 keyless** | `{ image_url, banner_image_url, name, ... }` |
 | `GET /api/v2/chain/ethereum/contract/{addr}` | **401** `Missing an API Key` | — (key required for ETH) |
-| `GET /api/v2/collections/ecalm-suites` (any slug) | 200 keyless | full collection object |
+| `GET /api/v2/collections/casestudy-suites` (any slug) | 200 keyless | full collection object |
 | `GET /api/v1/asset_contract/{addr}` | **410 permanently removed** | `{"errors":["The v1 API has been permanently removed..."]}` |
 
 Consequences:
@@ -57,7 +57,7 @@ User-visible links must use the collection's REAL slug from the contract endpoin
 ("Onchain Cats" → `onchain-cats` 404s). Build order:
 - slug known → `https://opensea.io/collection/{slug}` (verified 200)
 - ETH/no-slug → `https://opensea.io/contract/{chain}/{address}` — 308-redirects to
-  the collection page (verified 200, e.g. → `/collection/ecalm-suites`)
+  the collection page (verified 200, e.g. → `/collection/casestudy-suites`)
 
 ## Enrichment pipeline (Cloudflare Worker + D1, cache-first)
 

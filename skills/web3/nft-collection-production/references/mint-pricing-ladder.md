@@ -1,6 +1,6 @@
 # Mint pricing: sizing a free-start + climbing-price ladder to hit a revenue target
 
-Reusable when Emad asks "how many NFTs / start free then increase price" to
+Reusable when the user asks "how many NFTs / start free then increase price" to
 reach a guaranteed gross (he usually wants ≥1 ETH). Real session 2026-08-19:
 he iterated 24 → 1000 → 4444 supply, free start, cheap entry, and this math
 settled the curve.
@@ -34,11 +34,11 @@ Interpret USD "half a penny" = `0.005 / USD` ETH.
 ## Verified working combos (from session)
 
 - **4444 supply, 44 free, start $0.005, step ~0.1¢ → top ~$4.40, avg ~$2.20,
-  rev ~3.9 ETH** (~$9,700). This is Emad's final locked shape.
+  rev ~3.9 ETH** (~$9,700). This is the user's final locked shape.
 - For reference, at 4444 supply even conservative prices clear 1 ETH easily —
   the scale does the work; cheap entry is affordable once supply ≥ ~1000.
 
-## Emad's stated preferences on mint shape
+## the user's stated preferences on mint shape
 
 - Supply in the **thousands** (he explicitly rejected 24/50 — "people are not
   going to mint if price is so high"; wants cheap, high-volume feel).
@@ -54,7 +54,7 @@ Interpret USD "half a penny" = `0.005 / USD` ETH.
 
 ## Pitfall: don't re-lecture the room problem while sizing
 
-Emad already knows distribution is the ceiling. When he says "make it work /
+the user already knows distribution is the ceiling. When he says "make it work /
 shut up and make people FOMO", give him the locked numbers and BUILD — do not
 re-explain why no-buyer-room caps the revenue every time he tweaks a number.
 State the caveat once ("guaranteed only if all N sell"), then ship the curve.

@@ -26,10 +26,10 @@ first; only then question encoding.
 
 ## Watcher cron
 - Job dc1708b798e3 "thepool-reveal-watch", */2 * * * *, deliver origin (#ops).
-- Script: ~/Projects/rh-mint-command-center/scripts/thepool_reveal_watch.py
+- Script: ~/Projects/mint-control-room/scripts/thepool_reveal_watch.py
   (silent empty stdout while pre-reveal; sweeps+rank+top10 alert on flip).
 - Interpreter quirk: must run with PYTHONPATH= (empty) and
-  ~/.hermes/secrets/../bunker-snipe/.venv/bin/python3 because the user-level
+  ~/.hermes/secrets/../sniper/.venv/bin/python3 because the user-level
   ~/Library/Python/3.9 site-packages shadows venv packages otherwise.
 
 ## Approval-gate friction note

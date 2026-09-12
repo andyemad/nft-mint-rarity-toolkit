@@ -1,6 +1,6 @@
 # Agent-Gated Mint (the agent IS the mint key)
 
-Emad's preferred paid-mint mechanism (2026-08-19): a collection that cannot be
+the user's preferred paid-mint mechanism (2026-08-19): a collection that cannot be
 minted by a plain wallet click. `mint()` reverts unless the caller presents a
 valid **agent-signed permit**. The off-chain agent (your signing server) is the
 ONLY key that gates token issuance. The hook ("you need an agent to mint")
@@ -44,7 +44,7 @@ with the signing role held by a server you run rather than a marketplace.
 ## Off-chain agent gateway (Python, eth-account)
 
 A tiny local HTTP server signs permits. Flow: agent key (fresh, never linked to
-Emad) → `POST {"minter": "...", "nonce": N}` → returns `{signature, r, s, v}`.
+the user) → `POST {"minter": "...", "nonce": N}` → returns `{signature, r, s, v}`.
 
 KEY GOTCHAS hit 2026-08-19 (newer eth-account):
 - `eth_account.messages.encode_structured_data` was RENAMED to
@@ -74,10 +74,10 @@ An agent-gate is a great mechanism but it still needs a room to mint. The gate
 is not distribution. Pair it with the competitor-launch forensics / X channel
 playbook — the gate makes the mint feel exclusive, it does not conjure buyers.
 Keep one-per-wallet so scarcity + the gate work together, and never fund the
-agent's deploy wallet from any wallet linked to Emad (see parent skill's
+agent's deploy wallet from any wallet linked to the user (see parent skill's
 Anonymity rule — same trace applies to the agent key funding).
 
-## Files (2026-08-19 working build, ~/Projects/still-up-mint/)
+## Files (2026-08-19 working build, ~/Projects/mint-page/)
 
 - `contract/StillUpAgentGated.sol` — verified compile, 17,582 bytes, 51 ABI.
 - `agent/agent_gateway.py` — local permit-signing server (localhost only;

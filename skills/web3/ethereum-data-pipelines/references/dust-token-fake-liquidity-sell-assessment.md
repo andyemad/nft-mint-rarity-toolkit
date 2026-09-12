@@ -1,6 +1,6 @@
 # Dust-token "sell this for me" assessment (fake-liquidity bait)
 
-Worked example 2026-08-22: Emad pasted a raw private key asking to sell "~0.03 $SHCAP worth $192" with a dexscreener link claiming "1.88 weth liquidity". On-chain truth: dead Dec-2018 ERC-20 ("AshleighCoin"/SCHAP, supply 7,000), real Uniswap V2 pool created Oct 2023 with ~0.5 SCHAP + 0.1 ETH, **last swap ever Oct 26 2023**, current reserves ~5e-8 SCHAP / ~1.1e-7 WETH. Realizable value $0.00; the $192 and "1.88 weth" were fabricated by a price feed, not on-chain facts.
+Worked example 2026-08-22: the user pasted a raw private key asking to sell "~0.03 $SHCAP worth $192" with a dexscreener link claiming "1.88 weth liquidity". On-chain truth: dead Dec-2018 ERC-20 ("AshleighCoin"/SCHAP, supply 7,000), real Uniswap V2 pool created Oct 2023 with ~0.5 SCHAP + 0.1 ETH, **last swap ever Oct 26 2023**, current reserves ~5e-8 SCHAP / ~1.1e-7 WETH. Realizable value $0.00; the $192 and "1.88 weth" were fabricated by a price feed, not on-chain facts.
 
 ## Why this class exists
 
@@ -28,7 +28,7 @@ Dust scams airdrop worthless tokens to thousands of wallets, inflate displayed v
 
 ## When the user pushes back with "these seem to be real sales" (verified 2026-08-22)
 
-Emad followed the verdict by pasting three etherscan tx links of actual SCHAP sales (Jul 2025, Mar 2026, Jun 2026). They WERE real — and they confirmed the diagnosis rather than refuting it. Handle this pattern as:
+the user followed the verdict by pasting three etherscan tx links of actual SCHAP sales (Jul 2025, Mar 2026, Jun 2026). They WERE real — and they confirmed the diagnosis rather than refuting it. Handle this pattern as:
 
 1. **Decode each tx on-chain** (`eth_getTransactionByHash` + receipt logs): who sold how much for how much WETH, via which pool. Don't argue from priors — read them.
 2. **Read the trajectory**: 0.1156 SHCAP → 0.0643 WETH (Jul 2025), 0.0013 → 0.0041 (Mar 2026), 0.00017 → 0.00057 (Jun 2026). Each sale got ~an order of magnitude less than the last: that's a pool being drained to zero, not a market. The last sellers got paid because liquidity still existed in front of them.

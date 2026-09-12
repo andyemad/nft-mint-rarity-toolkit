@@ -1,23 +1,23 @@
 # Cycle-Jackpot Economy (agent-gated) + local-EVM dry-run verification
 
 Session 2026-08-20. Supersedes the earlier "winner-per-888 milestone, 50% pool"
-jackpot design from `jackpot-mechanics-and-terms.md` for STILL UP. Emad reversed
+jackpot design from `jackpot-mechanics-and-terms.md` for STILL UP. the user reversed
 the 8/19 handoff (24 supply, jackpot OUT) the same day a new design doc landed.
 
 ## CRITICAL WORKFLOW RULE (hit hard this session)
 
 The repo carries a living design doc that **supersedes handoffs**: STILL UP's
-current truth is `~/Projects/still-up-mint/docs/superpowers/specs/2026-08-20-still-up-economy-design.md`.
+current truth is `~/Projects/mint-page/docs/superpowers/specs/2026-08-20-still-up-economy-design.md`.
 It explicitly declares it supersedes the economy sections of the `CLAUDE-TO-HERMES-...08-19...`
-handoff. **When Emad reverses a plan, the newest spec is authoritative — read it
+handoff. **When the user reverses a plan, the newest spec is authoritative — read it
 before building and before trusting any handoff's "locked" economics.** In this
 session the stated task was literally "remove agentMint and build the economy the
-new spec describes, it supersedes 8/19 which Emad reversed today." Building the
+new spec describes, it supersedes 8/19 which the user reversed today." Building the
 old 24-supply/no-jackpot design would have been a wasted, wrong deliverable.
 
 ## The cycle-jackpot economy (final locked shape)
 
-Reference implementation: `~/Projects/still-up-mint/contract/StillUp.sol`
+Reference implementation: `~/Projects/mint-page/contract/StillUp.sol`
 (compiled clean, 21,734 bytes / 60 ABI via `scripts/compile_check_sol.py`-style
 py-solc-x). Verified 26/26 on a local EVM (`test/dryrun.py`).
 
@@ -29,7 +29,7 @@ py-solc-x). Verified 26/26 on a local EVM (`test/dryrun.py`).
 | Cycle close | 888 mints OR 7-day timer, whichever first; permissionless |
 | Draw | separate permissionless call, seeded by `blockhash(closeBlock+10)` |
 | Mint gate | agent-gated EIP-712 permit (unchanged) |
-| Fees split | pot slice escrowed in contract (Emad never custodies), remainder → `accruedCreator` |
+| Fees split | pot slice escrowed in contract (the user never custodies), remainder → `accruedCreator` |
 | Full sellout | 5.55 ETH escrowed in pots = $11,100; creator keeps 3.33 ETH = $6,660 |
 
 Design reasoning the spec made (don't re-litigate): escalating the PRICE was
@@ -40,7 +40,7 @@ moment it must attract the first buyers. Escalating the POT SHARE gives the same
 cap is SAFE because a random draw makes farming unprofitable: for k entries at
 price P with share s, net expectation = (s−1)·k·P, negative for every s<100% — no k
 profits. This is why bots can't snipe it (a fixed "mint #888 wins" is trivially
-snipeable with Emad's own `~/Projects/rh-mint-bot`).
+snipeable with the user's own `~/Projects/rh-mint-bot`).
 
 Rate-limit/verify: the "a few hundred dollars" target is met at ~300 mints (~3%
 sell-through) — 40% of ~$600 = $240 pot, $360 creator. Display the pot in ETH read
@@ -72,7 +72,7 @@ decoration — sources disagreed wildly).
 
 ## Local-EVM dry-run harness (proves the economy before deploy)
 
-`~/Projects/still-up-mint/test/dryrun.py` — the fast, deterministic way to verify
+`~/Projects/mint-page/test/dryrun.py` — the fast, deterministic way to verify
 a mint+jackpot contract without touching mainnet and without Foundry:
 
 - `Web3(EthereumTesterProvider())` + `--with eth-tester --with py-evm`. **py-evm

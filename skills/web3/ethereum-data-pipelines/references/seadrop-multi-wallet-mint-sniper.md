@@ -64,13 +64,13 @@ simulate-then-broadcast per minute catches ~0% of slots; a continuous daemon pol
   second — the check should have been noop.)
 - The daemon must self-stop at the per-wallet cap (re-read `freeMinted(wallet)` and exit).
 
-## UI / deployment security (Emad, 2026-08-18)
+## UI / deployment security (the user, 2026-08-18)
 The user wants to "use this visually." Two deliverables split by SECURITY:
 - **Static walkthrough / explainer** → deployable to Vercel PUBLIC (no keys, no backend).
 - **Operational control panel that funds/mints** holds the REAL bot-wallet key and
   broadcasts ETH → **MUST stay local-only (127.0.0.1)**. Never deploy it public: anyone
   finding the URL could drain the wallet. Bind the local sever to 127.0.0.1 only.
-Emad explicitly does NOT want localhost as the deliverable — deploy the SAFE static site to
+the user explicitly does NOT want localhost as the deliverable — deploy the SAFE static site to
 Vercel and keep the money-moving UI local. Stop the local server after verifying the public
 deploy (the user asked for that here).
 

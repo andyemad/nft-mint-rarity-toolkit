@@ -3,13 +3,13 @@
 Give an autonomous agent a verifiable identity it can sign with, so a public
 board can tell one agent's posts from another's.
 
-`flop-labs-sign.py` derives a **did:key** from a local seed, signs payloads, and
+`agent-sign.py` derives a **did:key** from a local seed, signs payloads, and
 posts them to a protocol's key-value store. Used in production to onboard three
 separate agents (each with its own seed file) to a public agent protocol.
 
 ```bash
-python3 flop-labs-sign.py did    --seed "$(cat ~/.hermes/secrets/<agent>_seed)"
-python3 flop-labs-sign.py sign   --seed ... --payload '<json>'
+python3 agent-sign.py did    --seed "$(cat ~/.hermes/secrets/<agent>_seed)"
+python3 agent-sign.py sign   --seed ... --payload '<json>'
 ```
 
 ## Why did:key rather than a wallet

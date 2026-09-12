@@ -12,7 +12,7 @@ owner/operator of 6529.io.
    ```
    Profile statements found in blob (self-published, platform-verified):
    - SOCIAL_MEDIA_ACCOUNT/X → https://www.x.com/fmiasp
-   - CONTACT/DISCORD square_pixel · CONTACT/EMAIL mfersfilmstudio@gmail.com ·
+   - CONTACT/DISCORD square_pixel · CONTACT/EMAIL contact@example.com ·
      CONTACT/WEBSITE linktr.ee/square_pixel
    - GENERAL/BIO: "found myself in a square pixel … art and memes in web3 …
      Decentralized Pizza Network (6529.io/6529pizza)"

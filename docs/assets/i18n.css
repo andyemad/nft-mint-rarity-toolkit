@@ -57,6 +57,14 @@
   --body:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif;
   --display:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif
 }
+:lang(ja){
+  --body:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Source Han Sans JP",Meiryo,system-ui,sans-serif;
+  --display:var(--body)
+}
+:lang(ko){
+  --body:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Source Han Sans KR",system-ui,sans-serif;
+  --display:var(--body)
+}
 :lang(ar){
   --body:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
   --display:var(--body)
@@ -71,14 +79,18 @@
 }
 
 :lang(zh-Hans) h1,:lang(zh-Hant) h1,
+:lang(ja) h1,:lang(ko) h1,
 :lang(ar) h1,:lang(he) h1{
   letter-spacing:0;line-height:1.24;font-weight:600
 }
 :lang(zh-Hans) h2,:lang(zh-Hant) h2,
+:lang(ja) h2,:lang(ko) h2,
 :lang(ar) h2,:lang(he) h2{letter-spacing:0}
 :lang(zh-Hans) .brand,:lang(zh-Hant) .brand,
+:lang(ja) .brand,:lang(ko) .brand,
 :lang(ar) .brand,:lang(he) .brand{letter-spacing:0}
-:lang(zh-Hans) body,:lang(zh-Hant) body{
+:lang(zh-Hans) body,:lang(zh-Hant) body,
+:lang(ja) body,:lang(ko) body{
   line-height:1.85;
   word-break:normal;
   line-break:strict
@@ -152,6 +164,8 @@ html[lang="de"]      .table-scroll:after { content: "Seitlich scrollen, um die g
 html[lang="ru"]      .table-scroll:after { content: "Прокрутите вбок, чтобы увидеть всю таблицу" }
 html[lang="he"]      .table-scroll:after { content: "גללו לצד כדי לראות את הטבלה במלואה" }
 html[lang="ur-Latn"] .table-scroll:after { content: "Poora table dekhne ke liye side mein scroll karein" }
+html[lang="ja"]      .table-scroll:after { content: "横にスクロールすると表全体が見られます" }
+html[lang="ko"]      .table-scroll:after { content: "옆으로 스크롤하면 표 전체를 볼 수 있습니다" }
 
 /* the sticky table hint is pinned with left:0 in styles.css */
 [dir="rtl"] .table-scroll:after { left: auto; right: 0 }

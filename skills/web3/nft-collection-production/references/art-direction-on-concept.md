@@ -1,13 +1,13 @@
 # STILL UP art direction — ON-CONCEPT **and** GENUINELY AESTHETIC (2026-08-20, rev 2)
 
 The 2026-08-20 experimental sequence produced THREE art attempts plus Claude's
-reference. The rev-1 note here said flat-vector "won" — that was wrong. Emad's
+reference. The rev-1 note here said flat-vector "won" — that was wrong. the user's
 actual verdict this session: the flat-vector trading-desk portraits were
 rejected ("this sucks"), the ORIGINAL glitch/pixel sleepless-trader tokens had
 more presence, and the true ask was "just something really aesthetic." The
 lesson is about the QUALITY BAR, not which file happened to be produced.
 
-## What Emad actually wanted (corrected)
+## What the user actually wanted (corrected)
 
 - When he says "see what you can come up with," he means **show a strong,
   genuinely AESTHETIC direction** — not re-skin the existing brand, not a
@@ -26,7 +26,7 @@ lesson is about the QUALITY BAR, not which file happened to be produced.
 
 Flat-vector PIL drawing fundamentally caps at "clean and colorful" — it cannot
 reach "cinematic/rich" (volume, lighting, depth-of-field, readable film grain).
-That is exactly why Claude's 3D mechs read as higher quality. If Emad asks for
+That is exactly why Claude's 3D mechs read as higher quality. If the user asks for
 "really aesthetic" and medium is open, the real routes are:
 - **A real renderer** (Three.js/WebGL procedural, Claude's league) — the only
   way to actually hit "expensive-looking." Bigger build (hours), best yield for
@@ -35,7 +35,7 @@ That is exactly why Claude's 3D mechs read as higher quality. If Emad asks for
   paper grain) — the texture *becomes* the aesthetic; flat vector can't do it
   but PIL with brushes/noise can. Cheaper than 3D.
 - State the fork honestly and stop rather than burning a third iteration on the
-  same flat target. Emad values being told "flat caps at this level" over a
+  same flat target. the user values being told "flat caps at this level" over a
   third flat attempt.
 
 ## What still holds from rev 1 (verified true)
@@ -44,7 +44,7 @@ That is exactly why Claude's 3D mechs read as higher quality. If Emad asks for
   Claude's abstract 3D mechs were self-consistent but generic/off-concept for a
   themed collection. That half of the rule is still valid.
 - **But on-concept is necessary, not sufficient.** On-brand subject + flat
-  sterile execution = still rejected. Emad wants BOTH on-concept AND real
+  sterile execution = still rejected. the user wants BOTH on-concept AND real
   aesthetic quality.
 
 ## PIL gotchas specific to this session's "aesthetic" attempt (new-art/night.py)
@@ -89,7 +89,7 @@ That is exactly why Claude's 3D mechs read as higher quality. If Emad asks for
 
 The Cash Dogs reference was correctly identified as neon-on-black cartoon art,
 but the hand-coded corgi implementation did **not** approach its illustration
-quality. Emad's verdict was explicit: "absolutely terrible," "MS Paint slop."
+quality. the user's verdict was explicit: "absolutely terrible," "MS Paint slop."
 He noted that even movement toward Adam Bomb Squad's polished designer-toy /
 streetwear illustration quality would have been acceptable.
 
@@ -108,7 +108,7 @@ What the experiment proved:
   design, volume, surface finish, graphic confidence, and integrated traits.
   Use a real illustration/image model or a human-made master character, then
   derive overlays. Do not try to approximate that bar with Pillow primitives.
-- Never say "this is the one," "it landed," or "collection-ready" before Emad
+- Never say "this is the one," "it landed," or "collection-ready" before the user
   approves the benchmark. His aesthetic verdict outranks auxiliary vision.
 
 The neon/bloom code below is retained only as a prototype/debugging reference
@@ -133,7 +133,7 @@ minimum correctness check, not an aesthetic achievement.
 
 ## Researching a live collection before designing
 
-When Emad says "something like this [URL]", do NOT design from memory — pull
+When the user says "something like this [URL]", do NOT design from memory — pull
 the actual collection page. Useful keyless endpoints (OpenSea API v2, no key):
 - Collection stats/logo/banner: `api.opensea.io/api/v2/collection/<slug>` (this
   one works without a key; gives name, supply, floor, volume, owner_count,
@@ -146,7 +146,7 @@ the actual collection page. Useful keyless endpoints (OpenSea API v2, no key):
   `vision_analyze`: `python3 -c "from PIL import Image; Image.open(i).convert('RGB').save(o+'.png')"`.
 
 ## Files (failed prototypes retained for diagnosis)
-- `~/Projects/still-up-mint/new-art/corgi.py` and
+- `~/Projects/mint-page/new-art/corgi.py` and
   `new-art/output/corgi-1-16.png` are rejected prototypes. Keep them only as
   evidence of the hand-coded-primitive quality ceiling; do not present or
   extend them as the collection direction.

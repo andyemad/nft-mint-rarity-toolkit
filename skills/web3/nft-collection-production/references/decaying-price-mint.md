@@ -111,4 +111,4 @@ The complete `npm run check` gate passed with 17 tests, formatter/linter, exact 
 
 ## Safety boundary
 
-Local deploys and Hardhat transactions are verification fixtures. Never deploy to a real-money chain or enable live ETH minting until the separate distribution/demand gate passes and Emad explicitly approves the external consequence. No review preference should become a blocker: if the user waives a named reviewer, continue with direct tests and independent quality/spec verification rather than stopping implementation.
+Local deploys and Hardhat transactions are verification fixtures. Never deploy to a real-money chain or enable live ETH minting until the separate distribution/demand gate passes and the user explicitly approves the external consequence. No review preference should become a blocker: if the user waives a named reviewer, continue with direct tests and independent quality/spec verification rather than stopping implementation.

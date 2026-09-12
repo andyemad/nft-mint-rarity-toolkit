@@ -100,7 +100,7 @@ curl -s -m 12 -X POST -H "Content-Type: application/json" \
 
 ## Bulk-transfer requests: solve the signing bottleneck
 
-- When Emad asks to mass-send NFTs, do not substitute a one-by-one marketplace tutorial, ask him to hunt for selection checkboxes, or repeatedly request screenshots of a flow he has already said cannot batch. The task is to remove repetitive transfer work, not explain the manual workaround.
+- When the user asks to mass-send NFTs, do not substitute a one-by-one marketplace tutorial, ask him to hunt for selection checkboxes, or repeatedly request screenshots of a flow he has already said cannot batch. The task is to remove repetitive transfer work, not explain the manual workaround.
 - Resolve the signing route early, alongside read-only discovery. Distinguish an automated queue of individual transactions from a true on-chain batch and from wallet batch signing: these can require very different numbers of user confirmations. Do not promise one confirmation merely because a page queues many calls.
 - Verify the exact chain, deployed contract/source, wallet capability, and full transaction preview before recommending a batch service. An ERC-721 contract, an arbitrary multicall deployment, or a wallet brand name alone does not prove safe batching support.
 - Check source native balance and aggregate gas early. Estimate the actual chosen route, including any helper deployment, operator approval, transfer, and revocation. Independent transfer estimates are not proof of the batch route's cost or success.

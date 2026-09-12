@@ -5,7 +5,7 @@ description: Profile pseudonymous identities across X, ENS, and wallets.
 
 # Pseudonym Identity Research ("is this the same person as …?")
 
-Use when Emad asks whether two online identities are the same person, or who a
+Use when the user asks whether two online identities are the same person, or who a
 pseudonymous artist/collector/trader/project account really is. Ground the answer
 in the person's OWN self-published, platform-verified links (profile statements,
 ENS, linked X handle) — never infer identity from display names or branding alone.

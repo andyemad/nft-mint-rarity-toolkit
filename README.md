@@ -60,29 +60,29 @@ Adding a language is one JSON file and one build. See
 
 | Capability | Skill(s) | Code |
 |---|---|---|
-| Rank a collection by rarity, matching OpenSea | `nft-rarity-engine`, `ethereum-data-pipelines` | `toolkit/rarity/rarity_engine.py`, `combox_rarity.py`, `bakemono_rarity.py` |
+| Rank a collection by rarity, matching OpenSea | `nft-rarity-engine`, `ethereum-data-pipelines` | `toolkit/rarity/rarity_engine.py`, `raritytest_rarity.py`, `bakemono_rarity.py` |
 | Catch a reveal when metadata flips, then sweep and rank it | `nft-rarity-engine`, `rh-chain-rarity-sniping` | `toolkit/rarity/rarity_engine.py watch` |
 | Buy rare tokens at or near floor after a reveal | `rh-chain-rarity-sniping`, `nft-secondary-buy` | `toolkit/sniper/buy_secondary.py`, `probe_fill.py` |
 | Run a SeaDrop public mint across many wallets at T-0 | `seadrop-rapid-mint`, `nft-mint-recon` | `toolkit/mint/seadrop_fire.py` |
-| Mint a custom contract | `rh-mint-command-center`, `nft-mint-recon` | see `skills/software-development/rh-mint-command-center` |
+| Mint a custom contract | `mint-control-room`, `nft-mint-recon` | see `skills/software-development/mint-control-room` |
 | Work out how an unknown mint site works and mint it | `ethereum-data-pipelines` → `free-mint-site-reverse-engineering.md` | |
 | Mine a proof-of-work mint | `pow-mint-mining`, `onchain-puzzle-mining` | `toolkit/pow/*` (C, CUDA, Metal, Swift) |
 | Solve a puzzle, claim gate, or refund allocation | `onchain-puzzle-solving`, `onchain-claim-reverse-engineering` | `toolkit/pow/*`, `toolkit/mint/send_mint_tx.py` |
 | Create, fund, sweep, and batch-transfer wallets | `ethereum-wallet-operations` | `toolkit/wallets/create_wallet.py` |
 | Reconstruct wallet P&L (mints, buys, sells, gas, both chains) | `ethereum-wallet-operations`, `ethereum-data-pipelines` | `toolkit/wallets/wallet_recon.py` |
-| Watch wallets and alert on buys, with no API keys | `ethereum-data-pipelines`, `wallet-radar-operations` | |
+| Watch wallets and alert on buys, with no API keys | `ethereum-data-pipelines`, `wallet-watcher-operations` | |
 | Audit a collection for wash trading, bots, allocation | `nft-minter-legitimacy-audit`, `nft-market-analysis` | `toolkit/analysis/minter_legitimacy.py` |
 | Scope a floor sweep without spending | `nft-floor-sweep` | `toolkit/analysis/sweep_scope.py` |
 | Measure real secondary volume keylessly | `ethereum-data-pipelines` | `toolkit/analysis/collection_volume.py` |
 | Vet a collection call, a dev link, or a scam accusation | `nft-collection-price-analysis`, `web3-claim-verification` | |
 | Design and produce a collection | `nft-collection-production`, `nft-trait-taxonomy`, `nft-trait-curation` | `toolkit/rarity/trait_sampler.py`, `toolkit/contracts/*` |
 | Deploy a decaying-price mint contract | `nft-collection-production` → `decaying-price-mint.md` | `toolkit/contracts/DecayedMint.sol` |
-| Register an agent identity and sign writes (did:key) | `agent-protocol-identity` | `toolkit/did/flop-labs-sign.py` |
-| Build a mint intelligence dashboard | `ethereum-data-pipelines`, `mint-field-guide` | |
+| Register an agent identity and sign writes (did:key) | `agent-protocol-identity` | `toolkit/did/agent-sign.py` |
+| Build a mint intelligence dashboard | `ethereum-data-pipelines`, `mint-market-dashboard` | |
 
 `skills/software-development/` documents two full applications: **Rh Mint Command
 Center** (a local-first mint operations console with a rarity sniper, wallet fleet
-manager, SeaDrop planner, and queue worker) and **Mint Field Guide** (a read-only
+manager, SeaDrop planner, and queue worker) and **the mint market dashboard** (a read-only
 mint and market intelligence dashboard). Their source is in separate repos. What
 is here is the architecture, the pitfalls, and the acceptance criteria.
 
@@ -276,7 +276,7 @@ Nothing here needs a hosted service.
 ## Limits
 
 - These are one operator's field notes. Some references cite that operator's
-  private repositories (`rh-mint-command-center`, `mint-field-guide`) or paths
+  private repositories (`mint-control-room`, `mint-market-dashboard`) or paths
   under `~/.hermes/`. Those repos are not part of this release. The skills are
   written so the technique stands without them.
 - Wallet addresses in the skills are placeholders. `0x1111…`, `0x2222…` and

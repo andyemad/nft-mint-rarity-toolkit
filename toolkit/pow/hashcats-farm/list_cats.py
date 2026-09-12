@@ -5,7 +5,7 @@
   python3 list_cats.py --list --undercut 0.03  # list every owned cat 3% under the live floor
   python3 list_cats.py --list --token 34 --price 0.11
 
-Reuses the relist path proven in bunker-snipe/autoflip.py:
+Reuses the relist path proven in sniper/autoflip.py:
   POST /listings/actions  -> EIP-712 signatureRequest -> sign locally -> POST /orders/robinhood/seaport/listings
 The private key never leaves this machine; only the signed order is posted.
 """

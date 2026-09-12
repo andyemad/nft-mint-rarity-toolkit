@@ -77,5 +77,5 @@ the previous bug, suspect cache.
 ## Outcome (final)
 Both wallets minted, receipts status 0x1:
 - bot wallet 0x1111…1111: nonce 21214117497163 (44-bit hash), tx 0xaa7454ee…4032e
-- wallet2 0x77b9…a6d0: nonce 13086727620657 (42-bit hash), tx 0x5667905b…7b4cd
+- wallet2 0x2222•2222: nonce 13086727620657 (42-bit hash), tx 0x5667905b…7b4cd
 Verified miner template: templates/fabminer_gpu.cu. Broadcaster: scripts/send_mint_tx.py.

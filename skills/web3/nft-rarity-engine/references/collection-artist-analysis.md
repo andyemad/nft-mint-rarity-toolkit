@@ -1,6 +1,6 @@
 # Collection + artist deep-dive playbook (proven 2026-08-22 on GOOFYZ)
 
-Emad's recurring ask: "analyze this collection, and the associated twitter/artist.
+the user's recurring ask: "analyze this collection, and the associated twitter/artist.
 use moni api credits on the artist." Full workflow, all verified live.
 
 ## Moni API (artist/KOL influence scoring)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate an interactive ComboX rarity dashboard (single-file HTML)."""
+"""Generate an interactive the rarity-test collection rarity dashboard (single-file HTML)."""
 import json, os
 
-BASE = os.path.expanduser("~/.hermes/rarity/combox")
+BASE = os.path.expanduser("~/.hermes/rarity/raritytest")
 scores = json.load(open(os.path.join(BASE,"scores.json")))
 traits = json.load(open(os.path.join(BASE,"traits.json")))
 # Token ids you hold (optional) — powers `mine` / the dashboard highlight.
@@ -57,7 +57,7 @@ rows_html="\n".join(rows)
 
 html = f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ComboX Rarity — Your Holdings</title>
+<title>the rarity-test collection Rarity — Your Holdings</title>
 <style>
 :root{{--bg:#0d0f14;--card:#161a22;--line:#232a36;--txt:#e8ecf3;--mut:#9aa6b8;--accent:#7c5cff;--gold:#f5b942}}
 *{{box-sizing:border-box;margin:0;padding:0}}
@@ -86,7 +86,7 @@ tr:last-child td{{border-bottom:none}} .tok{{font-weight:700}}
 .legend{{color:var(--mut);font-size:12px;margin-top:8px}}
 .dot{{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin:0 4px 0 8px}}
 </style></head><body>
-<h1>ComboX (combox-888) Rarity</h1>
+<h1>the rarity-test collection (raritytest-888) Rarity</h1>
 <div class="sub">Robinhood Chain · ERC721 · 5,000 supply · Traits revealed · Mint wallet 0x1111…1111</div>
 <div class="cards">
   <div class="card"><div class="k">Your Tokens</div><div class="v">29</div></div>

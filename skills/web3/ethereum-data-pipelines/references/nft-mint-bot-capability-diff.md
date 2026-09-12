@@ -1,4 +1,4 @@
-# ZARV sniper vs rh-mint-command-center — capability diff (audited 2026-08-21)
+# ZARV sniper vs mint-control-room — capability diff (audited 2026-08-21)
 
 Source: X post @zarvxbt/status/2090772574028636231, 112s demo video (contact sheet),
 live site zsniper.vercel.app, public repo zarvxbt/zarv-sniper @657c210 (MIT, viem-only,
@@ -24,14 +24,14 @@ zero tests). All claims below verified against actual source, not the README.
 - Fails OPEN when stats/fee-recipient checks are unverifiable (`passed: true`).
 - Success = receipt status only; never verifies the expected NFT Transfer log.
 
-## What rh-mint-command-center already did better
+## What mint-control-room already did better
 
 Persistent disk-backed queue surviving restarts, on-chain stage watching (not clock),
 fresh simulation + revalidation before broadcast, atomic one-use execution claim,
 exact total-exposure cap, receipt + NFT-delivery verification, pinned custom adapters,
 same-origin loopback guard, real test suite + no-broadcast E2E against live contracts.
 
-## Adopted into Mint Room (2026-08-21, all green)
+## Adopted into the control room (2026-08-21, all green)
 
 - `lib/domain/seadrop-checks.ts` + `lib/server/seadrop-stats.ts`: seven-rule panel with
   tri-state ok/fail/**unknown** (unknown = contract doesn't expose data — NEVER fail-open;
@@ -40,7 +40,7 @@ same-origin loopback guard, real test suite + no-broadcast E2E against live cont
   price, click-to-load, 15s refresh.
 - Deliberately NOT copied: browser key vault (weaker than server-side signer), manual gas
   inputs, wall-clock scheduling, uncontrolled multi-wallet blasting.
-- Feed/trending left to mint-field-guide (don't duplicate intelligence layers).
+- Feed/trending left to mint-market-dashboard (don't duplicate intelligence layers).
 
 ## Lesson
 

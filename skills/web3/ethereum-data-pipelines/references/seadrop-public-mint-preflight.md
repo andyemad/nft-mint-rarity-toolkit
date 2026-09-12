@@ -1,12 +1,12 @@
 # SeaDrop public-mint preflight — "mint these NOW" gate (WLAND worked example 2026-09-04)
 
-Emad's urgent-mint requests ("Mint these on public 0x… in less than 3 minutes using the settings from the dunlap mint") target OpenSea **ERC721SeaDrop** contracts on Robinhood Chain. Public mints run through the SHARED SeaDrop stage singleton, NOT the NFT contract. Before queuing parallel wallet txs from any prior known-good config, run the preflight below — a drop that is sold out or whose stage is closed reverts every attempt and wastes gas.
+the user's urgent-mint requests ("Mint these on public 0x… in less than 3 minutes using the settings from the dunlap mint") target OpenSea **ERC721SeaDrop** contracts on Robinhood Chain. Public mints run through the SHARED SeaDrop stage singleton, NOT the NFT contract. Before queuing parallel wallet txs from any prior known-good config, run the preflight below — a drop that is sold out or whose stage is closed reverts every attempt and wastes gas.
 
 ## WLAND case (what actually happened)
 - Request arrived ~17:31 UTC for WLAND / Wasteland (`0xeb5cbe68a0fb8a0fb3660f152e98329a5b465c9d`, ERC721SeaDrop, verified, 3333 supply).
 - On-chain truth: `totalSupply() == maxSupply() == 3333` (FULLY MINTED); SeaDrop `getPublicDrop` stage had ended 17:30:00 UTC (window 17:30 → 20:10 UTC). Sold out minutes before the request.
 - Explorer recent-tx list showed a swarm of repeated `status: error` txs from one caller (`0xc2a98ce3…`) firing selector `0x0da0ba32` — a selector that matches NO mintPublic/mintSeaDrop variant (computed against the full candidate list). Two tells: (a) failed swarm = closed/misconfigured/sold-out drop; (b) unknown selector = the spammers are burning gas on a phantom function, do not copy them — read the real ABI.
-- Outcome: all three of Emad's wallets verified `balanceOf == 0`; nothing broadcast; zero ETH spent. Honest miss beats gas waste.
+- Outcome: all three of the user's wallets verified `balanceOf == 0`; nothing broadcast; zero ETH spent. Honest miss beats gas waste.
 
 ## Preflight checklist (run in order, then broadcast)
 1. **Supply check first** — RPC `eth_call` `totalSupply()` (0x18160ddd) and `maxSupply()` (0xd5abeb01). If equal → sold out, STOP, report, offer floor-watch/secondary instead.
