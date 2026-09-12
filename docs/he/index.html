@@ -19,6 +19,8 @@
 
 <link rel="alternate" hreflang="en" href="../">
 <link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ko" href="../ko/">
 <link rel="alternate" hreflang="ar" href="../ar/">
 <link rel="alternate" hreflang="es" href="../es/">
 <link rel="alternate" hreflang="fr" href="../fr/">
@@ -52,7 +54,7 @@
 <header class="site-header">
   <div class="topbar shell">
     <a class="brand" href="#top" aria-label="דף הבית של ערכת הכלים ל-NFT"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>ערכת כלים ל-NFT</span><span class="brand-sub">סוכן משל עצמך</span></a>
-    <nav class="topnav" aria-label="ניווט ראשי"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>HE</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="./" hreflang="he" aria-current="true"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+    <nav class="topnav" aria-label="ניווט ראשי"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>HE</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ja/" hreflang="ja"><span>日本語</span><code>JA</code></a></li><li><a href="../ko/" hreflang="ko"><span>한국어</span><code>KO</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="./" hreflang="he" aria-current="true"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
       <a href="#guide">המדריך</a><a href="#list">סקילים</a><a class="pricing-nav" href="#money">עלויות</a><a class="pricing-nav" href="prompts/">וייב קודינג</a>
       <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="צפה בערכת הכלים ל-NFT ב-GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
     </nav>
@@ -387,7 +389,9 @@ modal setup</code></pre>
 
   <h3>מה להקליד ב-Discord</h3>
   <p>זו כל הפעולה. תייג את הבוט שלך והדבק את זה:</p>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot תשתמש בסקיל pow-mint-mining על hashcats. תראה לי את הסיבוב הנוכחי ותכין הכל, אבל אל תוציא כלום עדיין</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use pow-mint-mining on hashcats. show me the round, the difficulty, and my odds before spending anything
+@yourbot run the current round. stop on a hit or at 15 minutes, and tell me the cost either way
+@yourbot did we get one? show me the transaction, then tell me whether another attempt is worth the money</code></pre>
   <p>הוא מדווח לך בחזרה על הסבב. כשאתה באמת רוצה ללכת על זה:</p>
   <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot קדימה תכרה את הסיבוב הנוכחי. תעצור כשתמצא אחד, או אחרי 15 דקות</code></pre>
   <p>וכדי לראות איך זה הלך:</p>
@@ -418,78 +422,82 @@ modal setup</code></pre>
   <p>
     אותו רעיון ואותו סוג של פרומפט. רק מזכירים את זה שאתה רוצה במקום:
   </p>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot תשתמש בסקיל pow-mint-mining על FAB4200 ותגיד לי כמה זה יעלה לי</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use pow-mint-mining on FAB4200. what would a full attempt cost me, and is it worth it at today's difficulty?</code></pre>
 
 </section>
 
 <section id="prompts">
   <div class="section-title"><h2 class="step"><span>07</span>דברים לבקש ממנו</h2></div>
   <p>
-    אין ניסוח מיוחד. <b>הדבק קישור ותגיד מה אתה רוצה.</b> קישור
-    ל-OpenSea, ציוץ, אתר מינט, כתובת ארנק, כתובת חוזה.
-    אם הוא לא מבין למה אתה מתכוון, הוא שואל אותך.
+    There is no special wording, but sharper questions get sharper answers.
+    <b>הדבק קישור ותגיד מה אתה רוצה.</b> Give it the contract, not the name.
+    Tell it your budget. Tell it when to stop. Ask for the number that decides it.
   </p>
 
   <h3>הדבק קישור של OpenSea</h3>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot דרג את כל הקולקציה הזו לפי נדירות ותראה לי את 20 המובילים
-@yourbot אילו מהיקרים כאן רשומים בזול כרגע?
-@yourbot מה מחיר הרצפה של זה והוא עולה או יורד?
-@yourbot הארנקים שמינטו את זה הם אנשים אמיתיים או בוטים?
-@yourbot שווה לקנות את זה במחיר הרצפה הנוכחי?
-@yourbot כמה אנשים מחזיקים את זה, וכמה זה מרוכז?</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;collection link&gt; rank it by rarity, then tell me which of the top 50 are listed below floor, the price, and how long each has been sitting
+@yourbot what is the cheapest way into the top 1% of this right now? give me token ids, prices and links
+@yourbot is this floor real? show me the last 20 sales and flag any that look like wash trading
+@yourbot who holds the top 100? if ten wallets own a third of it, say so plainly
+@yourbot i have 0.1 ETH and i want exposure here. what is the best set to buy?
+@yourbot what would make this a bad buy at today's floor? give me three numbers to watch</code></pre>
 
   <h3>הדבק ציוץ שכתוב בו "למנט את זה"</h3>
   <p>
     זה השימושי. תדביק את הציוץ והוא מבין מה המינט, כמה הוא באמת עולה, אם הוא עוד פתוח, ואם הפרויקט נראה אמיתי — לפני שמשהו נוגע בארנק שלך.
   </p>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; תמינט את זה
-@yourbot &lt;tweet link&gt; מה המינט הזה והוא אמיתי?
-@yourbot &lt;tweet link&gt; אני יכול למנט את זה בחינם?
-@yourbot &lt;tweet link&gt; כמה יעלה לי בפועל למנט 3 כאלה?
-@yourbot &lt;tweet link&gt; זה החוזה האמיתי או העתקה?
-@yourbot &lt;tweet link&gt; תגדיר התראה למתי שזה עולה לאוויר</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; before i touch this: real mint price, supply, how many wallets have minted, and whether this deployer has walked away from a mint before
+@yourbot &lt;tweet link&gt; is the contract a copy of an existing collection? show me what is identical
+@yourbot &lt;tweet link&gt; what does minting 3 cost me all in, gas included?
+@yourbot &lt;tweet link&gt; who is behind it? any public wallet, any linked project
+@yourbot &lt;tweet link&gt; is this still open or already sold out?
+@yourbot &lt;tweet link&gt; watch it and ping me the second it goes live</code></pre>
   <div class="note">
     הוא לא סתם יורה עסקה. הוא קורא את הציוץ, מוצא את החוזה, בודק את המחיר ואת ההיצע אונצ'יין, מראה לך מה הוא מצא, ומחכה שתגיד קדימה.
   </div>
 
   <h3>הדבק אתר מינט, או סתם כתובת חוזה</h3>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot אני יכול למנט את זה בחינם? &lt;link&gt;
-@yourbot מה המחיר האמיתי של זה? בדף כתוב 0.05
-@yourbot המינט הזה עוד פתוח או כבר אזל?
-@yourbot כמה ארנקים מינטו את זה עד עכשיו?
-@yourbot החוזה הזה הוא העתקה של קולקציה אחרת?
-@yourbot מה החוזה הזה בעצם עושה? &lt;address&gt;</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;link&gt; the page says free. simulate the mint and tell me what it actually costs
+@yourbot &lt;address&gt; is this a honeypot? simulate a mint and a transfer, then tell me what breaks
+@yourbot &lt;address&gt; what does this contract actually do? plain english, no code
+@yourbot how many wallets have minted, and do the first twenty look like one cluster?
+@yourbot &lt;address&gt; has this deployer shipped other collections? how did those end?
+@yourbot &lt;address&gt; is there an owner switch, a pause, or a supply cap that can change after i mint?</code></pre>
 
   <h3>הדבק כתובת ארנק</h3>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot מה הארנק הזה קנה לאחרונה? &lt;address&gt;
-@yourbot הארנק הזה באמת רווחי, או סתם עסוק?
-@yourbot תעקוב אחרי הארנק הזה ותשלח לי הודעה כשהוא קונה משהו
-@yourbot לאילו קולקציות הארנק הזה נכנס מוקדם?
-@yourbot הארנק הזה נראה כמו בוט או כמו אדם?</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;address&gt; trace it: first buys, biggest wins, what it is sitting on now, realised profit and loss
+@yourbot &lt;address&gt; is this a bot? check mint timing, gas bids, and whether it ever sells at a loss
+@yourbot which collections did this wallet get into in the first ten minutes, and what did it do next?
+@yourbot find me ten wallets that were early on the last three collections that did well
+@yourbot is &lt;address&gt; connected to the deployer of <collection>? trace the funding
+@yourbot &lt;address&gt; what is it about to do? any open listings or pending approvals</code></pre>
 
   <h3>בקש ממנו לעקוב אחרי משהו בשבילך</h3>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot תעקוב אחרי הקולקציה הזו ותשלח לי הודעה ברגע שהיא נחשפת
-@yourbot תגיד לי כשמחיר הרצפה יורד מתחת ל-0.01
-@yourbot תפינג לי אם משהו מהקולקציה הזו נמכר מתחת ל-0.005
-@yourbot תבדוק את זה כל עשר דקות ותשלח לי הודעה רק אם משהו משתנה
-@yourbot תזכיר לי כשהמינט הזה נפתח בעוד שעה</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot watch <collection> and only ping me if the floor drops under 0.05, or three rare ones get listed under floor, or one wallet buys five in an hour
+@yourbot alert me the second <collection> reveals, then rank it before anyone else has seen it
+@yourbot message me when gas is under 12 gwei and the mint i care about is still open
+@yourbot ping me if the deployer moves funds or the supply changes
+@yourbot check every ten minutes and only message me when something actually changes
+@yourbot keep this running for 24 hours, then send me one summary</code></pre>
 
   <h3>בקש ממנו לקנות או למנט בשבילך</h3>
   <p>
     כל אחד מאלה בודק קודם ואומר לך את העלות לפני שהוא עושה משהו. שום דבר לא עובר עד שאתה אומר קדימה.
   </p>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot תמינט אחד בשבילי, תראה לי את העלות ותחכה לאישור שלי
-@yourbot תקנה את הנדיר הזול ביותר מתחת ל-0.01
-@yourbot תקנה 3 אבל אל תוציא יותר מ-0.03 בסך הכל
-@yourbot אל תוציא כלום בלי לשאול אותי קודם
-@yourbot מה הארנק שלי מחזיק כרגע? &lt;address&gt;</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot here is 0.2 ETH. buy up to 3 under 0.04 each, only if the rarity is top 500 and the seller is not the deployer. never spend more than 0.1 total, and show me each one before you send it
+@yourbot mint 2 from &lt;link&gt; when it opens, but only if the real price is 0.01 or less and the contract is not a copy
+@yourbot if a mint fails, retry twice at most and tell me why each time
+@yourbot buy the cheapest rare one, under 0.01, then stop
+@yourbot do not spend anything without asking me first
+@yourbot what am i holding right now? &lt;address&gt;</code></pre>
 
   <h3>בקש ממנו להסביר משהו</h3>
-  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot תסביר מה זה מינט proof of work, במילים פשוטות
-@yourbot למה מחיר הרצפה הזה כל כך נמוך?
-@yourbot מה זה אומר "revealed" כאן?
-@yourbot איך אנשים מזייפים ווליום בקולקציה?
-@yourbot מה ההבדל בין מינט לקנייה?</code></pre>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot why did this floor collapse after reveal? walk me through the wallets that sold
+@yourbot this looks farmed by a syndicate. show me the evidence or drop it
+@yourbot what would have to be true for this to be a good buy? give me three numbers
+@yourbot explain proof of work minting like i am deciding whether to pay for it
+@yourbot what did i get wrong on my last three buys?
+@yourbot what is the difference between a mint and a buy, one line each</code></pre>
 
   <div class="note">
     <b>הכלל הכללי:</b> אם אתה יכול להדביק את זה, כנראה שהוא יכול להסתכל על זה. קישורים,
@@ -689,7 +697,7 @@ npx vercel deploy docs --prod</code></pre>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> ערכת כלים ל-NFT</a><div class="footer-links"><span>בנוי להיות שלך.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">קוד המקור ב-GitHub</a><a href="prompts/">וייב קודינג של הסקילים</a><a href="#guide">חזרה למדריך</a></div></div><p>חינם וקוד פתוח. שום דבר כאן אינו ייעוץ פיננסי. מינט ומסחר יכולים להפסיד כסף. קבע לעצמך גבול לפני שאתה מתחיל ולעולם אל תשתמש בכסף שאתה צריך.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="./" hreflang="he" aria-current="true">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> ערכת כלים ל-NFT</a><div class="footer-links"><span>בנוי להיות שלך.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">קוד המקור ב-GitHub</a><a href="prompts/">וייב קודינג של הסקילים</a><a href="#guide">חזרה למדריך</a></div></div><p>חינם וקוד פתוח. שום דבר כאן אינו ייעוץ פיננסי. מינט ומסחר יכולים להפסיד כסף. קבע לעצמך גבול לפני שאתה מתחיל ולעולם אל תשתמש בכסף שאתה צריך.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja">日本語</a> · <a href="../ko/" hreflang="ko">한국어</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="./" hreflang="he" aria-current="true">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
 <a class="top" href="#top" aria-label="חזרה למעלה" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
 <div class="toast" id="toast" role="status" hidden></div>
 </body>

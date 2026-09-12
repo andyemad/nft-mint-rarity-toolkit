@@ -19,6 +19,8 @@
 
 <link rel="alternate" hreflang="en" href="../">
 <link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ko" href="../ko/">
 <link rel="alternate" hreflang="ar" href="../ar/">
 <link rel="alternate" hreflang="es" href="../es/">
 <link rel="alternate" hreflang="fr" href="../fr/">
@@ -52,7 +54,7 @@
 <header class="site-header">
   <div class="topbar shell">
     <a class="brand" href="#top" aria-label="Главная NFT-набора"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT-набор инструментов</span><span class="brand-sub">Свой собственный агент</span></a>
-    <nav class="topnav" aria-label="Основная навигация"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>RU</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="./" hreflang="ru" aria-current="true"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+    <nav class="topnav" aria-label="Основная навигация"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>RU</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ja/" hreflang="ja"><span>日本語</span><code>JA</code></a></li><li><a href="../ko/" hreflang="ko"><span>한국어</span><code>KO</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="./" hreflang="ru" aria-current="true"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
       <a href="#guide">Руководство</a><a href="#list">Навыки</a><a class="pricing-nav" href="#money">Расходы</a><a class="pricing-nav" href="prompts/">Вайб-кодинг</a>
       <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="Открыть NFT-набор на GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
     </nav>
@@ -387,7 +389,9 @@ modal setup</code></pre>
 
   <h3>Что написать в Discord</h3>
   <p>Это вся операция. Упомяните своего бота и вставьте это:</p>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используйте навык pow-mint-mining на hashcats. покажите текущий раунд и всё подготовьте, но пока ничего не тратьте</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используй pow-mint-mining на hashcats. покажи мне раунд, сложность и мои шансы, прежде чем тратить что-либо
+@yourbot запусти текущий раунд. остановись при попадании или на 15 минутах и в любом случае скажи мне стоимость
+@yourbot мы получили одну? покажи транзакцию, затем скажи, стоит ли ещё одна попытка этих денег</code></pre>
   <p>Он сообщает вам номер раунда обратно. Когда вы захотите действительно пойти на это:</p>
   <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot запускайте майнинг текущего раунда. остановитесь, когда найдёте, или через 15 минут</code></pre>
   <p>А чтобы увидеть, как всё прошло:</p>
@@ -418,25 +422,25 @@ modal setup</code></pre>
   <p>
     Та же идея и тот же тип подсказки. Просто назовите тот, который вам нужен:
   </p>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используйте навык pow-mint-mining на FAB4200 и скажите, во сколько это мне обойдётся</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot используй pow-mint-mining на FAB4200. сколько мне обойдётся полная попытка и стоит ли она того при сегодняшней сложности?</code></pre>
 
 </section>
 
 <section id="prompts">
   <div class="section-title"><h2 class="step"><span>07</span>Что у него спрашивать</h2></div>
   <p>
-    Никаких особых формулировок нет. <b>Вставьте ссылку и скажите, чего вы хотите.</b> Ссылка
-    на OpenSea, твит, сайт минта, адрес кошелька, адрес смарт-контракта.
-    Если он не может понять, что вы имеете в виду, он спросит вас.
+    Нет никаких особых формулировок, но на более точные вопросы приходят более точные ответы.
+    <b>Вставьте ссылку и скажите, чего вы хотите.</b> Дайте ему контракт, а не название.
+    Скажите ему свой бюджет. Скажите, когда остановиться. Спросите число, которое всё решает.
   </p>
 
   <h3>Вставьте ссылку на OpenSea</h3>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot оцените всю эту коллекцию по редкости и покажите топ-20
-@yourbot какие редкие сейчас выставлены дёшево?
-@yourbot какой здесь флор и он растёт или падает?
-@yourbot кошельки, которые это минтили, — люди или боты?
-@yourbot стоит ли покупать по текущему флору?
-@yourbot сколько людей это держат и насколько концентрированно?</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;collection link&gt; отранжируй её по редкости, затем скажи, кто из топ-50 выставлен ниже флора, по какой цене и как долго каждый висит
+@yourbot какой сейчас самый дешёвый способ попасть в топ-1% этого? дай мне id токенов, цены и ссылки
+@yourbot этот флор настоящий? покажи мне последние 20 продаж и отметь любые, которые похожи на wash trading
+@yourbot кто держит топ-100? если десять кошельков владеют третью, скажи это прямо
+@yourbot у меня есть 0.1 ETH, и я хочу здесь экспозицию. какой набор лучше купить?
+@yourbot что сделало бы это плохой покупкой при сегодняшнем флоре? дай мне три числа, за которыми следить</code></pre>
 
   <h3>Вставьте твит со словами «mint this»</h3>
   <p>
@@ -444,12 +448,12 @@ modal setup</code></pre>
     сколько он на самом деле стоит, открыт ли он ещё и выглядит ли проект
     настоящим, прежде чем что-либо коснётся вашего кошелька.
   </p>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; заминтите это
-@yourbot &lt;tweet link&gt; что это за минт и он настоящий?
-@yourbot &lt;tweet link&gt; можно заминтить бесплатно?
-@yourbot &lt;tweet link&gt; сколько реально будет стоить заминтить 3 штуки?
-@yourbot &lt;tweet link&gt; это настоящий контракт или копия?
-@yourbot &lt;tweet link&gt; сообщите мне, как только он откроется</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; прежде чем я к этому прикоснусь: реальная цена минта, предложение, сколько кошельков сминтили и бросал ли этот деплоер минт раньше
+@yourbot &lt;tweet link&gt; контракт — это копия существующей коллекции? покажи, что идентично
+@yourbot &lt;tweet link&gt; во сколько мне обойдётся минт 3 штук со всеми расходами, включая газ?
+@yourbot &lt;tweet link&gt; кто за этим стоит? любой публичный кошелёк, любой связанный проект
+@yourbot &lt;tweet link&gt; это ещё открыто или уже распродано?
+@yourbot &lt;tweet link&gt; следи за этим и пингани меня в ту секунду, когда это станет доступно</code></pre>
   <div class="note">
     Он не станет просто запускать транзакцию. Он читает твит, находит
     смарт-контракт, проверяет цену и предложение ончейн, показывает вам, что нашёл,
@@ -457,44 +461,48 @@ modal setup</code></pre>
   </div>
 
   <h3>Вставьте сайт минта или просто адрес смарт-контракта</h3>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot это можно заминтить бесплатно? &lt;link&gt;
-@yourbot какая здесь настоящая цена? на странице написано 0.05
-@yourbot этот минт ещё открыт или всё раскуплено?
-@yourbot сколько кошельков уже заминтили?
-@yourbot этот контракт — копия другой коллекции?
-@yourbot что этот контракт вообще делает? &lt;address&gt;</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;link&gt; на странице написано «бесплатно». симулируй минт и скажи, сколько это на самом деле стоит
+@yourbot &lt;address&gt; это ханипот? симулируй минт и перевод, затем скажи, что ломается
+@yourbot &lt;address&gt; что на самом деле делает этот контракт? простыми словами, без кода
+@yourbot сколько кошельков сминтили, и похожи ли первые двадцать на один кластер?
+@yourbot &lt;address&gt; этот деплоер выпускал другие коллекции? чем они закончились?
+@yourbot &lt;address&gt; есть ли owner-switch, пауза или лимит предложения, которые могут измениться после моего минта?</code></pre>
 
   <h3>Вставьте адрес кошелька</h3>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot что этот кошелёк покупал в последнее время? &lt;address&gt;
-@yourbot этот кошелёк реально в плюсе или просто активен?
-@yourbot следите за этим кошельком и скажите, как только он что-то купит
-@yourbot в какие коллекции этот кошелёк зашёл рано?
-@yourbot этот кошелёк похож на бота или на человека?</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;address&gt; проследи его: первые покупки, крупнейшие выигрыши, что он держит сейчас, реализованная прибыль и убыток
+@yourbot &lt;address&gt; это бот? проверь тайминг минта, ставки газа и продаёт ли он когда-нибудь в убыток
+@yourbot в какие коллекции этот кошелёк вошёл в первые десять минут и что он сделал потом?
+@yourbot найди мне десять кошельков, которые были ранними в последних трёх коллекциях, показавших хороший результат
+@yourbot связан ли &lt;address&gt; с деплоером <collection>? проследи финансирование
+@yourbot &lt;address&gt; что он собирается сделать? есть ли открытые листинги или ожидающие одобрения</code></pre>
 
   <h3>Попросите его что-нибудь отслеживать за вас</h3>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot следите за этой коллекцией и напишите мне сразу после раскрытия
-@yourbot сообщите, когда флор опустится ниже 0.01
-@yourbot напишите, если кто-то выставит ниже 0.005 в этой коллекции
-@yourbot проверяйте каждые десять минут и пишите только если что-то изменилось
-@yourbot напомните мне через час, когда откроется этот минт</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot следи <collection> и пингани меня, только если флор упадёт ниже 0.05, или три редкие выставят ниже флора, или один кошелёк купит пять за час
+@yourbot сообщи мне в ту же секунду, как <collection> пройдут ревилы, затем отранжируй её раньше, чем кто-либо её увидит
+@yourbot напиши мне, когда газ будет ниже 12 gwei и нужный мне минт всё ещё открыт
+@yourbot пингани меня, если деплоер двинет средства или изменится предложение
+@yourbot проверяй каждые десять минут и пиши мне, только когда что-то действительно изменится
+@yourbot держи это в работе 24 часа, затем пришли мне одну сводку</code></pre>
 
   <h3>Попросите его купить или сминтить за вас</h3>
   <p>
     Каждая из этих команд сначала всё проверяет и сообщает вам стоимость, прежде чем что-либо сделать.
     Ничего не проходит, пока вы не скажете «давай».
   </p>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot заминтите 1 для меня, покажите стоимость и ждите моего согласия
-@yourbot купите самый дешёвый редкий, до 0.01
-@yourbot купите 3, но чтобы всего вышло не больше 0.03
-@yourbot не тратьте ничего без моего разрешения
-@yourbot что сейчас в моём кошельке? &lt;address&gt;</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot вот 0.2 ETH. купи до 3 штук дешевле 0.04 каждая, только если редкость входит в топ-500 и продавец — не деплоер. никогда не трать больше 0.1 всего, и покажи мне каждую перед отправкой
+@yourbot сминти 2 из &lt;link&gt;, когда откроется, но только если реальная цена 0.01 или меньше и контракт не копия
+@yourbot если минт не удался, повтори не более двух раз и каждый раз говори мне причину
+@yourbot купи самую дешёвую редкую, дешевле 0.01, затем остановись
+@yourbot не трать ничего, не спросив меня сначала
+@yourbot что у меня сейчас на руках? &lt;address&gt;</code></pre>
 
   <h3>Попросите его что-нибудь объяснить</h3>
-  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot объясните простыми словами, что такое минт с доказательством работы
-@yourbot почему здесь такой низкий флор?
-@yourbot что здесь означает «раскрытие»?
-@yourbot как люди накручивают объём в коллекции?
-@yourbot в чём разница между минтингом и покупкой?</code></pre>
+  <pre data-label="Запрос для Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot почему этот флор обвалился после ревила? проведи меня по кошелькам, которые продавали
+@yourbot это выглядит как фарм синдикатом. покажи доказательства или отбрось это
+@yourbot что должно было бы быть правдой, чтобы это стало хорошей покупкой? дай мне три числа
+@yourbot объясни proof of work минт так, будто я решаю, платить за это или нет
+@yourbot что я сделал не так в своих последних трёх покупках?
+@yourbot в чём разница между минтом и покупкой, по одной строке на каждую</code></pre>
 
   <div class="note">
     <b>Общее правило:</b> если вы можете это вставить, он, скорее всего, сможет это изучить. Ссылки,
@@ -694,7 +702,7 @@ npx vercel deploy docs --prod</code></pre>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT-набор инструментов</a><div class="footer-links"><span>Создано, чтобы быть вашим.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Исходный код на GitHub</a><a href="prompts/">Вайб-кодинг навыков</a><a href="#guide">Назад к руководству</a></div></div><p>Бесплатно и с открытым исходным кодом. Ничто здесь не является финансовым советом. Минтинг и торговля могут привести к потере денег. Установите лимит перед началом и никогда не используйте деньги, которые вам нужны.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="./" hreflang="ru" aria-current="true">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT-набор инструментов</a><div class="footer-links"><span>Создано, чтобы быть вашим.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Исходный код на GitHub</a><a href="prompts/">Вайб-кодинг навыков</a><a href="#guide">Назад к руководству</a></div></div><p>Бесплатно и с открытым исходным кодом. Ничто здесь не является финансовым советом. Минтинг и торговля могут привести к потере денег. Установите лимит перед началом и никогда не используйте деньги, которые вам нужны.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja">日本語</a> · <a href="../ko/" hreflang="ko">한국어</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="./" hreflang="ru" aria-current="true">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
 <a class="top" href="#top" aria-label="Наверх" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
 <div class="toast" id="toast" role="status" hidden></div>
 </body>

@@ -19,6 +19,8 @@
 
 <link rel="alternate" hreflang="en" href="../">
 <link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ko" href="../ko/">
 <link rel="alternate" hreflang="ar" href="../ar/">
 <link rel="alternate" hreflang="es" href="../es/">
 <link rel="alternate" hreflang="fr" href="../fr/">
@@ -52,7 +54,7 @@
 <header class="site-header">
   <div class="topbar shell">
     <a class="brand" href="#top" aria-label="NFT-Toolkit-Startseite"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT-Toolkit</span><span class="brand-sub">Ein Agent, der Ihnen gehört</span></a>
-    <nav class="topnav" aria-label="Hauptnavigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>DE</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="./" hreflang="de" aria-current="true"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+    <nav class="topnav" aria-label="Hauptnavigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>DE</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ja/" hreflang="ja"><span>日本語</span><code>JA</code></a></li><li><a href="../ko/" hreflang="ko"><span>한국어</span><code>KO</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="./" hreflang="de" aria-current="true"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
       <a href="#guide">Die Anleitung</a><a href="#list">Skills</a><a class="pricing-nav" href="#money">Kosten</a><a class="pricing-nav" href="prompts/">Vibe-Coding</a>
       <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="NFT-Toolkit auf GitHub ansehen"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
     </nav>
@@ -346,7 +348,9 @@ modal setup</code></pre>
 
   <h3>Was Sie in Discord eingeben</h3>
   <p>Das ist der ganze Vorgang. Erwähnen Sie Ihren Bot und fügen Sie Folgendes ein:</p>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot nutze den Skill pow-mint-mining für hashcats. Zeig mir die aktuelle Runde und mach alles bereit, aber gib noch nichts aus</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot nutzen Sie pow-mint-mining auf hashcats. Zeigen Sie mir die Runde, die Difficulty und meine Chancen, bevor irgendetwas ausgegeben wird
+@yourbot führen Sie die aktuelle Runde aus. Stoppen Sie bei einem Treffer oder nach 15 Minuten, und sagen Sie mir in beiden Fällen die Kosten
+@yourbot haben wir einen bekommen? Zeigen Sie mir die Transaktion und sagen Sie mir dann, ob ein weiterer Versuch das Geld wert ist</code></pre>
   <p>Er meldet Ihnen die Runde zurück. Wenn Sie es wirklich versuchen wollen:</p>
   <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot los, mine die aktuelle Runde. Hör auf, wenn du eine findest, oder nach 15 Minuten</code></pre>
   <p>Und um zu sehen, wie es gelaufen ist:</p>
@@ -374,76 +378,82 @@ modal setup</code></pre>
   <p>
     Dieselbe Idee und dieselbe Art von Prompt. Sie nennen einfach den, den Sie stattdessen möchten:
   </p>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot nutze den Skill pow-mint-mining für FAB4200 und sag mir, was es mich kosten würde</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot nutzen Sie pow-mint-mining auf FAB4200. Was würde mich ein vollständiger Versuch kosten, und lohnt es sich bei der heutigen Difficulty?</code></pre>
 
 </section>
 
 <section id="prompts">
   <div class="section-title"><h2 class="step"><span>07</span>Was Sie ihn fragen können</h2></div>
   <p>
-    Es gibt keine besondere Formulierung. <b>Fügen Sie einen Link ein und sagen Sie, was Sie möchten.</b> Ein OpenSea-Link, ein Tweet, eine Mint-Website, eine Wallet-Adresse, eine Contract-Adresse. Wenn er nicht erkennen kann, was Sie meinen, fragt er nach.
+    Es gibt keine besondere Formulierung, aber schärfere Fragen bekommen schärfere Antworten.
+    <b>Fügen Sie einen Link ein und sagen Sie, was Sie möchten.</b> Geben Sie ihm den Vertrag, nicht den Namen.
+    Sagen Sie ihm Ihr Budget. Sagen Sie ihm, wann es aufhören soll. Fragen Sie nach der Zahl, die entscheidet.
   </p>
 
   <h3>Fügen Sie einen OpenSea-Link ein</h3>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot ranke diese ganze Sammlung nach Seltenheit und zeig mir die Top 20
-@yourbot welche seltenen hier werden gerade günstig angeboten?
-@yourbot wie hoch ist der Floor und geht er rauf oder runter?
-@yourbot sind die Wallets, die das gemintet haben, echte Menschen oder Bots?
-@yourbot lohnt sich das beim aktuellen Floor?
-@yourbot wie viele Leute halten das, und wie stark ist es konzentriert?</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;collection link&gt; ranken Sie sie nach Seltenheit und sagen Sie mir dann, welche der Top 50 unter Floor gelistet sind, den Preis, und wie lange jede dort schon steht
+@yourbot was ist gerade der günstigste Weg in die Top 1 % davon? Geben Sie mir Token-IDs, Preise und Links
+@yourbot ist dieser Floor echt? Zeigen Sie mir die letzten 20 Verkäufe und markieren Sie alle, die nach Wash Trading aussehen
+@yourbot wer hält die Top 100? Wenn zehn Wallets ein Drittel davon besitzen, sagen Sie es klar
+@yourbot ich habe 0,1 ETH und möchte hier Exposure. Welches Set sollte ich am besten kaufen?
+@yourbot was würde das beim heutigen Floor zu einem schlechten Kauf machen? Geben Sie mir drei Zahlen, die ich beobachten sollte</code></pre>
 
   <h3>Fügen Sie einen Tweet ein, in dem „mint this“ steht</h3>
   <p>
     Das ist der nützliche Fall. Werfen Sie den Tweet ein, und er findet heraus, was der Mint ist, was er wirklich kostet, ob er noch offen ist und ob das Projekt echt wirkt, bevor irgendetwas Ihre Wallet berührt.
   </p>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint das
-@yourbot &lt;tweet link&gt; was ist dieser Mint und ist er echt?
-@yourbot &lt;tweet link&gt; kann ich das kostenlos minten?
-@yourbot &lt;tweet link&gt; was würde es mich kosten, 3 davon zu minten?
-@yourbot &lt;tweet link&gt; ist das der echte Contract oder eine Kopie?
-@yourbot &lt;tweet link&gt; richte einen Alarm ein, wenn das live geht</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; bevor ich das anfasse: echter Mint-Preis, Supply, wie viele Wallets gemintet haben, und ob dieser Deployer schon einmal von einem Mint abgesprungen ist
+@yourbot &lt;tweet link&gt; ist der Vertrag eine Kopie einer bestehenden Collection? Zeigen Sie mir, was identisch ist
+@yourbot &lt;tweet link&gt; was kostet mich das Minten von 3 alles in allem, inklusive Gas?
+@yourbot &lt;tweet link&gt; wer steckt dahinter? Irgendein öffentliches Wallet, irgendein verknüpftes Projekt
+@yourbot &lt;tweet link&gt; ist das noch offen oder schon ausverkauft?
+@yourbot &lt;tweet link&gt; beobachten Sie es und pingen Sie mich, sobald es live geht</code></pre>
   <div class="note">
     Er feuert nicht einfach eine Transaktion ab. Er liest den Tweet, findet den Contract, prüft Preis und Supply onchain, zeigt Ihnen, was er gefunden hat, und wartet darauf, dass Sie „los“ sagen.
   </div>
 
   <h3>Fügen Sie eine Mint-Website ein, oder einfach eine Contract-Adresse</h3>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot kann ich das kostenlos minten? &lt;link&gt;
-@yourbot was ist der echte Preis dafür? die Seite sagt 0.05
-@yourbot ist dieser Mint noch offen oder schon ausverkauft?
-@yourbot wie viele Wallets haben das bisher gemintet?
-@yourbot ist dieser Contract eine Kopie einer anderen Sammlung?
-@yourbot was macht dieser Contract eigentlich? &lt;address&gt;</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;link&gt; die Seite sagt kostenlos. Simulieren Sie den Mint und sagen Sie mir, was er tatsächlich kostet
+@yourbot &lt;address&gt; ist das ein Honeypot? Simulieren Sie einen Mint und eine Übertragung und sagen Sie mir dann, was kaputtgeht
+@yourbot &lt;address&gt; was macht dieser Vertrag eigentlich? Klartext, kein Code
+@yourbot wie viele Wallets haben gemintet, und sehen die ersten zwanzig wie ein Cluster aus?
+@yourbot &lt;address&gt; hat dieser Deployer andere Collections herausgebracht? Wie sind die ausgegangen?
+@yourbot &lt;address&gt; gibt es einen Owner-Schalter, eine Pause oder ein Supply-Cap, das sich nach meinem Mint ändern kann?</code></pre>
 
   <h3>Fügen Sie eine Wallet-Adresse ein</h3>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot was hat diese Wallet in letzter Zeit gekauft? &lt;address&gt;
-@yourbot ist diese Wallet wirklich profitabel oder nur beschäftigt?
-@yourbot beobachte diese Wallet und schreib mir, wenn sie etwas kauft
-@yourbot bei welchen Sammlungen war diese Wallet früh dabei?
-@yourbot sieht diese Wallet wie ein Bot oder wie ein Mensch aus?</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;address&gt; verfolgen Sie es: erste Käufe, größte Gewinne, was es gerade hält, realisierter Gewinn und Verlust
+@yourbot &lt;address&gt; ist das ein Bot? Prüfen Sie Mint-Timing, Gas-Gebote und ob es jemals mit Verlust verkauft
+@yourbot in welche Collections ist dieses Wallet in den ersten zehn Minuten eingestiegen, und was hat es danach getan?
+@yourbot finden Sie mir zehn Wallets, die bei den letzten drei erfolgreichen Collections früh dabei waren
+@yourbot gibt es eine Verbindung zwischen &lt;address&gt; und dem Deployer von <collection>? verfolgen Sie die Finanzierung
+@yourbot &lt;address&gt; was hat es vor? Gibt es offene Listings oder ausstehende Genehmigungen</code></pre>
 
   <h3>Bitten Sie ihn, etwas für Sie zu beobachten</h3>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot beobachte diese Sammlung und schreib mir in dem Moment, in dem sie revealed wird
-@yourbot sag mir, wenn der Floor unter 0.01 fällt
-@yourbot ping mich, wenn etwas aus dieser Sammlung unter 0.005 verkauft wird
-@yourbot prüf das alle zehn Minuten und schreib mir nur, wenn sich etwas ändert
-@yourbot erinnere mich, wenn dieser Mint in einer Stunde öffnet</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot beobachten Sie <collection> und pingen Sie mich nur, wenn der Floor unter 0,05 fällt, oder drei seltene unter Floor gelistet werden, oder ein Wallet fünf in einer Stunde kauft
+@yourbot alarmieren Sie mich, sobald <collection> es ein Reveal gibt, und ranken Sie es, bevor es irgendjemand sonst gesehen hat
+@yourbot schreiben Sie mir, wenn Gas unter 12 gwei liegt und der Mint, der mich interessiert, noch offen ist
+@yourbot pingen Sie mich, wenn der Deployer Gelder bewegt oder sich der Supply ändert
+@yourbot prüfen Sie alle zehn Minuten und schreiben Sie mir nur, wenn sich tatsächlich etwas ändert
+@yourbot lassen Sie das 24 Stunden laufen und schicken Sie mir dann eine Zusammenfassung</code></pre>
 
   <h3>Bitten Sie ihn, für Sie zu kaufen oder zu minten</h3>
   <p>
     Jeder dieser Fälle prüft zuerst und nennt Ihnen die Kosten, bevor er etwas tut. Nichts geht durch, bis Sie „los“ sagen.
   </p>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 für mich, zeig mir die Kosten und warte auf mein Okay
-@yourbot kauf das günstigste seltene unter 0.01
-@yourbot kauf 3, aber gib insgesamt nie mehr als 0.03 aus
-@yourbot gib nichts aus, ohne mich vorher zu fragen
-@yourbot was hält meine Wallet gerade? &lt;address&gt;</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot hier sind 0,2 ETH. Kaufen Sie bis zu 3 unter 0,04 pro Stück, aber nur, wenn die Seltenheit in den Top 500 liegt und der Verkäufer nicht der Deployer ist. Geben Sie niemals mehr als 0,1 insgesamt aus, und zeigen Sie mir jedes einzelne, bevor Sie es senden
+@yourbot minten Sie 2 von &lt;link&gt;, wenn es öffnet, aber nur, wenn der echte Preis 0,01 oder weniger beträgt und der Vertrag keine Kopie ist
+@yourbot wenn ein Mint fehlschlägt, versuchen Sie es höchstens zweimal erneut und sagen Sie mir jedes Mal, warum
+@yourbot kaufen Sie die günstigste seltene, unter 0,01, und hören Sie dann auf
+@yourbot geben Sie nichts aus, ohne mich vorher zu fragen
+@yourbot was halte ich gerade? &lt;address&gt;</code></pre>
 
   <h3>Bitten Sie ihn, etwas zu erklären</h3>
-  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot erklär mir in einfachen Worten, was ein Proof-of-Work-Mint ist
-@yourbot warum ist dieser Floor so niedrig?
-@yourbot was bedeutet hier „revealed“?
-@yourbot wie täuschen Leute Volumen bei einer Sammlung vor?
-@yourbot was ist der Unterschied zwischen einem Mint und einem Kauf?</code></pre>
+  <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot warum ist dieser Floor nach dem Reveal zusammengebrochen? Führen Sie mich durch die Wallets, die verkauft haben
+@yourbot das sieht nach einem Syndikat aus, das gefarmt hat. Zeigen Sie mir die Beweise oder lassen Sie es
+@yourbot was müsste zutreffen, damit das ein guter Kauf wäre? Geben Sie mir drei Zahlen
+@yourbot erklären Sie Proof-of-Work-Minting so, als würde ich entscheiden, ob ich dafür bezahle
+@yourbot was habe ich bei meinen letzten drei Käufen falsch gemacht?
+@yourbot was ist der Unterschied zwischen einem Mint und einem Kauf, je eine Zeile</code></pre>
 
   <div class="note">
     <b>Die allgemeine Regel:</b> wenn Sie es einfügen können, kann er es sich wahrscheinlich ansehen. Links, Screenshots, Adressen, Tweets, Tabellen. Wenn Sie nicht sicher sind, wie Sie fragen sollen, beschreiben Sie einfach, was Sie erreichen möchten, und lassen Sie ihn den Rest herausfinden.
@@ -617,7 +627,7 @@ npx vercel deploy docs --prod</code></pre>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT-Toolkit</a><div class="footer-links"><span>Gebaut, um Ihres zu sein.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Quellcode auf GitHub</a><a href="prompts/">Die Skills per Vibe-Coding verbessern</a><a href="#guide">Zurück zur Anleitung</a></div></div><p>Kostenlos und Open Source. Nichts hier ist eine Finanzberatung. Minten und Traden können Geld kosten. Setzen Sie sich vor dem Start ein Limit und verwenden Sie nie Geld, das Sie brauchen.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="./" hreflang="de" aria-current="true">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT-Toolkit</a><div class="footer-links"><span>Gebaut, um Ihres zu sein.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Quellcode auf GitHub</a><a href="prompts/">Die Skills per Vibe-Coding verbessern</a><a href="#guide">Zurück zur Anleitung</a></div></div><p>Kostenlos und Open Source. Nichts hier ist eine Finanzberatung. Minten und Traden können Geld kosten. Setzen Sie sich vor dem Start ein Limit und verwenden Sie nie Geld, das Sie brauchen.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ja/" hreflang="ja">日本語</a> · <a href="../ko/" hreflang="ko">한국어</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="./" hreflang="de" aria-current="true">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
 <a class="top" href="#top" aria-label="Nach oben" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
 <div class="toast" id="toast" role="status" hidden></div>
 </body>

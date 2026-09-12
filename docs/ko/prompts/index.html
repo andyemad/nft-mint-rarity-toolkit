@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>바이브 코딩 | 말로 스킬을 더 좋게 만들기</title>
+<meta name="description" content="스킬이 전부 완성된 건 아닙니다. 쉬운 말로 개선하고, 고치고, 확장하세요. 시작할 때 쓸 정확한 프롬프트와 함께.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="스킬을 바이브 코딩하기">
+<meta property="og:description" content="코드는 쓰지 않습니다. 문제를 설명하면 에이전트가 고쳐줍니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ja" href="../../ja/prompts/">
+<link rel="alternate" hreflang="ko" href="./">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Discord 프롬프트 복사", "copy.terminal": "터미널 명령 복사", "copy.button": "복사", "copy.done": "복사됨", "copy.aria": "클립보드에 복사됨", "toast.copied": "복사했습니다. 준비되면 붙여넣으세요.", "toast.manual": "자동 복사를 사용할 수 없습니다. 텍스트를 선택했으니 직접 복사하세요.", "progress.count": "4단계 중 {n} 완료", "progress.saved": "이 브라우저에 저장됨", "progress.visit": "이번 방문 동안만 진행 상황을 기억합니다", "toast.complete": "설정 완료. 다음은 에이전트에게 메시지를 보내 보세요.", "skills.one": "개 스킬", "skills.many": "개 스킬", "skills.ready": "，바로 쓸 수 있습니다", "skills.found": "，찾았습니다", "demo.rarity.prompt": "이 컬렉션 순위를 매기고 희귀한 것들을 보여줘", "demo.rarity.answer": "순위를 매겼습니다. 가장 희귀한 세 개입니다.", "demo.rarity.title": "희소성 리포트", "demo.rarity.subtitle": "데모 컬렉션", "demo.rarity.foot": "조사만 했습니다. 거래는 전송하지 않았습니다.", "demo.mint.prompt": "지갑을 연결하기 전에 이 민팅을 확인해 줘", "demo.mint.answer": "먼저 컨트랙트와 가격, 발행량을 확인하겠습니다.", "demo.mint.title": "민팅 조사", "demo.mint.subtitle": "점검 항목 예시", "demo.mint.foot": "민팅을 승인하기 전에 결과를 확인하세요.", "demo.mint.row1": "진짜 컨트랙트인지 확인", "demo.mint.row2": "온체인 민팅 가격 읽기", "demo.mint.row3": "남은 발행량 확인", "demo.mint.tag": "먼저 확인", "demo.wallet.prompt": "이 지갑은 요즘 뭘 사고 있어?", "demo.wallet.answer": "지갑의 공개 활동을 리포트로 정리하겠습니다.", "demo.wallet.title": "지갑 분석", "demo.wallet.subtitle": "리포트 예시", "demo.wallet.foot": "공개 데이터만 사용합니다. 개인 키는 필요 없습니다.", "demo.wallet.row1": "최근 구매", "demo.wallet.row2": "보유 컬렉션", "demo.wallet.row3": "판매와 전송", "demo.wallet.tag": "온체인"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">가이드로 건너뛰기</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="NFT 툴킷 홈"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT 툴킷</span><span class="brand-sub">나만의 에이전트</span></a>
+    <nav class="topnav" aria-label="주 내비게이션"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>KO</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../../ja/prompts/" hreflang="ja"><span>日本語</span><code>JA</code></a></li><li><a href="./" hreflang="ko" aria-current="true"><span>한국어</span><code>KO</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">가이드</a><a href="../#list">스킬</a><a class="pricing-nav" href="../#money">비용</a><a class="pricing-nav" href="./">바이브 코딩</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="GitHub에서 NFT 툴킷 보기"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> 바이브 코딩</div>
+      <h1 id="vibe-title"><span>스킬이 전부 완성된 건 아닙니다.</span><span>말로 다듬으세요.</span></h1>
+      <p>31개 스킬 중 일부는 아직 거칩니다. 이건 의도된 것입니다: <b>원하는 것을 설명하면 스킬을 고치고 확장할 수 있습니다</b>. 코드는 직접 쓰지 않습니다. 무엇이 고장났는지, 무엇을 추가할지 말하면 에이전트가 작업하고 테스트해서 결과를 보여줍니다.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">구독하기 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">설정 가이드로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>바이브 코딩이 실제로 의미하는 것</h2>
+      <p>보통 소프트웨어를 더 좋게 만들려면 개발자가 코드를 읽고 수정해야 합니다. 여기서는 그 단계를 건너뜁니다. <b>평범한 말로 문제를 설명하면, 에이전트가 코드를 읽고 수정합니다.</b></p>
+      <p>스킬은 에이전트가 따르는 지시 사항을 적어둔 것에 불과합니다. 그래서 스킬을 개선하는 건 코딩 작업이 아니라 대화입니다. “누가 Robinhood 링크를 주면 계속 실패해”라고 말하면, 에이전트가 가서 고칩니다.</p>
+      <div class="note"><b>왜 할 가치가 있는가:</b> 개선한 스킬은 계속 개선된 상태로 남습니다. 다음에 같은 작업이 생기면 에이전트는 이미 답을 알고 있습니다.</div>
+      <div class="note"><b>따로 청구되는 비용은 없습니다.</b> 이미 설정한 동일한 구독으로 실행됩니다. 긴 작업은 대화보다 사용량이 많으니 처음 몇 번은 사용량 페이지를 확인하고, 그다음엔 신경 쓰지 마세요.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>4단계 반복</h2>
+      <div class="two">
+        <div class="card"><span class="price">1단계</span><h4>원하는 것을 말하세요</h4><p>Discord에서 쉬운 말로 하세요. 사람에게 설명할 수 있다면 여기에도 설명할 수 있습니다.</p></div>
+        <div class="card"><span class="price">2단계</span><h4>일하게 두세요</h4><p>스킬을 읽고 무엇을 바꿔야 할지 파악해서 수정합니다. 무엇을 했는지 한 줄로 설명해 달라고 요청하세요.</p></div>
+        <div class="card"><span class="price">3단계</span><h4>증명하게 하세요</h4><p>“테스트하고 출력을 보여줘”라고 말하세요. 사람들이 가장 많이 건너뛰는 단계인데, 사실 가장 중요한 단계입니다.</p></div>
+        <div class="card"><span class="price">4단계</span><h4>제대로 될 때까지 반복</h4><p>아직 맞지 않으면 무엇이 잘못됐는지 말하세요. 두세 번 반복하는 건 정상입니다.</p></div>
+      </div>
+      <div class="note warn"><b>“완료”는 결과가 아닙니다.</b> 에이전트는 작동하지 않는 일을 끝냈다고 말할 수 있습니다. 항상 실제 출력, 실제 오류, 실제 링크를 요구하세요. 보여주지 못하면 끝난 게 아닙니다.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>처음 시작할 프롬프트</h2>
+      <p>처음에는 순서대로 해보세요. 10분 정도 걸리고 기본 준비가 끝납니다.</p>
+
+      <h3>무엇을 손봐야 하는지 알아내기</h3>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 내가 설치한 모든 스킬을 읽어보고 어떤 게 미완성인지, 불명확한지, 단계가 빠졌는지 알려줘
+
+@yourbot 가장 약한 것 하나를 골라서 거기서 뭐가 빠졌는지 정확히 알려줘
+
+@yourbot 내 삶을 더 편하게 만들려면 어떤 스킬을 먼저 개선하면 좋을지, 이유와 함께 알려줘</code></pre>
+
+      <h3>하나 고치기</h3>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 레어리티 스킬이 아직 숨겨진 컬렉션을 처리하지 못해. 그걸 추가하고 작동하는 걸 보여줘
+
+@yourbot 민트 체커 출력을 더 읽기 쉽게 만들어줘, 지금 형식은 이해가 안 돼
+
+@yourbot 이 스킬은 내가 컨트랙트 주소가 뭔지 안다고 가정하고 있어. 모르는 사람을 위해 다시 써줘
+
+@yourbot 이 대화에서 배운 걸로 이 스킬을 개선해줘</code></pre>
+
+      <h3>테스트하기</h3>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 그거 제대로 테스트하고 실제 출력을 붙여줘
+
+@yourbot 내가 직접 해볼 수 있는 실제 예시를 줘서 작동하는지 확인하게 해줘
+
+@yourbot 방금 만든 것에서 아직 뭐가 잘못될 수 있어?</code></pre>
+
+      <h3>남겨두기</h3>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 방금 알아낸 걸 스킬로 저장해서 내가 다시 설명하지 않아도 되게 해줘
+
+@yourbot 방금 한 단계들을 적어둬서 다음에도 똑같이 작동하게 해줘</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>스킬 하나가 망가졌을 때</h2>
+      <p>가장 자주 하게 될 일이고 전혀 이상한 게 아닙니다. 뭔가 오류가 나면 오류를 붙여넣고, 에이전트가 고칩니다.</p>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 그거 안 됐어. 이렇게 나왔어: &lt;paste the whole error&gt;
+
+@yourbot 지난번과 같은데 이 지갑 주소로 해줘: &lt;address&gt;
+
+@yourbot 그냥 다시 시도하지 말고 왜 계속 실패하는지 알아내줘
+
+@yourbot 이전 상태로 되돌려줘, 그 변경이 더 나쁘게 만들었어
+
+@yourbot 된다고 했는데 안 됐어. 다시 그렇게 말하기 전에 작동한다는 증거를 보여줘</code></pre>
+      <div class="note"><b>오류는 요약하지 말고 통째로 붙여넣으세요.</b> 못생긴 텍스트 덩어리가 바로 필요한 것입니다. 잘라내면 한 번에 될 수정이 네 번 걸립니다.</div>
+      <div class="note warn"><b>더 나빠지면 되돌리기를 요청하세요.</b> “이전 상태로 되돌려줘”는 정당하고 유용한 프롬프트입니다. 큰 변경 전에 복사본을 저장해 달라고 해두면 언제든 가능합니다.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>새로운 것을 가르치기</h2>
+      <p>31개 스킬은 시작점일 뿐입니다. 진짜 가치는 반복해서 하는 일을 위한 나만의 스킬을 추가하는 데 있습니다.</p>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 내가 사기 전에 민트를 어떻게 확인하는지 보고, 다음엔 네가 대신 할 수 있게 스킬로 써줘
+
+@yourbot 바닥가가 방금 떨어진 컬렉션을 찾는 스킬을 만들어줘
+
+@yourbot 내가 트윗을 붙여넣을 때마다 민트인지, 얼마인지, 진짜인지 확인해줘. 그걸 스킬로 만들어줘
+
+@yourbot 내 지갑을 전부 확인해서 내가 봐야 할 게 있으면 알려주는 스킬을 만들어줘
+
+@yourbot 두 컬렉션을 나란히 비교해서 어느 쪽 승률이 더 좋은지 알려주는 걸 만들어줘</code></pre>
+      <div class="note"><b>반복되는 모든 일을 스킬로 만드세요.</b> 같은 것을 두 번 설명했다면 그건 스킬입니다. 세 번째로 설명할 필요는 없습니다.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>작은 것 하나 통째로 만들기</h2>
+      <p>같은 아이디어를 더 크게. 작동하는 페이지를 만들어 온라인에 올릴 수 있는데, 설정 가이드의 Vercel 부분이 바로 그걸 위한 것입니다.</p>
+      <pre data-label="Discord 프롬프트" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 내가 보유한 모든 컬렉션을 이미지와 레어리티 순위와 함께 보여주는 페이지를 만들어줘
+
+@yourbot 내가 지켜보는 컬렉션의 간단한 대시보드를 만들어서 Vercel에 올려줘
+
+@yourbot 컬렉션 링크를 붙여넣으면 전부 순위를 매기고 이미지를 보여주는 페이지를 만들어줘
+
+@yourbot 이걸 Vercel에 올리고 실제로 라이브 되면 링크를 줘</code></pre>
+      <div class="note"><b>“완료”가 아니라 실제 라이브 링크를 요청하세요.</b> 사이트가 올라갔다고 하면 URL을 요청해서 직접 열어보세요. 그 습관 하나로 문제가 생기는 대부분의 경우를 잡아냅니다.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>효과 있는 표현</h2>
+      <div class="table-scroll" role="region" aria-label="스크롤 가능한 참조 표" tabindex="0"><table>
+        <tr><th>이렇게 말하세요</th><th>그러면 이걸 얻습니다</th></tr>
+        <tr><td>“시작하기 전에 계획을 보여줘”</td><td>무엇을 하려는지 미리 보고 방향을 바꿀 수 있습니다</td></tr>
+        <tr><td>“테스트하고 출력을 보여줘”</td><td>진짜 수정과 자신감 있는 말의 차이</td></tr>
+        <tr><td>“무엇을 바꿨는지 한 줄로 설명해줘”</td><td>코드를 읽지 않고도 통제권을 유지합니다</td></tr>
+        <tr><td>“아무것도 쓰지 마 / 아직 아무것도 바꾸지 마”</td><td>돈이나 파일을 건드리지 않고 생각만 합니다</td></tr>
+        <tr><td>“더 단순하게 만들어줘”</td><td>복잡한 걸 걷어내고 따라갈 수 있는 것만 남깁니다</td></tr>
+        <tr><td>“이해가 안 돼, 초보자에게 설명하듯 설명해줘”</td><td>전문용어 대신 솔직한 답</td></tr>
+        <tr><td>“이전 상태로 되돌려줘”</td><td>변경이 상황을 더 나쁘게 만들었을 때의 되돌리기</td></tr>
+        <tr><td>“그걸 스킬로 저장해줘”</td><td>영구적으로 남고, 다시는 설명할 필요가 없습니다</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>문제 피하기</h2>
+      <ul>
+        <li><b>개인 키를 절대 붙여넣지 마세요</b> 에이전트와의 채팅에, 또는 어디에도. 만약 붙여넣은 적이 있다면 그 지갑은 버린 것으로 보고 안에 있는 걸 옮기세요.</li>
+        <li><b>큰 변경 전에는 계획을 요청하세요.</b> “먼저 계획을 보여줘”는 10초를 쓰고 큰 낭패를 막아줍니다.</li>
+        <li><b>한 번에 하나씩 변경하세요.</b> 한꺼번에 세 개를 개선하면 어느 것이 망가뜨렸는지 알 수 없습니다.</li>
+        <li><b>돈은 “안 돼” 뒤에 두세요.</b> “나에게 묻지 않고는 아무것도 쓰지 마”라고 말하면 그러지 않습니다.</li>
+        <li><b>깊이 들어가기 전에 백업하세요.</b> 먼저 스킬 복사본을 저장해 달라고 하세요: “내 스킬 폴더를 안전한 곳에 복사해줘”.</li>
+        <li><b>성공했다고 하는데 직접 볼 수 없다면, 그건 사실이 아닙니다.</b> 증거를 다시 요청하세요.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>이 모든 것에 필요한 한 가지</h3>
+        <p>구독입니다. 월 약 $10이고 deepseek v4.1 flash로 실행됩니다. 사용량이 정말 넉넉해서 이런 주고받기를 계기판을 보지 않고 하루 종일 할 수 있습니다.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">구독하기 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">설정 가이드로 돌아가기</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>당신의 것이 되도록 만들었습니다.</p>
+    <nav class="footer-links" aria-label="바닥글">
+      <a href="../../">설정 가이드</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">GitHub 소스</a>
+    </nav>
+  </div>
+  <div class="shell"><p>여기의 어떤 것도 투자 조언이 아닙니다. 스킬을 개선하면 개선된 버전은 당신 것입니다.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="../../ja/prompts/" hreflang="ja">日本語</a> · <a href="./" hreflang="ko" aria-current="true">한국어</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

@@ -19,6 +19,8 @@
 
 <link rel="alternate" hreflang="en" href="../">
 <link rel="alternate" hreflang="zh-Hans" href="./">
+<link rel="alternate" hreflang="ja" href="../ja/">
+<link rel="alternate" hreflang="ko" href="../ko/">
 <link rel="alternate" hreflang="ar" href="../ar/">
 <link rel="alternate" hreflang="es" href="../es/">
 <link rel="alternate" hreflang="fr" href="../fr/">
@@ -52,7 +54,7 @@
 <header class="site-header">
   <div class="topbar shell">
     <a class="brand" href="#top" aria-label="NFT 工具包首页"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT 工具包</span><span class="brand-sub">属于你自己的智能体</span></a>
-    <nav class="topnav" aria-label="主导航"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>中文</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="./" hreflang="zh-Hans" aria-current="true"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+    <nav class="topnav" aria-label="主导航"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>中文</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="./" hreflang="zh-Hans" aria-current="true"><span>中文</span><code>中文</code></a></li><li><a href="../ja/" hreflang="ja"><span>日本語</span><code>JA</code></a></li><li><a href="../ko/" hreflang="ko"><span>한국어</span><code>KO</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
       <a href="#guide">指南</a><a href="#list">技能</a><a class="pricing-nav" href="#money">费用</a><a class="pricing-nav" href="prompts/">氛围编程</a>
       <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="在 GitHub 查看 NFT 工具包"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
     </nav>
@@ -341,7 +343,9 @@ modal setup</code></pre>
 
   <h3>在 Discord 里输入什么</h3>
   <p>整个操作就这么点。@ 一下你的机器人，粘贴下面这句：</p>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 用 pow-mint-mining 技能挖 hashcats。先给我看当前轮次，把一切都准备好，但先别花任何钱</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 对 hashcats 使用 pow-mint-mining。在花任何钱之前，先给我看轮次、难度和我的中签概率
+@yourbot 跑当前这一轮。中了或者到 15 分钟就停，两种情况都告诉我花费
+@yourbot 我们拿到了吗？给我看交易，然后告诉我再试一次值不值这个钱</code></pre>
   <p>它会把这轮的情况回报给你。真想下手的时候，用这条：</p>
   <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 开始挖当前这一轮。挖到就停，或者 15 分钟后停</code></pre>
   <p>想看结果如何：</p>
@@ -369,76 +373,82 @@ modal setup</code></pre>
   <p>
     思路和话术都一样，只要换成你想要的那一个：
   </p>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 用 pow-mint-mining 技能挖 FAB4200，告诉我大概要花我多少钱</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 对 FAB4200 使用 pow-mint-mining。完整尝试一次要花我多少钱，按今天的难度值得吗？</code></pre>
 
 </section>
 
 <section id="prompts">
   <div class="section-title"><h2 class="step"><span>07</span>可以问它什么</h2></div>
   <p>
-    没有什么特殊说法。 <b>粘贴一个链接，说清楚你想要什么。</b> OpenSea 链接、一条推文、铸造网站、钱包地址、合约地址都行。要是它看不明白你的意思，它会直接问你。
+    没有什么特别的措辞，但问题问得越准，答案就越准。
+    <b>粘贴一个链接，说清楚你想要什么。</b> 给它合约地址，而不是名字。
+    告诉它你的预算。告诉它什么时候停。问那个能定生死的数字。
   </p>
 
   <h3>粘贴一个 OpenSea 链接</h3>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 把这个合集按稀有度排个名，把前 20 名给我看
-@yourbot 这里面哪些稀有的现在挂得很便宜？
-@yourbot 这个的地板价是多少？在涨还是在跌？
-@yourbot 铸造这个的钱包是真人还是机器人？
-@yourbot 以现在的地板价，值得买吗？
-@yourbot 有多少人持有？集中度高不高？</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;collection link&gt; 按稀有度排个名，然后告诉我前 50 名里哪些挂单低于地板价、价格是多少、每个挂了多久
+@yourbot 现在进入前 1% 最便宜的方式是什么？给我 token id、价格和链接
+@yourbot 这个地板价是真的吗？给我看最近 20 笔成交，并标出任何看起来像刷量的交易
+@yourbot 前 100 名由谁持有？如果十个钱包占了三分之一，就直接说
+@yourbot 我有 0.1 ETH，想在这里建仓。买哪一组最好？
+@yourbot 按今天的地板价看，什么情况会让它变成一笔糟糕的买入？给我三个要盯的数字</code></pre>
 
   <h3>粘贴一条写着“来铸这个”的推文</h3>
   <p>
     这条最实用。把推文丢给它，它就会查清这是什么铸造、真实花费多少、是否还在开放、项目看着靠不靠得住——这一切都发生在碰你钱包之前。
   </p>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; 把这个铸了
-@yourbot &lt;tweet link&gt; 这是什么铸造？是真的吗？
-@yourbot &lt;tweet link&gt; 这个能免费铸造吗？
-@yourbot &lt;tweet link&gt; 铸 3 个实际要花我多少钱？
-@yourbot &lt;tweet link&gt; 这是真合约还是仿的？
-@yourbot &lt;tweet link&gt; 它一上线就提醒我</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; 在我碰它之前：真实的铸造价格、供应量、有多少钱包铸造过，以及这个部署者以前有没有从铸造里跑路
+@yourbot &lt;tweet link&gt; 这个合约是照抄某个现有系列的吗？把一模一样的地方指给我看
+@yourbot &lt;tweet link&gt; 铸造 3 个一共要花我多少，gas 也算进去？
+@yourbot &lt;tweet link&gt; 背后是谁？有没有公开钱包、有没有关联项目
+@yourbot &lt;tweet link&gt; 现在还能铸造还是已经卖完了？
+@yourbot &lt;tweet link&gt; 盯着它，一上线就马上通知我</code></pre>
   <div class="note">
     它不会上来就发交易。它会读推文、找到合约、上链核对价格和供应量，把查到的东西摆给你看，然后等你点头。
   </div>
 
   <h3>粘贴铸造网站，或者只给一个合约地址</h3>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 这个能免费铸造吗？&lt;link&gt;
-@yourbot 真实价格是多少？页面上写的是 0.05
-@yourbot 这个铸造还开着，还是已经卖完了？
-@yourbot 到现在有多少钱包铸造过？
-@yourbot 这个合约是抄的另一个合集吗？
-@yourbot 这个合约到底是做什么的？&lt;address&gt;</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;link&gt; 页面上写着免费。模拟一次铸造，告诉我实际要花多少钱
+@yourbot &lt;address&gt; 这是蜜罐吗？模拟一次铸造和一次转账，然后告诉我哪里会出问题
+@yourbot &lt;address&gt; 这个合约到底是干什么的？用大白话讲，不要代码
+@yourbot 有多少钱包铸造过，最早那二十个看起来是不是同一批集群？
+@yourbot &lt;address&gt; 这个部署者发行过别的系列吗？那些后来怎么样了？
+@yourbot &lt;address&gt; 有没有 owner 开关、暂停功能，或者我铸造之后还能被改动的供应量上限？</code></pre>
 
   <h3>粘贴一个钱包地址</h3>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 这个钱包最近都在买什么？&lt;address&gt;
-@yourbot 这个钱包是真的赚钱，还是只是交易频繁？
-@yourbot 盯着这个钱包，它一买东西就告诉我
-@yourbot 这个钱包早期进了哪些合集？
-@yourbot 这个钱包看起来像机器人还是真人？</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;address&gt; 追踪它：最早的买入、最大的盈利、现在手上握着什么、已实现的盈亏
+@yourbot &lt;address&gt; 这是机器人吗？查一下铸造时间、gas 出价，以及它有没有亏本卖出过
+@yourbot 这个钱包在头十分钟里进了哪些系列，之后又做了什么？
+@yourbot 找出十个钱包，它们在最近三个表现不错的系列里都是最早入场的
+@yourbot &lt;address&gt; 是否和它的部署者有关联 <collection>? 追溯一下这笔资金的来源
+@yourbot &lt;address&gt; 它接下来打算做什么？有没有挂着的卖单或待处理的授权</code></pre>
 
   <h3>让它帮你盯着某个东西</h3>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 盯着这个合集，一揭示就立刻告诉我
-@yourbot 地板价跌破 0.01 就告诉我
-@yourbot 这个合集里有人低于 0.005 卖出就提醒我
-@yourbot 每十分钟查一次，只有变化了才告诉我
-@yourbot 一小时后这个铸造开放时提醒我</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 盯着 <collection> 并且只有地板价跌破 0.05、或者有三个稀有款以低于地板价挂单、或者一个钱包在一小时内买了五个时，才通知我
+@yourbot 到那一刻就提醒我 <collection> 有揭露发生时，在其他人看到之前先给它排名
+@yourbot 当 gas 低于 12 gwei 且我关注的那个铸造还开放时，给我发消息
+@yourbot 如果部署者转移资金或者供应量变了，就提醒我
+@yourbot 每十分钟检查一次，只有真的出现变化时才给我发消息
+@yourbot 让它一直跑 24 小时，然后给我发一份汇总</code></pre>
 
   <h3>让它替你买或铸造</h3>
   <p>
     以上每一种都会先做检查，动手前先告诉你花费。你点头之前，什么都不会真的执行。
   </p>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 帮我铸 1 个，先给我看费用，等我点头再动
-@yourbot 买最便宜的那个稀有的，低于 0.01 就行
-@yourbot 买 3 个，但总共不要超过 0.03
-@yourbot 没有我同意，不要花任何钱
-@yourbot 我的钱包现在持有什么？&lt;address&gt;</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 这里是 0.2 ETH。最多买 3 个，单价比 0.04 低，而且只有稀有度在前 500 且卖家不是部署者时才买。总共不要花超过 0.1，每一笔发送前都先给我看
+@yourbot 开放时从 &lt;link&gt; 铸造 2 个，但只有真实价格不超过 0.01 且合约不是抄的才行
+@yourbot 如果铸造失败，最多重试两次，每次都要告诉我原因
+@yourbot 买最便宜的那一个稀有款，价格低于 0.01，然后就停
+@yourbot 没有先问我，就不要花任何钱
+@yourbot 我现在持有什么？&lt;address&gt;</code></pre>
 
   <h3>让它解释某个东西</h3>
-  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 用简单的话解释一下什么是工作量证明铸造
-@yourbot 这个地板价为什么这么低？
-@yourbot 这里的“揭示”是什么意思？
-@yourbot 别人是怎么在合集上伪造交易量的？
-@yourbot 铸造和买入有什么区别？</code></pre>
+  <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot 为什么揭露之后地板价就崩了？把卖出的那些钱包逐个讲给我听
+@yourbot 这看起来像是被团伙刷出来的。拿证据给我看，不然就放弃这个说法
+@yourbot 要满足什么条件它才算一笔好买入？给我三个数字
+@yourbot 用「我正在决定要不要为它付钱」的角度解释一下工作量证明铸造
+@yourbot 我最近三次买入错在哪？
+@yourbot 铸造和买入有什么区别，各用一句话</code></pre>
 
   <div class="note">
     <b>通用原则：</b> 只要能粘贴，它多半就能看。链接、截图、地址、推文、表格都行。不确定该怎么问，就直接说你想要什么，剩下的交给它。
@@ -610,7 +620,7 @@ npx vercel deploy docs --prod</code></pre>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT 工具包</a><div class="footer-links"><span>它天生就属于你。</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">在 GitHub 查看源码</a><a href="prompts/">用氛围编程改造技能</a><a href="#guide">返回指南</a></div></div><p>免费且开源。这里没有任何内容是投资建议。铸造和交易都可能亏钱。开始前先设好上限，绝不要动用你需要的钱。</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="./" hreflang="zh-Hans" aria-current="true">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT 工具包</a><div class="footer-links"><span>它天生就属于你。</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">在 GitHub 查看源码</a><a href="prompts/">用氛围编程改造技能</a><a href="#guide">返回指南</a></div></div><p>免费且开源。这里没有任何内容是投资建议。铸造和交易都可能亏钱。开始前先设好上限，绝不要动用你需要的钱。</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="./" hreflang="zh-Hans" aria-current="true">中文</a> · <a href="../ja/" hreflang="ja">日本語</a> · <a href="../ko/" hreflang="ko">한국어</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
 <a class="top" href="#top" aria-label="回到顶部" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
 <div class="toast" id="toast" role="status" hidden></div>
 </body>
