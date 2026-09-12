@@ -8,6 +8,10 @@ agent you can talk to in Discord, with these skills installed, for about $10 a
 month. No coding, no mining rig, Windows or Mac or Linux. It is also published as
 a page: https://andyemad.github.io/nft-mint-rarity-toolkit/
 
+There is a second page on **vibe coding**: the skills are deliberately not all
+finished, and you improve them by describing what is wrong. Every prompt for that
+is written out at https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/
+
 Under the hood the proof-of-work side is real rather than a sketch:
 `toolkit/pow/hashcats-farm/` is a verified CUDA kernel plus a farm that mines
 Hashcats across rented H100s and checks every solution against a CPU reference

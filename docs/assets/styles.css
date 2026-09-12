@@ -207,7 +207,7 @@ table td:nth-child(2){min-width:110px}
 .footer-main{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .site-footer .brand{color:#54516a;font-size:14px}
 .site-footer .brand-mark{color:#9081b8;width:25px;height:25px}
-.footer-links{display:flex;align-items:center;gap:24px;font-size:12px}
+.footer-links{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:12px}
 .footer-links a{color:#77708c;text-decoration:none}
 .site-footer p{font-size:11px;line-height:1.8;max-width:88ch;margin:20px 0 0;color:#747082}
 .top{position:fixed;right:22px;bottom:22px;display:grid;place-items:center;width:38px;height:38px;border:1px solid #d6d0e0;background:#fffc;backdrop-filter:blur(12px);border-radius:9px;color:#7c6a9a;box-shadow:0 4px 15px #27213a0a;z-index:5}

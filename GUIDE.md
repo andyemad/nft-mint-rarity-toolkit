@@ -498,7 +498,93 @@ Honest total: about **$10 a month**, or $15 if you also want it awake all night.
 
 ---
 
-## 11. If something goes wrong
+## 11. Vibe coding: make the skills better
+
+Not all 31 skills are polished. That is on purpose, because **you can fix and extend
+them by talking**, with no code. Full page:
+https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/
+
+A skill is just written-down instructions your agent follows, so improving one is a
+conversation. You say what is wrong or what you want added, it makes the change,
+tests it, and shows you.
+
+### The loop
+
+1. **Say what you want** in plain English, in Discord.
+2. **Let it work**, then ask it to explain what it changed in one line.
+3. **Make it prove it** — "test it and show me the output". This is the step people
+   skip and the one that matters.
+4. **Repeat until right.** Two or three rounds is normal.
+
+### Prompts to start with
+
+```
+@yourbot read through all the skills I installed and tell me which ones look unfinished, unclear or missing steps
+
+@yourbot pick the weakest one and tell me exactly what is missing from it
+
+@yourbot the rarity skill doesn't handle collections that are still hidden. add that and show me it working
+
+@yourbot test that properly and paste the actual output
+
+@yourbot save what you just worked out as a skill so you can do it again without me explaining
+```
+
+### When one breaks
+
+```
+@yourbot that didn't work. here's what it said: <paste the whole error>
+@yourbot find out why that keeps failing instead of just trying again
+@yourbot go back to how it was before, that change made it worse
+@yourbot you said it works but it didn't. show me the proof before you say that again
+```
+
+Paste the whole error, not a summary. The ugly wall of text is what it needs.
+
+### Teach it something new
+
+```
+@yourbot watch how I check a mint before buying, then write a skill so you can do it for me next time
+@yourbot make a skill for finding collections where the floor just dropped
+@yourbot make a skill that checks all my wallets and tells me anything I should look at
+```
+
+If you have explained the same thing twice, that is a skill. You never explain it a
+third time.
+
+### Build a whole small thing
+
+```
+@yourbot build me a page showing every collection I hold, with images and rarity rank
+@yourbot put this on Vercel and give me the link when it's actually live
+```
+
+Ask for the live link, not "done", and open it yourself.
+
+### Phrases worth memorising
+
+| Say this | And you get |
+|---|---|
+| "show me your plan before you start" | You can redirect it before it does anything |
+| "test it and show me the output" | A real fix instead of a confident sentence |
+| "explain what you changed, in one line" | Control without reading code |
+| "don't spend anything / don't change anything yet" | Thinking without consequences |
+| "make it simpler" | Something you can actually follow |
+| "go back to how it was" | An undo |
+| "save that as a skill" | It becomes permanent |
+
+### Staying out of trouble
+
+- **Never paste a private key** into a chat. If you have, treat that wallet as burnt and move anything in it.
+- **Ask for the plan before big changes.** Ten seconds, saves a mess.
+- **One change at a time**, or you cannot tell which one broke it.
+- **Keep your money behind a "no"**: "don't spend anything without asking me".
+- **Back up first**: "copy my skills folder somewhere safe".
+- **If it claims success and you cannot see it, it is not real.** Ask for the proof.
+
+---
+
+## 12. If something goes wrong
 
 | What you see | What to do |
 |---|---|
