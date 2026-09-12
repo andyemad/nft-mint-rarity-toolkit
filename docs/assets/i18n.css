@@ -195,13 +195,21 @@ html:not([lang="en"])[dir="rtl"] .skill-sticker{transform:translate(-19px,4px) r
 }
 
 /* 3. The header: a translated site name plus the language menu no longer fit
-   beside the section links on a phone (Russian needs 476px of a 350px bar), and
-   Russian overruns a tablet bar by 19px. Tighten the tablet spacing; on phones
-   keep the name, the language menu and GitHub, and drop the two section links,
-   which the sticky contents panel already provides there. */
+   beside the section links on a phone (Russian needs 476px of a 350px bar),
+   Russian overruns a tablet bar by 19px, and between 700 and 800px the links
+   broke mid-word. Tighten the tablet spacing, never wrap a link, retire the two
+   secondary links a hundred pixels early, and on phones keep only the name, the
+   language menu and GitHub; the sticky contents panel provides the section
+   links there. */
 @media(max-width:900px){
   html:not([lang="en"]) .topbar{gap:16px}
   html:not([lang="en"]) .topnav{gap:16px;font-size:12px}
+  html:not([lang="en"]) .topnav>a{white-space:nowrap}
+}
+@media(max-width:800px){
+  /* styles.css hides these two links below 700px for every language; a
+     translated bar needs the room a hundred pixels sooner. */
+  html:not([lang="en"]) .topnav .pricing-nav{display:none}
 }
 @media(max-width:700px){
   html:not([lang="en"]) .topnav{gap:12px}
