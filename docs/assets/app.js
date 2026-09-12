@@ -69,41 +69,49 @@
     });
   }
 
-  // -------------------------------------------------------- OS tab panels
-  function initOSTabs() {
-    const host = $('.os-tabs');
-    if (!host) return;
-    const osTabs = $$('.os-tabs [role="tab"]');
-    if (!osTabs.length) return;
-    host.hidden = false;
-    function selectOS(tab, moveFocus = false) {
-      osTabs.forEach((item) => {
-        const selected = item === tab;
-        item.setAttribute('aria-selected', String(selected));
-        item.tabIndex = selected ? 0 : -1;
-        const panel = document.getElementById(item.getAttribute('aria-controls'));
-        if (panel) panel.hidden = !selected;
-      });
-      if (moveFocus) tab.focus();
-    }
-    const initialOS = /Mac|iPhone|iPad/.test(navigator.platform) ? 'mac' : /Linux/.test(navigator.platform) ? 'linux' : 'windows';
-    selectOS($(`#tab-${initialOS}`) || osTabs[0]);
-    osTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => selectOS(tab));
-      tab.addEventListener('keydown', (event) => {
-        let target;
-        // Arrow direction follows the reading direction of the page.
-        const rtl = document.documentElement.dir === 'rtl';
-        const forward = rtl ? 'ArrowLeft' : 'ArrowRight';
-        const back = rtl ? 'ArrowRight' : 'ArrowLeft';
-        if (event.key === forward) target = (index + 1) % osTabs.length;
-        if (event.key === back) target = (index + osTabs.length - 1) % osTabs.length;
-        if (event.key === 'Home') target = 0;
-        if (event.key === 'End') target = osTabs.length - 1;
-        if (target !== undefined) {
-          event.preventDefault();
-          selectOS(osTabs[target], true);
-        }
+  // The tab logic from the remote branch lives in initTabs() below, generalised
+  // to any [role=tablist] so it survived the .os-tabs -> .tabs rename.
+
+  // -------------------------------------------------------- tab panels
+  function initTabs() {
+    $$('[role="tablist"]').forEach((host) => {
+      const tabs = [...host.querySelectorAll('[role="tab"]')];
+      if (!tabs.length) return;
+      host.hidden = false;
+      function selectTab(tab, moveFocus = false) {
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.setAttribute('aria-selected', String(selected));
+          item.tabIndex = selected ? 0 : -1;
+          const panel = document.getElementById(item.getAttribute('aria-controls'));
+          if (panel) panel.hidden = !selected;
+        });
+        if (moveFocus) tab.focus();
+      }
+      // The OS switcher preselects the visitor's platform; any other tablist
+      // keeps whichever tab the markup already marks as selected.
+      const initialOS = /Mac|iPhone|iPad/.test(navigator.platform) ? 'mac'
+        : /Linux/.test(navigator.platform) ? 'linux' : 'windows';
+      selectTab(host.querySelector(`#tab-${initialOS}`)
+        || tabs.find((tab) => tab.getAttribute('aria-selected') === 'true')
+        || tabs[0]);
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectTab(tab));
+        tab.addEventListener('keydown', (event) => {
+          let target;
+          // Arrow direction follows the reading direction of the page.
+          const rtl = document.documentElement.dir === 'rtl';
+          const forward = rtl ? 'ArrowLeft' : 'ArrowRight';
+          const back = rtl ? 'ArrowRight' : 'ArrowLeft';
+          if (event.key === forward) target = (index + 1) % tabs.length;
+          if (event.key === back) target = (index + tabs.length - 1) % tabs.length;
+          if (event.key === 'Home') target = 0;
+          if (event.key === 'End') target = tabs.length - 1;
+          if (target !== undefined) {
+            event.preventDefault();
+            selectTab(tabs[target], true);
+          }
+        });
       });
     });
   }
@@ -324,7 +332,7 @@
   }
 
   initCopyButtons();
-  initOSTabs();
+  initTabs();
   initProgress();
   initSkillLibrary();
   initDemo();

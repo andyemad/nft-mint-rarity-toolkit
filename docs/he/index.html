@@ -88,7 +88,7 @@
   </section>
   <nav class="journey" aria-label="ההתקנה שלך בשלושה שלבים"><div class="journey-grid shell">
     <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>תן לו מוח</strong><small>התקן את Hermes וחבר מודל.</small></div></a>
-    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>חבר אותו ל-Discord</strong><small>הסוכן שלך, במרחק הודעה אחת.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>הוספת Discord או Telegram</strong><small>הסוכן שלך, במרחק הודעה אחת.</small></div></a>
     <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>תן לסקילים לעבוד</strong><small>התקן את ערכת הכלים. בקש כל דבר.</small></div></a>
   </div></nav>
   <div class="guide-layout shell" id="guide">
@@ -96,7 +96,7 @@
       <details open id="guide-menu"><summary>במדריך הזה <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
         <nav class="toc" aria-label="פרקי המדריך">
           <span class="toc-label">מתחילים לעבוד</span><ol>
-            <li><a href="#need"><span>01</span>מה צריך</a></li><li><a href="#hermes"><span>02</span>התקנת Hermes</a></li><li><a href="#discord"><span>03</span>חיבור Discord</a></li><li><a href="#skills"><span>04</span>התקנת הסקילים</a></li>
+            <li><a href="#need"><span>01</span>מה צריך</a></li><li><a href="#hermes"><span>02</span>התקנת Hermes</a></li><li><a href="#discord"><span>03</span>Discord או Telegram</a></li><li><a href="#skills"><span>04</span>התקנת הסקילים</a></li>
           </ol><span class="toc-label">כדי שזה יהיה שימושי</span><ol start="5">
             <li><a href="#list"><span>05</span>ספריית הסקילים</a></li><li><a href="#hashcats"><span>06</span>למנט Hashcats</a></li><li><a href="#prompts"><span>07</span>דברים לבקש ממנו</a></li>
           </ol><span class="toc-label">עוד קצת קדימה</span><ol start="8">
@@ -113,7 +113,7 @@
   <div class="table-scroll" role="region" aria-label="טבלת עזר לגלילה" tabindex="0"><table>
     <tr><th scope="col">מה צריך</th><th scope="col">עלות</th><th scope="col">למה זה משמש</th></tr>
     <tr><td>מחשב</td><td>בחינם</td><td>מריץ את הסוכן. Windows, Mac או Linux, כל מחשב מהשנים האחרונות</td></tr>
-    <tr><td>חשבון Discord</td><td>בחינם</td><td>הדרך שבה אתה מדבר עם הסוכן, מהטלפון או מהמחשב</td></tr>
+    <tr><td>חשבון Discord או Telegram</td><td>בחינם</td><td>הדרך שבה אתה מדבר עם הסוכן, מהטלפון או מהמחשב</td></tr>
     <tr><td>מנוי OpenCode</td><td>~$10 לחודש</td><td>המוח של הסוכן. הדבר היחיד שבאמת צריך לשלם עליו</td></tr>
     <tr><td>חשבון Vercel <i>(אופציונלי)</i></td><td>בחינם</td><td>רק אם אתה רוצה להעלות עמוד או אתר קטן לאינטרנט</td></tr>
     <tr><td>שרת קטן <i>(אופציונלי)</i></td><td>~$5 לחודש</td><td>רק אם אתה רוצה שהסוכן יעבוד כשהמחשב שלך כבוי</td></tr>
@@ -132,15 +132,15 @@
     עצמו. זה הדבר הכי טכני בכל המדריך הזה.
   </p>
 
-<div class="os-tabs" role="tablist" aria-label="מערכת ההפעלה שלך" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+<div class="tabs" role="tablist" aria-label="מערכת ההפעלה שלך" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="tab-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>פתח את תפריט Start, הקלד <b>PowerShell</b>, פתח אותו והדבק את זה:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
-</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+</div><div class="tab-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>לחץ <b>Command + Space</b>, הקלד <b>Terminal</b>, לחץ Enter והדבק:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
-</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+</div><div class="tab-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>פתח את הטרמינל שלך והדבק:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
@@ -175,11 +175,17 @@ hermes chat -q "hello, what model are you?"</code></pre>
 </section>
 
 <section id="discord">
-  <div class="section-title"><h2 class="step"><span>03</span>הגדרת Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="סמן את הגדרת Discord כבוצעה"> בוצע</label></div>
+  <div class="section-title"><h2 class="step"><span>03</span>הגדרת Discord או Telegram</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="סמן את הגדרת Discord או Telegram כהושלם"> בוצע</label></div>
   <p>
     זה החלק שהופך אותו לשימושי. אחרי זה אתה כבר לא צריך את הטרמינל.
     רק שולח לו הודעה.
   </p>
+  <p>
+    בחר את האפליקציה שאתה כבר משתמש בה. שתיהן לוקחות כמה דקות ועובדות
+    אותו דבר אחר כך.
+  </p>
+<div class="tabs" role="tablist" aria-label="אפליקציית הצ'אט שלך" hidden><button type="button" role="tab" id="tab-discord" aria-selected="true" aria-controls="chat-discord" tabindex="0">Discord</button><button type="button" role="tab" id="tab-telegram" aria-selected="false" aria-controls="chat-telegram" tabindex="-1">Telegram</button></div>
+<div class="tab-panel" id="chat-discord" role="tabpanel" aria-labelledby="tab-discord" tabindex="0"><h3>Discord</h3>
   <p>
     Discord משנה מדי פעם את התפריטים שלו, אז אם כפתור זז, חפש
     את הדומה ביותר.
@@ -220,6 +226,52 @@ hermes gateway start</code></pre>
     <b>אם הוא אף פעם לא עונה</b>, זה כמעט תמיד אחד משני דברים: Message
     Content Intent עדיין כבוי, או שמזהה המשתמש הועתק לא נכון. חזור על שלבים 2 ו-6.
   </div>
+</div><div class="tab-panel" id="chat-telegram" role="tabpanel" aria-labelledby="tab-telegram" tabindex="0"><h3>Telegram</h3>
+  <p>
+    Telegram היא הדרך המהירה. Hermes יוצר את הבוט בשבילך: סורקים קוד עם
+    הטלפון ולוחצים על כפתור אחד.
+  </p>
+  <ol>
+    <li>הרץ את ההגדרה:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <ol start="2">
+    <li>בחר <b>Telegram</b> כשהוא שואל, ואז בחר <b>Automatic</b>. קוד מרובע
+      מופיע בחלון, עם קישור מתחתיו.</li>
+    <li>כוון את מצלמת הטלפון אל הקוד, או פתח את הקישור. Telegram נפתחת
+      ומבקשת שתאשר. לחץ על <b>Create Bot</b>. אפשר לשנות את השם שלו קודם אם
+      בא לך.</li>
+    <li>חזרה בחלון, הוא אומר שהוא זיהה את חשבון ה-Telegram שלך ושואל אם
+      לאשר אותו. תגיד כן, וכן לכמה השאלות שאחרי זה. רק אתה
+      יכול לדבר עם הבוט.</li>
+  </ol>
+  <p>ואז הפעל ובדוק:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    השאר את החלון פתוח, מצא את הבוט החדש שלך ב-Telegram ושלח לו הודעה. הוא
+    אמור לענות. אחרי שהוא עונה, לחץ <b>Ctrl + C</b> כדי לעצור אותו, והרץ את שתי
+    השורות האלה כדי שהוא יעלה לבד מכאן והלאה:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>מעדיף ליצור את הבוט בעצמך?</b> ב-Telegram, שלח הודעה ל- <b>@BotFather</b>,
+    שלח <b>/newbot</b>, וענה על שתי השאלות שלו. שם המשתמש חייב להסתיים ב-
+    <b>bot</b>. הוא נותן לך טוקן: מוצג פעם אחת, תתייחס אליו כמו לסיסמה. ואז
+    שלח הודעה ל- <b>@userinfobot</b> כדי לקבל את מזהה המשתמש שלך, שהוא מספר. בחר
+    <b>Manual</b> בהגדרה והדבק את שניהם.
+  </div>
+  <div class="note">
+    <b>בצ'אט פרטי</b> הוא עונה להכול. <b>בקבוצה</b> הוא עונה
+    רק כשמתייגים אותו או מגיבים לו, כך שהוא אף פעם לא מציף את החברים שלך. כל פרומפט
+    בהמשך המדריך עובד אותו דבר כאן.
+  </div>
+  <div class="note warn">
+    <b>אם הוא עונה בקוד צימוד</b> במקום תשובה, הוא עדיין לא מכיר
+    את החשבון שלך. הרץ <code>hermes pairing approve telegram &lt;code&gt;</code> בטרמינל
+    ושלח לו הודעה שוב.
+  </div>
+</div>
 </section>
 
 <section id="skills">
@@ -561,7 +613,7 @@ npx vercel deploy docs --prod</code></pre>
     <li>פתח <b>Nous Portal</b> חשבון ב-
       <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
     <li>היכנס ל- <b>Agents</b> צור מופע. תן לו שם.</li>
-    <li>חבר אליו Discord בדיוק כמו בשלב 03. אותן פקודות, רק
+    <li>חבר אליו Discord או Telegram בדיוק כמו בשלב 03. אותן פקודות, רק
       על המופע.</li>
   </ol>
   <p>מכאן והלאה אתה מנהל אותו מהדף הזה. להפעיל, לעצור, להפעיל מחדש או למחוק —
@@ -625,6 +677,7 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>הבוט מחובר אבל אף פעם לא עונה</td><td>Message Content Intent כבוי בעמוד המפתחים של Discord. זו הסיבה מספר אחת.</td></tr>
     <tr><td>עונה בהודעות פרטיות, שותק בשרת</td><td>רגיל. בשרתים הוא עונה רק כשמתייגים אותו.</td></tr>
     <tr><td>הוא אומר שאין לך הרשאה</td><td>מזהה המשתמש שלך ב-Discord שגוי. העתק אותו שוב עם Developer Mode דלוק.</td></tr>
+    <tr><td>Telegram עונה בקוד צימוד</td><td>הוא עדיין לא מכיר את החשבון שלך. הרץ <code>hermes pairing approve telegram &lt;code&gt;</code> בטרמינל, ואז שלח לו הודעה שוב.</td></tr>
     <tr><td>פריסה ב-Vercel נכשלת עם 402</td><td>החשבון הזה עבר את מכסת ההעברות החינמית. פרויקט חדש, או להשתמש ב-GitHub Pages או Cloudflare Pages.</td></tr>
     <tr><td>הסוכן הפסיק לעבוד בלילה</td><td>הוא היה על המחשב שלך. זה צפוי. תעביר אותו לשרת אם אתה צריך שהוא יעבוד כל הזמן.</td></tr>
     <tr><td>הוא מבקש ממך עוד כסף</td><td>בדוק את עמוד השימוש ב-OpenCode. משימות ארוכות צורכות יותר משיחה.</td></tr>

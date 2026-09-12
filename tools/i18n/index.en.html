@@ -75,7 +75,7 @@
   </section>
   <nav class="journey" aria-label="Your setup in three steps"><div class="journey-grid shell">
     <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>Give it a brain</strong><small>Install Hermes and connect a model.</small></div></a>
-    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Bring it to Discord</strong><small>Your agent, one message away.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Add Discord or Telegram</strong><small>Your agent, one message away.</small></div></a>
     <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>Put the skills to work</strong><small>Install the toolkit. Ask for anything.</small></div></a>
   </div></nav>
   <div class="guide-layout shell" id="guide">
@@ -83,7 +83,7 @@
       <details open id="guide-menu"><summary>In this guide <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
         <nav class="toc" aria-label="Guide chapters">
           <span class="toc-label">Get up and running</span><ol>
-            <li><a href="#need"><span>01</span>What you need</a></li><li><a href="#hermes"><span>02</span>Set up Hermes</a></li><li><a href="#discord"><span>03</span>Connect Discord</a></li><li><a href="#skills"><span>04</span>Install the skills</a></li>
+            <li><a href="#need"><span>01</span>What you need</a></li><li><a href="#hermes"><span>02</span>Set up Hermes</a></li><li><a href="#discord"><span>03</span>Discord or Telegram</a></li><li><a href="#skills"><span>04</span>Install the skills</a></li>
           </ol><span class="toc-label">Make it useful</span><ol start="5">
             <li><a href="#list"><span>05</span>The skill library</a></li><li><a href="#hashcats"><span>06</span>Mint Hashcats</a></li><li><a href="#prompts"><span>07</span>Things to ask it</a></li>
           </ol><span class="toc-label">Go a little further</span><ol start="8">
@@ -100,7 +100,7 @@
   <div class="table-scroll" role="region" aria-label="Scrollable reference table" tabindex="0"><table>
     <tr><th scope="col">You need</th><th scope="col">Cost</th><th scope="col">What it is for</th></tr>
     <tr><td>A computer</td><td>Free</td><td>Runs the agent. Windows, Mac or Linux, anything from the last few years</td></tr>
-    <tr><td>A Discord account</td><td>Free</td><td>How you talk to the agent, from your phone or desktop</td></tr>
+    <tr><td>A Discord or Telegram account</td><td>Free</td><td>How you talk to the agent, from your phone or desktop</td></tr>
     <tr><td>An OpenCode subscription</td><td>~$10/month</td><td>The agent's brain. The only thing you actually have to pay for</td></tr>
     <tr><td>A Vercel account <i>(optional)</i></td><td>Free</td><td>Only if you want to put a page or a small site online</td></tr>
     <tr><td>A small server <i>(optional)</i></td><td>~$5/month</td><td>Only if you want the agent running while your computer is off</td></tr>
@@ -119,15 +119,15 @@
     itself. That is the most technical thing in this whole guide.
   </p>
 
-<div class="os-tabs" role="tablist" aria-label="Your operating system" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+<div class="tabs" role="tablist" aria-label="Your operating system" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="tab-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>Open the Start menu, type <b>PowerShell</b>, open it, and paste this in:</p>
   <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
-</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+</div><div class="tab-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>Press <b>Command + Space</b>, type <b>Terminal</b>, press Enter, and paste:</p>
   <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
-</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+</div><div class="tab-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>Open your terminal and paste:</p>
   <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
@@ -162,11 +162,17 @@ hermes chat -q "hello, what model are you?"</code></pre>
 </section>
 
 <section id="discord">
-  <div class="section-title"><h2 class="step"><span>03</span>Set up Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="Mark Set up Discord complete"> Done</label></div>
+  <div class="section-title"><h2 class="step"><span>03</span>Set up Discord or Telegram</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="Mark Set up Discord or Telegram complete"> Done</label></div>
   <p>
     This is the part that makes it useful. After this you never need the terminal
     again. You just message it.
   </p>
+  <p>
+    Pick whichever app you already use. Both take a few minutes and work the same
+    afterwards.
+  </p>
+<div class="tabs" role="tablist" aria-label="Your chat app" hidden><button type="button" role="tab" id="tab-discord" aria-selected="true" aria-controls="chat-discord" tabindex="0">Discord</button><button type="button" role="tab" id="tab-telegram" aria-selected="false" aria-controls="chat-telegram" tabindex="-1">Telegram</button></div>
+<div class="tab-panel" id="chat-discord" role="tabpanel" aria-labelledby="tab-discord" tabindex="0"><h3>Discord</h3>
   <p>
     Discord changes its own menus now and then, so if a button has moved, look for
     the closest match.
@@ -207,6 +213,52 @@ hermes gateway start</code></pre>
     <b>If it never replies</b>, it is almost always one of two things: Message
     Content Intent is still off, or the user ID was copied wrong. Redo steps 2 and 6.
   </div>
+</div><div class="tab-panel" id="chat-telegram" role="tabpanel" aria-labelledby="tab-telegram" tabindex="0"><h3>Telegram</h3>
+  <p>
+    Telegram is the quicker one. Hermes creates the bot for you: you scan a code with
+    your phone and tap one button.
+  </p>
+  <ol>
+    <li>Run the setup:</li>
+  </ol>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <ol start="2">
+    <li>Pick <b>Telegram</b> when it asks, then choose <b>Automatic</b>. A square code
+      appears in the window, with a link under it.</li>
+    <li>Point your phone's camera at the code, or open the link. Telegram opens and
+      asks you to confirm. Tap <b>Create Bot</b>. You can change its name first if you
+      like.</li>
+    <li>Back in the window it says it detected your Telegram account and asks whether
+      to allow it. Say yes, and yes to the couple of questions after that. Only you
+      can talk to the bot.</li>
+  </ol>
+  <p>Then start it and test it:</p>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    Leave that window open, find your new bot in Telegram, and send it a message. It
+    should answer. Once it does, press <b>Ctrl + C</b> to stop it and run these two
+    lines so it starts on its own from then on:
+  </p>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>Prefer to make the bot yourself?</b> In Telegram, message <b>@BotFather</b>,
+    send <b>/newbot</b>, and answer its two questions. The username has to end in
+    <b>bot</b>. It hands you a token: shown once, treat it like a password. Then
+    message <b>@userinfobot</b> to get your user ID, which is a number. Choose
+    <b>Manual</b> in the setup and paste in both.
+  </div>
+  <div class="note">
+    <b>In a private chat</b> it answers everything. <b>In a group</b> it only answers
+    when you @mention it or reply to it, so it never spams your friends. Every prompt
+    later in this guide works the same here.
+  </div>
+  <div class="note warn">
+    <b>If it replies with a pairing code</b> instead of an answer, it does not know
+    your account yet. Run <code>hermes pairing approve telegram &lt;code&gt;</code> in
+    the terminal and message it again.
+  </div>
+</div>
 </section>
 
 <section id="skills">
@@ -554,7 +606,7 @@ npx vercel deploy docs --prod</code></pre>
     <li>Make a <b>Nous Portal</b> account at
       <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
     <li>Open the <b>Agents</b> page and create an instance. Give it a name.</li>
-    <li>Connect Discord to it exactly as in step 03. Same commands, run on the
+    <li>Connect Discord or Telegram to it exactly as in step 03. Same commands, run on the
       instance.</li>
   </ol>
   <p>From then on you manage it from that web page. Start, stop, restart, or delete
@@ -618,6 +670,7 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>Bot online but never answers</td><td>Message Content Intent is off in the Discord developer page. This is the number one cause.</td></tr>
     <tr><td>Answers in DMs, silent in a server</td><td>Normal. In servers it only answers when you @mention it.</td></tr>
     <tr><td>It says you are not allowed</td><td>Your Discord user ID is wrong. Copy it again with Developer Mode turned on.</td></tr>
+    <tr><td>Telegram replies with a pairing code</td><td>It does not know your account yet. Run <code>hermes pairing approve telegram &lt;code&gt;</code> in the terminal, then message it again.</td></tr>
     <tr><td>Vercel deploy fails with 402</td><td>That account went past the free transfer allowance. New project, or use GitHub Pages or Cloudflare Pages.</td></tr>
     <tr><td>The agent stopped overnight</td><td>It was on your computer. That is expected. Move it to a server if you need it always on.</td></tr>
     <tr><td>It asks you for more money</td><td>Check your OpenCode usage page. Long jobs use more than chatting does.</td></tr>

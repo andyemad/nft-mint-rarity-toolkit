@@ -88,7 +88,7 @@
   </section>
   <nav class="journey" aria-label="Ihre Einrichtung in drei Schritten"><div class="journey-grid shell">
     <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>Geben Sie ihm ein Gehirn</strong><small>Installieren Sie Hermes und verbinden Sie ein Modell.</small></div></a>
-    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Bringen Sie ihn zu Discord</strong><small>Ihr Agent, nur eine Nachricht entfernt.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Discord oder Telegram hinzufügen</strong><small>Ihr Agent, nur eine Nachricht entfernt.</small></div></a>
     <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>Setzen Sie die Skills ein</strong><small>Installieren Sie das Toolkit. Fragen Sie nach allem.</small></div></a>
   </div></nav>
   <div class="guide-layout shell" id="guide">
@@ -96,7 +96,7 @@
       <details open id="guide-menu"><summary>In dieser Anleitung <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
         <nav class="toc" aria-label="Kapitel der Anleitung">
           <span class="toc-label">Loslegen und zum Laufen bringen</span><ol>
-            <li><a href="#need"><span>01</span>Was Sie brauchen</a></li><li><a href="#hermes"><span>02</span>Hermes einrichten</a></li><li><a href="#discord"><span>03</span>Discord verbinden</a></li><li><a href="#skills"><span>04</span>Die Skills installieren</a></li>
+            <li><a href="#need"><span>01</span>Was Sie brauchen</a></li><li><a href="#hermes"><span>02</span>Hermes einrichten</a></li><li><a href="#discord"><span>03</span>Discord oder Telegram</a></li><li><a href="#skills"><span>04</span>Die Skills installieren</a></li>
           </ol><span class="toc-label">Machen Sie ihn nützlich</span><ol start="5">
             <li><a href="#list"><span>05</span>Die Skill-Bibliothek</a></li><li><a href="#hashcats"><span>06</span>Hashcats minten</a></li><li><a href="#prompts"><span>07</span>Was Sie ihn fragen können</a></li>
           </ol><span class="toc-label">Ein Stück weiter gehen</span><ol start="8">
@@ -113,7 +113,7 @@
   <div class="table-scroll" role="region" aria-label="Scrollbare Übersichtstabelle" tabindex="0"><table>
     <tr><th scope="col">Sie brauchen</th><th scope="col">Kosten</th><th scope="col">Wofür es gut ist</th></tr>
     <tr><td>Ein Computer</td><td>Kostenlos</td><td>Führt den Agenten aus. Windows, Mac oder Linux, alles aus den letzten paar Jahren</td></tr>
-    <tr><td>Ein Discord-Konto</td><td>Kostenlos</td><td>So sprechen Sie mit dem Agenten, vom Smartphone oder Desktop aus</td></tr>
+    <tr><td>Ein Discord- oder Telegram-Konto</td><td>Kostenlos</td><td>So sprechen Sie mit dem Agenten, vom Smartphone oder Desktop aus</td></tr>
     <tr><td>Ein OpenCode-Abo</td><td>~$10/Monat</td><td>Das Gehirn des Agenten. Das Einzige, wofür Sie wirklich zahlen müssen</td></tr>
     <tr><td>Ein Vercel-Konto <i>(optional)</i></td><td>Kostenlos</td><td>Nur wenn Sie eine Seite oder eine kleine Website online stellen möchten</td></tr>
     <tr><td>Ein kleiner Server <i>(optional)</i></td><td>~$5/Monat</td><td>Nur wenn der Agent laufen soll, während Ihr Computer aus ist</td></tr>
@@ -130,15 +130,15 @@
     Hermes ist der Agent. Sie fügen eine Zeile in ein Terminalfenster ein, und er installiert sich selbst. Das ist das Technischste in dieser ganzen Anleitung.
   </p>
 
-<div class="os-tabs" role="tablist" aria-label="Ihr Betriebssystem" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+<div class="tabs" role="tablist" aria-label="Ihr Betriebssystem" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="tab-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>Öffnen Sie das Startmenü, tippen Sie <b>PowerShell</b>, öffnen Sie es und fügen Sie Folgendes ein:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
-</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+</div><div class="tab-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>Drücken Sie <b>Command + Space</b>, tippen Sie <b>Terminal</b>, drücken Sie die Eingabetaste und fügen Sie ein:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
-</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+</div><div class="tab-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>Öffnen Sie Ihr Terminal und fügen Sie ein:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
@@ -169,10 +169,15 @@ hermes chat -q "hello, what model are you?"</code></pre>
 </section>
 
 <section id="discord">
-  <div class="section-title"><h2 class="step"><span>03</span>Discord einrichten</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="„Discord einrichten“ als erledigt markieren"> Fertig</label></div>
+  <div class="section-title"><h2 class="step"><span>03</span>Discord oder Telegram einrichten</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="„Discord oder Telegram einrichten“ als erledigt markieren"> Fertig</label></div>
   <p>
     Das ist der Teil, der ihn nützlich macht. Danach brauchen Sie das Terminal nie wieder. Sie schreiben ihm einfach eine Nachricht.
   </p>
+  <p>
+    Wählen Sie die App, die Sie bereits nutzen. Beide dauern ein paar Minuten und funktionieren danach gleich.
+  </p>
+<div class="tabs" role="tablist" aria-label="Ihre Chat-App" hidden><button type="button" role="tab" id="tab-discord" aria-selected="true" aria-controls="chat-discord" tabindex="0">Discord</button><button type="button" role="tab" id="tab-telegram" aria-selected="false" aria-controls="chat-telegram" tabindex="-1">Telegram</button></div>
+<div class="tab-panel" id="chat-discord" role="tabpanel" aria-labelledby="tab-discord" tabindex="0"><h3>Discord</h3>
   <p>
     Discord ändert seine Menüs ab und zu. Wenn eine Schaltfläche also verschoben ist, suchen Sie die am ehesten passende.
   </p>
@@ -203,6 +208,39 @@ hermes gateway start</code></pre>
   <div class="note warn">
     <b>Wenn er nie antwortet</b>, liegt es fast immer an einem von zwei Dingen: Der Message Content Intent ist noch aus, oder die Benutzer-ID wurde falsch kopiert. Wiederholen Sie die Schritte 2 und 6.
   </div>
+</div><div class="tab-panel" id="chat-telegram" role="tabpanel" aria-labelledby="tab-telegram" tabindex="0"><h3>Telegram</h3>
+  <p>
+    Telegram ist der schnellere Weg. Hermes erstellt den Bot für Sie: Sie scannen einen Code mit Ihrem Smartphone und tippen eine Schaltfläche an.
+  </p>
+  <ol>
+    <li>Führen Sie das Setup aus:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <ol start="2">
+    <li>Wählen Sie <b>Telegram</b> , wenn danach gefragt wird, und wählen Sie dann <b>Automatic</b>. Im Fenster erscheint ein quadratischer Code mit einem Link darunter.</li>
+    <li>Richten Sie die Kamera Ihres Smartphones auf den Code oder öffnen Sie den Link. Telegram öffnet sich und bittet Sie um Bestätigung. Tippen Sie auf <b>Create Bot</b>. Sie können vorher den Namen ändern, wenn Sie möchten.</li>
+    <li>Zurück im Fenster heißt es, dass Ihr Telegram-Konto erkannt wurde, und Sie werden gefragt, ob es zugelassen werden soll. Sagen Sie ja, und ja zu den paar Fragen danach. Nur Sie können mit dem Bot sprechen.</li>
+  </ol>
+  <p>Starten und testen Sie ihn dann:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    Lassen Sie dieses Fenster offen, suchen Sie Ihren neuen Bot in Telegram und schicken Sie ihm eine Nachricht. Er sollte antworten. Sobald er das tut, drücken Sie <b>Ctrl + C</b> , um ihn zu stoppen, und führen Sie diese zwei Zeilen aus, damit er ab dann von selbst startet:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>Möchten Sie den Bot lieber selbst erstellen?</b> Schreiben Sie in Telegram an <b>@BotFather</b>,
+    senden Sie <b>/newbot</b>, und beantworten Sie seine zwei Fragen. Der Benutzername muss auf
+    <b>bot</b> enden. Er gibt Ihnen einen Token: wird nur einmal angezeigt, behandeln Sie ihn wie ein Passwort. Schreiben Sie dann an <b>@userinfobot</b> , um Ihre Benutzer-ID zu erhalten, die eine Zahl ist. Wählen Sie
+    <b>Manual</b> in der Einrichtung und fügen Sie beides ein.
+  </div>
+  <div class="note">
+    <b>In einem privaten Chat</b> antwortet er auf alles. <b>In einer Gruppe</b> antwortet er nur, wenn Sie ihn mit @ erwähnen oder ihm antworten, damit er Ihre Freunde nie zuspammt. Jeder Prompt später in dieser Anleitung funktioniert hier genauso.
+  </div>
+  <div class="note warn">
+    <b>Wenn statt einer Antwort ein Kopplungscode kommt</b> , kennt er Ihr Konto noch nicht. Führen Sie aus <code>hermes pairing approve telegram &lt;code&gt;</code> im Terminal aus und schreiben Sie ihm erneut.
+  </div>
+</div>
 </section>
 
 <section id="skills">
@@ -517,7 +555,7 @@ npx vercel deploy docs --prod</code></pre>
     <li>Erstellen Sie ein <b>Nous Portal</b> Konto unter
       <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
     <li>Öffnen Sie die <b>Agents</b> -Seite und erstellen Sie eine Instanz. Geben Sie ihr einen Namen.</li>
-    <li>Verbinden Sie Discord genau wie in Schritt 03 damit. Dieselben Befehle, ausgeführt auf der Instanz.</li>
+    <li>Verbinden Sie Discord oder Telegram genau wie in Schritt 03 damit. Dieselben Befehle, ausgeführt auf der Instanz.</li>
   </ol>
   <p>Ab dann verwalten Sie sie über diese Webseite. Dort starten, stoppen, neu starten oder löschen. Die Preise stehen im Portal neben den Tarifen.</p>
   <div class="note">
@@ -567,6 +605,7 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>Bot online, antwortet aber nie</td><td>Der Message Content Intent ist auf der Discord-Entwicklerseite aus. Das ist die häufigste Ursache.</td></tr>
     <tr><td>Antwortet in DMs, schweigt im Server</td><td>Normal. In Servern antwortet er nur, wenn Sie ihn mit @ erwähnen.</td></tr>
     <tr><td>Es heißt, Sie seien nicht berechtigt</td><td>Ihre Discord-Benutzer-ID ist falsch. Kopieren Sie sie erneut mit eingeschaltetem Developer Mode.</td></tr>
+    <tr><td>Telegram antwortet mit einem Kopplungscode</td><td>Er kennt Ihr Konto noch nicht. Führen Sie aus <code>hermes pairing approve telegram &lt;code&gt;</code> im Terminal aus und schreiben Sie ihm dann erneut.</td></tr>
     <tr><td>Vercel-Deploy schlägt mit 402 fehl</td><td>Dieses Konto hat das kostenlose Transferkontingent überschritten. Neues Projekt oder GitHub Pages bzw. Cloudflare Pages nutzen.</td></tr>
     <tr><td>Der Agent hat über Nacht gestoppt</td><td>Er lief auf Ihrem Computer. Das ist zu erwarten. Verlegen Sie ihn auf einen Server, wenn er immer laufen soll.</td></tr>
     <tr><td>Er verlangt mehr Geld von Ihnen</td><td>Prüfen Sie Ihre OpenCode-Nutzungsseite. Lange Jobs verbrauchen mehr als Chatten.</td></tr>

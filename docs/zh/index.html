@@ -88,7 +88,7 @@
   </section>
   <nav class="journey" aria-label="你的配置，三步搞定"><div class="journey-grid shell">
     <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>给它装上大脑</strong><small>安装 Hermes，接入一个模型。</small></div></a>
-    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>把它接进 Discord</strong><small>你的智能体，一条消息就能叫到。</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>添加 Discord 或 Telegram</strong><small>你的智能体，一条消息就能叫到。</small></div></a>
     <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>让技能上手干活</strong><small>安装工具包，然后想问什么就问什么。</small></div></a>
   </div></nav>
   <div class="guide-layout shell" id="guide">
@@ -96,7 +96,7 @@
       <details open id="guide-menu"><summary>本指南内容 <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
         <nav class="toc" aria-label="指南章节">
           <span class="toc-label">快速上手</span><ol>
-            <li><a href="#need"><span>01</span>你需要准备什么</a></li><li><a href="#hermes"><span>02</span>配置 Hermes</a></li><li><a href="#discord"><span>03</span>接入 Discord</a></li><li><a href="#skills"><span>04</span>安装技能</a></li>
+            <li><a href="#need"><span>01</span>你需要准备什么</a></li><li><a href="#hermes"><span>02</span>配置 Hermes</a></li><li><a href="#discord"><span>03</span>Discord 或 Telegram</a></li><li><a href="#skills"><span>04</span>安装技能</a></li>
           </ol><span class="toc-label">让它真正有用</span><ol start="5">
             <li><a href="#list"><span>05</span>技能库</a></li><li><a href="#hashcats"><span>06</span>铸造 Hashcats</a></li><li><a href="#prompts"><span>07</span>可以问它什么</a></li>
           </ol><span class="toc-label">再往前走一步</span><ol start="8">
@@ -113,7 +113,7 @@
   <div class="table-scroll" role="region" aria-label="可滚动的参考表格" tabindex="0"><table>
     <tr><th scope="col">你需要</th><th scope="col">费用</th><th scope="col">用途</th></tr>
     <tr><td>一台电脑</td><td>免费</td><td>用来运行智能体。Windows、Mac 或 Linux 都行，近几年买的机器都可以</td></tr>
-    <tr><td>一个 Discord 账号</td><td>免费</td><td>用来和智能体对话，手机或电脑都行</td></tr>
+    <tr><td>一个 Discord 或 Telegram 账号</td><td>免费</td><td>用来和智能体对话，手机或电脑都行</td></tr>
     <tr><td>一份 OpenCode 订阅</td><td>约 $10/月</td><td>智能体的大脑，也是唯一必须花钱的地方</td></tr>
     <tr><td>一个 Vercel 账号 <i>（可选）</i></td><td>免费</td><td>只有想把页面或小网站放到线上时才需要</td></tr>
     <tr><td>一台小服务器 <i>（可选）</i></td><td>约 $5/月</td><td>只有想让智能体在你关掉电脑后继续运行时才需要</td></tr>
@@ -130,15 +130,15 @@
     Hermes 就是那个智能体。把一行命令粘进终端窗口，它就会自己装好。这是整份指南里技术含量最高的一步。
   </p>
 
-<div class="os-tabs" role="tablist" aria-label="你的操作系统" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+<div class="tabs" role="tablist" aria-label="你的操作系统" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="tab-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>打开开始菜单，输入 <b>PowerShell</b>，打开它，然后粘贴下面的内容：</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
-</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+</div><div class="tab-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>按 <b>Command + Space</b>，输入 <b>Terminal</b>，按回车，然后粘贴：</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
-</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+</div><div class="tab-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>打开终端并粘贴：</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
@@ -169,10 +169,15 @@ hermes chat -q "hello, what model are you?"</code></pre>
 </section>
 
 <section id="discord">
-  <div class="section-title"><h2 class="step"><span>03</span>配置 Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="把“配置 Discord”标记为已完成"> 完成</label></div>
+  <div class="section-title"><h2 class="step"><span>03</span>配置 Discord 或 Telegram</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="标记“设置 Discord 或 Telegram”已完成"> 完成</label></div>
   <p>
     这一步才让它变得好用。做完之后你再也不用碰终端，直接给它发消息就行。
   </p>
+  <p>
+    挑一个你已经在用的应用。两个都只要几分钟，之后用法完全一样。
+  </p>
+<div class="tabs" role="tablist" aria-label="你的聊天应用" hidden><button type="button" role="tab" id="tab-discord" aria-selected="true" aria-controls="chat-discord" tabindex="0">Discord</button><button type="button" role="tab" id="tab-telegram" aria-selected="false" aria-controls="chat-telegram" tabindex="-1">Telegram</button></div>
+<div class="tab-panel" id="chat-discord" role="tabpanel" aria-labelledby="tab-discord" tabindex="0"><h3>Discord</h3>
   <p>
     Discord 时不时会调整菜单，如果按钮位置变了，就找最接近的那个。
   </p>
@@ -200,6 +205,38 @@ hermes gateway start</code></pre>
   <div class="note warn">
     <b>如果它一直不回复</b>，几乎总是两个原因之一：Message Content Intent 还关着，或者用户 ID 复制错了。把第 2 步和第 6 步重做一遍。
   </div>
+</div><div class="tab-panel" id="chat-telegram" role="tabpanel" aria-labelledby="tab-telegram" tabindex="0"><h3>Telegram</h3>
+  <p>
+    Telegram 更省事。Hermes 会替你创建机器人：用手机扫一下码，点一个按钮就行。
+  </p>
+  <ol>
+    <li>运行配置：</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <ol start="2">
+    <li>问到时选 <b>Telegram</b> ，然后选 <b>Automatic</b>。窗口里会出现一个方形码，下面带一条链接。</li>
+    <li>用手机摄像头对准这个码，也可以打开那条链接。Telegram 会打开并请你确认。点 <b>Create Bot</b>。想的话，可以先把它的名字改一下。</li>
+    <li>回到窗口，它会说检测到了你的 Telegram 账号，并问是否允许。选是，接下来的几个问题也都选是。只有你能和这个机器人对话。</li>
+  </ol>
+  <p>然后启动并测试：</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    让那个窗口开着，在 Telegram 里找到你新建的机器人，给它发一条消息。它应该会回复。等它回了，按 <b>Ctrl + C</b> 把它停掉，再运行下面两行，之后它就会自己启动：
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>更想自己创建机器人？</b> 在 Telegram 里，给 <b>@BotFather</b>发消息，发送 <b>/newbot</b>，然后回答它的两个问题。用户名必须以
+    <b>bot</b>结尾。它会给你一个令牌：只显示一次，请像密码一样保管。然后给 <b>@userinfobot</b> 发消息，就能拿到你的用户 ID，那是一串数字。选
+    <b>Manual</b> ，在配置里把两个都粘贴进去。
+  </div>
+  <div class="note">
+    <b>在私聊里</b> 它什么都会回。 <b>在群组里</b> 它只在你 @ 它或回复它时才回答，绝不会给朋友们刷屏。本指南后面每条提示在这里的用法都一样。
+  </div>
+  <div class="note warn">
+    <b>如果它回复的是一个配对码</b> 而不是答案，说明它还不认识你的账号。运行 <code>hermes pairing approve telegram &lt;code&gt;</code> （在终端里），然后再给它发一次消息。
+  </div>
+</div>
 </section>
 
 <section id="skills">
@@ -511,7 +548,7 @@ npx vercel deploy docs --prod</code></pre>
     <li>注册一个 <b>Nous Portal</b> 账号，网址是
       <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
     <li>打开 <b>Agents</b> 页面，创建一个实例，给它起个名字。</li>
-    <li>按照第 03 步的做法把 Discord 接上去，命令完全一样，只是要在实例上运行。</li>
+    <li>按第 03 步的做法把 Discord 或 Telegram 接上去，命令完全一样，只是要在实例上运行。</li>
   </ol>
   <p>之后你就在那个网页上管理它：启动、停止、重启、删除都在那里。价格和套餐一起列在 Portal 上。</p>
   <div class="note">
@@ -561,6 +598,7 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>机器人在线却从不回复</td><td>Discord 开发者页面里的 Message Content Intent 没打开。这是头号原因。</td></tr>
     <tr><td>私信会回，在服务器里却一声不吭</td><td>正常。在服务器里，只有你 @ 它，它才回复。</td></tr>
     <tr><td>它说你不被允许</td><td>你的 Discord 用户 ID 不对。打开开发者模式，重新复制一次。</td></tr>
+    <tr><td>Telegram 回复的是一个配对码</td><td>它还不认识你的账号。运行 <code>hermes pairing approve telegram &lt;code&gt;</code> （在终端里），然后再给它发一次消息。</td></tr>
     <tr><td>Vercel 部署报 402 失败</td><td>那个账号超出了免费流量额度。新建一个项目，或者改用 GitHub Pages、Cloudflare Pages。</td></tr>
     <tr><td>智能体半夜停了</td><td>因为它跑在你的电脑上，这很正常。需要它一直在线，就搬到服务器上。</td></tr>
     <tr><td>它让你再多付钱</td><td>看一下你的 OpenCode 用量页面。长时间的任务比聊天更费额度。</td></tr>

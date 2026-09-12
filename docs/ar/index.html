@@ -88,7 +88,7 @@
   </section>
   <nav class="journey" aria-label="إعدادك في ثلاث خطوات"><div class="journey-grid shell">
     <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>امنحه عقلًا</strong><small>ثبّت Hermes واربطه بنموذج.</small></div></a>
-    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>انقله إلى Discord</strong><small>وكيلك على بُعد رسالة واحدة.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>أضف Discord أو Telegram</strong><small>وكيلك على بُعد رسالة واحدة.</small></div></a>
     <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>شغّل المهارات</strong><small>ثبّت مجموعة الأدوات. واطلب أي شيء.</small></div></a>
   </div></nav>
   <div class="guide-layout shell" id="guide">
@@ -96,7 +96,7 @@
       <details open id="guide-menu"><summary>في هذا الدليل <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
         <nav class="toc" aria-label="فصول الدليل">
           <span class="toc-label">ابدأ التشغيل</span><ol>
-            <li><a href="#need"><span>01</span>ما تحتاجه</a></li><li><a href="#hermes"><span>02</span>إعداد Hermes</a></li><li><a href="#discord"><span>03</span>ربط Discord</a></li><li><a href="#skills"><span>04</span>تثبيت المهارات</a></li>
+            <li><a href="#need"><span>01</span>ما تحتاجه</a></li><li><a href="#hermes"><span>02</span>إعداد Hermes</a></li><li><a href="#discord"><span>03</span>Discord أو Telegram</a></li><li><a href="#skills"><span>04</span>تثبيت المهارات</a></li>
           </ol><span class="toc-label">اجعله مفيدًا</span><ol start="5">
             <li><a href="#list"><span>05</span>مكتبة المهارات</a></li><li><a href="#hashcats"><span>06</span>سك Hashcats</a></li><li><a href="#prompts"><span>07</span>أشياء تطلبها منه</a></li>
           </ol><span class="toc-label">اذهب خطوة أبعد</span><ol start="8">
@@ -113,7 +113,7 @@
   <div class="table-scroll" role="region" aria-label="جدول مرجعي قابل للتمرير" tabindex="0"><table>
     <tr><th scope="col">تحتاج</th><th scope="col">التكلفة</th><th scope="col">الغرض منه</th></tr>
     <tr><td>جهاز كمبيوتر</td><td>مجاني</td><td>يشغّل الوكيل. Windows أو Mac أو Linux، أي جهاز من السنوات الأخيرة</td></tr>
-    <tr><td>حساب Discord</td><td>مجاني</td><td>وسيلتك للحديث مع الوكيل، من هاتفك أو حاسوبك</td></tr>
+    <tr><td>حساب على Discord أو Telegram</td><td>مجاني</td><td>وسيلتك للحديث مع الوكيل، من هاتفك أو حاسوبك</td></tr>
     <tr><td>اشتراك OpenCode</td><td>نحو $10 شهريًا</td><td>عقل الوكيل. الشيء الوحيد الذي تدفع مقابله فعلًا</td></tr>
     <tr><td>حساب Vercel <i>(اختياري)</i></td><td>مجاني</td><td>فقط إن أردت نشر صفحة أو موقع صغير على الإنترنت</td></tr>
     <tr><td>خادم صغير <i>(اختياري)</i></td><td>نحو $5 شهريًا</td><td>فقط إن أردت أن يعمل الوكيل وجهازك مغلق</td></tr>
@@ -130,15 +130,15 @@
     Hermes هو الوكيل. تلصق سطرًا واحدًا في نافذة الطرفية فيثبّت نفسه. هذا أكثر أمر تقني في الدليل كله.
   </p>
 
-<div class="os-tabs" role="tablist" aria-label="نظام تشغيلك" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+<div class="tabs" role="tablist" aria-label="نظام تشغيلك" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="tab-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>افتح قائمة Start واكتب <b>PowerShell</b>، ثم افتحه والصق هذا:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
-</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+</div><div class="tab-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>اضغط <b>Command + Space</b>، واكتب <b>Terminal</b>، ثم اضغط Enter والصق:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
-</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+</div><div class="tab-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>افتح الطرفية والصق:</p>
   <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
@@ -169,10 +169,16 @@ hermes chat -q "hello, what model are you?"</code></pre>
 </section>
 
 <section id="discord">
-  <div class="section-title"><h2 class="step"><span>03</span>إعداد Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="علّم «إعداد Discord» كمكتمل"> تم</label></div>
+  <div class="section-title"><h2 class="step"><span>03</span>إعداد Discord أو Telegram</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="تعليم «إعداد Discord أو Telegram» كمكتمل"> تم</label></div>
   <p>
     هذا الجزء هو ما يجعله مفيدًا. بعده لن تحتاج الطرفية مرة أخرى، بل ترسل رسالة فقط.
   </p>
+  <p>
+    اختر أي تطبيق تستخدمه بالفعل. كلاهما يستغرق بضع دقائق ويعملان بالطريقة نفسها
+    بعد ذلك.
+  </p>
+<div class="tabs" role="tablist" aria-label="تطبيق المحادثة لديك" hidden><button type="button" role="tab" id="tab-discord" aria-selected="true" aria-controls="chat-discord" tabindex="0">Discord</button><button type="button" role="tab" id="tab-telegram" aria-selected="false" aria-controls="chat-telegram" tabindex="-1">Telegram</button></div>
+<div class="tab-panel" id="chat-discord" role="tabpanel" aria-labelledby="tab-discord" tabindex="0"><h3>Discord</h3>
   <p>
     يغيّر Discord قوائمه من وقت لآخر، فإن تغيّر مكان زر فابحث عن أقرب خيار مطابق.
   </p>
@@ -203,6 +209,48 @@ hermes gateway start</code></pre>
   <div class="note warn">
     <b>إن لم يرد أبدًا</b>، فالسبب دائمًا تقريبًا أحد أمرين: خيار Message Content Intent ما زال مغلقًا، أو أن معرّف المستخدم نُسخ خطأً. أعد الخطوتين 2 و6.
   </div>
+</div><div class="tab-panel" id="chat-telegram" role="tabpanel" aria-labelledby="tab-telegram" tabindex="0"><h3>Telegram</h3>
+  <p>
+    Telegram هو الأسرع. ينشئ Hermes البوت نيابة عنك: تمسح رمزًا بهاتفك وتضغط زرًا واحدًا.
+  </p>
+  <ol>
+    <li>شغّل الإعداد:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <ol start="2">
+    <li>اختر <b>Telegram</b> عندما يسألك، ثم اختر <b>تلقائي</b>. يظهر رمز مربّع
+      في النافذة، وتحته رابط.</li>
+    <li>وجّه كاميرا هاتفك نحو الرمز، أو افتح الرابط. يفتح Telegram
+      ويطلب منك التأكيد. اضغط <b>إنشاء بوت</b>. يمكنك تغيير اسمه أولًا إن
+      أردت.</li>
+    <li>وفي النافذة يقول إنه اكتشف حساب Telegram الخاص بك ويسألك إن كان يسمح به. قل نعم، ونعم على السؤالين اللذين يليان ذلك. أنت وحدك من يمكنه التحدث إلى البوت.</li>
+  </ol>
+  <p>ثم شغّله واختبره:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    اترك تلك النافذة مفتوحة، وابحث عن بوتك الجديد في Telegram، وأرسل له رسالة. من المفترض أن يجيب. وبعد أن يفعل، اضغط <b>Ctrl + C</b> لإيقافه، ثم شغّل هذين
+    السطرين ليبدأ من تلقاء نفسه من ذلك الحين فصاعدًا:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>تفضّل إنشاء البوت بنفسك؟</b> في Telegram، راسل <b>@BotFather</b>,
+    وأرسل <b>/newbot</b>، وأجب عن سؤاليه. يجب أن ينتهي اسم المستخدم بـ
+    <b>bot</b>. سيمنحك رمزًا مميزًا: يُعرض مرة واحدة، فتعامل معه ككلمة مرور. ثم
+    راسل <b>@userinfobot</b> للحصول على معرّف المستخدم الخاص بك، وهو رقم. اختر
+    <b>يدوي</b> في الإعداد والصق كليهما.
+  </div>
+  <div class="note">
+    <b>في المحادثة الخاصة</b> يجيب على كل شيء. <b>في المجموعة</b> لا يجيب
+    إلا عندما تشير إليه بـ @ أو تردّ عليه، فلا يزعج أصدقاءك أبدًا. وكل أمر
+    لاحق في هذا الدليل يعمل هنا بالطريقة نفسها.
+  </div>
+  <div class="note warn">
+    <b>إذا أجاب برمز اقتران</b> بدلًا من إجابة، فهو لا يعرف
+    حسابك بعد. شغّل <code>hermes pairing approve telegram &lt;code&gt;</code> في
+    الطرفية ثم راسله مرة أخرى.
+  </div>
+</div>
 </section>
 
 <section id="skills">
@@ -515,7 +563,8 @@ npx vercel deploy docs --prod</code></pre>
     <li>أنشئ حساب <b>Nous Portal</b> على
       <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
     <li>افتح صفحة <b>Agents</b> وأنشئ نسخة. وأعطها اسمًا.</li>
-    <li>اربط Discord بها تمامًا كما في الخطوة 03. الأوامر نفسها، تنفَّذ على النسخة.</li>
+    <li>اربط Discord أو Telegram به تمامًا كما في الخطوة 03. الأوامر نفسها، تنفَّذ على
+      النسخة.</li>
   </ol>
   <p>بعد ذلك تديرها من تلك الصفحة. شغّل أو أوقف أو أعد التشغيل أو احذف من هناك. والأسعار مذكورة على Portal مع الخطط.</p>
   <div class="note">
@@ -565,6 +614,7 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>البوت متصل لكنه لا يجيب أبدًا</td><td>خيار Message Content Intent مغلق في صفحة مطوّري Discord. هذا هو السبب الأول.</td></tr>
     <tr><td>يجيب في الرسائل الخاصة ويصمت في السيرفر</td><td>طبيعي. في السيرفرات لا يجيب إلا عندما تذكره بـ@mention.</td></tr>
     <tr><td>يقول إنك غير مسموح لك</td><td>معرّف مستخدمك في Discord خطأ. انسخه مرة أخرى مع تشغيل Developer Mode.</td></tr>
+    <tr><td>يجيب Telegram برمز اقتران</td><td>إنه لا يعرف حسابك بعد. شغّل <code>hermes pairing approve telegram &lt;code&gt;</code> في الطرفية، ثم راسله مرة أخرى.</td></tr>
     <tr><td>فشل النشر في Vercel بالخطأ 402</td><td>تجاوز ذلك الحساب حصة النقل المجانية. أنشئ مشروعًا جديدًا، أو استخدم GitHub Pages أو Cloudflare Pages.</td></tr>
     <tr><td>توقف الوكيل في الليل</td><td>كان على حاسوبك، وهذا متوقع. انقله إلى خادم إن احتجته يعمل دائمًا.</td></tr>
     <tr><td>يطلب منك المزيد من المال</td><td>راجع صفحة الاستخدام في OpenCode. فالمهام الطويلة تستهلك أكثر من المحادثة.</td></tr>

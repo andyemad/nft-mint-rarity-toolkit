@@ -139,3 +139,19 @@
 [dir="rtl"] .brand,[dir="rtl"] .brand-sub,[dir="rtl"] .stack span,[dir="rtl"] .hero-label{
   unicode-bidi:isolate
 }
+
+/* ---------------------------------------------------------------- generated text
+   The mobile table hint is drawn by CSS (content:), so the text-node pipeline
+   cannot reach it. Each language states it here instead. Same pattern applies
+   to any future CSS-generated string. */
+html[lang="zh-Hans"] .table-scroll:after { content: "左右滑动查看完整表格" }
+html[lang="ar"]      .table-scroll:after { content: "اسحب جانبياً لعرض الجدول كاملاً" }
+html[lang="es"]      .table-scroll:after { content: "Desliza de lado para ver la tabla completa" }
+html[lang="fr"]      .table-scroll:after { content: "Faites glisser sur le côté pour voir le tableau entier" }
+html[lang="de"]      .table-scroll:after { content: "Seitlich scrollen, um die ganze Tabelle zu sehen" }
+html[lang="ru"]      .table-scroll:after { content: "Прокрутите вбок, чтобы увидеть всю таблицу" }
+html[lang="he"]      .table-scroll:after { content: "גללו לצד כדי לראות את הטבלה במלואה" }
+html[lang="ur-Latn"] .table-scroll:after { content: "Poora table dekhne ke liye side mein scroll karein" }
+
+/* the sticky table hint is pinned with left:0 in styles.css */
+[dir="rtl"] .table-scroll:after { left: auto; right: 0 }
