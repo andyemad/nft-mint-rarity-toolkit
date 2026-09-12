@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>バイブコーディング | 話してスキルを良くする</title>
+<meta name="description" content="スキルはまだ全部完成していません。ふつうの言葉で改善・修正・拡張できます。最初に使うプロンプトもそのまま掲載。">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="スキルをバイブコーディングする">
+<meta property="og:description" content="コードは書きません。問題を説明すれば、エージェントが直してくれます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ja" href="./">
+<link rel="alternate" hreflang="ko" href="../../ko/prompts/">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Discord用プロンプトをコピー", "copy.terminal": "ターミナルコマンドをコピー", "copy.button": "コピー", "copy.done": "コピーしました", "copy.aria": "クリップボードにコピーしました", "toast.copied": "コピーしました。準備ができたら貼り付けてください。", "toast.manual": "自動コピーが使えません。テキストを選択したので手動でコピーしてください。", "progress.count": "{n} / 4 完了", "progress.saved": "このブラウザに保存されました", "progress.visit": "この訪問中だけ進捗を保持します", "toast.complete": "セットアップ完了。次はエージェントにメッセージを送ってみましょう。", "skills.one": "個のスキル", "skills.many": "個のスキル", "skills.ready": "，、すぐに使えます", "skills.found": "，、見つかりました", "demo.rarity.prompt": "このコレクションをランキングして、レアなものを教えて", "demo.rarity.answer": "ランキングを作成しました。レアな上位3つです。", "demo.rarity.title": "レアリティレポート", "demo.rarity.subtitle": "デモコレクション", "demo.rarity.foot": "調査のみ。取引は送信していません。", "demo.mint.prompt": "ウォレットをつなぐ前にこのミントを調べて", "demo.mint.answer": "まずコントラクト、価格、供給量を確認します。", "demo.mint.title": "ミント調査", "demo.mint.subtitle": "チェック項目の例", "demo.mint.foot": "ミントを承認する前に結果を確認してください。", "demo.mint.row1": "本物のコントラクトか確認", "demo.mint.row2": "オンチェーンのミント価格を読む", "demo.mint.row3": "残りの供給量を確認", "demo.mint.tag": "まず確認", "demo.wallet.prompt": "このウォレットは最近何を買ってる？", "demo.wallet.answer": "ウォレットの公開データをレポートにまとめます。", "demo.wallet.title": "ウォレット分析", "demo.wallet.subtitle": "レポート例", "demo.wallet.foot": "公開データのみ。秘密鍵は不要です。", "demo.wallet.row1": "最近の購入", "demo.wallet.row2": "保有コレクション", "demo.wallet.row3": "売却と送金", "demo.wallet.tag": "オンチェーン"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">ガイドへスキップ</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="NFTツールキットのホーム"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFTツールキット</span><span class="brand-sub">自分だけのエージェント</span></a>
+    <nav class="topnav" aria-label="メインナビゲーション"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>JA</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="./" hreflang="ja" aria-current="true"><span>日本語</span><code>JA</code></a></li><li><a href="../../ko/prompts/" hreflang="ko"><span>한국어</span><code>KO</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">ガイド</a><a href="../#list">スキル</a><a class="pricing-nav" href="../#money">費用</a><a class="pricing-nav" href="./">バイブコーディング</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="GitHubでNFTツールキットを見る"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> バイブコーディング</div>
+      <h1 id="vibe-title"><span>スキルはまだ全部完成していません。</span><span>話して仕上げていく。</span></h1>
+      <p>31個のスキルのうち、いくつかはまだ荒削りです。これは意図的なものです： <b>欲しいものを説明するだけで、自分で直して拡張できます</b>。コードは一切書きません。壊れている点や追加したい点を伝えれば、エージェントが実行し、テストし、結果を見せてくれます。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">サブスクリプションを取得 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">セットアップガイドに戻る</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>バイブコーディングが実際に意味するもの</h2>
+      <p>通常、ソフトウェアを良くするには開発者がコードを読んで編集します。ここではその工程を飛ばします。 <b>ふつうの言葉で問題を説明すれば、読むのも編集するのもエージェントがやります。</b></p>
+      <p>スキルとは、エージェントが従う手順を書き留めたものにすぎません。だから改善はコーディング作業ではなく、会話です。「Robinhoodのリンクを渡すと毎回失敗する」と言えば、それが直しに行きます。</p>
+      <div class="note"><b>やる価値がある理由：</b> 改善したスキルは改善されたまま残ります。次に同じ作業が来たとき、エージェントはすでに答えを知っています。</div>
+      <div class="note"><b>別途の請求はありません。</b> これは、すでに設定したのと同じサブスクリプションで動きます。長い作業はチャットより多く消費するので、最初の数回は使用量ページを確認し、その後は気にしなくて大丈夫です。</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>4ステップのループ</h2>
+      <div class="two">
+        <div class="card"><span class="price">ステップ1</span><h4>欲しいものを伝える</h4><p>Discordで、ふつうの言葉で。人に説明できるなら、ここでも説明できます。</p></div>
+        <div class="card"><span class="price">ステップ2</span><h4>作業させる</h4><p>スキルを読み、何を変えるか判断して、変更します。何をしたか一行で説明するよう頼みましょう。</p></div>
+        <div class="card"><span class="price">ステップ3</span><h4>証明させる</h4><p>「テストして出力を見せて」と言いましょう。これが多くの人が飛ばすステップで、いちばん重要なものです。</p></div>
+        <div class="card"><span class="price">ステップ4</span><h4>正しくなるまで繰り返す</h4><p>正しくないなら、まだどこが違うかを伝えましょう。2〜3回のやり取りは普通です。</p></div>
+      </div>
+      <div class="note warn"><b>「完了」は結果ではありません。</b> エージェントは、動かないものを「終わった」と言うことがあります。必ず実際の出力、実際のエラー、実際のリンクを求めてください。見せられないなら、終わっていません。</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>まず使うプロンプト</h2>
+      <p>最初はこの順番で試してください。10分ほどで、準備が整います。</p>
+
+      <h3>手を入れるべき箇所を見つける</h3>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot インストールしたスキルをひととおり読んで、未完成・不明瞭・手順が抜けているものを教えて
+
+@yourbot いちばん弱いものを選んで、そこから何が足りないか具体的に教えて
+
+@yourbot 私の生活が楽になるには、まずどのスキルを改善すべき？理由も教えて</code></pre>
+
+      <h3>ひとつ直す</h3>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot レアリティのスキルは、まだ非公開のコレクションに対応していない。そこに対応させて、動くところを見せて
+
+@yourbot ミントチェッカーの出力をもっと読みやすくして。今の形式が分からない
+
+@yourbot このスキルは、コントラクトアドレスを知っている前提になっている。知らない人向けに書き直して
+
+@yourbot この会話で学んだことを使って、このスキルを改善して</code></pre>
+
+      <h3>テストする</h3>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot それをちゃんとテストして、実際の出力を貼って
+
+@yourbot 自分で試して動くか確認できる、実際の例を出して
+
+@yourbot 今作ったもので、まだ何がうまくいかない可能性がある？</code></pre>
+
+      <h3>残す</h3>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 今考え出したことをスキルとして保存して。次は私が説明しなくてもできるように
+
+@yourbot 今やった手順を書き留めて、次も同じように動くようにして</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>スキルが壊れたとき</h2>
+      <p>これはいちばんよくある作業で、まったく普通のことです。エラーが出たら、そのエラーを貼り返せば直してくれます。</p>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot うまくいきませんでした。こう出ました：&lt;エラーを丸ごと貼り付け&gt;
+
+@yourbot 前回と同じだけど、ウォレットアドレスはこれにして：&lt;アドレス&gt;
+
+@yourbot もう一度試すだけでなく、なぜ失敗し続けるのか原因を突き止めて
+
+@yourbot 元の状態に戻して。その変更で悪くなった
+
+@yourbot 動くと言ったのに動きませんでした。次にそう言う前に、動く証拠を見せて</code></pre>
+      <div class="note"><b>エラーは要約せず、丸ごと貼り付けましょう。</b> あの見苦しいほどの長文こそが、必要な情報です。削ると、1回で済む修正が4回かかるようになります。</div>
+      <div class="note warn"><b>悪化したら、ロールバックを頼みましょう。</b> 「元の状態に戻して」は、正当で役に立つプロンプトです。大きな変更の前にコピーを保存するよう頼んでおけば、いつでも戻せます。</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>新しいことを教える</h2>
+      <p>31個のスキルは出発点です。本当の価値は、繰り返し行う自分の作業をスキルとして足していくことにあります。</p>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 買う前に私がミントを確認するやり方を見て、次はあなたが代わりにできるようスキルにして
+
+@yourbot フロアがちょうど下がったコレクションを見つけるスキルを作って
+
+@yourbot ツイートを貼ったら毎回、ミントかどうか、いくらか、本物かどうかを確認して。それをスキルにして
+
+@yourbot 私のウォレットを全部チェックして、見ておくべきものがあれば教えてくれるスキルを作って
+
+@yourbot 2つのコレクションを並べて比べ、どちらが当たる確率が高いか教えてくれるものを作って</code></pre>
+      <div class="note"><b>繰り返していることは全部スキルにしましょう。</b> 同じことを2回説明したなら、それはスキルです。3回目を説明する必要はもうありません。</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>小さなもの一式を作る</h2>
+      <p>考え方は同じで、規模が大きいだけです。動くページを作ってオンラインに置かせることもできます。セットアップガイドのVercelの部分はそのためのものです。</p>
+      <pre data-label="Discordのプロンプト" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 私が持っているコレクションを全部、画像とレアリティ順位つきで表示するページを作って
+
+@yourbot ウォッチしているコレクションのシンプルなダッシュボードを作って、Vercelに置いて
+
+@yourbot コレクションのリンクを貼ると、全部をランク付けして画像つきで表示するページを作って
+
+@yourbot これをVercelに置いて、本当に公開されたらリンクを教えて</code></pre>
+      <div class="note"><b>「完了」ではなく、公開中のリンクを求めましょう。</b> サイトが公開されたと言うなら、URLを聞いて自分で開きましょう。この習慣だけで、失敗のほとんどを防げます。</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>効くフレーズ</h2>
+      <div class="table-scroll" role="region" aria-label="スクロールできる参照表" tabindex="0"><table>
+        <tr><th>こう言う</th><th>そうすると</th></tr>
+        <tr><td>「始める前に計画を見せて」</td><td>何かを始める前に意図が分かり、方向を修正できます</td></tr>
+        <tr><td>「テストして出力を見せて」</td><td>本物の修正と、自信ありげな一文との違い</td></tr>
+        <tr><td>「何を変えたか、一行で説明して」</td><td>コードを読まずに主導権を保てます</td></tr>
+        <tr><td>「何も使わないで／まだ何も変えないで」</td><td>お金やファイルに触れずに考えてくれます</td></tr>
+        <tr><td>「もっとシンプルにして」</td><td>小賢しい部分を削り、追えるものを残します</td></tr>
+        <tr><td>「これが分かりません。初心者に説明するように教えて」</td><td>専門用語ではなく、まっすぐな答え</td></tr>
+        <tr><td>「元の状態に戻して」</td><td>変更で悪化したときの取り消し</td></tr>
+        <tr><td>「それをスキルとして保存して」</td><td>恒久的になり、もう説明しなくて済みます</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>トラブルを避ける</h2>
+      <ul>
+        <li><b>秘密鍵は絶対に貼り付けない</b> エージェントとのチャットにも、どこにも。もし貼ってしまったことがあるなら、そのウォレットは焼失したと考え、中にあるものをすべて移動してください。</li>
+        <li><b>大きな変更の前に計画を求めましょう。</b> 「まず計画を見せて」は10秒で済み、大きな混乱を防ぎます。</li>
+        <li><b>変更は一度にひとつ。</b> 同時に3つ改善すると、どれが壊したのか分からなくなります。</li>
+        <li><b>お金は「ノー」の後ろに置いておく。</b> 「私に確認せずに何も使わないで」と言えば、使いません。</li>
+        <li><b>深く進む前にバックアップ。</b> まずスキルのコピーを保存するよう頼みましょう：「スキルフォルダを安全な場所にコピーして」。</li>
+        <li><b>成功したと言うのに自分で確認できなければ、それは本物ではありません。</b> もう一度、証拠を求めましょう。</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>これらすべてに必要なものはひとつ</h3>
+        <p>サブスクリプション、月およそ$10で、deepseek v4.1 flashが動きます。使える量は本当にたっぷりあるので、このやり取りを一日中、残量を気にせず続けられます。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">サブスクリプションを取得 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">セットアップガイドに戻る</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>あなたのものになるように作られています。</p>
+    <nav class="footer-links" aria-label="フッター">
+      <a href="../../">セットアップガイド</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">GitHubのソース</a>
+    </nav>
+  </div>
+  <div class="shell"><p>ここにあるものは投資助言ではありません。スキルを改善すれば、その改善版はあなたのものです。</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="./" hreflang="ja" aria-current="true">日本語</a> · <a href="../../ko/prompts/" hreflang="ko">한국어</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>
