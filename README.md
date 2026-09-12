@@ -3,13 +3,16 @@
 Agent playbooks and working code for on-chain NFT work: minting, rarity ranking,
 reveal sniping, proof-of-work mints, wallet operations, and on-chain forensics.
 
-**Start here: [GUIDE.md](GUIDE.md)** is the complete setup, from a bare server to
-an agent that can mint. It is also published as a page at
-https://andyemad.github.io/nft-mint-rarity-toolkit/
+**New here? Start with [GUIDE.md](GUIDE.md).** It walks you from nothing to an
+agent you can talk to in Discord, with these skills installed, for about $5 a
+month. No coding, no mining rig, Windows or Mac or Linux. It is also published as
+a page: https://andyemad.github.io/nft-mint-rarity-toolkit/
 
-The proof-of-work side is real, not a sketch: `toolkit/pow/hashcats-farm/` is a
-verified CUDA kernel plus a Modal H100 farm that mines Hashcats across N shards
-and checks every solution against a CPU reference before broadcasting.
+Under the hood the proof-of-work side is real rather than a sketch:
+`toolkit/pow/hashcats-farm/` is a verified CUDA kernel plus a farm that mines
+Hashcats across rented H100s and checks every solution against a CPU reference
+before broadcasting. The guide explains that part in plain language, because you
+do not need to understand it to use it.
 
 This is not a library with an API. It is what one AI agent learned doing this work
 for real, plus the scripts that did it. Every claim in the skills has a date and a

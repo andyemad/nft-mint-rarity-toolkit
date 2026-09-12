@@ -1,130 +1,125 @@
-# The complete setup
+# Set up your own minting agent
 
-Everything needed to run a Hermes agent that can mint, snipe, rank and audit
-on-chain NFT launches, including the proof-of-work and GPU minting side.
+A step by step guide to running an AI agent on your own computer (or a cheap
+server), talking to it through Discord, and giving it 31 ready-made NFT skills.
 
-Written to be followed top to bottom. Roughly 30 minutes if you already have a
-server, longer if you need to create one.
+You do not need to code. You do not need a mining rig. The total cost is about
+**$5 a month**, and most of the optional extras are free.
 
-**What it costs:** a VPS if you want the agent always on (about $5/month), and an
-LLM subscription. The one that makes this cheap is OpenCode Go, around $5/month,
-running `deepseek-v4.1-flash`. Everything else here is free and open source.
-
----
-
-## Contents
-
-1. [What this actually gives you](#1-what-this-actually-gives-you)
-2. [Get Hermes running](#2-get-hermes-running)
-3. [Connect OpenCode Go](#3-connect-opencode-go)
-4. [Install the skills](#4-install-the-skills)
-5. [Proof-of-work and GPU minting](#5-proof-of-work-and-gpu-minting)
-6. [The rest of the minting toolkit](#6-the-rest-of-the-minting-toolkit)
-7. [Connect Discord](#7-connect-discord)
-8. [Verify it all works](#8-verify-it-all-works)
-9. [What breaks, and why](#9-what-breaks-and-why)
+This file is the same guide as the published page at
+https://andyemad.github.io/nft-mint-rarity-toolkit/
 
 ---
 
-## 1. What this actually gives you
+## What you are actually building
 
-A Hermes agent is a long-running process with a shell, a scheduler and a set of
-tools. This setup gives it:
+Hermes is an AI assistant that runs on your own machine. Unlike a chat website, it
+can do things: open pages, read the blockchain, run a script, watch a collection
+overnight and message you when something happens.
 
-- **31 skills** distilled from real on-chain work: mint execution, rarity
-  ranking that matches OpenSea rank for rank, reveal sniping, secondary buys,
-  wallet forensics, contract analysis, collection production.
-- **A rundown toolkit**: rarity engines, a SeaDrop multi-wallet mint tool, a
-  Seaport buy path with a fill diagnostic, wallet P&L reconstruction, keyless
-  volume and minter-legitimacy analysis.
-- **Proof-of-work minting that actually runs at scale**: a verified CUDA kernel
-  and a Modal farm that mines Hashcats over N H100 shards, verifying every
-  solution against a CPU reference before it broadcasts.
-- **A scheduler**, so watch-a-collection-and-ping-me jobs keep running while you
-  sleep.
+This toolkit adds 31 skills to it. A skill is a set of instructions the agent loads
+when a job comes up. You never run them yourself. You type in Discord, in normal
+English:
 
-It runs the same on a laptop and a server. A server just means it keeps running
-when you close the lid.
+> **You type:** "rank everything in this collection by rarity and tell me which ones
+> are listed cheap"
+>
+> **It does:** reads the collection, scores every NFT, pulls the listings, and
+> answers in the chat.
+
+After setup you never have to open a terminal again. Discord is where you live.
 
 ---
 
-## 2. Get Hermes running
+## What you need
 
-### On a VPS (recommended for anything that should keep running)
+| You need | Cost | Why |
+|---|---|---|
+| A computer, or a rented server | $0, or ~$5/month for a server | Your own computer works. A server means it keeps running when you shut the laptop |
+| A Discord account | Free | How you talk to the agent, from your phone or desktop |
+| An OpenCode subscription | ~$5/month | The agent's brain. The only thing you have to pay for |
+| A Modal account (GPU minting only) | Free, includes $30/month of compute | Some mints need heavy computing. You rent it by the second instead of buying hardware |
 
-Ubuntu 22.04 or 24.04, 2 vCPU, 4 GB RAM, 40 GB disk. 2 GB is enough for the agent
-alone; take 4 GB if you will run a browser or a local transcription model.
+**You do not need a mining rig or an expensive graphics card.** Everything runs on
+an ordinary laptop. When a mint needs heavy computing you borrow it for a few
+minutes on the free credits.
 
-```bash
-ssh root@YOUR_SERVER_IP
+---
 
-adduser hermes && usermod -aG sudo hermes
-rsync --archive --chown=hermes:hermes ~/.ssh /home/hermes/
-ufw allow OpenSSH && ufw enable
-loginctl enable-linger hermes     # without this, services die when SSH closes
+## 1. Install the agent
 
-su - hermes
-sudo apt update && sudo apt install -y git curl tmux build-essential python3-venv
+You paste one line into a terminal. That is the hardest part of the guide.
+
+**Windows** — open the Start menu, type `PowerShell`, open it, paste:
+
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-### On your own machine
-
-Skip straight to the install. macOS, Linux and WSL2 all work.
-
-### Install
+**Mac** — press Command + Space, type `Terminal`, open it, paste:
 
 ```bash
 curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
-source ~/.bashrc
-hermes --version
+```
+
+**Linux** — same as Mac:
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+The installer fetches everything it needs on its own. It takes a few minutes. Close
+the window, open a fresh one, and check it worked:
+
+```bash
 hermes doctor
 ```
 
-The installer handles Python, Node, ripgrep, ffmpeg, the repo clone and the
-virtual environment. `hermes doctor` tells you what else it needs.
+That prints a checklist of everything it needs. Green means fine.
+
+**Want it running 24/7?** Your own computer is fine, but the agent stops when you
+shut it down. Rent a small server for about $5/month from Hetzner or DigitalOcean,
+choose Ubuntu when they ask, and run the Linux line on that server instead.
 
 ---
 
-## 3. Connect OpenCode Go
-
-This is the part that keeps the cost at about $5/month.
+## 2. Give it a brain (about $5/month)
 
 1. Subscribe at **https://opencode.ai/go?ref=0N4C2C5TNK**
-2. Copy the API key from the dashboard.
-3. Put it in the environment file:
+2. Copy the key it shows you.
+3. Put the key in the settings file.
+
+Windows — open the file in Notepad and add your key on its own line at the bottom:
+
+```powershell
+notepad $env:USERPROFILE\.hermes\.env
+```
+
+```
+OPENCODE_GO_API_KEY=YOUR_KEY_HERE
+```
+
+Mac and Linux:
 
 ```bash
-hermes config env-path       # prints the file, usually ~/.hermes/.env
+hermes config env-path
 printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' >> ~/.hermes/.env
-chmod 600 ~/.hermes/.env
 ```
 
-4. Select the provider and model:
+4. Tell the agent to use it and say hello:
 
 ```bash
-hermes model                 # choose OpenCode Go, then deepseek-v4.1-flash
-hermes chat -q "reply with OK and name the model you are"
+hermes model
+hermes chat -q "hello, what model are you?"
 ```
 
-The dashboard tracks two windows, a 5-hour one and a weekly one, and shows what
-percentage you have used with the reset time. If you are doing long autonomous
-runs, that is the number to watch.
-
-### Why this model
-
-`deepseek-v4.1-flash` is fast and cheap enough to leave running on a scheduler.
-Tool-heavy work costs more than chat, so if you are farming a mint, check the
-usage window after your first long run rather than assuming.
-
-### Using something else
-
-Any provider works. Set `OPENROUTER_API_KEY`, `ANTHROPIC_API_KEY`,
-`DEEPSEEK_API_KEY` or similar in `~/.hermes/.env`, or authenticate with
-`hermes auth add <provider> --type oauth`, then pick it in `hermes model`.
+If it answers, you have a working agent. Watch your usage the first week: the
+OpenCode dashboard shows a 5-hour window and a weekly one, and long autonomous jobs
+use more than chatting.
 
 ---
 
-## 4. Install the skills
+## 3. Download the 31 skills
 
 ```bash
 git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
@@ -132,16 +127,14 @@ cd nft-mint-rarity-toolkit
 ./install.sh
 ```
 
-That copies all 31 skills into `~/.hermes/skills/`. Use `--profile NAME` to
-install into a named profile, `--dry-run` to preview, and re-running it is safe,
-because it moves conflicting skills aside instead of overwriting them.
+That copies all 31 skills into your agent. Check them any time with
+`hermes skills list`. Running it again later is safe.
 
-```bash
-hermes skills list | head -40
-hermes chat -s nft-rarity-engine -q "what does this skill let you do"
-```
+No git installed? Download the ZIP from
+https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip,
+unzip it, open a terminal inside the folder, and run `bash install.sh`.
 
-Extra dependencies for the signing and trading paths:
+Extra pieces needed by the wallet and trading skills:
 
 ```bash
 pip install eth-account coincurve pycryptodome
@@ -149,221 +142,181 @@ pip install eth-account coincurve pycryptodome
 
 ---
 
-## 5. Proof-of-work and GPU minting
+## 4. Connect Discord
 
-This is the part people ask about most, so here is the whole loop.
-
-### What a PoW mint is
-
-The contract gives you a target and asks for a nonce whose hash lands under it.
-You are not clicking a button; you are searching. Two schemes are covered:
-
-```
-Hashcats   keccak256( miner(20) ‖ nonce(32) ‖ prev(32) ‖ anchor(32) ) < target
-FAB4200    keccak256( chainid(32) ‖ contract(20) ‖ minter(20) ‖ nonce(32) ) < target
-```
-
-Hashcats links each token to the previous one through `prev`, and pins the round
-to a block with `anchor`. FAB4200 is a straight search with a difficulty floor
-(40 bits at the time of writing, which is maximum).
-
-Both preimages fit in a single Keccak block, which is what makes a GPU kernel
-orders of magnitude faster than a CPU one.
-
-### Why CPU mining does not work
-
-At 40 bits the expected work is around 1.1e12 hashes per solve. A laptop does
-tens of millions per second. An H100 does about 7 GH/s. One of those finishes in
-minutes; the other finishes next week.
-
-### The kernel ships with a self-check
+1. Go to https://discord.com/developers/applications and click **New Application**.
+2. Click **Bot** in the left menu. Under **Privileged Gateway Intents** turn
+   **Message Content Intent** ON. Without it the bot looks completely broken.
+3. Still on the Bot page, click **Reset Token** and copy it. Treat it like a password.
+4. Click **Installation**, enable **Guild Install**, and make sure the scopes include
+   `bot` and `applications.commands`.
+5. Open the install link it shows you and add the bot to your server.
+6. Get your user ID: Discord → **Settings → Advanced** → turn on **Developer Mode**,
+   then right-click your own name and choose **Copy User ID**.
+7. Run the setup and paste in the token and the ID:
 
 ```bash
-cd toolkit/pow
-./hcminer selfcheck 0x<miner> 0x<prev> 0x<anchor>
+hermes gateway setup
 ```
 
-That compares the optimised fast path against an independent reference Keccak over
-200,000 nonces. There is also a `verify` mode that takes work values computed in
-Python and confirms the kernel agrees with them. Run it before you rent anything,
-because a kernel with an endianness bug mines forever and finds nothing.
-
-The two bugs worth knowing: the nonce has to be byte-swapped before it is XORed
-into the state word, and the leading-zero test has to run against the digest word
-in the right byte order. Both are fixed in the shipped source.
-
-### The farm
-
-`toolkit/pow/hashcats-farm/` is the full loop: a verified CUDA kernel, a Modal
-H100 farm of N shards, and local signing and broadcast.
+Then start it and test:
 
 ```bash
-pip install modal eth-account pycryptodome coincurve
-modal setup
-
-modal run hashcats_modal.py --mode probe     # kernel vs CPU reference
-modal run hashcats_modal.py --mode bench     # GH/s on an H100
-python3 hashcats.py state                    # current round
-python3 farm.py --shards 4 --minutes 30 --dry   # verify + simulate, no spend
-python3 farm.py --shards 8 --minutes 30 --key ~/.hermes/secrets/hashcats_key
+hermes gateway run
 ```
 
-Every candidate solution is verified against a Python keccak **and** re-checked
-against the live round before broadcast, so a stale nonce never costs gas.
-
-Two things that will stop you, both worth pre-empting:
-
-- **Fund the wallet that broadcasts.** A working farm with an empty wallet
-  produces nothing.
-- **Read the round once, then mine.** The Robinhood RPC rate-limits per IP on
-  reads and writes; a shard polling in a loop gets 429s and looks like a protocol
-  error.
-
-### Build the kernel yourself
+Send the bot a direct message in Discord. It should answer. When you are happy,
+press Ctrl + C and make it start on its own from now on:
 
 ```bash
-gcc -O3 -fopenmp -o hcminer hcminer.c
-nvcc -O3 -o hcminer_cuda hcminer.cu
-```
-
-Do not use `-march=native` for a cloud build: the build host is not the execution
-host, and the binary dies with SIGILL. On macOS, clang has no OpenMP, so either
-install `libomp` or build single-threaded with the small stub documented in
-`toolkit/pow/README.md`.
-
-**Cost expectation, stated plainly:** a GPU mint is a contest entry, not a
-button. You pay for compute whether or not you land a token, and other miners are
-racing the same round. Do the arithmetic on your own spend, and stop when the
-round goes stale.
-
----
-
-## 6. The rest of the minting toolkit
-
-```bash
-cd toolkit
-
-# rarity: rank a collection, matching OpenSea
-python3 rarity/rarity_engine.py compute
-HELD="12,44,91" python3 rarity/gen_dash.py
-
-# recon before spending anything
-python3 analysis/collection_volume.py <contract> 3000000
-python3 analysis/minter_legitimacy.py <contract> <deploy_block>
-python3 analysis/sweep_scope.py <opensea-slug>
-
-# SeaDrop public mint across many wallets
-python3 mint/seadrop_fire.py recon  <collection>
-python3 mint/seadrop_fire.py wallet <collection> 3
-python3 mint/seadrop_fire.py fire   <collection> --keyfile ~/.hermes/secrets/x_key --quantity 1
-
-# buy from secondary, dry run first
-python3 sniper/buy_secondary.py <slug> --target-eth 0.001
-python3 sniper/buy_secondary.py <slug> --live
-
-# wallet P&L, mints and buys separated, gas counted
-python3 wallets/wallet_recon.py <address>
-```
-
-Every spending path simulates with `eth_call` first and needs an explicit flag to
-broadcast. That is deliberate. Read the README in each directory before you use
-it.
-
-For launches like **SpawnHood** (`opensea.io/collection/spawnhood`, Robinhood plus
-Ordinals) the useful skills are `nft-mint-recon` for working out what the mint
-actually is, `ethereum-data-pipelines` for reverse-engineering an unknown mint
-site, `nft-minter-legitimacy-audit` for judging whether the minters are real, and
-`rh-chain-rarity-sniping` for getting rare ones at the floor after reveal.
-
----
-
-## 7. Connect Discord
-
-Useful if you want to talk to the agent from your phone instead of a terminal.
-
-1. **https://discord.com/developers/applications** → New Application.
-2. **Bot** tab: enable **Message Content Intent**. Without it the bot receives no
-   text and looks dead. Then **Reset Token** and copy it.
-3. **Installation** tab: Guild Install, scopes `bot` and `applications.commands`,
-   permissions `274878286912`. Or use this URL directly:
-
-   ```
-   https://discord.com/oauth2/authorize?client_id=YOUR_APP_ID&scope=bot+applications.commands&permissions=274878286912
-   ```
-
-4. Invite it to your server. You need Manage Server there.
-5. Copy your user ID (Settings → Advanced → Developer Mode, then right-click your
-   name → Copy User ID).
-6. Configure and start:
-
-```bash
-hermes gateway setup        # choose Discord, paste the token and user ID
-hermes gateway run          # foreground test first
-hermes gateway install      # then as a service
+hermes gateway install
 hermes gateway start
 ```
 
-Add to `~/.hermes/.env` if you configure manually:
+In direct messages it replies to everything. In a server channel it only replies
+when you @mention it, so it does not spam your friends.
 
-```bash
-DISCORD_BOT_TOKEN=your-token
-DISCORD_ALLOWED_USERS=your-user-id
-DISCORD_HOME_CHANNEL=channel-id-for-notifications
-```
-
-Without `DISCORD_ALLOWED_USERS` the gateway denies everyone. In server channels
-the bot only answers when mentioned, unless you list the channel in
-`DISCORD_FREE_RESPONSE_CHANNELS`.
+If it never replies, it is almost always the Message Content Intent being off, or a
+wrong user ID.
 
 ---
 
-## 8. Verify it all works
+## 5. Free GPU minting (the $30 credit)
+
+Some NFTs are not sold, they are solved. Instead of paying a price you search for a
+lucky number, millions of times. That is a proof-of-work mint, and it is where
+Hashcats, FAB4200 and similar drops come from.
+
+Your laptop can do it, but it would take days. A rented graphics card does it in
+minutes, and you do not have to buy one:
+
+**Modal gives you $30 of free computing every month on their free plan.** That is
+roughly **7 hours of their fastest graphics cards**, at around $4/hour. For
+occasional mint attempts you will likely never pay.
+
+1. Make a free account at https://modal.com. The $30 is included.
+2. Install and connect:
 
 ```bash
-hermes --version                       # 1. installed
-hermes doctor                          # 2. dependencies and config
-hermes chat -q "reply with OK"         # 3. provider and key
-hermes skills list | grep rarity       # 4. skills present
-hermes gateway status                  # 5. Discord service up
-tail -20 ~/.hermes/logs/gateway.log    # 6. gateway connected
+pip install modal
+modal setup
 ```
 
-Then a real end-to-end test with no spending:
+3. Check the fast part works, then do a practice run that spends nothing:
 
 ```bash
-cd toolkit
-python3 rarity/rarity_engine.py compute         # needs an OpenSea key
-python3 pow/hashcats.py state 2>/dev/null || true
-modal run pow/hashcats_modal.py --mode probe    # kernel agrees with CPU
-python3 pow/hashcats-farm/farm.py --shards 2 --minutes 5 --dry
+cd toolkit/pow/hashcats-farm
+modal run hashcats_modal.py --mode probe
+python3 farm.py --shards 2 --minutes 5 --dry
 ```
+
+The practice run finds lucky numbers and checks them but never sends anything. Drop
+`--dry` to do it for real, with a wallet holding a little ETH.
+
+Be honest with yourself about this one. GPU minting is a race against everyone else
+trying the same drop, and you pay for computing time even when you lose. Use the
+free credits, keep attempts short, and do not top up expecting a guaranteed win.
 
 ---
 
-## 9. What breaks, and why
+## 6. What every skill does
 
-| Symptom | Cause |
+You do not need to memorise these. The agent picks the right one automatically.
+This list is so you know what to ask for.
+
+### Minting
+
+| Skill | What it does |
 |---|---|
-| Bot online but silent | Not mentioned, or Message Content Intent is off |
-| Gateway up, everyone denied | `DISCORD_ALLOWED_USERS` missing or wrong |
-| Bot dies when SSH closes | `loginctl enable-linger` missing, or service definition stale |
-| 403 from the Robinhood RPC | Python `urllib` without a browser `User-Agent` |
-| 429 from the Robinhood RPC | It rate-limits per IP on reads and writes: batch and back off |
-| Kernel mines forever, finds nothing | Endianness in the nonce XOR, or the leading-zero test on the wrong byte order. Run `selfcheck` |
-| Farm finds solutions, nothing mints | The broadcasting wallet is unfunded |
-| GPU build dies with SIGILL | `-march=native` on a different build host |
-| Rarity ranks disagree with OpenSea | Trait-frequency heuristic instead of OpenRarity information content |
-| Skills installed but not loading | `/reload-skills` in a running session, or `hermes skills list` to confirm |
+| `nft-mint-recon` | Works out what a mint really is: the real contract, the real price, whether it is actually open, and which network. The one that stops you getting scammed by a fake price. |
+| `seadrop-rapid-mint` | Mints from many wallets at once for drops that sell out in seconds. Creates the wallets, tells you exactly how much to fund each one, and fires at the opening moment. |
+| `pow-mint-mining` | Handles proof-of-work drops where you find a lucky number instead of paying. Setup, rented GPU, and the checking so you never waste a transaction. |
+| `onchain-puzzle-mining` | The actual number crunching, on your machine or rented hardware, with a self-check so it never runs for hours on a broken calculation. |
+| `onchain-puzzle-solving` | Solves the riddles and puzzles some drops use as a gate, by reading the game's own code. |
+| `onchain-claim-reverse-engineering` | Works out how a claim, free mint or refund page really works before you connect a wallet. |
+| `nft-floor-sweep` | Adds up every cheap listing in a collection and gives you the real total before you buy them all. |
+
+### Rarity and sniping
+
+| Skill | What it does |
+|---|---|
+| `nft-rarity-engine` | Ranks every NFT in a collection by rarity using the same maths OpenSea uses, so the ranks match. Can catch a reveal before OpenSea updates. |
+| `rh-chain-rarity-sniping` | After a reveal, buys the rarest items that are listed at normal floor prices. |
+| `nft-secondary-buy` | Buys a listed NFT from the resale market, always testing the purchase first so a broken order never costs a fee. |
+
+### Is this thing real?
+
+| Skill | What it does |
+|---|---|
+| `nft-minter-legitimacy-audit` | Tells you whether the wallets that minted were real people or a few wallets faking interest. |
+| `web3-claim-verification` | Checks a project's claims against the blockchain. |
+| `nft-market-analysis` | Floors, sales, holders, flip speed. What the numbers really say. |
+| `nft-collection-price-analysis` | What a collection is worth, and what can go wrong after you buy. |
+| `nft-exit-discipline` | Rules for taking profit instead of holding forever. |
+
+### Wallets
+
+| Skill | What it does |
+|---|---|
+| `ethereum-wallet-operations` | Creates wallets, backs up keys properly, moves tokens without exposing keys. |
+| `wallet-radar-operations` | Watches wallets you care about and pings you when they buy. |
+| `public-wallet-xlsx-delivery` | Turns a list of wallets into a clean shareable spreadsheet. |
+| `pseudonym-identity-research` | Links anonymous accounts, handles and wallets belonging to the same person. |
+
+### Making your own collection
+
+| Skill | What it does |
+|---|---|
+| `nft-collection-production` | Everything for launching your own: art plan, traits, pricing, mint page, contract mechanics. |
+| `nft-trait-taxonomy` | Keeps every trait consistent and grouped so your metadata does not become a mess. |
+| `nft-trait-curation` | Audits each trait for duplicates and anything that looks off before launch. |
+
+### Data, research and building
+
+| Skill | What it does |
+|---|---|
+| `ethereum-data-pipelines` | Reads the blockchain without paying for an API. The engine under a lot of the others. |
+| `rh-mint-command-center` | A full local mint control room: plan, rehearse, manage wallets, watch the floor, and audit what happened. |
+| `mint-field-guide` | A read-only dashboard of upcoming mints and market movement, with the source noted for every number. |
+| `onchain-game-economy-analysis` | Takes an on-chain game apart to show where value comes from. |
+| `polymarket` | Reads prediction-market prices. |
+| `proof-of-play-archive` | Background research on Proof of Play and Pirate Nation. |
+| `agent-protocol-identity` | Gives an AI agent a verifiable identity when it posts online. |
+| `flop-technocore-agent-ops` | How to run an agent with its own public account without leaking anything private. |
+| `internet-computer-development` | Notes for building on the Internet Computer blockchain. |
 
 ---
 
-## Where things live
+## 7. What it costs
 
-- **Repository:** https://github.com/andyemad/nft-mint-rarity-toolkit
-- **Skills:** `skills/`, indexed in `SKILLS.md`
-- **Toolkit:** `toolkit/`, each directory with its own README
-- **Secrets:** `~/.hermes/secrets/`, `chmod 600`, never in the repo
+| Thing | Cost | Needed? |
+|---|---|---|
+| Hermes agent | Free | Yes |
+| The 31 skills | Free | Yes |
+| OpenCode subscription | ~$5/month | Yes, this is the brain |
+| Your own computer | Free | Fine, but it stops when you shut down |
+| Small server for 24/7 | ~$5/month | Optional |
+| Modal for GPU minting | Free, $30/month included | Optional |
+| Gas fees when you actually mint | Usually cents | Only when you mint, from your own wallet |
 
-Nothing here is financial advice. Every strategy in it has a real loss mode
-documented next to it, and several of the skills exist specifically to record a
-method that failed.
+The honest answer is **about $5 a month**, maybe $10 if you want it awake all night.
+
+---
+
+## 8. If something goes wrong
+
+| What you see | What to do |
+|---|---|
+| `hermes` is not recognised | Close the terminal and open a new one. Still failing? Restart and retry. |
+| Bot online but never answers | Turn on Message Content Intent in the Discord developer page |
+| Answers in DMs but not in a server | Normal. In servers it answers only when @mentioned |
+| It says you are not allowed | Your Discord user ID is wrong. Copy it again with Developer Mode on |
+| It stops when you close the laptop | Expected on your own computer. Get the $5 server for 24/7 |
+| It asks for more money | Check your OpenCode usage page. Long jobs use more than chat |
+| Skills do not show up | `hermes skills list` to confirm, then `/reload-skills` in a chat |
+| You are lost | Run `hermes chat` and just say what you are trying to do |
+
+---
+
+Nothing here is financial advice. Minting and trading lose money for most people
+who try it. Set a limit before you start and never mint with money you need.
