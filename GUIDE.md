@@ -90,9 +90,12 @@ If it answers, the agent works.
 
 ---
 
-## 3. Set up Discord
+## 3. Set up Discord or Telegram
 
-After this you never need the terminal again, you just message it.
+After this you never need the terminal again, you just message it. Pick whichever
+app you already use; both work the same afterwards.
+
+### Discord
 
 1. Go to https://discord.com/developers/applications and click **New Application**.
 2. Left menu → **Bot**. Under **Privileged Gateway Intents** turn **Message Content
@@ -123,6 +126,40 @@ you @mention it.
 
 If it never replies, it is almost always the Message Content Intent being off, or a
 wrong user ID.
+
+### Telegram
+
+Telegram is the quicker one. Hermes creates the bot for you.
+
+1. Run the setup, pick **Telegram**, then choose **Automatic**:
+
+```bash
+hermes gateway setup
+```
+
+2. A QR code appears with a link under it. Point your phone's camera at it, or open
+   the link. Telegram opens; tap **Create Bot**.
+3. Back in the terminal it detects your Telegram account and asks whether to allow
+   it. Say yes, and yes to the couple of questions after that.
+
+Test it, then make it permanent:
+
+```bash
+hermes gateway run       # leave open, message your new bot in Telegram
+hermes gateway install   # Ctrl+C first, then these two
+hermes gateway start
+```
+
+Prefer to make the bot yourself? Message **@BotFather**, send `/newbot`, answer its
+two questions (the username must end in `bot`), and copy the token it gives you.
+Get your user ID from **@userinfobot**. Choose **Manual** in the setup and paste in
+both.
+
+In a private chat it answers everything. In a group it only answers when you
+@mention it or reply to it.
+
+If it replies with a pairing code instead of an answer, run
+`hermes pairing approve telegram <code>` and message it again.
 
 ---
 

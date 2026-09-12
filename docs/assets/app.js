@@ -47,32 +47,38 @@
     });
   });
 
-  // Native content is visible before enhancement, including all three OS panels.
-  const osTabs = [...document.querySelectorAll('.os-tabs [role="tab"]')];
-  document.querySelector('.os-tabs').hidden = false;
-  function selectOS(tab, moveFocus = false) {
-    osTabs.forEach((item) => {
-      const selected = item === tab;
-      item.setAttribute('aria-selected', String(selected));
-      item.tabIndex = selected ? 0 : -1;
-      document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
-    });
-    if (moveFocus) tab.focus();
-  }
+  // Native content is visible before enhancement, including every tab panel.
+  // The OS switcher preselects the visitor's platform; other tablists keep
+  // whichever tab the markup marks as selected.
   const initialOS = /Mac|iPhone|iPad/.test(navigator.platform) ? 'mac' : /Linux/.test(navigator.platform) ? 'linux' : 'windows';
-  selectOS(document.querySelector(`#tab-${initialOS}`));
-  osTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => selectOS(tab));
-    tab.addEventListener('keydown', (event) => {
-      let target;
-      if (event.key === 'ArrowRight') target = (index + 1) % osTabs.length;
-      if (event.key === 'ArrowLeft') target = (index + osTabs.length - 1) % osTabs.length;
-      if (event.key === 'Home') target = 0;
-      if (event.key === 'End') target = osTabs.length - 1;
-      if (target !== undefined) {
-        event.preventDefault();
-        selectOS(osTabs[target], true);
-      }
+  document.querySelectorAll('[role="tablist"]').forEach((list) => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    list.hidden = false;
+    function selectTab(tab, moveFocus = false) {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+      if (moveFocus) tab.focus();
+    }
+    selectTab(list.querySelector(`#tab-${initialOS}`) || tabs.find((tab) => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        let target;
+        // Arrow direction follows the reading direction of the page.
+        const rtl = document.documentElement.dir === 'rtl';
+        if (event.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) target = (index + 1) % tabs.length;
+        if (event.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) target = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') target = 0;
+        if (event.key === 'End') target = tabs.length - 1;
+        if (target !== undefined) {
+          event.preventDefault();
+          selectTab(tabs[target], true);
+        }
+      });
     });
   });
 
