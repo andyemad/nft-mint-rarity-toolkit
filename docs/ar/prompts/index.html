@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>البرمجة بالمحادثة | حسّن المهارات بالكلام</title>
+<meta name="description" content="المهارات ليست كلها جاهزة. حسّنها وأصلحها ووسّعها بلغة عادية، مع الأوامر الجاهزة للبدء.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="البرمجة بالمحادثة للمهارات">
+<meta property="og:description" content="أنت لا تكتب كودًا. تصف المشكلة، ويصلحها وكيلك.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ar" href="./">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "انسخ طلب Discord", "copy.terminal": "انسخ أمر الطرفية", "copy.button": "انسخ", "copy.done": "تم النسخ", "copy.aria": "نُسخ إلى الحافظة", "toast.copied": "تم النسخ. الصقه عندما تكون جاهزًا.", "toast.manual": "النسخ التلقائي غير متاح. النص محدّد لتتمكن من نسخه.", "progress.count": "{n} من 4", "progress.saved": "محفوظ في هذا المتصفح", "progress.visit": "التقدم محفوظ لهذه الزيارة", "toast.complete": "اكتمل الإعداد. خطوتك التالية: أرسل رسالة إلى وكيلك.", "skills.one": "مهارة", "skills.many": "مهارة", "skills.ready": " جاهزة للعمل", "skills.found": " تم العثور عليها", "demo.rarity.prompt": "رتّب هذه المجموعة وأرني القطع النادرة", "demo.rarity.answer": "تم ترتيب المجموعة. إليك أندر ثلاث قطع.", "demo.rarity.title": "تقرير الندرة", "demo.rarity.subtitle": "مجموعة تجريبية", "demo.rarity.foot": "بحث فقط. لم تُرسل أي معاملة.", "demo.mint.prompt": "افحص عملية السك هذه قبل أن أوصل محفظتي", "demo.mint.answer": "سأتحقق أولًا من العقد والسعر والمعروض.", "demo.mint.title": "بحث عمليات السك", "demo.mint.subtitle": "قائمة فحص توضيحية", "demo.mint.foot": "راجع النتائج قبل الموافقة على السك.", "demo.mint.row1": "تحقق من العقد الحقيقي", "demo.mint.row2": "اقرأ سعر السك على السلسلة", "demo.mint.row3": "تحقق من المعروض المتبقي", "demo.mint.tag": "تحقق أولًا", "demo.wallet.prompt": "ما الذي تشتريه هذه المحفظة في الفترة الأخيرة؟", "demo.wallet.answer": "سأحوّل النشاط العام للمحفظة إلى تقرير.", "demo.wallet.title": "تحليل المحافظ", "demo.wallet.subtitle": "تقرير توضيحي", "demo.wallet.foot": "بيانات محفظة عامة. لا حاجة إلى مفاتيح خاصة.", "demo.wallet.row1": "المشتريات الأخيرة", "demo.wallet.row2": "المجموعات المحتفظ بها", "demo.wallet.row3": "المبيعات والتحويلات", "demo.wallet.tag": "على البلوكشين"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">تخطَّ إلى الدليل</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="الصفحة الرئيسية لمجموعة أدوات NFT"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>مجموعة أدوات NFT</span><span class="brand-sub">وكيل خاص بك</span></a>
+    <nav class="topnav" aria-label="التنقل الرئيسي"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>AR</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="./" hreflang="ar" aria-current="true"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">الدليل</a><a href="../#list">المهارات</a><a class="pricing-nav" href="../#money">التكاليف</a><a class="pricing-nav" href="./">البرمجة بالمحادثة</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="عرض مجموعة أدوات NFT على GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> البرمجة بالمحادثة</div>
+      <h1 id="vibe-title"><span>المهارات ليست كلها جاهزة.</span><span>حسّنها بالكلام.</span></h1>
+      <p>بعض المهارات الـ31 ليست مصقولة تمامًا، وهذا مقصود: <b>أنت تصلحها وتوسّعها بوصف ما تريد</b>. أنت لا تكتب أي كود. تقول ما المعطوب أو ما تريد إضافته، فينفّذه وكيلك ويختبره ويعرض عليك النتيجة.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">اشترك في الخدمة <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">العودة إلى دليل الإعداد</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>ما معنى البرمجة بالمحادثة فعلًا</h2>
+      <p>عادةً، يعني تحسين البرمجيات أن يقرأ مطوّر الكود ويعدّله. هنا تتجاوز ذلك كله. <b>تصف المشكلة بكلمات عادية، ويقوم الوكيل بالقراءة والتعديل.</b></p>
+      <p>المهارة مجرد مجموعة تعليمات مكتوبة يتبعها وكيلك. لذا فتحسينها ليس عملًا برمجيًا، بل محادثة. تقول «هذه تفشل دائمًا عندما يعطيها أحدهم رابط Robinhood»، فيذهب ويصلح ذلك.</p>
+      <div class="note"><b>لماذا يستحق الأمر العناء:</b> كل مهارة تحسّنها تبقى محسّنة. وفي المرة القادمة التي تظهر فيها تلك المهمة، يعرف الوكيل الجواب مسبقًا.</div>
+      <div class="note"><b>لا فاتورة منفصلة.</b> هذا يعمل على الاشتراك نفسه الذي أعددته. المهام الطويلة تستهلك منه أكثر من المحادثة، فتحقّق من صفحة الاستخدام في المرات الأولى، ثم توقّف عن القلق بشأنه.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>الحلقة من أربع خطوات</h2>
+      <div class="two">
+        <div class="card"><span class="price">الخطوة 1</span><h4>قل ما تريد</h4><p>بلغة واضحة، في Discord. إن كنت تستطيع وصفه لشخص، فأنت تستطيع وصفه هنا.</p></div>
+        <div class="card"><span class="price">الخطوة 2</span><h4>دعه يعمل</h4><p>يقرأ المهارة، ويحدّد ما يجب تغييره، ويجري التغيير. اطلب منه أن يشرح في سطر واحد ما فعله.</p></div>
+        <div class="card"><span class="price">الخطوة 3</span><h4>اطلب منه الإثبات</h4><p>قل «اختبرها وأرني المخرجات». هذه هي الخطوة التي يتجاهلها الناس، وهي الخطوة الأهم.</p></div>
+        <div class="card"><span class="price">الخطوة 4</span><h4>كرّر حتى يصح</h4><p>إن لم يكن صحيحًا، قل ما الذي لا يزال خطأ. وجولتان أو ثلاث جولات أمر طبيعي.</p></div>
+      </div>
+      <div class="note warn"><b>«انتهيت» ليست نتيجة.</b> قد يقول لك الوكيل إنه أنهى شيئًا لا يعمل أصلًا. اطلب دائمًا المخرجات الفعلية، أو الخطأ الفعلي، أو الرابط الفعلي. وإن لم يستطع أن يريك إياها، فهو لم ينتهِ.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>أوامر تبدأ بها</h2>
+      <p>نفّذها بالترتيب في المرة الأولى. تستغرق نحو عشر دقائق وتهيّئك للبدء.</p>
+
+      <h3>اكتشف ما يحتاج إلى تحسين</h3>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot اقرأ كل المهارات التي ثبّتها وأخبرني أيها يبدو ناقصًا أو غير واضح أو تنقصه خطوات
+
+@yourbot اختر أضعفها وأخبرني بالضبط ما الذي ينقصها
+
+@yourbot أي مهارة ستحسّنها أولًا لتسهيل حياتي، ولماذا؟</code></pre>
+
+      <h3>أصلح واحدة</h3>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot مهارة الندرة لا تتعامل مع المجموعات التي لا تزال مخفية. أضف ذلك وأرني أنها تعمل
+
+@yourbot اجعل مخرجات فاحص السك أسهل للقراءة، لا أفهم التنسيق الحالي
+
+@yourbot هذه المهارة تفترض أنني أعرف ما هو عنوان العقد. أعد كتابتها لشخص لا يعرف
+
+@yourbot حسّن هذه المهارة بما تعلمناه في هذه المحادثة</code></pre>
+
+      <h3>اختبرها</h3>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot اختبر ذلك كما ينبغي والصق المخرجات الفعلية
+
+@yourbot أعطني مثالًا حقيقيًا أجرّبه بنفسي للتأكد من أنه يعمل
+
+@yourbot ما الذي قد يفشل بعد فيما بنيته للتو؟</code></pre>
+
+      <h3>احتفظ بها</h3>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot احفظ ما توصلت إليه للتو كمهارة لتستطيع تكراره دون أن أشرح
+
+@yourbot اكتب الخطوات التي اتبعتها للتو ليعمل هذا بالطريقة نفسها في المرة القادمة</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>حين تتعطل إحداها</h2>
+      <p>هذا أكثر ما ستفعله، وهو أمر طبيعي تمامًا. يحدث خطأ ما، تلصق الخطأ، فيصلحه.</p>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot ذلك لم ينجح. هذا ما ظهر: &lt;paste the whole error&gt;
+
+@yourbot مثل المرة السابقة لكن بعنوان المحفظة هذا بدلًا منه: &lt;address&gt;
+
+@yourbot اكتشف سبب فشل ذلك المتكرر بدل أن تحاول مرة أخرى فقط
+
+@yourbot ارجع إلى ما كان عليه سابقًا، فقد زاد ذلك التغيير الأمر سوءًا
+
+@yourbot قلت إنه يعمل لكنه لم يعمل. أرني الدليل على أنه يعمل قبل أن تقول ذلك مرة أخرى</code></pre>
+      <div class="note"><b>الصق الخطأ كاملًا، لا ملخّصًا له.</b> كتلة النص القبيحة هي بالضبط ما يحتاجه. واختصارها هو ما يجعل الإصلاح يستغرق أربع محاولات بدل واحدة.</div>
+      <div class="note warn"><b>إن ازداد الوضع سوءًا، اطلب التراجع.</b> «ارجع إلى ما كان عليه» أمر مشروع ومفيد. اطلب منه حفظ نسخة قبل التغييرات الكبيرة ليكون ذلك ممكنًا دائمًا.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>علّمه شيئًا جديدًا</h2>
+      <p>المهارات الـ31 نقطة بداية. والقيمة الحقيقية في إضافة مهاراتك الخاصة لأمور تتكرر عليك.</p>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot راقب كيف أتحقق من السك قبل الشراء، ثم اكتب مهارة لتقوم بها عني في المرة القادمة
+
+@yourbot أنشئ مهارة للعثور على المجموعات التي انخفض حدها الأدنى للتو
+
+@yourbot كل مرة ألصق فيها تغريدة تحقّق إن كانت سكًا، وكم تكلف، وهل هي حقيقية. حوّل ذلك إلى مهارة
+
+@yourbot أنشئ مهارة تفحص كل محافظي وتخبرني بأي شيء ينبغي أن ألقى عليه نظرة
+
+@yourbot ابنِ شيئًا يقارن مجموعتين جنبًا إلى جنب ويخبرني أيتهما فرصها أفضل</code></pre>
+      <div class="note"><b>حوّل كل أمر متكرر إلى مهارة.</b> إن شرحت الشيء نفسه مرتين، فهذه مهارة. ولن تضطر إلى شرحه مرة ثالثة أبدًا.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>ابنِ شيئًا صغيرًا كاملًا</h2>
+      <p>الفكرة نفسها، لكن أكبر. يمكنك أن تطلب منه بناء صفحة تعمل ووضعها على الإنترنت، وهذا هو الغرض من جزء Vercel في دليل الإعداد.</p>
+      <pre data-label="أمر Discord" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot ابنِ لي صفحة تعرض كل مجموعة أملكها، مع الصور وترتيب الندرة
+
+@yourbot ابنِ لوحة بسيطة للمجموعات التي أتابعها وضعها على Vercel
+
+@yourbot أنشئ صفحة ألصق فيها رابط مجموعة فترتّب كل شيء وتعرض الصور
+
+@yourbot ضع هذا على Vercel وأعطني الرابط عندما يصبح منشورًا فعلًا</code></pre>
+      <div class="note"><b>اطلب الرابط المباشر، لا كلمة «انتهى».</b> إن قال إن الموقع يعمل، اطلب الرابط وافتحه بنفسك. هذه العادة وحدها تكشف معظم صور الخلل هنا.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>عبارات مجرّبة</h2>
+      <div class="table-scroll" role="region" aria-label="جدول مرجعي قابل للتمرير" tabindex="0"><table>
+        <tr><th>قل هذا</th><th>وستحصل على</th></tr>
+        <tr><td>«أرني خطتك قبل أن تبدأ»</td><td>ترى ما ينوي فعله قبل أن يفعل أي شيء، ويمكنك تعديل مساره</td></tr>
+        <tr><td>«اختبرها وأرني المخرجات»</td><td>الفرق بين إصلاح حقيقي وجملة واثقة</td></tr>
+        <tr><td>«اشرح ما غيّرته في سطر واحد»</td><td>تبقى مسيطرًا دون قراءة أي كود</td></tr>
+        <tr><td>«لا تنفق أي شيء / لا تغيّر أي شيء بعد»</td><td>يفكّر دون أن يمسّ أموالك أو ملفاتك</td></tr>
+        <tr><td>«اجعلها أبسط»</td><td>يزيل التعقيدات ويترك لك شيئًا تستطيع متابعته</td></tr>
+        <tr><td>«لا أفهم هذا، اشرحه لي كأنني مبتدئ»</td><td>جواب مباشر بدل المصطلحات</td></tr>
+        <tr><td>«ارجع إلى ما كان عليه»</td><td>تراجع، عندما يزيد تغيير ما الأمر سوءًا</td></tr>
+        <tr><td>«احفظ ذلك كمهارة»</td><td>يصبح دائمًا، ولن تشرحه مرة أخرى</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>الابتعاد عن المشاكل</h2>
+      <ul>
+        <li><b>لا تلصق المفتاح الخاص أبدًا</b> في محادثة مع وكيل، ولا في أي مكان آخر. وإن فعلت ذلك يومًا، فاعتبر تلك المحفظة محروقة وانقل كل ما فيها.</li>
+        <li><b>اطلب الخطة قبل التغييرات الكبيرة.</b> «أرني الخطة أولًا» تكلّفك عشر ثوانٍ وتوفّر عليك فوضى كبيرة.</li>
+        <li><b>تغيير واحد في كل مرة.</b> ثلاثة تحسينات دفعة واحدة تعني أنك لن تعرف أيها أفسد الأمر.</li>
+        <li><b>اجعل أموالك خلف كلمة «لا».</b> قل «لا تنفق أي شيء دون أن تسألني» ولن يفعل.</li>
+        <li><b>خذ نسخة احتياطية قبل أن تتعمّق.</b> اطلب منه حفظ نسخة من مهاراتك أولًا: «انسخ مجلد مهاراتي إلى مكان آمن».</li>
+        <li><b>إن ادّعى النجاح ولم تستطع رؤيته، فهو ليس حقيقيًا.</b> اطلب الدليل مرة أخرى.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>كل هذا يحتاج إلى شيء واحد</h3>
+        <p>الاشتراك، بنحو $10 شهريًا، ويعمل بـdeepseek v4.1 flash. يمنحك قدرًا سخيًا فعلًا من الاستخدام، وهذا ما يجعل هذا النوع من الأخذ والعطاء شيئًا تستطيع فعله طوال اليوم دون متابعة عدّاد.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">اشترك في الخدمة <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">العودة إلى دليل الإعداد</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>مبني ليكون لك.</p>
+    <nav class="footer-links" aria-label="تذييل الصفحة">
+      <a href="../../">دليل الإعداد</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">الكود المصدري على GitHub</a>
+    </nav>
+  </div>
+  <div class="shell"><p>لا شيء هنا نصيحة مالية. وإن حسّنت مهارة، فالنسخة المحسّنة ملكك.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="./" hreflang="ar" aria-current="true">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

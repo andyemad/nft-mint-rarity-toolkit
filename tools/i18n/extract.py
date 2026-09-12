@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract every translatable string from docs/index.html.
+"""Extract every translatable string from a master page (guide or vibe coding).
 
 Three buckets, because they are substituted by different rules:
 
@@ -18,15 +18,32 @@ import html
 import json
 import os
 import re
+import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-# The generated docs/index.html carries the language menu, so the master is
-# the only honest source for the key list.
-SRC = os.path.join(ROOT, "tools", "i18n", "index.en.html")
+# Which master document to read and where to write its key list. The generated
+# pages under docs/ carry the injected language menu, so the masters are the only
+# honest source for a key list.
+#   python3 tools/i18n/extract.py            -> the guide
+#   python3 tools/i18n/extract.py prompts    -> the vibe coding page
+I18N = os.path.join(ROOT, "tools", "i18n")
+DOCUMENTS = {
+    "guide": ("index.en.html", "strings.json"),
+    "prompts": ("prompts.en.html", "prompts.strings.json"),
+}
+DOC = sys.argv[1] if len(sys.argv) > 1 else "guide"
+if DOC not in DOCUMENTS:
+    sys.exit(f"unknown document {DOC!r}; choose from {', '.join(DOCUMENTS)}")
+SRC = os.path.join(I18N, DOCUMENTS[DOC][0])
+OUT = os.path.join(I18N, DOCUMENTS[DOC][1])
 APPJS = os.path.join(ROOT, "docs", "assets", "app.js")
-OUT = os.path.join(ROOT, "tools", "i18n", "strings.json")
 
-SKIP_TAGS = {"pre", "code", "script", "style", "svg", "symbol", "path"}
+# Never translated, anywhere.
+SKIP_TAGS = {"code", "script", "style", "svg", "symbol", "path", "head"}
+# <pre> is special. A block labelled "Discord prompt" is copy-paste text the
+# reader is meant to send, so it IS translated (the @yourbot mention is kept).
+# A terminal block, a settings file or an unlabelled block is code and never is.
+TRANSLATABLE_PRE_LABEL = "Discord prompt"
 TAG_RE = re.compile(r"<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>", re.S)
 ATTR_RE = re.compile(r'\b(data-label|aria-label|alt|placeholder|title)="([^"]*)"')
 ONLY_PUNCT = re.compile(r"^(?:\s|[\d\W])+$")
@@ -88,26 +105,48 @@ JS_DEFAULTS = {
 }
 
 
+def pre_is_translatable(attrs):
+    m = re.search(r'data-label="([^"]*)"', attrs)
+    kind = re.search(r'data-kind="([^"]*)"', attrs)
+    if kind:
+        return kind.group(1) == "prompt"
+    return bool(m) and m.group(1) == TRANSLATABLE_PRE_LABEL
+
+
 def walk(doc):
-    """Yield (kind, payload, is_translatable) segments in document order."""
+    """Yield (kind, payload, is_translatable) segments in document order.
+
+    The stack holds (tag, skip) pairs, so a <pre> can decide for its own subtree
+    whether its text is content or code.
+    """
     pos = 0
     stack = []
     for m in TAG_RE.finditer(doc):
         text = doc[pos:m.start()]
         if text:
             yield ("text", html.unescape(text),
-                   not any(t in SKIP_TAGS for t in stack))
+                   not any(skip for _tag, skip in stack))
         pos = m.end()
-        closing, name = m.group(1), m.group(2).lower()
+        closing, name, attrs = m.group(1), m.group(2).lower(), m.group(3)
         if closing:
-            if name in stack:
-                while stack and stack.pop() != name:
-                    pass
-        elif not m.group(3).rstrip().endswith("/"):
-            stack.append(name)
+            for i in range(len(stack) - 1, -1, -1):
+                if stack[i][0] == name:
+                    del stack[i:]
+                    break
+        elif not attrs.rstrip().endswith("/"):
+            if name == "pre":
+                skip = not pre_is_translatable(attrs)
+            elif name == "code":
+                # Inside a prompt block the code IS the content to translate.
+                skip = not any(t == "pre" and not s for t, s in stack)
+            elif name == "button" and "copy" in attrs:
+                skip = True  # placeholder label, replaced by app.js
+            else:
+                skip = name in SKIP_TAGS
+            stack.append((name, skip))
     tail = doc[pos:]
     if tail:
-        yield ("text", html.unescape(tail), not any(t in SKIP_TAGS for t in stack))
+        yield ("text", html.unescape(tail), not any(skip for _tag, skip in stack))
 
 
 def main():

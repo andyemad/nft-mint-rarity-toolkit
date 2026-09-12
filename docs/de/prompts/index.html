@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vibe coding | Machen Sie die Skills besser, indem Sie reden</title>
+<meta name="description" content="Die Skills sind nicht alle fertig. Verbessern, reparieren und erweitern Sie sie in klaren Worten, mit den genauen Prompts für den Anfang.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Vibe coding der Skills">
+<meta property="og:description" content="Sie schreiben keinen Code. Sie beschreiben das Problem, und Ihr Agent behebt es.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="../../zh/prompts/">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="./">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Discord-Prompt kopieren", "copy.terminal": "Terminalbefehl kopieren", "copy.button": "Kopieren", "copy.done": "Kopiert", "copy.aria": "In die Zwischenablage kopiert", "toast.copied": "Kopiert. Fügen Sie es ein, wenn Sie bereit sind.", "toast.manual": "Automatisches Kopieren ist nicht verfügbar. Der Text ist markiert, damit Sie ihn kopieren können.", "progress.count": "{n} von 4", "progress.saved": "In diesem Browser gespeichert", "progress.visit": "Fortschritt für diesen Besuch behalten", "toast.complete": "Einrichtung abgeschlossen. Ihr nächster Schritt: Schicken Sie Ihrem Agenten eine Nachricht.", "skills.one": "Skill", "skills.many": "Skills", "skills.ready": " einsatzbereit", "skills.found": " gefunden", "demo.rarity.prompt": "bewerte diese Sammlung und zeig mir die seltenen", "demo.rarity.answer": "Sammlung bewertet. Hier sind die drei seltensten.", "demo.rarity.title": "Seltenheitsbericht", "demo.rarity.subtitle": "Demo-Sammlung", "demo.rarity.foot": "Nur Recherche. Keine Transaktionen gesendet.", "demo.mint.prompt": "prüfe diesen Mint, bevor ich meine Wallet verbinde", "demo.mint.answer": "Ich prüfe zuerst Contract, Preis und Supply.", "demo.mint.title": "Mint-Recherche", "demo.mint.subtitle": "Beispiel-Checkliste", "demo.mint.foot": "Prüfen Sie die Ergebnisse, bevor Sie einen Mint bestätigen.", "demo.mint.row1": "Den echten Contract verifizieren", "demo.mint.row2": "Den Onchain-Mintpreis auslesen", "demo.mint.row3": "Verbleibende Supply prüfen", "demo.mint.tag": "Erst prüfen", "demo.wallet.prompt": "was hat diese Wallet in letzter Zeit gekauft?", "demo.wallet.answer": "Ich verwandle die öffentliche Aktivität der Wallet in einen Bericht.", "demo.wallet.title": "Wallet-Informationen", "demo.wallet.subtitle": "Beispielbericht", "demo.wallet.foot": "Öffentliche Wallet-Daten. Keine privaten Schlüssel nötig.", "demo.wallet.row1": "Letzte Käufe", "demo.wallet.row2": "Gehaltene Sammlungen", "demo.wallet.row3": "Verkäufe und Transfers", "demo.wallet.tag": "Onchain"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">Zum Leitfaden springen</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="NFT-Toolkit-Startseite"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT-Toolkit</span><span class="brand-sub">Ein eigener Agent</span></a>
+    <nav class="topnav" aria-label="Hauptnavigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>DE</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../../zh/prompts/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="./" hreflang="de" aria-current="true"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">Der Leitfaden</a><a href="../#list">Skills</a><a class="pricing-nav" href="../#money">Kosten</a><a class="pricing-nav" href="./">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="NFT-Toolkit auf GitHub ansehen"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Vibe coding</div>
+      <h1 id="vibe-title"><span>Die Skills sind nicht alle fertig.</span><span>Formen Sie sie im Gespräch.</span></h1>
+      <p>Einige der 31 Skills sind noch etwas rau. Das ist Absicht: <b>Sie reparieren und erweitern sie, indem Sie beschreiben, was Sie wollen</b>. Sie schreiben nie Code. Sie sagen, was kaputt ist oder was hinzukommen soll, und Ihr Agent setzt es um, testet es und zeigt Ihnen das Ergebnis.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Holen Sie sich das Abo <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">Zurück zum Einrichtungsleitfaden</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>Was Vibe coding wirklich bedeutet</h2>
+      <p>Normalerweise bedeutet es, Software zu verbessern, dass ein Entwickler den Code liest und ihn bearbeitet. Hier überspringen Sie das. <b>Sie beschreiben das Problem in normalen Worten, und der Agent übernimmt das Lesen und das Bearbeiten.</b></p>
+      <p>Ein Skill ist nichts weiter als eine schriftlich festgehaltene Anleitung, der Ihr Agent folgt. Ihn zu verbessern ist also keine Programmierarbeit, sondern ein Gespräch. Sie sagen „das schlägt ständig fehl, wenn jemand ihm einen Robinhood-Link gibt“, und er geht hin und behebt es.</p>
+      <div class="note"><b>Warum es sich lohnt:</b> Jeder Skill, den Sie verbessern, bleibt verbessert. Wenn diese Aufgabe das nächste Mal ansteht, kennt der Agent die Antwort bereits.</div>
+      <div class="note"><b>Keine separate Rechnung.</b> Das läuft über dasselbe Abo, das Sie bereits eingerichtet haben. Lange Aufträge verbrauchen mehr davon als ein Gespräch, schauen Sie also bei den ersten paar auf Ihre Nutzungsseite und machen Sie sich danach keine Gedanken mehr.</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>Der Vier-Schritte-Kreislauf</h2>
+      <div class="two">
+        <div class="card"><span class="price">SCHRITT 1</span><h4>Sagen Sie, was Sie wollen</h4><p>In klaren Worten, in Discord. Wenn Sie es einer Person beschreiben können, können Sie es auch hier beschreiben.</p></div>
+        <div class="card"><span class="price">SCHRITT 2</span><h4>Lassen Sie es arbeiten</h4><p>Es liest den Skill, überlegt, was geändert werden muss, und nimmt die Änderung vor. Bitten Sie es, in einer Zeile zu erklären, was es getan hat.</p></div>
+        <div class="card"><span class="price">SCHRITT 3</span><h4>Lassen Sie es das beweisen</h4><p>Sagen Sie „teste es und zeig mir die Ausgabe“. Das ist der Schritt, den die Leute überspringen, und genau der zählt.</p></div>
+        <div class="card"><span class="price">SCHRITT 4</span><h4>Wiederholen, bis es stimmt</h4><p>Wenn es nicht stimmt, sagen Sie, was noch falsch ist. Zwei oder drei Runden sind normal.</p></div>
+      </div>
+      <div class="note warn"><b>„Fertig“ ist kein Ergebnis.</b> Ein Agent kann Ihnen erzählen, er sei mit etwas fertig, das nicht funktioniert. Verlangen Sie immer die tatsächliche Ausgabe, den tatsächlichen Fehler oder den tatsächlichen Link. Wenn er es Ihnen nicht zeigen kann, ist es nicht fertig.</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>Prompts für den Anfang</h2>
+      <p>Machen Sie diese beim ersten Mal der Reihe nach. Sie dauern etwa zehn Minuten und bringen Sie auf den Weg.</p>
+
+      <h3>Finden Sie heraus, was Arbeit braucht</h3>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot lies alle Skills durch, die ich installiert habe, und sag mir, welche unfertig, unklar oder unvollständig wirken
+
+@yourbot such den schwächsten aus und sag mir genau, was ihm fehlt
+
+@yourbot welchen Skill würdest du zuerst verbessern, um mir das Leben leichter zu machen, und warum?</code></pre>
+
+      <h3>Reparieren Sie einen</h3>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot der Seltenheit-Skill behandelt keine Kollektionen, die noch verborgen sind. ergänze das und zeig mir, dass es funktioniert
+
+@yourbot mach die Ausgabe des Mint-Checkers leichter lesbar, ich verstehe das aktuelle Format nicht
+
+@yourbot dieser Skill setzt voraus, dass ich weiß, was eine Vertragsadresse ist. schreib ihn für jemanden um, der das nicht weiß
+
+@yourbot verbessere diesen Skill mit dem, was wir in diesem Gespräch gelernt haben</code></pre>
+
+      <h3>Testen Sie ihn</h3>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot teste das richtig und füge die tatsächliche Ausgabe ein
+
+@yourbot gib mir ein echtes Beispiel, das ich selbst ausprobieren kann, um zu prüfen, ob es funktioniert
+
+@yourbot was könnte bei dem, was du gerade gebaut hast, noch schiefgehen?</code></pre>
+
+      <h3>Behalten Sie ihn</h3>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot speichere, was du gerade herausgefunden hast, als Skill, damit du es wiederholen kannst, ohne dass ich es erkläre
+
+@yourbot schreib die Schritte auf, die du gerade gegangen bist, damit das nächste Mal dasselbe passiert</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>Wenn einer kaputtgeht</h2>
+      <p>Das ist das, was Sie am häufigsten tun werden, und es ist völlig normal. Etwas wirft einen Fehler, Sie fügen den Fehler wieder ein, und es wird behoben.</p>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot das hat nicht funktioniert. das hat es gesagt: &lt;paste the whole error&gt;
+
+@yourbot wie beim letzten Mal, aber mit dieser Wallet-Adresse: &lt;address&gt;
+
+@yourbot finde heraus, warum das immer wieder fehlschlägt, statt es einfach nochmal zu versuchen
+
+@yourbot geh zurück zum vorherigen Zustand, diese Änderung hat es schlimmer gemacht
+
+@yourbot du hast gesagt, es funktioniert, aber das tut es nicht. zeig mir den Beweis, dass es funktioniert, bevor du das nochmal sagst</code></pre>
+      <div class="note"><b>Fügen Sie den ganzen Fehler ein, nicht eine Zusammenfassung.</b> Die hässliche Textwand ist genau das, was er braucht. Wenn Sie sie kürzen, dauern Korrekturen vier Versuche statt einen.</div>
+      <div class="note warn"><b>Wenn es schlimmer wird, bitten Sie um ein Zurücksetzen.</b> „Geh zurück zum vorherigen Zustand“ ist ein legitimer und nützlicher Prompt. Bitten Sie es, vor großen Änderungen eine Kopie zu speichern, damit das immer möglich ist.</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>Bringen Sie ihm etwas Neues bei</h2>
+      <p>Die 31 Skills sind ein Ausgangspunkt. Der eigentliche Wert liegt darin, eigene hinzuzufügen, für Dinge, die Sie immer wieder tun.</p>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot schau zu, wie ich einen Mint vor dem Kauf prüfe, und schreib dann einen Skill, damit du das nächste Mal für mich erledigen kannst
+
+@yourbot erstelle einen Skill, um Kollektionen zu finden, deren Floor gerade gefallen ist
+
+@yourbot jedes Mal, wenn ich einen Tweet einfüge, solltest du prüfen, ob es ein Mint ist, was er kostet und ob er echt ist. mach daraus einen Skill
+
+@yourbot erstelle einen Skill, der alle meine Wallets prüft und mir sagt, was ich mir ansehen sollte
+
+@yourbot bau etwas, das zwei Kollektionen nebeneinander vergleicht und mir sagt, welche die besseren Chancen hat</code></pre>
+      <div class="note"><b>Machen Sie aus allem Wiederkehrenden einen Skill.</b> Wenn Sie dasselbe zweimal erklärt haben, ist das ein Skill. Sie müssen es nie ein drittes Mal erklären.</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>Bauen Sie eine ganze kleine Sache</h2>
+      <p>Dieselbe Idee, nur größer. Sie können eine funktionierende Seite bauen und online stellen lassen – dafür ist der Vercel-Teil im Einrichtungsleitfaden da.</p>
+      <pre data-label="Discord-Prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot baue mir eine Seite, die jede Kollektion zeigt, die ich halte, mit Bildern und Seltenheitsrang
+
+@yourbot baue ein einfaches Dashboard der Kollektionen, die ich beobachte, und stell es auf Vercel
+
+@yourbot mach eine Seite, auf der ich einen Kollektionslink einfügen kann, die alles nach Seltenheit ordnet und Bilder zeigt
+
+@yourbot stell das auf Vercel und gib mir den Link, wenn es tatsächlich online ist</code></pre>
+      <div class="note"><b>Verlangen Sie den Live-Link, kein „Fertig“.</b> Wenn es sagt, die Seite sei online, verlangen Sie die URL und öffnen Sie sie selbst. Diese eine Gewohnheit fängt die meisten Arten ab, wie das schiefgeht.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>Sätze, die funktionieren</h2>
+      <div class="table-scroll" role="region" aria-label="Scrollbare Referenztabelle" tabindex="0"><table>
+        <tr><th>Sagen Sie das</th><th>Und Sie bekommen</th></tr>
+        <tr><td>„zeig mir deinen Plan, bevor du anfängst“</td><td>Sie sehen, was es vorhat, bevor es etwas tut, und können es umlenken</td></tr>
+        <tr><td>„teste es und zeig mir die Ausgabe“</td><td>Der Unterschied zwischen einer echten Korrektur und einem selbstsicheren Satz</td></tr>
+        <tr><td>„erkläre in einer Zeile, was du geändert hast“</td><td>Sie behalten die Kontrolle, ohne Code zu lesen</td></tr>
+        <tr><td>„gib nichts aus / ändere noch nichts“</td><td>Es übernimmt das Nachdenken, ohne Ihr Geld oder Ihre Dateien anzufassen</td></tr>
+        <tr><td>„mach es einfacher“</td><td>Es entfernt das Ausgeklügelte und lässt etwas übrig, dem Sie folgen können</td></tr>
+        <tr><td>„ich verstehe das nicht, erklär es mir, als wäre ich neu dabei“</td><td>Eine klare Antwort statt Fachjargon</td></tr>
+        <tr><td>„geh zurück zum vorherigen Zustand“</td><td>Ein Rückgängigmachen, wenn eine Änderung es schlimmer gemacht hat</td></tr>
+        <tr><td>„speichere das als Skill“</td><td>Es wird dauerhaft, und Sie erklären es nie wieder</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>Ärger vermeiden</h2>
+      <ul>
+        <li><b>Fügen Sie niemals einen Private Key ein</b> in einen Chat mit einem Agenten oder sonst irgendwohin. Falls Sie es je getan haben, betrachten Sie diese Wallet als verbrannt und verschieben Sie alles, was darin liegt.</li>
+        <li><b>Verlangen Sie den Plan vor großen Änderungen.</b> „Zeig mir zuerst den Plan“ kostet Sie zehn Sekunden und erspart Ihnen ein Durcheinander.</li>
+        <li><b>Eine Änderung nach der anderen.</b> Drei Verbesserungen auf einmal bedeuten, dass Sie nicht erkennen können, welche es kaputt gemacht hat.</li>
+        <li><b>Halten Sie Ihr Geld hinter einem „Nein“.</b> Sagen Sie „gib nichts aus, ohne mich zu fragen“, und es wird nichts ausgeben.</li>
+        <li><b>Machen Sie eine Sicherung, bevor Sie tiefer gehen.</b> Bitten Sie es, vorher eine Kopie Ihrer Skills zu speichern: „kopiere meinen Skills-Ordner an einen sicheren Ort“.</li>
+        <li><b>Wenn es Erfolg behauptet und Sie ihn nicht sehen können, ist er nicht real.</b> Fragen Sie noch einmal nach dem Beweis.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>All das braucht eine Sache</h3>
+        <p>Das Abo, etwa $10 im Monat, mit deepseek v4.1 flash. Es bietet eine wirklich großzügige Nutzungsmenge, und genau das macht dieses Hin und Her zu etwas, das Sie den ganzen Tag machen können, ohne auf einen Zähler zu schauen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Holen Sie sich das Abo <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">Zurück zum Einrichtungsleitfaden</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>Gebaut, um Ihnen zu gehören.</p>
+    <nav class="footer-links" aria-label="Fußzeile">
+      <a href="../../">Einrichtungsleitfaden</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Quellcode auf GitHub</a>
+    </nav>
+  </div>
+  <div class="shell"><p>Nichts hier ist Finanzberatung. Wenn Sie einen Skill verbessern, gehört Ihnen die verbesserte Version.</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="../../zh/prompts/" hreflang="zh-Hans">中文</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="./" hreflang="de" aria-current="true">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

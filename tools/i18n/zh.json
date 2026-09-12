@@ -3,7 +3,6 @@
  "name": "中文",
  "dir": "ltr",
  "text": {
-  "NFT toolkit | Your onchain agent, in Discord": "NFT 工具包 | 你的链上智能体，就在 Discord 里",
   "Skip to setup guide": "跳到配置指南",
   "NFT toolkit": "NFT 工具包",
   "An agent of your own": "属于你自己的智能体",
@@ -505,7 +504,18 @@
   "Source on GitHub": "在 GitHub 查看源码",
   "Vibe coding the skills": "用氛围编程改造技能",
   "Back to the guide": "返回指南",
-  "Free and open source. Nothing here is financial advice. Minting and trading can lose money. Set a limit before you start and never use money you need.": "免费且开源。这里没有任何内容是投资建议。铸造和交易都可能亏钱。开始前先设好上限，绝不要动用你需要的钱。"
+  "Free and open source. Nothing here is financial advice. Minting and trading can lose money. Set a limit before you start and never use money you need.": "免费且开源。这里没有任何内容是投资建议。铸造和交易都可能亏钱。开始前先设好上限，绝不要动用你需要的钱。",
+  "@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet": "@yourbot 用 pow-mint-mining 技能挖 hashcats。先给我看当前轮次，把一切都准备好，但先别花任何钱",
+  "@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes": "@yourbot 开始挖当前这一轮。挖到就停，或者 15 分钟后停",
+  "@yourbot did we get one? show me the transaction": "@yourbot 挖到了吗？把交易给我看",
+  "@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me": "@yourbot 用 pow-mint-mining 技能挖 FAB4200，告诉我大概要花我多少钱",
+  "@yourbot rank this whole collection by rarity and show me the top 20\n@yourbot which rare ones here are listed cheap right now?\n@yourbot what is the floor on this and is it going up or down?\n@yourbot are the wallets that minted this real people or bots?\n@yourbot is this worth buying at the current floor?\n@yourbot how many people are holding this, and how concentrated is it?": "@yourbot 把这个合集按稀有度排个名，把前 20 名给我看\n@yourbot 这里面哪些稀有的现在挂得很便宜？\n@yourbot 这个的地板价是多少？在涨还是在跌？\n@yourbot 铸造这个的钱包是真人还是机器人？\n@yourbot 以现在的地板价，值得买吗？\n@yourbot 有多少人持有？集中度高不高？",
+  "@yourbot <tweet link> mint this\n@yourbot <tweet link> what is this mint and is it real?\n@yourbot <tweet link> can I mint this for free?\n@yourbot <tweet link> what would minting 3 of these actually cost me?\n@yourbot <tweet link> is this the real contract or a copy?\n@yourbot <tweet link> set an alert for when this goes live": "@yourbot <tweet link> 把这个铸了\n@yourbot <tweet link> 这是什么铸造？是真的吗？\n@yourbot <tweet link> 这个能免费铸造吗？\n@yourbot <tweet link> 铸 3 个实际要花我多少钱？\n@yourbot <tweet link> 这是真合约还是仿的？\n@yourbot <tweet link> 它一上线就提醒我",
+  "@yourbot can I mint this for free? <link>\n@yourbot what is the real price on this? the page says 0.05\n@yourbot is this mint still open or already sold out?\n@yourbot how many wallets have minted this so far?\n@yourbot is this contract a copy of another collection?\n@yourbot what does this contract actually do? <address>": "@yourbot 这个能免费铸造吗？<link>\n@yourbot 真实价格是多少？页面上写的是 0.05\n@yourbot 这个铸造还开着，还是已经卖完了？\n@yourbot 到现在有多少钱包铸造过？\n@yourbot 这个合约是抄的另一个合集吗？\n@yourbot 这个合约到底是做什么的？<address>",
+  "@yourbot what has this wallet been buying? <address>\n@yourbot is this wallet actually profitable, or just busy?\n@yourbot watch this wallet and message me when it buys something\n@yourbot which collections did this wallet get into early?\n@yourbot does this wallet look like a bot or a person?": "@yourbot 这个钱包最近都在买什么？<address>\n@yourbot 这个钱包是真的赚钱，还是只是交易频繁？\n@yourbot 盯着这个钱包，它一买东西就告诉我\n@yourbot 这个钱包早期进了哪些合集？\n@yourbot 这个钱包看起来像机器人还是真人？",
+  "@yourbot watch this collection and message me the moment it reveals\n@yourbot tell me when the floor drops below 0.01\n@yourbot ping me if anything from this collection sells under 0.005\n@yourbot check this every ten minutes and only message me if something changes\n@yourbot remind me when this mint opens in an hour": "@yourbot 盯着这个合集，一揭示就立刻告诉我\n@yourbot 地板价跌破 0.01 就告诉我\n@yourbot 这个合集里有人低于 0.005 卖出就提醒我\n@yourbot 每十分钟查一次，只有变化了才告诉我\n@yourbot 一小时后这个铸造开放时提醒我",
+  "@yourbot mint 1 for me, show me the cost and wait for my go ahead\n@yourbot buy the cheapest rare one under 0.01\n@yourbot buy 3 but never spend more than 0.03 in total\n@yourbot don't spend anything without asking me first\n@yourbot what is my wallet holding right now? <address>": "@yourbot 帮我铸 1 个，先给我看费用，等我点头再动\n@yourbot 买最便宜的那个稀有的，低于 0.01 就行\n@yourbot 买 3 个，但总共不要超过 0.03\n@yourbot 没有我同意，不要花任何钱\n@yourbot 我的钱包现在持有什么？<address>",
+  "@yourbot explain what a proof of work mint is, in simple terms\n@yourbot why is this floor so low?\n@yourbot what does \"revealed\" mean here?\n@yourbot how do people fake volume on a collection?\n@yourbot what is the difference between a mint and a buy?": "@yourbot 用简单的话解释一下什么是工作量证明铸造\n@yourbot 这个地板价为什么这么低？\n@yourbot 这里的“揭示”是什么意思？\n@yourbot 别人是怎么在合集上伪造交易量的？\n@yourbot 铸造和买入有什么区别？"
  },
  "attr": {
   "NFT toolkit home": "NFT 工具包首页",

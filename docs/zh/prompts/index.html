@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>氛围编程｜靠对话把技能变得更好</title>
+<meta name="description" content="技能还没全部做完。用大白话改进、修补和扩展它们，并附上可直接照抄的提示词。">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="用氛围编程改进技能">
+<meta property="og:description" content="你不写代码。你描述问题，智能体来修。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../assets/styles.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<link rel="stylesheet" href="../../assets/i18n.css">
+<script src="../../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../../prompts/">
+<link rel="alternate" hreflang="zh-Hans" href="./">
+<link rel="alternate" hreflang="ar" href="../../ar/prompts/">
+<link rel="alternate" hreflang="es" href="../../es/prompts/">
+<link rel="alternate" hreflang="fr" href="../../fr/prompts/">
+<link rel="alternate" hreflang="de" href="../../de/prompts/">
+<link rel="alternate" hreflang="ru" href="../../ru/prompts/">
+<link rel="alternate" hreflang="he" href="../../he/prompts/">
+<link rel="alternate" hreflang="ur-Latn" href="../../ur/prompts/">
+<script type="application/json" id="i18n-data">{"copy.discord": "复制 Discord 提示词", "copy.terminal": "复制终端命令", "copy.button": "复制", "copy.done": "已复制", "copy.aria": "已复制到剪贴板", "toast.copied": "已复制。准备好时粘贴即可。", "toast.manual": "无法自动复制。文字已选中，你可以手动复制。", "progress.count": "已完成 {n} / 4", "progress.saved": "已保存在此浏览器", "progress.visit": "进度仅在本次访问期间保留", "toast.complete": "配置完成。下一步：给你的智能体发一条消息。", "skills.one": "项技能", "skills.many": "项技能", "skills.ready": "，随时可用", "skills.found": "，符合当前筛选", "demo.rarity.prompt": "给这个合集的稀有度排个名，把稀有的挑出来", "demo.rarity.answer": "合集已排名。这是最稀有的三个。", "demo.rarity.title": "稀有度报告", "demo.rarity.subtitle": "演示合集", "demo.rarity.foot": "仅做调研，未发送任何交易。", "demo.mint.prompt": "在我连接钱包之前，先帮我查一下这个铸造", "demo.mint.answer": "我会先核对合约、价格和供应量。", "demo.mint.title": "铸造调研", "demo.mint.subtitle": "示例检查清单", "demo.mint.foot": "看完调查结果，再决定要不要批准铸造。", "demo.mint.row1": "核对真实合约", "demo.mint.row2": "读取链上铸造价格", "demo.mint.row3": "查看剩余供应量", "demo.mint.tag": "先核查", "demo.wallet.prompt": "这个钱包最近都在买什么？", "demo.wallet.answer": "我会把这个钱包的公开活动整理成一份报告。", "demo.wallet.title": "钱包情报", "demo.wallet.subtitle": "示例报告", "demo.wallet.foot": "只用公开钱包数据，不需要私钥。", "demo.wallet.row1": "近期买入", "demo.wallet.row2": "持有的合集", "demo.wallet.row3": "卖出与转账", "demo.wallet.tag": "链上"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#vibe">跳到指南</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../../" aria-label="NFT 工具包首页"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT 工具包</span><span class="brand-sub">属于自己的智能体</span></a>
+    <nav class="topnav" aria-label="主导航"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>中文</span></summary><ul class="lang-menu"><li><a href="../../prompts/" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="./" hreflang="zh-Hans" aria-current="true"><span>中文</span><code>中文</code></a></li><li><a href="../../ar/prompts/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../../es/prompts/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../../fr/prompts/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../../de/prompts/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../../ru/prompts/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../../he/prompts/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../../ur/prompts/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="../#guide">指南</a><a href="../#list">技能</a><a class="pricing-nav" href="../#money">费用</a><a class="pricing-nav" href="./">氛围编程</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="在 GitHub 上查看 NFT 工具包"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> 氛围编程</div>
+      <h1 id="vibe-title"><span>技能还没全部做完。</span><span>聊着聊着，就能把它们打磨成型。</span></h1>
+      <p>31 个技能里有几个还比较粗糙。这是故意的： <b>你只要说出想要什么，就能修补和扩展它们</b>。你从不写代码。你说哪里坏了、要加什么，智能体就动手、测试，再把结果给你看。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">获取订阅 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../../">回到安装指南</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="guide-content shell" style="padding-bottom:60px">
+
+    <section id="what">
+      <h2 class="step"><span>01</span>氛围编程到底是什么</h2>
+      <p>通常，把软件改得更好意味着开发者要读代码、改代码。这里你跳过这一步。 <b>你用大白话描述问题，读代码和改代码交给智能体。</b></p>
+      <p>技能不过是一份写下来的指令，供智能体照着执行。所以改进技能不是写代码，而是一次对话。你说“别人给它一个 Robinhood 链接时总是出错”，它就会去把这个问题修好。</p>
+      <div class="note"><b>为什么值得做：</b> 你改好的每个技能都会一直保持改进后的样子。下次再遇到同样的活儿，智能体早就知道该怎么办了。</div>
+      <div class="note"><b>不用另外付费。</b> 它跑在你已经开通的那个订阅上。长时间任务比聊天更费额度，所以头几次看一下用量页面，之后就不用再操心了。</div>
+    </section>
+
+    <section id="loop">
+      <h2 class="step"><span>02</span>四步循环</h2>
+      <div class="two">
+        <div class="card"><span class="price">第一步</span><h4>说出你想要的</h4><p>在 Discord 里用大白话说。你能讲给人听，就能讲给它听。</p></div>
+        <div class="card"><span class="price">第二步</span><h4>让它动手</h4><p>它读技能，想清楚要改什么，然后动手改。让它用一句话说明改了什么。</p></div>
+        <div class="card"><span class="price">第三步</span><h4>让它拿出证据</h4><p>说“测试一下，把输出发我”。这一步最常被跳过，却最关键。</p></div>
+        <div class="card"><span class="price">第四步</span><h4>重复到正确为止</h4><p>还不对，就说哪里还不对。来回两三轮很正常。</p></div>
+      </div>
+      <div class="note warn"><b>“做完了”不等于有结果。</b> 智能体可能说自己做完了，东西却根本不能跑。永远要真实的输出、真实的报错，或者真实的链接。它拿不出来，就是没做完。</div>
+    </section>
+
+    <section id="start">
+      <h2 class="step"><span>03</span>先从这里开始</h2>
+      <p>第一次按顺序做一遍。大约十分钟，就能上手。</p>
+
+      <h3>找出需要改进的地方</h3>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 通读我装好的所有技能，告诉我哪些看起来没做完、不清楚或者缺步骤
+
+@yourbot 挑出最弱的一个，具体告诉我它缺什么
+
+@yourbot 为了让我省事，你会先改进哪个技能？为什么？</code></pre>
+
+      <h3>修好一个</h3>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 稀有度技能处理不了还没公开的系列。把这个加上，并演示它能用
+
+@yourbot 铸造检查的输出太难读了，现在的格式我看不懂
+
+@yourbot 这个技能假设我知道合约地址是什么。重写一遍，给完全不懂的人看
+
+@yourbot 用我们这次对话里学到的东西来改进这个技能</code></pre>
+
+      <h3>测试它</h3>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 认真测一遍，把真实输出贴出来
+
+@yourbot 给我一个我自己能试的真实例子，好验证它能不能用
+
+@yourbot 你刚做的东西还有哪里可能出问题？</code></pre>
+
+      <h3>留住成果</h3>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 把你刚想通的东西存成一个技能，下次不用我解释你也能做
+
+@yourbot 把你刚才的步骤写下来，下次照着做结果一样</code></pre>
+    </section>
+
+    <section id="fix">
+      <h2 class="step"><span>04</span>技能出问题的时候</h2>
+      <p>这是你最常做的事，完全正常。哪里报错，你就把报错贴回去，它来修。</p>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 没成功。它说：&lt;paste the whole error&gt;
+
+@yourbot 和上次一样，但换成这个钱包地址：&lt;address&gt;
+
+@yourbot 查清楚为什么一直失败，别只顾着重试
+
+@yourbot 退回改动之前的样子，那次改动让它更糟了
+
+@yourbot 你说能用，但根本不行。下次说之前，先给我能用的证据</code></pre>
+      <div class="note"><b>贴完整报错，别只贴摘要。</b> 那堆难看的长文本正是它需要的。删减一通，就会让一次能修好的事变成修四次。</div>
+      <div class="note warn"><b>变糟了就要求回滚。</b> “退回原来的样子”是一条正当且有用的指令。让它在大改动前先存一份副本，这样随时都能退回去。</div>
+    </section>
+
+    <section id="new">
+      <h2 class="step"><span>05</span>教它新东西</h2>
+      <p>31 个技能只是起点。真正的价值在于把你反复要做的事，做成自己的技能。</p>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 看我买之前怎么检查铸造，然后写成一个技能，下次你替我做
+
+@yourbot 做一个技能，用来找地板价刚下跌的系列
+
+@yourbot 我每次贴一条推文，你就检查它是不是铸造、要多少钱、是不是真的。把这做成一个技能
+
+@yourbot 做一个技能，检查我所有的钱包，把值得看的东西告诉我
+
+@yourbot 做个东西，把两个系列并排对比，告诉我哪个概率更好</code></pre>
+      <div class="note"><b>把每件重复的事都变成技能。</b> 同一件事解释过两遍，就该做成技能。这样第三遍就不用再解释了。</div>
+    </section>
+
+    <section id="build">
+      <h2 class="step"><span>06</span>做出一整个小东西</h2>
+      <p>同样的思路，只是更大。你可以让它做一个能用的页面并放到线上，安装指南里 Vercel 那部分就是为此准备的。</p>
+      <pre data-label="Discord 提示词" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot 给我做一个页面，展示我持有的每个系列，带图片和稀有度排名
+
+@yourbot 做一个我正在关注的系列的简单看板，放到 Vercel 上
+
+@yourbot 做一个页面，我贴上系列链接，它就排出名次并显示图片
+
+@yourbot 把这个放到 Vercel，真正上线后把链接给我</code></pre>
+      <div class="note"><b>要线上链接，不要“做完了”。</b> 它说网站上线了，就要 URL 自己打开看看。就这一个习惯，能挡住大多数出问题的情况。</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>管用的说法</h2>
+      <div class="table-scroll" role="region" aria-label="可滚动的参考表格" tabindex="0"><table>
+        <tr><th>这样说</th><th>你会得到</th></tr>
+        <tr><td>“动手前先给我看你的计划”</td><td>它动手之前你就能看到它的打算，还能纠正方向</td></tr>
+        <tr><td>“测试一下，把输出发我”</td><td>真正的修复和一句自信话的区别</td></tr>
+        <tr><td>“用一句话说明你改了什么”</td><td>不读一行代码也能掌控全局</td></tr>
+        <tr><td>“先别花任何钱／先别改任何东西”</td><td>它只管想，不碰你的钱和文件</td></tr>
+        <tr><td>“弄简单点”</td><td>它去掉花哨的东西，留下你能看懂的部分</td></tr>
+        <tr><td>“我看不懂，把我当新手讲一遍”</td><td>直白的回答，而不是术语堆砌</td></tr>
+        <tr><td>“退回原来的样子”</td><td>改动把事情弄糟时的一次撤销</td></tr>
+        <tr><td>“把这个存成技能”</td><td>它就此固定下来，你再也不用解释一遍</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>别惹麻烦</h2>
+      <ul>
+        <li><b>绝不要粘贴私钥</b> 不要贴进和智能体的对话，也不要贴到任何地方。一旦贴过，就当这个钱包已经废了，把里面的东西全部转走。</li>
+        <li><b>大改动前先要计划。</b> “先给我看计划”只花你十秒，却能省下一堆麻烦。</li>
+        <li><b>一次只改一处。</b> 同时改三处，出了问题就分不清是哪一个。</li>
+        <li><b>给你的钱加一道“不行”的闸门。</b> 说“不问我就不许花钱”，它就不会花。</li>
+        <li><b>深入之前先备份。</b> 先让它存一份技能副本：“把我的技能文件夹复制到一个安全的地方”。</li>
+        <li><b>它说有成果，而你看不到，那就是没成。</b> 再要一次证据。</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>这一切只需要一样东西</h3>
+        <p>订阅，每月约 $10，运行 deepseek v4.1 flash。它给的用量非常宽裕，所以这种来回对话你可以整天做，不用盯着额度。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">获取订阅 <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../../">回到安装指南</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>为你而造。</p>
+    <nav class="footer-links" aria-label="页脚">
+      <a href="../../">安装指南</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">GitHub 上的源码</a>
+    </nav>
+  </div>
+  <div class="shell"><p>这里没有任何投资建议。你改进的技能，改进后的版本就归你。</p></div>
+<p class="lang-row"><a href="../../prompts/" hreflang="en">English</a> · <a href="./" hreflang="zh-Hans" aria-current="true">中文</a> · <a href="../../ar/prompts/" hreflang="ar">العربية</a> · <a href="../../es/prompts/" hreflang="es">Español</a> · <a href="../../fr/prompts/" hreflang="fr">Français</a> · <a href="../../de/prompts/" hreflang="de">Deutsch</a> · <a href="../../ru/prompts/" hreflang="ru">Русский</a> · <a href="../../he/prompts/" hreflang="he">עברית</a> · <a href="../../ur/prompts/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+
+<div id="toast" class="toast" hidden></div>
+</body>
+</html>

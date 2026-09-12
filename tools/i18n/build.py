@@ -27,7 +27,10 @@ DOCS = os.path.join(ROOT, "docs")
 SRC = os.path.join(ROOT, "tools", "i18n", "index.en.html")
 I18N = os.path.join(ROOT, "tools", "i18n")
 
-SKIP_TAGS = {"pre", "code", "script", "style", "svg", "symbol", "path", "head"}
+# Mirrors extract.py. <pre> decides for itself: a "Discord prompt" block is
+# translated, a terminal or settings block is code and is left alone.
+SKIP_TAGS = {"code", "script", "style", "svg", "symbol", "path", "head"}
+TRANSLATABLE_PRE_LABEL = "Discord prompt"
 TAG_RE = re.compile(r"<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>")
 ATTR_RE = re.compile(r'\b(data-label|aria-label|alt|placeholder|title)="([^"]*)"')
 ONLY_PUNCT = re.compile(r"^(?:\s|[\d\W])+$")
@@ -81,23 +84,45 @@ def esc_attr(s):
 
 
 def walk(doc):
-    """Yield ('text', raw_text, translatable) and ('tag', raw_tag, None)."""
+    """Yield ('text', raw_text, translatable) and ('tag', raw_tag, None).
+
+    The stack holds (tag, skip) pairs so a <pre> can mark its own subtree as
+    content (a Discord prompt) or code (a terminal command).
+    """
     pos = 0
     stack = []
     for m in TAG_RE.finditer(doc):
         if m.start() > pos:
-            yield ("text", doc[pos:m.start()], not any(t in SKIP_TAGS for t in stack))
+            yield ("text", doc[pos:m.start()], not any(skip for _t, skip in stack))
         yield ("tag", m.group(0), None)
         pos = m.end()
-        closing, name = m.group(1), m.group(2).lower()
+        closing, name, attrs = m.group(1), m.group(2).lower(), m.group(3)
         if closing:
-            if name in stack:
-                while stack and stack.pop() != name:
-                    pass
-        elif not m.group(3).rstrip().endswith("/"):
-            stack.append(name)
+            for i in range(len(stack) - 1, -1, -1):
+                if stack[i][0] == name:
+                    del stack[i:]
+                    break
+        elif not attrs.rstrip().endswith("/"):
+            if name == "pre":
+                # data-label is translated before this runs, so the block's own
+                # language-independent data-kind has to decide, not its label.
+                kind = re.search(r'data-kind="([^"]*)"', attrs)
+                label = re.search(r'data-label="([^"]*)"', attrs)
+                translatable = (
+                    (kind and kind.group(1) == "prompt")
+                    or (label and label.group(1) == TRANSLATABLE_PRE_LABEL)
+                )
+                skip = not translatable
+            elif name == "code":
+                # Inside a prompt block the code IS the content to translate.
+                skip = not any(t == "pre" and not s for t, s in stack)
+            elif name == "button" and "copy" in attrs:
+                skip = True  # placeholder label, replaced by app.js
+            else:
+                skip = name in SKIP_TAGS
+            stack.append((name, skip))
     if pos < len(doc):
-        yield ("text", doc[pos:], not any(t in SKIP_TAGS for t in stack))
+        yield ("text", doc[pos:], not any(skip for _t, skip in stack))
 
 
 def substitute_text(doc, table, missing):
@@ -148,12 +173,48 @@ def mark_pre_kinds(doc):
     return re.sub(r"<pre\b[^>]*>", repl, doc)
 
 
-def language_menu(code, prefix):
+# The two pages of the site. Both are generated from their own master, and the
+# vibe coding page reuses the guide's app.js strings so they translate once.
+PAGES = {
+    "guide": {
+        "src": "index.en.html",
+        "keys": "strings.json",
+        "dict": "{code}.json",
+        "out": "index.html",
+    },
+    "prompts": {
+        "src": "prompts.en.html",
+        "keys": "prompts.strings.json",
+        "dict": "prompts.{code}.json",
+        "out": "prompts/index.html",
+    },
+}
+
+
+def page_prefix(code, page):
+    """Depth of the generated page, relative to docs/."""
+    depth = 1 if code != "en" else 0
+    if page == "prompts":
+        depth += 1
+    return "../" * depth
+
+
+def locale_href(other, code, page, prefix):
+    """Where a language link points FROM this page: the same page in that
+    language, so switching language keeps the reader where they were."""
+    if other == code:
+        return "./"
+    if page == "prompts":
+        return f"{prefix}prompts/" if other == "en" else f"{prefix}{other}/prompts/"
+    return (prefix or "./") if other == "en" else f"{prefix}{other}/"
+
+
+def language_menu(code, prefix, page):
     items = []
     for other in ORDER:
         if other not in LANGS:
             continue
-        href = f"{prefix}{other}/" if other != "en" else prefix or "./"
+        href = locale_href(other, code, page, prefix)
         current = ' aria-current="true"' if other == code else ""
         items.append(
             f'<li><a href="{href}" hreflang="{LANGS[other][0]}"{current}>'
@@ -166,19 +227,24 @@ def language_menu(code, prefix):
     )
 
 
-def build(code):
+def build(code, page="guide"):
     lang_attr, direction, _label = LANGS[code]
-    prefix = "" if code == "en" else "../"
-    if not os.path.exists(SRC):
-        sys.exit(f"master source missing: {SRC}")
-    doc = open(SRC, encoding="utf-8").read()
+    spec = PAGES[page]
+    src = os.path.join(I18N, spec["src"])
+    prefix = page_prefix(code, page)
+    if not os.path.exists(src):
+        sys.exit(f"master source missing: {src}")
+    doc = open(src, encoding="utf-8").read()
 
     table, head, js = {}, {}, {}
     if code != "en":
-        data = json.load(open(os.path.join(I18N, f"{code}.json"), encoding="utf-8"))
+        data = json.load(open(os.path.join(I18N, spec["dict"].format(code=code)),
+                              encoding="utf-8"))
         table = {**data.get("text", {}), **data.get("attr", {})}
         head = data.get("head", {})
-        js = normalise_tails(data.get("js", {}), code)
+        # app.js strings live with the guide, so the vibe page reuses them.
+        js = json.load(open(os.path.join(I18N, f"{code}.json"), encoding="utf-8")).get("js", {})
+        js = normalise_tails(js, code)
 
     missing = {}
     doc = mark_pre_kinds(doc)
@@ -209,8 +275,14 @@ def build(code):
     else:
         doc = re.sub(r'<html dir="[^"]*" ', "<html ", doc, count=1)
 
-    # asset + internal paths relative to this page's depth
-    if prefix:
+    # asset + internal paths relative to this page's depth. The guide master sits
+    # at the root; the vibe page master already sits one level deep.
+    if page == "prompts":
+        if prefix != "../":
+            doc = doc.replace('href="../assets/', f'href="{prefix}assets/')
+            doc = doc.replace('src="../assets/', f'src="{prefix}assets/')
+            doc = doc.replace('href="../"', f'href="{prefix}"')
+    elif prefix:
         doc = doc.replace('href="assets/', f'href="{prefix}assets/')
         doc = doc.replace('src="assets/', f'src="{prefix}assets/')
         doc = doc.replace('href="prompts/"', f'href="{prefix}prompts/"')
@@ -223,13 +295,10 @@ def build(code):
         doc, count=1,
     )
 
-    # hreflang alternates. English lives at the site root, not at /en/.
-    def locale_href(other):
-        if other == "en":
-            return prefix or "./"
-        return f"{prefix}{other}/"
+    # hreflang alternates point at the same page in each language.
     alternates = "".join(
-        f'\n<link rel="alternate" hreflang="{LANGS[o][0]}" href="{locale_href(o)}">'
+        f'\n<link rel="alternate" hreflang="{LANGS[o][0]}"'
+        f' href="{locale_href(o, code, page, prefix)}">'
         for o in ORDER if o in LANGS
     )
     payload = json.dumps(js, ensure_ascii=False).replace("<", "\\u003c")
@@ -240,7 +309,7 @@ def build(code):
     doc = doc.replace("</head>", inject + "</head>", 1)
 
     # language menu into the top nav
-    menu = language_menu(code, prefix)
+    menu = language_menu(code, prefix, page)
     doc = re.sub(r"(<nav class=\"topnav\"[^>]*>)", r"\1" + menu, doc, count=1)
 
     # A second, text-free language row in the footer: endonyms only, so it needs
@@ -248,7 +317,7 @@ def build(code):
     footer_row = (
         '<p class="lang-row">'
         + " · ".join(
-            f'<a href="{locale_href(o)}" hreflang="{LANGS[o][0]}"'
+            f'<a href="{locale_href(o, code, page, prefix)}" hreflang="{LANGS[o][0]}"'
             + (' aria-current="true"' if o == code else "")
             + f">{ENGLISH_NAMES[o]}</a>"
             for o in ORDER if o in LANGS
@@ -258,24 +327,32 @@ def build(code):
     doc = doc.replace("</footer>", footer_row + "</footer>", 1)
 
     out_dir = DOCS if code == "en" else os.path.join(DOCS, code)
-    os.makedirs(out_dir, exist_ok=True)
-    out = os.path.join(out_dir, "index.html")
+    out = os.path.join(out_dir, spec["out"])
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     open(out, "w", encoding="utf-8").write(doc)
     return len(table), len(missing), missing, out
 
 
 def main():
-    codes = sys.argv[1:] or ORDER
+    args = [a for a in sys.argv[1:] if a not in PAGES]
+    pages = [a for a in sys.argv[1:] if a in PAGES] or list(PAGES)
+    codes = args or ORDER
     total_missing = {}
-    for code in codes:
-        if code != "en" and not os.path.exists(os.path.join(I18N, f"{code}.json")):
-            print(f"{code:<3} SKIPPED (no {code}.json yet)")
-            continue
-        n, nmiss, missing, out = build(code)
-        flag = "OK " if nmiss == 0 else "GAPS"
-        print(f"{code:<3} {flag} keys={n:<4} untranslated={nmiss:<3} -> {os.path.relpath(out, ROOT)}")
-        for k in list(missing)[:8]:
-            total_missing.setdefault(code, []).append(k)
+    for page in pages:
+        spec = PAGES[page]
+        if page == "prompts":
+            print(f"\n--- {page} ---")
+        for code in codes:
+            if code != "en" and not os.path.exists(
+                    os.path.join(I18N, spec["dict"].format(code=code))):
+                print(f"{code:<3} SKIPPED (no {spec['dict'].format(code=code)} yet)")
+                continue
+            n, nmiss, missing, out = build(code, page)
+            flag = "OK " if nmiss == 0 else "GAPS"
+            print(f"{code:<3} {flag} keys={n:<4} untranslated={nmiss:<3}"
+                  f" -> {os.path.relpath(out, ROOT)}")
+            for k in list(missing)[:8]:
+                total_missing.setdefault(f"{page}/{code}", []).append(k)
     if total_missing:
         print("\nUntranslated leftovers (first few per language):")
         for code, keys in total_missing.items():

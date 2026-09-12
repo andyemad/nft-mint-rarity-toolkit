@@ -40,12 +40,17 @@ EXCEPTIONS = {
     ".skill-sticker",
 }
 
-# English UI words that must never survive on a translated page.
-ESCAPE_WORDS = [
+# English UI *phrases* that must never survive on a translated page. Bare words
+# are deliberately excluded: "Skills", "onchain" and similar are established
+# loanwords in German and Roman Urdu, so flagging them would be wrong. Sentences
+# are the real signal, and validate.py already fails on any whole sentence that
+# is still identical to English.
+ESCAPE_PHRASES = [
     "Set up Hermes", "Download the skills", "What you need", "The guide",
     "Get started", "Back to top", "Main navigation", "Copy Discord prompt",
-    "Setup complete", "Saved in this browser", "Skills", "Costs",
-]
+    "Setup complete", "Saved in this browser",
+]  # "Vibe coding" is excluded on purpose: like NFT, it is used verbatim in
+   # Spanish, French and Roman Urdu tech writing.
 
 problems = []
 
@@ -131,7 +136,7 @@ def main():
             found = sum(doc.count(m) for m in markers)
             note(found > 200, f"reads as Roman Urdu ({found} Urdu markers on the page)")
         elif code != "en":
-            hits = [w for w in ESCAPE_WORDS if w in doc]
+            hits = [w for w in ESCAPE_PHRASES if w in doc]
             note(not hits, f"no English UI text left{f' (found: {hits})' if hits else ''}")
 
     print("\n" + "=" * 74)
