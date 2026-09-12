@@ -48,7 +48,7 @@ mint and market intelligence dashboard). Their source is in separate repos. What
 is here is the architecture, the pitfalls, and the acceptance criteria.
 
 To run any of this on your own agent, [`INSTALL.md`](INSTALL.md) walks through a
-VPS, Hermes, Discord, and installing the skills in one command. [`site/`](site/)
+VPS, Hermes, Discord, and installing the skills in one command. [`docs/`](docs/)
 holds a single-file landing page you can deploy to Vercel or Cloudflare Pages.
 
 ---

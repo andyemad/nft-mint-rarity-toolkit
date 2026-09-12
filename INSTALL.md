@@ -255,31 +255,49 @@ Do not restart the gateway casually while it is mid-task. An in-flight session
 dies with it and cron jobs miss their tick. Use `/restart` from chat, which drains
 first.
 
-## 7. Host the download page on Vercel
+## 7. Host the download page
 
 The gateway cannot run on Vercel. The download page can, which is what you want: a
 public URL where someone reads what the toolkit does and grabs the ZIP or the
 one-line installer.
 
+The page lives in `docs/index.html`. Three ways to serve it, easiest first.
+
+**GitHub Pages.** No tooling, no extra account, no cost. Push the repo, then in
+the repository go to Settings → Pages and set the source to branch `main` and
+folder `/docs`. The page appears at
+`https://<your-user>.github.io/<repo>/`. Via the API:
+
+```bash
+gh api -X POST repos/<owner>/<repo>/pages \
+  -f "source[branch]=main" -f "source[path]=/docs"
+```
+
+GitHub Pages only accepts `/` or `/docs` as the folder, which is why the site
+directory is named `docs`.
+
+**Vercel.** Connect the repo in the dashboard and set the Root Directory to
+`docs/`, or deploy from a copy of the folder:
+
 ```bash
 mkdir -p ~/toolkit-site && cd ~/toolkit-site
-# copy site/index.html out of this repo, then:
+# copy docs/index.html here, then:
 npx vercel@latest deploy --prod
 ```
 
-Or connect the repo in the Vercel dashboard and set the Root Directory to `site/`.
-Every push then redeploys the page.
+Note that Vercel's Hobby plan blocks a project that exceeds its included transfer
+allowance. Every deploy then returns HTTP 402 while the dashboard still looks
+healthy. Test with a throwaway deploy before relying on it.
 
-Vercel's Hobby plan soft-blocks a project that exceeds its included transfer
-allowance. When that happens every deploy returns HTTP 402 while the dashboard
-still looks healthy. Test with a throwaway deploy before you rely on it. If you
-are blocked, Cloudflare Pages serves the same static files:
+**Cloudflare Pages.** Same static files, no Vercel account involved:
 
 ```bash
-npx wrangler@latest pages deploy site --project-name=nft-mint-rarity-toolkit
+npx wrangler@latest pages deploy docs --project-name=nft-mint-rarity-toolkit
 ```
 
-The downloads are the same either way:
+Wrangler 4 and later need Node 22 or newer. On Node 20 use `wrangler@3`.
+
+The downloads are the same whichever host you pick:
 
 | Artifact | URL |
 |---|---|
