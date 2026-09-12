@@ -89,8 +89,9 @@
   <div class="kicker">Setup guide</div>
   <h1>Your own AI agent, in <em>your Discord</em>, with 31 NFT skills.</h1>
   <p class="lede">
-    Install the agent, connect it to Discord, drop in the skills, and put a page on
-    Vercel. You copy and paste a few lines, and you talk to the finished thing in
+    Install the agent, connect it to Discord, drop in the skills, and then just ask it
+    for things: rank a collection, check whether a mint is real, or go and mint
+    Hashcats. You copy and paste a few lines, and from then on you talk to it in
     Discord like a normal chat. <b>About $10 a month.</b>
   </p>
   <div class="meta">
@@ -102,6 +103,7 @@
   <div class="cta">
     <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">1. Get the $10 subscription →</a>
     <a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">2. Get the skills →</a>
+    <a class="btn btn-ghost" href="#hashcats">3. Mint Hashcats →</a>
   </div>
 </header>
 
@@ -113,8 +115,9 @@
     <li><a href="#discord">Set up Discord</a></li>
     <li><a href="#skills">Download the skills</a></li>
     <li><a href="#list">What each skill does</a></li>
+    <li><a href="#hashcats">Mint Hashcats</a></li>
     <li><a href="#vercel">Set up Vercel</a></li>
-    <li><a href="#localvps">Your computer or a server?</a></li>
+    <li><a href="#localvps">Your computer, a server, or hosted?</a></li>
     <li><a href="#money">What it costs</a></li>
     <li><a href="#stuck">If something goes wrong</a></li>
   </ol>
@@ -129,6 +132,7 @@
     <tr><td>An OpenCode subscription</td><td>~$10/month</td><td>The agent's brain. The only thing you actually have to pay for</td></tr>
     <tr><td>A Vercel account <i>(optional)</i></td><td>Free</td><td>Only if you want to put a page or a small site online</td></tr>
     <tr><td>A small server <i>(optional)</i></td><td>~$5/month</td><td>Only if you want the agent running while your computer is off</td></tr>
+    <tr><td>A Nous Portal account <i>(optional)</i></td><td>Pricing on the Portal</td><td>Nous can host the agent for you, so you never touch a server</td></tr>
   </table>
   <p>
     Start with the first three. Vercel and the server come later and you can skip
@@ -303,7 +307,7 @@ cd nft-mint-rarity-toolkit
     <div class="skill"><span class="name">ethereum-data-pipelines</span><h4>Reads the blockchain for free</h4><p>Pulls on-chain data without paying for an API. The engine under a lot of the others.</p></div>
     <div class="skill"><span class="name">rh-mint-command-center</span><h4>The mint control room</h4><p>A local dashboard for minting: plan a mint, rehearse it, manage a set of wallets, watch the floor, and see what happened afterwards.</p></div>
     <div class="skill"><span class="name">mint-field-guide</span><h4>The mint dashboard</h4><p>A read-only screen of upcoming mints and market movement, noting where every number came from.</p></div>
-    <div class="skill"><span class="name">pow-mint-mining</span><h4>Handles solved mints</h4><p>Some drops give you the item for finding a lucky number instead of paying. This runs that search for you.</p></div>
+    <div class="skill"><span class="name">pow-mint-mining</span><h4>Handles solved mints</h4><p>Hashcats, FAB4200 and others like them give you the item for finding a lucky number instead of paying. This runs that search for you.</p></div>
     <div class="skill"><span class="name">onchain-puzzle-mining</span><h4>The number crunching</h4><p>Runs that search on your machine or on rented hardware, with checking so it never wastes a transaction.</p></div>
     <div class="skill"><span class="name">onchain-puzzle-solving</span><h4>Solves mints that make you think</h4><p>Riddles and hidden clues that gate some drops, found by reading the game's own code.</p></div>
     <div class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Maps a game's economy</h4><p>Takes an on-chain game apart to show where value comes from.</p></div>
@@ -315,8 +319,82 @@ cd nft-mint-rarity-toolkit
   </div>
 </section>
 
+<section id="hashcats">
+  <h2 class="step"><span>06</span>Mint Hashcats (and drops like it)</h2>
+  <p>
+    Some drops do not have a price. Instead of paying, you have to find a lucky
+    number, and whoever finds one first gets the cat. That is what people mean when
+    they say a mint is solved rather than bought.
+  </p>
+  <p>
+    Your laptop can do it, but it would take days, and people with big rented
+    computers find them in minutes. So you rent one for a few minutes. That is the
+    only reason for any of this.
+  </p>
+
+  <h3>Rent a computer for a few minutes (free to start)</h3>
+  <p>
+    <b>Modal</b> rents computers by the second. You do not buy anything. You sign up
+    and it comes with <b>$30 of free computing every month</b>, which is about seven
+    hours of their fast machines at roughly $4 an hour. For occasional attempts you
+    will probably never pay anything.
+  </p>
+  <ol>
+    <li>Sign up free at <a href="https://modal.com" style="color:var(--accent)">modal.com</a>.
+      The $30 is already included.</li>
+    <li>Then run these two commands once:</li>
+  </ol>
+  <pre><button class="copy">copy</button><code>pip install modal
+modal setup</code></pre>
+  <p>The second one opens a browser and links your account. That is the whole setup.</p>
+
+  <h3>What to type in Discord</h3>
+  <p>This is the entire operation. Mention your bot and paste this:</p>
+  <pre><button class="copy">copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
+  <p>It reports the round back to you. When you want to actually go for it:</p>
+  <pre><button class="copy">copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
+  <p>And to see how it went:</p>
+  <pre><button class="copy">copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
+
+  <h3>What it handles for you</h3>
+  <ul>
+    <li>It checks the whole setup first, so a run never starts out broken</li>
+    <li>It does the searching on the rented computer, not yours</li>
+    <li>It checks every answer before spending anything, so one that arrived too late never costs you a fee</li>
+    <li>It sends the transaction from your wallet and gives you the link</li>
+  </ul>
+
+  <h3>The two things only you can do</h3>
+  <ul>
+    <li><b>Put a little ETH in your wallet.</b> Winning still costs a few cents in fees. Nothing can do that part for you.</li>
+    <li><b>Keep attempts short.</b> Rounds move on constantly, and work done for a round that has already ended is wasted. Short and frequent beats one long run.</li>
+  </ul>
+
+  <div class="note warn">
+    <b>Be honest about the odds.</b> You are racing everyone else trying the same
+    drop, and you pay for the computing whether you win or lose. That is what the
+    free credit is for. Use it, keep your attempts short, and do not top up
+    expecting a guaranteed cat.
+  </div>
+
+  <h3>Other drops this works on</h3>
+  <p>
+    Same idea and the same kind of prompt. You just name the one you want instead:
+  </p>
+  <pre><button class="copy">copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
+
+  <h3>A few other things worth asking for</h3>
+  <pre><button class="copy">copy</button><code>@yourbot rank this collection by rarity and tell me which rare ones are listed cheap: &lt;opensea link&gt;
+
+@yourbot is this mint real or is it a scam? &lt;link&gt;
+
+@yourbot watch this collection and message me the moment it reveals
+
+@yourbot check whether the wallets that minted this were real people or bots</code></pre>
+</section>
+
 <section id="vercel">
-  <h2 class="step"><span>06</span>Set up Vercel</h2>
+  <h2 class="step"><span>07</span>Set up Vercel</h2>
   <p>
     Vercel puts a website or a page on the internet for free. You do not need it to
     run the agent. You need it if you want a public page of your own: a link you can
@@ -375,7 +453,7 @@ npx vercel deploy docs --prod</code></pre>
 </section>
 
 <section id="localvps">
-  <h2 class="step"><span>07</span>Your computer or a server?</h2>
+  <h2 class="step"><span>08</span>Your computer, a server, or hosted?</h2>
   <p>
     Both work. The only real difference is what happens when you close your laptop.
   </p>
@@ -402,7 +480,49 @@ npx vercel deploy docs --prod</code></pre>
         <li>Good for: scheduled jobs, overnight watches, anything you want running all the time</li>
       </ul>
     </div>
+    <div class="card">
+      <span class="price">PRICING ON THE PORTAL</span>
+      <h4>Or let Nous host it</h4>
+      <ul>
+        <li><b>Hermes Cloud</b> runs the instance for you</li>
+        <li>No server to set up, patch or restart yourself</li>
+        <li>Start, stop and restart it from a web page, or by asking your own agent</li>
+        <li>Same Discord setup as everywhere else</li>
+        <li>Good for: people who do not want to run a server at all</li>
+      </ul>
+    </div>
   </div>
+
+  <h3>Or let Nous host it for you</h3>
+  <p>
+    If running a server sounds like work you do not want, <b>Nous Research hosts
+    Hermes Cloud instances</b>. You get an agent that is always on, without
+    picking a provider, securing a box or keeping it updated.
+  </p>
+  <ol>
+    <li>Make a <b>Nous Portal</b> account at
+      <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
+    <li>Open the <b>Agents</b> page and create an instance. Give it a name.</li>
+    <li>Connect Discord to it exactly as in step 03. Same commands, run on the
+      instance.</li>
+  </ol>
+  <p>From then on you manage it from that web page. Start, stop, restart, or delete
+    it there. Pricing is listed on the Portal alongside the plans.</p>
+  <div class="note">
+    <b>One subscription can cover both jobs.</b> A Portal plan can also be the
+    agent's brain instead of a separate model subscription: it includes a large
+    catalogue of models plus managed web search, image generation and voice, all
+    through one login. Run <code>hermes setup --portal</code> and it wires itself
+    up. If you are already paying for OpenCode, you do not need both.
+  </div>
+  <div class="note">
+    <b>Already running an agent locally?</b> You can manage your cloud instances by
+    asking it, instead of clicking around the website. One command connects your
+    local agent to the Portal:
+  </div>
+  <pre><button class="copy">copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <p>After that you can say "list my cloud agents", "what is that instance costing
+    me", or "restart the stopped one".</p>
 
   <h3>Moving to a server</h3>
   <ol>
@@ -421,7 +541,7 @@ npx vercel deploy docs --prod</code></pre>
 </section>
 
 <section id="money">
-  <h2 class="step"><span>08</span>What it costs</h2>
+  <h2 class="step"><span>09</span>What it costs</h2>
   <table>
     <tr><th>Thing</th><th>Cost</th><th>Needed?</th></tr>
     <tr><td>Hermes agent</td><td>Free</td><td>Yes</td></tr>
@@ -430,6 +550,8 @@ npx vercel deploy docs --prod</code></pre>
     <tr><td>Vercel</td><td>Free</td><td>Only if you want a page online</td></tr>
     <tr><td>Your own computer</td><td>Free</td><td>Fine, but it sleeps</td></tr>
     <tr><td>Small server</td><td>~$5/month</td><td>Only for running around the clock</td></tr>
+    <tr><td>Modal, for solving drops like Hashcats <i>(optional)</i></td><td>Free, $30/month included</td><td>Only if you want to go after those drops</td></tr>
+    <tr><td>Nous Portal, hosting included <i>(optional)</i></td><td>Listed on the Portal</td><td>Instead of your own server, and it can be the brain too</td></tr>
   </table>
   <p>
     Honest total: <b>about $10 a month</b>, or $15 if you also want it awake all
@@ -438,7 +560,7 @@ npx vercel deploy docs --prod</code></pre>
 </section>
 
 <section id="stuck">
-  <h2 class="step"><span>09</span>If something goes wrong</h2>
+  <h2 class="step"><span>10</span>If something goes wrong</h2>
   <table>
     <tr><th>What you see</th><th>What to do</th></tr>
     <tr><td><code>hermes</code> is not recognised</td><td>Close the terminal and open a new one. Still failing after that? Restart the computer and try again.</td></tr>

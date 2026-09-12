@@ -124,6 +124,13 @@ to `skills/`.
 - **Load when:** Use for RH Chain NFT reveals, ranking, and rare-sniping.
 - **Depth:** 366 lines of playbook, 5 supporting files
 
+## Proof-of-work minting
+
+### `pow-mint-mining`
+- **Path:** `skills/pow-mint-mining`
+- **Load when:** Use for proof-of-work NFT mints (Hashcats, FAB4200): mine, verify, broadcast.
+- **Depth:** 77 lines of playbook, 5 supporting files
+
 ## Chain + protocol research
 
 ### `onchain-game-economy-analysis`
@@ -164,11 +171,4 @@ to `skills/`.
 - **Path:** `skills/productivity/public-wallet-xlsx-delivery`
 - **Load when:** Use when Emad pastes wallets. Deliver a public XLSX.
 - **Depth:** 49 lines of playbook, 0 supporting files
-
-## _standalone
-
-### `pow-mint-mining`
-- **Path:** `skills/pow-mint-mining`
-- **Load when:** Use when an NFT mint requires mining a keccak PoW nonce.
-- **Depth:** 51 lines of playbook, 5 supporting files
 

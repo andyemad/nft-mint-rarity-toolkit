@@ -1,6 +1,6 @@
 ---
 name: pow-mint-mining
-description: Use when an NFT mint requires mining a keccak PoW nonce.
+description: Use for proof-of-work NFT mints (Hashcats, FAB4200): mine, verify, broadcast.
 ---
 
 # PoW-Gated NFT Mint Mining
@@ -38,12 +38,38 @@ Some free mints are gated by proof-of-work: `mint(nonce)` succeeds only if `kecc
 - **Validation ladder that catches both**: (1) mirror the exact kernel logic in Python and diff against pycryptodome for a fixed nonce — this isolates keccakf correctness from placement bugs; (2) have the kernel print s[0]/s[1] for one known nonce (`dbg<<<1,1>>>`) and compare to the mirror; (3) only then trust FOUND nonces. A "verified" 24-bit self-test is meaningless if the verification recomputes with the same wrong layout.
 - **CUDA toolkit on Modal images**: apt's `nvidia-cuda-toolkit` package doesn't exist on slim; install NVIDIA's repo keyring then `cuda-nvcc-12-4 cuda-cudart-dev-12-4`, compile with `/usr/local/cuda-12.4/bin/nvcc -O3`. Image build needs wget/gnupg/ca-certificates installed BEFORE the keyring step. Build the image once per code change — stale cached layers can serve an old binary; if results look like the previous bug, suspect cache and force distinct file content.
 
+## Hashcats (hashcats.fun, Robinhood Chain 4663)
+
+A sequential PoW collection: `workHash = keccak256(miner(20) ‖ nonce(uint256 BE, 32) ‖ prev(32) ‖ anchor(32))`, accept when `workHash < target`. `prev` is the previous cat's work value, so tokens form a chain and only the nonce search parallelizes. The preimage is 116 bytes: one Keccak block, which is why a GPU wins.
+
+A complete, verified farm ships at `toolkit/pow/hashcats-farm/`:
+
+- `hashcats.py` — round state, tx build, `sim`, CPU `solve`, `send`, `loop`
+- `hashcats_modal.py` — CUDA kernel on Modal H100s (`probe` / `bench` / `mine`)
+- `farm.py` — N shards, local signing + broadcast, per-solution verification
+- `hcwatch.py`, `list_cats.py`, `new_wallet.py`, `sweep_back.py`
+- `../hcminer.cu`, `../hcminer.c` — the kernels (`hcminer selfcheck` compares the fast path against a reference Keccak over 200k nonces)
+
+Agent workflow, in this order, never skipping step 1:
+
+```bash
+pip install modal eth-account pycryptodome coincurve && modal setup
+modal run hashcats_modal.py --mode probe        # kernel vs CPU reference
+modal run hashcats_modal.py --mode bench        # GH/s
+python3 hashcats.py state                       # current round
+python3 farm.py --shards 2 --minutes 5 --dry    # verify + simulate, no spend
+python3 farm.py --shards 8 --minutes 30 --key ~/.hermes/secrets/hashcats_key
+```
+
+Rules that matter: verify every candidate against a reference keccak AND re-read the round before broadcast (a solution from a finished round is worthless, and paying gas for one is worse); read the round once then mine, because the Robinhood RPC rate-limits per IP on reads and writes; fund the wallet that broadcasts, since mining and paying are separate problems. GPU minting is a race with a negative expected cost per attempt — quote real numbers, keep runs short, and never describe it as a guaranteed cat.
+
 ## Files
 
 - `templates/pow_miner.c` — verified OpenMP keccak-256 nonce hunter (preimage layout as args; self-check procedure in header comment).
 - `templates/fabminer_gpu.cu` — verified CUDA miner (~7 GH/s on Modal H100). Both GPU-port bugs fixed and commented inline; adapt contract/minter/chainid constants for other collections.
 - `scripts/send_mint_tx.py` — EIP-1559 value=0 mint(nonce) broadcaster with dry-run estimate mode (needs `pip install eth-account coincurve pycryptodome`).
 - `references/fab4200-session.md` — session log: CPU-farm dead end → on-chain audit → CUDA bugs → verified mints.
+- `../../toolkit/pow/hashcats-farm/` — the shipped Hashcats farm (see the Hashcats section above).
 - `references/wallet-farm-lifecycle.md` — fresh-wallet factory, coincurve-only tx signing (eth_account/pydantic breakage workaround), RLP zero-encoding bug, nonce-race-free funding, sweep-back on mint-out, mint-out race timing.
 
 ## Related

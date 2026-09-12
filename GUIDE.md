@@ -18,6 +18,7 @@ Same guide as the published page: https://andyemad.github.io/nft-mint-rarity-too
 | An OpenCode subscription | ~$10/month | The agent's brain. The only thing you have to pay for |
 | A Vercel account (optional) | Free | Only if you want a page or small site online |
 | A small server (optional) | ~$5/month | Only if you want it running while your computer is off |
+| A Nous Portal account (optional) | Pricing on the Portal | Nous can host the agent for you, so you never touch a server |
 
 Start with the first three. The last two come later and you can skip either.
 
@@ -203,7 +204,7 @@ know what to ask for.
 | `ethereum-data-pipelines` | Reads the blockchain without paying for an API. The engine under a lot of the others. |
 | `rh-mint-command-center` | A local mint control room: plan, rehearse, manage wallets, watch the floor, audit results. |
 | `mint-field-guide` | A read-only dashboard of upcoming mints and market movement. |
-| `pow-mint-mining` | Handles drops where you find a lucky number instead of paying. Runs that search for you. |
+| `pow-mint-mining` | Hashcats, FAB4200 and others like them give you the item for finding a lucky number instead of paying. Runs that search for you. |
 | `onchain-puzzle-mining` | The search itself, on your machine or rented hardware, with checking so nothing is wasted. |
 | `onchain-puzzle-solving` | Solves the riddles some drops use as a gate, by reading the game's own code. |
 | `onchain-game-economy-analysis` | Takes an on-chain game apart to show where value comes from. |
@@ -215,7 +216,90 @@ know what to ask for.
 
 ---
 
-## 6. Set up Vercel
+## 6. Mint Hashcats (and drops like it)
+
+Some drops do not have a price. Instead of paying, you find a lucky number, and
+whoever finds one first gets the cat. That is what "solved rather than bought"
+means.
+
+Your laptop can do it, but it would take days, and people with rented computers
+find them in minutes. So you rent one for a few minutes.
+
+### Rent a computer for a few minutes (free to start)
+
+**Modal** rents computers by the second. You do not buy anything. Sign up and it
+comes with **$30 of free computing every month**, roughly seven hours of their fast
+machines at about $4/hour. For occasional attempts you will probably never pay.
+
+1. Sign up free at https://modal.com. The $30 is included.
+2. Then, once:
+
+```bash
+pip install modal
+modal setup
+```
+
+The second command opens a browser and links your account. That is the whole setup.
+
+### What to type in Discord
+
+Mention your bot and paste this:
+
+```
+@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet
+```
+
+When you want to go for it:
+
+```
+@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes
+```
+
+And to see the result:
+
+```
+@yourbot did we get one? show me the transaction
+```
+
+### What it handles for you
+
+- Checks the whole setup first, so a run never starts out broken
+- Does the searching on the rented computer, not yours
+- Checks every answer before spending anything, so one that arrived too late never costs a fee
+- Sends the transaction from your wallet and gives you the link
+
+### The two things only you can do
+
+- **Put a little ETH in your wallet.** Winning still costs a few cents in fees. Nothing can do that part for you.
+- **Keep attempts short.** Rounds move on constantly and work for a finished round is wasted. Short and frequent beats one long run.
+
+**Be honest about the odds.** You are racing everyone else trying the same drop, and
+you pay for the computing whether you win or lose. That is what the free credit is
+for. Use it, keep attempts short, and do not top up expecting a guaranteed cat.
+
+### Other drops this works on
+
+Same idea, same kind of prompt, just name the one you want:
+
+```
+@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me
+```
+
+### A few other things worth asking for
+
+```
+@yourbot rank this collection by rarity and tell me which rare ones are listed cheap: <opensea link>
+
+@yourbot is this mint real or is it a scam? <link>
+
+@yourbot watch this collection and message me the moment it reveals
+
+@yourbot check whether the wallets that minted this were real people or bots
+```
+
+---
+
+## 7. Set up Vercel
 
 Vercel puts a page or a website online for free. You do not need it to run the
 agent. You need it if you want a public link of your own.
@@ -260,17 +344,48 @@ project, or use GitHub Pages or Cloudflare Pages, which serve the same files.
 
 ---
 
-## 7. Your computer or a server?
+## 8. Your computer, a server, or hosted?
 
-Both work. The difference is what happens when you close your laptop.
+All three work. The difference is what happens when you close your laptop, and how
+much of it you have to look after yourself.
 
-| | On your own computer | On a small server |
-|---|---|---|
-| Cost | Free | ~$5/month |
-| Stays on when you shut the lid | No | Yes |
-| Scheduled jobs and overnight alerts | Miss their window | Fire on time |
-| Reach it from your phone | Only while the computer is on | Always |
-| Setup | Already done | Same three commands on the server |
+| | Your own computer | A small server | Nous hosts it (Hermes Cloud) |
+|---|---|---|---|
+| Cost | Free | ~$5/month | Listed on the Portal |
+| Stays on when you shut the lid | No | Yes | Yes |
+| Scheduled jobs and overnight alerts | Miss their window | Fire on time | Fire on time |
+| Reach it from your phone | Only while it is on | Always | Always |
+| Who keeps it updated | You | You | Nous |
+| Setup | Already done | Same three commands on the server | Create it from the Portal's Agents page |
+
+### Or let Nous host it for you
+
+If running a server sounds like work you do not want, **Nous Research hosts Hermes
+Cloud instances**. You get an agent that is always on, without picking a provider,
+securing a box, or keeping it updated.
+
+1. Make a **Nous Portal** account at https://portal.nousresearch.com
+2. Open the **Agents** page and create an instance. Give it a name.
+3. Connect Discord to it exactly as in step 3. Same commands, run on the instance.
+
+From then on you manage it from that web page: start, stop, restart, delete.
+Pricing is listed on the Portal alongside the plans.
+
+**One subscription can cover both jobs.** A Portal plan can also be the agent's
+brain instead of a separate model subscription. It includes a large catalogue of
+models plus managed web search, image generation and voice, all through one login.
+`hermes setup --portal` wires it up. If you are already paying for OpenCode, you do
+not need both.
+
+**Already running an agent locally?** You can manage cloud instances by asking it
+instead of clicking around a website:
+
+```bash
+hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud
+```
+
+Then you can say "list my cloud agents", "what is that instance costing me", or
+"restart the stopped one".
 
 **Moving to a server:** get one from Hetzner or DigitalOcean, pick **Ubuntu**, take
 the smallest option, and run the same Linux install line from step 2 on it. Then
@@ -282,7 +397,7 @@ something you want running while you sleep.
 
 ---
 
-## 8. What it costs
+## 9. What it costs
 
 | Thing | Cost | Needed? |
 |---|---|---|
@@ -292,12 +407,14 @@ something you want running while you sleep.
 | Vercel | Free | Only if you want a page online |
 | Your own computer | Free | Fine, but it sleeps |
 | Small server | ~$5/month | Only for running around the clock |
+| Modal, for solving drops like Hashcats (optional) | Free, $30/month included | Only if you want to go after those drops |
+| Nous Portal, hosting included (optional) | Listed on the Portal | Instead of your own server, and it can be the brain too |
 
 Honest total: about **$10 a month**, or $15 if you also want it awake all night.
 
 ---
 
-## 9. If something goes wrong
+## 10. If something goes wrong
 
 | What you see | What to do |
 |---|---|
