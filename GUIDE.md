@@ -285,21 +285,105 @@ Same idea, same kind of prompt, just name the one you want:
 @yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me
 ```
 
-### A few other things worth asking for
+---
+
+## 7. Things to ask it
+
+There is no special wording. **Paste a link and say what you want.** An OpenSea
+link, a tweet, a mint website, a wallet address, a contract address. If it cannot
+tell what you mean, it asks you.
+
+### Paste an OpenSea link
 
 ```
-@yourbot rank this collection by rarity and tell me which rare ones are listed cheap: <opensea link>
+@yourbot rank this whole collection by rarity and show me the top 20
+@yourbot which rare ones here are listed cheap right now?
+@yourbot what is the floor on this and is it going up or down?
+@yourbot are the wallets that minted this real people or bots?
+@yourbot is this worth buying at the current floor?
+@yourbot how many people are holding this, and how concentrated is it?
+```
 
-@yourbot is this mint real or is it a scam? <link>
+### Paste a tweet that says "mint this"
 
+This is the useful one. Drop the tweet in and it works out what the mint is, what
+it really costs, whether it is still open, and whether the project looks real,
+before anything touches your wallet.
+
+```
+@yourbot <tweet link> mint this
+@yourbot <tweet link> what is this mint and is it real?
+@yourbot <tweet link> can I mint this for free?
+@yourbot <tweet link> what would minting 3 of these actually cost me?
+@yourbot <tweet link> is this the real contract or a copy?
+@yourbot <tweet link> set an alert for when this goes live
+```
+
+It will not just fire off a transaction. It reads the tweet, finds the contract,
+checks the price and the supply on-chain, shows you what it found, and waits for
+you to say go.
+
+### Paste a mint website, or just a contract address
+
+```
+@yourbot can I mint this for free? <link>
+@yourbot what is the real price on this? the page says 0.05
+@yourbot is this mint still open or already sold out?
+@yourbot how many wallets have minted this so far?
+@yourbot is this contract a copy of another collection?
+@yourbot what does this contract actually do? <address>
+```
+
+### Paste a wallet address
+
+```
+@yourbot what has this wallet been buying? <address>
+@yourbot is this wallet actually profitable, or just busy?
+@yourbot watch this wallet and message me when it buys something
+@yourbot which collections did this wallet get into early?
+@yourbot does this wallet look like a bot or a person?
+```
+
+### Ask it to watch something for you
+
+```
 @yourbot watch this collection and message me the moment it reveals
-
-@yourbot check whether the wallets that minted this were real people or bots
+@yourbot tell me when the floor drops below 0.01
+@yourbot ping me if anything from this collection sells under 0.005
+@yourbot check this every ten minutes and only message me if something changes
+@yourbot remind me when this mint opens in an hour
 ```
+
+### Ask it to buy or mint for you
+
+Every one of these checks first and tells you the cost before it does anything.
+Nothing goes through until you say go.
+
+```
+@yourbot mint 1 for me, show me the cost and wait for my go ahead
+@yourbot buy the cheapest rare one under 0.01
+@yourbot buy 3 but never spend more than 0.03 in total
+@yourbot don't spend anything without asking me first
+@yourbot what is my wallet holding right now? <address>
+```
+
+### Ask it to explain something
+
+```
+@yourbot explain what a proof of work mint is, in simple terms
+@yourbot why is this floor so low?
+@yourbot what does "revealed" mean here?
+@yourbot how do people fake volume on a collection?
+@yourbot what is the difference between a mint and a buy?
+```
+
+**The general rule:** if you can paste it, it can probably look at it. Links,
+screenshots, addresses, tweets, spreadsheets. If you are not sure how to ask, just
+describe what you are trying to do and let it work the rest out.
 
 ---
 
-## 7. Set up Vercel
+## 8. Set up Vercel
 
 Vercel puts a page or a website online for free. You do not need it to run the
 agent. You need it if you want a public link of your own.
@@ -344,7 +428,7 @@ project, or use GitHub Pages or Cloudflare Pages, which serve the same files.
 
 ---
 
-## 8. Your computer, a server, or hosted?
+## 9. Your computer, a server, or hosted?
 
 All three work. The difference is what happens when you close your laptop, and how
 much of it you have to look after yourself.
@@ -397,7 +481,7 @@ something you want running while you sleep.
 
 ---
 
-## 9. What it costs
+## 10. What it costs
 
 | Thing | Cost | Needed? |
 |---|---|---|
@@ -414,7 +498,7 @@ Honest total: about **$10 a month**, or $15 if you also want it awake all night.
 
 ---
 
-## 10. If something goes wrong
+## 11. If something goes wrong
 
 | What you see | What to do |
 |---|---|
