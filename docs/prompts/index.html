@@ -3,162 +3,100 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Vibe coding — make the skills better by talking</title>
-<meta name="description" content="The skills are not all finished. Here is how to improve, fix and extend them in plain English, with the exact prompts to start from.">
-<meta property="og:title" content="Vibe coding — make the skills better by talking">
-<meta property="og:description" content="You do not write code. You describe the problem.">
+<title>Vibe coding | Make the skills better by talking</title>
+<meta name="description" content="The skills are not all finished. Improve, fix and extend them in plain English, with the exact prompts to start from.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Vibe coding the skills">
+<meta property="og:description" content="You do not write code. You describe the problem, and your agent fixes it.">
 <meta property="og:type" content="article">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
-<style>
-  :root{
-    --bg:#08090c; --panel:#0e1015; --panel2:#12151c; --line:#1d2129; --txt:#e9edf4;
-    --mut:#8b95a7; --accent:#c6ff3d; --accent2:#7c5cff; --gold:#f5b942;
-    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.68;-webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(900px 520px at 10% -8%,rgba(124,92,255,.17),transparent 60%),radial-gradient(760px 440px at 94% 2%,rgba(198,255,61,.10),transparent 60%);
-    background-repeat:no-repeat}
-  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
-  .backlink{font-family:var(--mono);font-size:12px;color:var(--mut);text-decoration:none;letter-spacing:.06em}
-  .backlink:hover{color:var(--accent)}
-  header{padding:64px 0 34px}
-  .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
-  h1{font-size:clamp(30px,5vw,50px);line-height:1.07;letter-spacing:-.03em;font-weight:770;max-width:22ch}
-  h1 em{font-style:normal;color:var(--accent)}
-  .lede{margin-top:20px;font-size:clamp(16px,1.9vw,18.5px);color:var(--mut);max-width:66ch}
-  .lede b{color:var(--txt);font-weight:600}
-  .cta{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
-  .btn{display:inline-flex;align-items:center;gap:9px;padding:12px 19px;border-radius:9px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .12s ease,background .18s ease}
-  .btn:hover{transform:translateY(-1px)}
-  .btn-primary{background:var(--accent);color:#0a0c07}
-  .btn-ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
-  .btn-ghost:hover{background:rgba(255,255,255,.05)}
-  nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin:32px 0 10px}
-  nav.toc h2{font-size:12px;font-family:var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
-  nav.toc ol{margin-left:18px;display:grid;gap:7px;font-size:14.5px}
-  nav.toc a{color:var(--txt);text-decoration:none;border-bottom:1px solid transparent}
-  nav.toc a:hover{border-color:var(--accent)}
-  section{padding:40px 0;border-top:1px solid var(--line)}
-  section:first-of-type{border-top:none}
-  h2.step{font-size:clamp(21px,3vw,27px);letter-spacing:-.02em;margin-bottom:8px;font-weight:700}
-  h2.step span{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.14em;display:block;margin-bottom:9px}
-  h3{font-size:17.5px;margin:26px 0 9px;font-weight:650;letter-spacing:-.01em}
-  p{color:var(--mut);margin:11px 0}
-  p b,li b,td b{color:var(--txt);font-weight:600}
-  ul,ol{margin:12px 0 12px 22px;display:grid;gap:8px;color:var(--mut)}
-  li code,p code,td code{font-family:var(--mono);font-size:.89em;background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:5px;padding:2px 6px;color:var(--txt)}
-  pre{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:16px 18px;overflow-x:auto;margin:15px 0;position:relative}
-  pre code{font-family:var(--mono);font-size:12.9px;line-height:1.62;color:var(--txt);background:none;border:none;padding:0;white-space:pre}
-  pre .c{color:var(--mut)}
-  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.3px}
-  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{color:var(--mut);font-weight:600;font-size:12px;letter-spacing:.09em;text-transform:uppercase;font-family:var(--mono)}
-  td{color:var(--mut)}
-  .note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:10px;padding:15px 18px;margin:18px 0;font-size:14.6px;color:var(--mut)}
-  .note.warn{border-left-color:var(--gold)}
-  .note b{color:var(--txt)}
-  .loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:18px 0}
-  .lstep{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:16px}
-  .lstep .n{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em;display:block;margin-bottom:8px}
-  .lstep h4{font-size:15px;margin-bottom:5px}
-  .lstep p{font-size:13.8px;margin:0}
-  .hook{background:linear-gradient(135deg,rgba(198,255,61,.08),rgba(124,92,255,.10));border:1px solid var(--line);border-radius:15px;padding:28px;margin:34px 0}
-  .hook h3{margin-top:0;font-size:20px}
-  footer{padding:44px 0 70px;border-top:1px solid var(--line);color:var(--mut);font-size:13.5px}
-  footer a{color:var(--txt);text-decoration:none;border-bottom:1px solid var(--line)}
-  footer a:hover{border-color:var(--accent)}
-  .top{position:fixed;right:18px;bottom:18px;background:var(--panel);border:1px solid var(--line);color:var(--mut);border-radius:9px;padding:9px 13px;font-size:12.5px;text-decoration:none;font-family:var(--mono)}
-  .copy{position:absolute;top:9px;right:9px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--mut);border-radius:6px;padding:4px 9px;font-family:var(--mono);font-size:11px;cursor:pointer}
-  .copy:hover{background:rgba(255,255,255,.12);color:var(--txt)}
-</style>
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/prompts/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/i18n.css">
+<script src="../assets/app.js" defer></script>
 </head>
-<body>
-<div class="wrap">
+<body id="top">
+<a class="skip" href="#vibe">Skip to the guide</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+</svg>
 
-<header>
-  <a class="backlink" href="../">← back to the setup guide</a>
-  <div class="kicker" style="margin-top:26px">Vibe coding</div>
-  <h1>The skills aren't all finished. <em>Talk them into shape.</em></h1>
-  <p class="lede">
-    Some of the 31 skills are rough around the edges. That is fine, and it was
-    deliberate, because <b>you can fix and extend them just by describing what you
-    want</b>. You never write code. You say what is broken or what you want added,
-    and the agent does it, tests it, and shows you the result.
-  </p>
-  <div class="cta">
-    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get the subscription →</a>
-    <a class="btn btn-ghost" href="../">Read the setup guide →</a>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="../" aria-label="NFT toolkit home"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT toolkit</span><span class="brand-sub">An agent of your own</span></a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="../#guide">The guide</a><a href="../#list">Skills</a><a class="pricing-nav" href="../#money">Costs</a><a class="pricing-nav" href="./">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="View NFT toolkit on GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+      <details class="lang" id="lang-menu"><summary aria-label="Language"><span>EN</span></summary>
+        <ul class="lang-menu">
+          <li><a href="./" hreflang="en" aria-current="true"><span>English</span><code>EN</code></a></li>
+          <li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>ZH</code></a></li>
+          <li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li>
+          <li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li>
+          <li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li>
+          <li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li>
+          <li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li>
+          <li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li>
+          <li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li>
+        </ul>
+      </details>
+    </nav>
   </div>
 </header>
 
-<nav class="toc">
-  <h2>On this page</h2>
-  <ol>
-    <li><a href="#what">What vibe coding actually means</a></li>
-    <li><a href="#loop">The four step loop</a></li>
-    <li><a href="#start">Prompts to start with</a></li>
-    <li><a href="#fix">When one of them breaks</a></li>
-    <li><a href="#new">Teach it something new</a></li>
-    <li><a href="#build">Build a whole small thing</a></li>
-    <li><a href="#words">Phrases that work</a></li>
-    <li><a href="#safe">Staying out of trouble</a></li>
-  </ol>
-</nav>
+<main id="vibe">
+  <section class="hero" aria-labelledby="vibe-title">
+    <div class="shell" style="padding-block:56px 40px">
+      <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Vibe coding</div>
+      <h1 id="vibe-title"><span>The skills aren’t all finished.</span><span>Talk them into shape.</span></h1>
+      <p>Some of the 31 skills are rough around the edges. That is deliberate: <b>you fix and extend them by describing what you want</b>. You never write code. You say what is broken or what to add, and your agent does it, tests it, and shows you the result.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get the subscription <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+        <a class="btn btn-ghost" href="../">Back to the setup guide</a>
+      </div>
+    </div>
+  </section>
 
-<section id="what">
-  <h2 class="step"><span>01</span>What vibe coding actually means</h2>
-  <p>
-    Normally, making software better means a developer reads code and edits it. Here
-    you skip that. <b>You describe the problem in normal words, and the agent does
-    the reading and the editing.</b>
-  </p>
-  <p>
-    A "skill" is just a written-down set of instructions your agent follows. So
-    improving one is not a coding job, it is a conversation. You say "this keeps
-    failing when someone gives it a Robinhood link", and it goes and fixes that.
-  </p>
-  <div class="note">
-    <b>Why it is worth doing:</b> every skill you improve stays improved. The next
-    time that job comes up, the agent already knows the answer. Your agent gets
-    better at your stuff the more you talk to it.
-  </div>
-  <div class="note">
-    <b>No separate bill.</b> This runs on the same subscription you already set up.
-    Long jobs use more of it than chatting does, so check the usage page on your
-    first few, then stop worrying about it.
-  </div>
-</section>
+  <div class="guide-content shell" style="padding-bottom:60px">
 
-<section id="loop">
-  <h2 class="step"><span>02</span>The four step loop</h2>
-  <div class="loop">
-    <div class="lstep"><span class="n">STEP 1</span><h4>Say what you want</h4><p>In plain English, in Discord. If you can describe it to a person, you can describe it here.</p></div>
-    <div class="lstep"><span class="n">STEP 2</span><h4>Let it work</h4><p>It reads the skill, works out what to change, and makes the change. Ask it to explain in one line what it did.</p></div>
-    <div class="lstep"><span class="n">STEP 3</span><h4>Make it prove it</h4><p>Say "test it and show me the output". This is the step people skip, and it is the one that matters.</p></div>
-    <div class="lstep"><span class="n">STEP 4</span><h4>Repeat until right</h4><p>If it is not right, say what is still wrong. Two or three rounds is normal. You are not doing it wrong.</p></div>
-  </div>
-  <div class="note warn">
-    <b>"Done" is not a result.</b> An agent can tell you it finished something that
-    does not work. Always ask for the actual output, the actual error, or the actual
-    link. If it cannot show you, it is not done.
-  </div>
-</section>
+    <section id="what">
+      <h2 class="step"><span>01</span>What vibe coding actually means</h2>
+      <p>Normally, making software better means a developer reads code and edits it. Here you skip that. <b>You describe the problem in normal words, and the agent does the reading and the editing.</b></p>
+      <p>A skill is just a written-down set of instructions your agent follows. So improving one is not a coding job, it is a conversation. You say “this keeps failing when someone gives it a Robinhood link”, and it goes and fixes that.</p>
+      <div class="note"><b>Why it is worth doing:</b> every skill you improve stays improved. The next time that job comes up, the agent already knows the answer.</div>
+      <div class="note"><b>No separate bill.</b> This runs on the same subscription you already set up. Long jobs use more of it than chatting does, so check your usage page on the first few, then stop worrying about it.</div>
+    </section>
 
-<section id="start">
-  <h2 class="step"><span>03</span>Prompts to start with</h2>
-  <p>Do these in order the first time. They take about ten minutes and set you up.</p>
+    <section id="loop">
+      <h2 class="step"><span>02</span>The four step loop</h2>
+      <div class="two">
+        <div class="card"><span class="price">STEP 1</span><h4>Say what you want</h4><p>In plain English, in Discord. If you can describe it to a person, you can describe it here.</p></div>
+        <div class="card"><span class="price">STEP 2</span><h4>Let it work</h4><p>It reads the skill, works out what to change, and makes the change. Ask it to explain in one line what it did.</p></div>
+        <div class="card"><span class="price">STEP 3</span><h4>Make it prove it</h4><p>Say “test it and show me the output”. This is the step people skip, and it is the one that matters.</p></div>
+        <div class="card"><span class="price">STEP 4</span><h4>Repeat until right</h4><p>If it is not right, say what is still wrong. Two or three rounds is normal.</p></div>
+      </div>
+      <div class="note warn"><b>“Done” is not a result.</b> An agent can tell you it finished something that does not work. Always ask for the actual output, the actual error, or the actual link. If it cannot show you, it is not done.</div>
+    </section>
 
-  <h3>Find out what needs work</h3>
-  <pre><button class="copy">copy</button><code>@yourbot read through all the skills I installed and tell me which ones look unfinished, unclear or missing steps
+    <section id="start">
+      <h2 class="step"><span>03</span>Prompts to start with</h2>
+      <p>Do these in order the first time. They take about ten minutes and set you up.</p>
+
+      <h3>Find out what needs work</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot read through all the skills I installed and tell me which ones look unfinished, unclear or missing steps
 
 @yourbot pick the weakest one and tell me exactly what is missing from it
 
 @yourbot which skill would you improve first to make my life easier, and why?</code></pre>
 
-  <h3>Fix one</h3>
-  <pre><button class="copy">copy</button><code>@yourbot the rarity skill doesn't handle collections that are still hidden. add that and show me it working
+      <h3>Fix one</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot the rarity skill doesn't handle collections that are still hidden. add that and show me it working
 
 @yourbot make the mint checker output easier to read, I don't understand the current format
 
@@ -166,26 +104,23 @@
 
 @yourbot improve this skill using what we learned in this conversation</code></pre>
 
-  <h3>Test it</h3>
-  <pre><button class="copy">copy</button><code>@yourbot test that properly and paste the actual output
+      <h3>Test it</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot test that properly and paste the actual output
 
 @yourbot give me a real example I can try myself to check it works
 
 @yourbot what could still go wrong with what you just built?</code></pre>
 
-  <h3>Keep it</h3>
-  <pre><button class="copy">copy</button><code>@yourbot save what you just worked out as a skill so you can do it again without me explaining
+      <h3>Keep it</h3>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot save what you just worked out as a skill so you can do it again without me explaining
 
 @yourbot write down the steps you just took so this works the same next time</code></pre>
-</section>
+    </section>
 
-<section id="fix">
-  <h2 class="step"><span>04</span>When one of them breaks</h2>
-  <p>
-    This is the most common thing you will do, and it is completely normal. Something
-    errors, you paste the error back, it fixes it.
-  </p>
-  <pre><button class="copy">copy</button><code>@yourbot that didn't work. here's what it said: &lt;paste the whole error&gt;
+    <section id="fix">
+      <h2 class="step"><span>04</span>When one of them breaks</h2>
+      <p>This is the most common thing you will do, and it is completely normal. Something errors, you paste the error back, it fixes it.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot that didn't work. here's what it said: &lt;paste the whole error&gt;
 
 @yourbot same as last time but with this wallet address instead: &lt;address&gt;
 
@@ -194,24 +129,14 @@
 @yourbot go back to how it was before, that change made it worse
 
 @yourbot you said it works but it didn't. show me the proof it works before you say that again</code></pre>
-  <div class="note">
-    <b>Paste the whole error, not a summary.</b> The ugly wall of text is exactly
-    what it needs. Trimming it is what makes fixes take four tries instead of one.
-  </div>
-  <div class="note warn">
-    <b>If it gets worse, ask for a rollback.</b> "Go back to how it was" is a
-    legitimate and useful prompt. Ask it to save a copy before big changes so that
-    is always possible.
-  </div>
-</section>
+      <div class="note"><b>Paste the whole error, not a summary.</b> The ugly wall of text is exactly what it needs. Trimming it is what makes fixes take four tries instead of one.</div>
+      <div class="note warn"><b>If it gets worse, ask for a rollback.</b> “Go back to how it was” is a legitimate and useful prompt. Ask it to save a copy before big changes so that is always possible.</div>
+    </section>
 
-<section id="new">
-  <h2 class="step"><span>05</span>Teach it something new</h2>
-  <p>
-    The 31 skills are a starting point. The real value is adding your own, for things
-    you do over and over.
-  </p>
-  <pre><button class="copy">copy</button><code>@yourbot watch how I check a mint before buying, then write a skill so you can do it for me next time
+    <section id="new">
+      <h2 class="step"><span>05</span>Teach it something new</h2>
+      <p>The 31 skills are a starting point. The real value is adding your own, for things you do over and over.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot watch how I check a mint before buying, then write a skill so you can do it for me next time
 
 @yourbot make a skill for finding collections where the floor just dropped
 
@@ -220,95 +145,74 @@
 @yourbot make a skill that checks all my wallets and tells me anything I should look at
 
 @yourbot build something that compares two collections side by side and tells me which has better odds</code></pre>
-  <div class="note">
-    <b>Turn every repetitive thing into a skill.</b> If you have explained the same
-    thing twice, that is a skill. You never have to explain it a third time.
-  </div>
-</section>
+      <div class="note"><b>Turn every repetitive thing into a skill.</b> If you have explained the same thing twice, that is a skill. You never have to explain it a third time.</div>
+    </section>
 
-<section id="build">
-  <h2 class="step"><span>06</span>Build a whole small thing</h2>
-  <p>
-    Same idea, bigger. You can have it build a working page and put it online, which
-    is what the Vercel part of the setup guide is for.
-  </p>
-  <pre><button class="copy">copy</button><code>@yourbot build me a page showing every collection I hold, with images and rarity rank
+    <section id="build">
+      <h2 class="step"><span>06</span>Build a whole small thing</h2>
+      <p>Same idea, bigger. You can have it build a working page and put it online, which is what the Vercel part of the setup guide is for.</p>
+      <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>Copy</button><code>@yourbot build me a page showing every collection I hold, with images and rarity rank
 
 @yourbot build a simple dashboard of the collections I'm watching and put it on Vercel
 
 @yourbot make a page where I can paste a collection link and it ranks everything and shows pictures
 
 @yourbot put this on Vercel and give me the link when it's actually live</code></pre>
-  <div class="note">
-    <b>Ask for the live link, not "done".</b> If it says the site is up, ask for the
-    URL and open it yourself. That single habit catches most of the ways this goes
-    wrong.
+      <div class="note"><b>Ask for the live link, not “done”.</b> If it says the site is up, ask for the URL and open it yourself. That single habit catches most of the ways this goes wrong.</div>
+    </section>
+
+    <section id="words">
+      <h2 class="step"><span>07</span>Phrases that work</h2>
+      <div class="table-scroll" role="region" aria-label="Scrollable reference table" tabindex="0"><table>
+        <tr><th>Say this</th><th>And you get</th></tr>
+        <tr><td>“show me your plan before you start”</td><td>You see what it intends before it does anything, and can redirect it</td></tr>
+        <tr><td>“test it and show me the output”</td><td>The difference between a real fix and a confident sentence</td></tr>
+        <tr><td>“explain what you changed, in one line”</td><td>You stay in control without reading any code</td></tr>
+        <tr><td>“don’t spend anything / don’t change anything yet”</td><td>It does the thinking without touching your money or your files</td></tr>
+        <tr><td>“make it simpler”</td><td>It strips the clever stuff and leaves something you can follow</td></tr>
+        <tr><td>“I don’t understand this, explain it like I’m new”</td><td>A straight answer instead of jargon</td></tr>
+        <tr><td>“go back to how it was”</td><td>An undo, when a change made things worse</td></tr>
+        <tr><td>“save that as a skill”</td><td>It becomes permanent, and you never explain it again</td></tr>
+      </table></div>
+    </section>
+
+    <section id="safe">
+      <h2 class="step"><span>08</span>Staying out of trouble</h2>
+      <ul>
+        <li><b>Never paste a private key</b> into a chat with an agent, or anywhere else. If you ever have, consider that wallet burnt and move anything in it.</li>
+        <li><b>Ask for the plan before big changes.</b> “Show me the plan first” costs you ten seconds and saves you a mess.</li>
+        <li><b>One change at a time.</b> Three improvements at once means you cannot tell which one broke it.</li>
+        <li><b>Keep your money behind a “no”.</b> Say “don’t spend anything without asking me” and it will not.</li>
+        <li><b>Back up before you go deep.</b> Ask it to save a copy of your skills first: “copy my skills folder somewhere safe”.</li>
+        <li><b>If it claims success and you cannot see it, it is not real.</b> Ask again for the proof.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="hook">
+        <h3>All of this needs one thing</h3>
+        <p>The subscription, about $10 a month, running deepseek v4.1 flash. It gives a genuinely generous amount of usage, which is what makes this kind of back-and-forth something you can do all day without watching a meter.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get the subscription <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a>
+          <a class="btn btn-ghost" href="../">Back to the setup guide</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-</section>
+</main>
 
-<section id="words">
-  <h2 class="step"><span>07</span>Phrases that work</h2>
-  <table>
-    <tr><th>Say this</th><th>And you get</th></tr>
-    <tr><td>"show me your plan before you start"</td><td>You see what it intends before it does anything, and can redirect it</td></tr>
-    <tr><td>"test it and show me the output"</td><td>The difference between a real fix and a confident sentence</td></tr>
-    <tr><td>"explain what you changed, in one line"</td><td>You stay in control without reading any code</td></tr>
-    <tr><td>"don't spend anything / don't change anything yet"</td><td>It does the thinking without touching your money or your files</td></tr>
-    <tr><td>"make it simpler"</td><td>It strips the clever stuff and leaves something you can actually follow</td></tr>
-    <tr><td>"I don't understand this, explain it like I'm new"</td><td>A straight answer instead of jargon</td></tr>
-    <tr><td>"go back to how it was"</td><td>An undo, when a change made things worse</td></tr>
-    <tr><td>"save that as a skill"</td><td>It becomes permanent, and you never explain it again</td></tr>
-  </table>
-</section>
-
-<section id="safe">
-  <h2 class="step"><span>08</span>Staying out of trouble</h2>
-  <ul>
-    <li><b>Never paste a private key</b> into a chat with an agent, or anywhere else. If you ever have, consider that wallet burnt and move anything in it.</li>
-    <li><b>Ask for the plan before big changes.</b> "Show me the plan first" costs you ten seconds and saves you a mess.</li>
-    <li><b>One change at a time.</b> Three improvements at once means you cannot tell which one broke it.</li>
-    <li><b>Keep your money behind a "no".</b> Say "don't spend anything without asking me" and it will not.</li>
-    <li><b>Back up before you go deep.</b> Ask it to save a copy of your skills before a big change: "copy my skills folder somewhere safe first".</li>
-    <li><b>If it claims success and you cannot see it, it is not real.</b> Ask again for the proof.</li>
-  </ul>
-</section>
-
-<section>
-  <div class="hook">
-    <h3>All of this needs one thing</h3>
-    <p>
-      The subscription, about $10 a month, running deepseek v4.1 flash. It gives a
-      genuinely generous amount of usage, which is what makes this kind of
-      back-and-forth something you can do all day without watching a meter.
-    </p>
-    <a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Get the subscription →</a>
-    <a class="btn btn-ghost" href="../">Back to the setup guide →</a>
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <p>Built to be yours.</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="../">Setup guide</a>
+      <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Source on GitHub</a>
+    </nav>
   </div>
-</section>
-
-<footer>
-  <p>
-    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit">github.com/andyemad/nft-mint-rarity-toolkit</a>
-    · MIT
-  </p>
-  <p style="margin-top:9px">
-    Nothing here is financial advice. If you improve a skill, the improved version
-    is yours. Do not sell it as something it is not.
-  </p>
+  <div class="shell"><p>Nothing here is financial advice. If you improve a skill, the improved version is yours.</p></div>
 </footer>
 
-</div>
-<a class="top" href="#top">↑ top</a>
-<script>
-document.querySelectorAll('pre .copy').forEach(function (b) {
-  b.addEventListener('click', function () {
-    var code = b.parentElement.querySelector('code').innerText;
-    navigator.clipboard.writeText(code).then(function () {
-      b.textContent = 'copied';
-      setTimeout(function () { b.textContent = 'copy'; }, 1400);
-    });
-  });
-});
-</script>
+<div id="toast" class="toast" hidden></div>
 </body>
 </html>

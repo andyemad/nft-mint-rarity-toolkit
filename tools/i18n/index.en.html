@@ -14,20 +14,7 @@
 <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/i18n.css">
 <script src="assets/app.js" defer></script>
-
-<link rel="alternate" hreflang="en" href="./">
-<link rel="alternate" hreflang="zh-Hans" href="zh/">
-<link rel="alternate" hreflang="ar" href="ar/">
-<link rel="alternate" hreflang="es" href="es/">
-<link rel="alternate" hreflang="fr" href="fr/">
-<link rel="alternate" hreflang="de" href="de/">
-<link rel="alternate" hreflang="ru" href="ru/">
-<link rel="alternate" hreflang="he" href="he/">
-<link rel="alternate" hreflang="ur-Latn" href="ur/">
-<script type="application/json" id="i18n-data">{}</script>
-<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
 </head>
 <body id="top">
 <a class="skip" href="#guide">Skip to setup guide</a>
@@ -52,7 +39,7 @@
 <header class="site-header">
   <div class="topbar shell">
     <a class="brand" href="#top" aria-label="NFT toolkit home"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT toolkit</span><span class="brand-sub">An agent of your own</span></a>
-    <nav class="topnav" aria-label="Main navigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>EN</span></summary><ul class="lang-menu"><li><a href="./" hreflang="en" aria-current="true"><span>English</span><code>EN</code></a></li><li><a href="zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+    <nav class="topnav" aria-label="Main navigation">
       <a href="#guide">The guide</a><a href="#list">Skills</a><a class="pricing-nav" href="#money">Costs</a><a class="pricing-nav" href="prompts/">Vibe coding</a>
       <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="View NFT toolkit on GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
     </nav>
@@ -134,15 +121,15 @@
 
 <div class="os-tabs" role="tablist" aria-label="Your operating system" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
   <p>Open the Start menu, type <b>PowerShell</b>, open it, and paste this in:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
 
 </div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
   <p>Press <b>Command + Space</b>, type <b>Terminal</b>, press Enter, and paste:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
 </div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
   <p>Open your terminal and paste:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
 
 </div>  <div class="note">
     It downloads everything it needs on its own and takes a few minutes. Let the text
@@ -151,7 +138,7 @@
 
   <h3>Check it worked</h3>
   <p>Close the window, open a new one, and type:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
   <p>This prints a checklist. Green means fine. If anything is missing it tells you
     the exact command to fix it.</p>
 
@@ -162,14 +149,14 @@
   </p>
   <p>Then add the key it gives you to the settings file.</p>
   <span class="os">Windows</span>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
   <p>Add this line at the bottom, replacing <code>YOUR_KEY_HERE</code> with your key,
     then save and close:</p>
-  <pre data-label="Settings file" data-kind="terminal"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
+  <pre data-label="Settings file"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
   <span class="os">Mac and Linux</span>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
   <p>Now tell it to use the subscription and say hello:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes model
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes model
 hermes chat -q "hello, what model are you?"</code></pre>
   <p>If it answers, the agent works. Everything after this is adding things to it.</p>
 </section>
@@ -202,15 +189,15 @@ hermes chat -q "hello, what model are you?"</code></pre>
       ID</b>. It is a long number.</li>
     <li>Run the setup and paste in the token and the user ID:</li>
   </ol>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
   <p>Pick Discord when it asks. Then start it and test it:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
   <p>
     Leave that window open and send the bot a direct message in Discord. It should
     answer. Once it does, press <b>Ctrl + C</b> to stop it and run these two lines so
     it starts on its own from then on:
   </p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
 hermes gateway start</code></pre>
   <div class="note">
     <b>In direct messages</b> it answers everything. <b>In a server channel</b> it
@@ -225,7 +212,7 @@ hermes gateway start</code></pre>
 <section id="skills">
   <div class="section-title"><h2 class="step"><span>04</span>Download the skills</h2><label class="completion" hidden><input type="checkbox" data-complete="skills" aria-label="Mark Download the skills complete"> Done</label></div>
   <p>Three lines. This downloads the skills and installs them into your agent:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
 cd nft-mint-rarity-toolkit
 ./install.sh</code></pre>
   <p>
@@ -238,7 +225,7 @@ cd nft-mint-rarity-toolkit
     unzip it, open a terminal inside that folder and run <code>bash install.sh</code>.
   </div>
   <p>Last thing, three small helpers that the wallet and trading skills need:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
 </section>
 
 <section id="list">
@@ -329,17 +316,17 @@ cd nft-mint-rarity-toolkit
       The $30 is already included.</li>
     <li>Then run these two commands once:</li>
   </ol>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install modal
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>pip install modal
 modal setup</code></pre>
   <p>The second one opens a browser and links your account. That is the whole setup.</p>
 
   <h3>What to type in Discord</h3>
   <p>This is the entire operation. Mention your bot and paste this:</p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
   <p>It reports the round back to you. When you want to actually go for it:</p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
   <p>And to see how it went:</p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
 
   <h3>What it handles for you</h3>
   <ul>
@@ -366,7 +353,7 @@ modal setup</code></pre>
   <p>
     Same idea and the same kind of prompt. You just name the one you want instead:
   </p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
 
 </section>
 
@@ -379,7 +366,7 @@ modal setup</code></pre>
   </p>
 
   <h3>Paste an OpenSea link</h3>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot rank this whole collection by rarity and show me the top 20
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot rank this whole collection by rarity and show me the top 20
 @yourbot which rare ones here are listed cheap right now?
 @yourbot what is the floor on this and is it going up or down?
 @yourbot are the wallets that minted this real people or bots?
@@ -392,7 +379,7 @@ modal setup</code></pre>
     what it really costs, whether it is still open, and whether the project looks
     real, before anything touches your wallet.
   </p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint this
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint this
 @yourbot &lt;tweet link&gt; what is this mint and is it real?
 @yourbot &lt;tweet link&gt; can I mint this for free?
 @yourbot &lt;tweet link&gt; what would minting 3 of these actually cost me?
@@ -405,7 +392,7 @@ modal setup</code></pre>
   </div>
 
   <h3>Paste a mint website, or just a contract address</h3>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot can I mint this for free? &lt;link&gt;
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot can I mint this for free? &lt;link&gt;
 @yourbot what is the real price on this? the page says 0.05
 @yourbot is this mint still open or already sold out?
 @yourbot how many wallets have minted this so far?
@@ -413,14 +400,14 @@ modal setup</code></pre>
 @yourbot what does this contract actually do? &lt;address&gt;</code></pre>
 
   <h3>Paste a wallet address</h3>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot what has this wallet been buying? &lt;address&gt;
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot what has this wallet been buying? &lt;address&gt;
 @yourbot is this wallet actually profitable, or just busy?
 @yourbot watch this wallet and message me when it buys something
 @yourbot which collections did this wallet get into early?
 @yourbot does this wallet look like a bot or a person?</code></pre>
 
   <h3>Ask it to watch something for you</h3>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot watch this collection and message me the moment it reveals
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot watch this collection and message me the moment it reveals
 @yourbot tell me when the floor drops below 0.01
 @yourbot ping me if anything from this collection sells under 0.005
 @yourbot check this every ten minutes and only message me if something changes
@@ -431,14 +418,14 @@ modal setup</code></pre>
     Every one of these checks first and tells you the cost before it does anything.
     Nothing goes through until you say go.
   </p>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 for me, show me the cost and wait for my go ahead
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 for me, show me the cost and wait for my go ahead
 @yourbot buy the cheapest rare one under 0.01
 @yourbot buy 3 but never spend more than 0.03 in total
 @yourbot don't spend anything without asking me first
 @yourbot what is my wallet holding right now? &lt;address&gt;</code></pre>
 
   <h3>Ask it to explain something</h3>
-  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot explain what a proof of work mint is, in simple terms
+  <pre data-label="Discord prompt"><button class="copy" hidden>copy</button><code>@yourbot explain what a proof of work mint is, in simple terms
 @yourbot why is this floor so low?
 @yourbot what does "revealed" mean here?
 @yourbot how do people fake volume on a collection?
@@ -487,7 +474,7 @@ modal setup</code></pre>
 
   <h3>The terminal way</h3>
   <p>If you would rather deploy straight from your computer:</p>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
 vercel login
 
 <span class="c"># then, from inside the folder you want online</span>
@@ -495,7 +482,7 @@ vercel --prod</code></pre>
   <p>It asks a couple of questions the first time and then prints your live link.</p>
 
   <h3>Deploy this guide's page as a test run</h3>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
 cd nft-mint-rarity-toolkit
 npx vercel deploy docs --prod</code></pre>
 
@@ -584,7 +571,7 @@ npx vercel deploy docs --prod</code></pre>
     asking it, instead of clicking around the website. One command connects your
     local agent to the Portal:
   </div>
-  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <pre data-label="Terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
   <p>After that you can say "list my cloud agents", "what is that instance costing
     me", or "restart the stopped one".</p>
 
@@ -642,7 +629,7 @@ npx vercel deploy docs --prod</code></pre>
     </div>
   </div>
 </main>
-<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT toolkit</a><div class="footer-links"><span>Built to be yours.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Source on GitHub</a><a href="prompts/">Vibe coding the skills</a><a href="#guide">Back to the guide</a></div></div><p>Free and open source. Nothing here is financial advice. Minting and trading can lose money. Set a limit before you start and never use money you need.</p></div><p class="lang-row"><a href="./" hreflang="en" aria-current="true">English</a> · <a href="zh/" hreflang="zh-Hans">中文</a> · <a href="ar/" hreflang="ar">العربية</a> · <a href="es/" hreflang="es">Español</a> · <a href="fr/" hreflang="fr">Français</a> · <a href="de/" hreflang="de">Deutsch</a> · <a href="ru/" hreflang="ru">Русский</a> · <a href="he/" hreflang="he">עברית</a> · <a href="ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT toolkit</a><div class="footer-links"><span>Built to be yours.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Source on GitHub</a><a href="prompts/">Vibe coding the skills</a><a href="#guide">Back to the guide</a></div></div><p>Free and open source. Nothing here is financial advice. Minting and trading can lose money. Set a limit before you start and never use money you need.</p></div></footer>
 <a class="top" href="#top" aria-label="Back to top" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
 <div class="toast" id="toast" role="status" hidden></div>
 </body>

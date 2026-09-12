@@ -32,6 +32,30 @@ rollout. There is also material for Ethereum mainnet and Ink.
 
 ---
 
+## Languages
+
+The guide is published in nine languages, each served from its own path:
+
+| Language | Path |
+|----------|------|
+| English | `/` |
+| Chinese (Simplified) | `/zh/` |
+| Arabic | `/ar/` (right to left) |
+| Spanish | `/es/` |
+| French | `/fr/` |
+| German | `/de/` |
+| Russian | `/ru/` |
+| Hebrew | `/he/` (right to left) |
+| Urdu (Roman script) | `/ur/` |
+
+Translations are not machine output: each one is written to read as a native
+product page, with the vocabulary its readers actually use. Arabic and Hebrew
+mirror the layout properly, and commands stay left-to-right on those pages so
+they read exactly as they will be typed.
+
+Adding a language is one JSON file and one build. See
+[`tools/i18n/README.md`](tools/i18n/README.md).
+
 ## What is in here
 
 | Capability | Skill(s) | Code |

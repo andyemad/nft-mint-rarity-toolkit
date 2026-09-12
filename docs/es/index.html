@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kit de herramientas NFT | Tu agente en cadena, en Discord</title>
+<meta name="description" content="Configura tu propio agente Hermes con 31 habilidades NFT gratis. Investiga mints, clasifica colecciones y sigue carteras desde Discord. Una guía práctica, paso a paso.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Habilidades en cadena. En tu Discord.">
+<meta property="og:description" content="Tu propio agente de IA. 31 habilidades NFT gratis. Una conversación. Empieza con la guía de configuración completa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/i18n.css">
+<script src="../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ar" href="../ar/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="ru" href="../ru/">
+<link rel="alternate" hreflang="he" href="../he/">
+<link rel="alternate" hreflang="ur-Latn" href="../ur/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Copiar mensaje para Discord", "copy.terminal": "Copiar comando de terminal", "copy.button": "Copiar", "copy.done": "Copiado", "copy.aria": "Copiado al portapapeles", "toast.copied": "Copiado. Pégalo cuando quieras.", "toast.manual": "La copia automática no está disponible. El texto está seleccionado para que puedas copiarlo.", "progress.count": "{n} de 4", "progress.saved": "Guardado en este navegador", "progress.visit": "Progreso guardado para esta visita", "toast.complete": "Configuración completa. Tu siguiente paso: envíale un mensaje a tu agente.", "skills.one": "habilidad", "skills.many": "habilidades", "skills.ready": " para poner a trabajar", "skills.found": " encontradas", "demo.rarity.prompt": "clasifica esta colección y muéstrame las raras", "demo.rarity.answer": "Colección clasificada. Estas son las tres más raras.", "demo.rarity.title": "Informe de rareza", "demo.rarity.subtitle": "Colección de demostración", "demo.rarity.foot": "Solo investigación. No se envió ninguna transacción.", "demo.mint.prompt": "revisa este mint antes de que conecte mi cartera", "demo.mint.answer": "Primero revisaré el contrato, el precio y la oferta.", "demo.mint.title": "Investigación de mint", "demo.mint.subtitle": "Lista de verificación de ejemplo", "demo.mint.foot": "Revisa los hallazgos antes de aprobar un mint.", "demo.mint.row1": "Verifica el contrato real", "demo.mint.row2": "Lee el precio de mint en cadena", "demo.mint.row3": "Comprueba la oferta restante", "demo.mint.tag": "Revisar primero", "demo.wallet.prompt": "¿qué ha estado comprando esta cartera últimamente?", "demo.wallet.answer": "Convertiré la actividad pública de la cartera en un informe.", "demo.wallet.title": "Información de cartera", "demo.wallet.subtitle": "Informe de ejemplo", "demo.wallet.foot": "Datos públicos de la cartera. No se necesitan claves privadas.", "demo.wallet.row1": "Compras recientes", "demo.wallet.row2": "Colecciones en posesión", "demo.wallet.row3": "Ventas y transferencias", "demo.wallet.tag": "En cadena"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#guide">Saltar a la guía de configuración</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14m-1-9H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Zm7-1v4m-2-2h4"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4v8"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h6"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+<symbol id="cat" viewBox="0 0 24 24"><path d="M5 11V4l6 4h2l6-4v7c2 7-2 10-7 10S3 18 5 11Z"/><path d="M8 13h1m6 0h1m-5 4h2"/></symbol>
+</svg>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="#top" aria-label="Inicio del kit de herramientas NFT"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>Kit de herramientas NFT</span><span class="brand-sub">Un agente propio</span></a>
+    <nav class="topnav" aria-label="Navegación principal"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>ES</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es" aria-current="true"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="#guide">La guía</a><a href="#list">Habilidades</a><a class="pricing-nav" href="#money">Costos</a><a class="pricing-nav" href="../prompts/">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="Ver el kit de herramientas NFT en GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid shell">
+      <div class="hero-copy">
+        <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Herramientas gratis. Tuyas para usar.</div>
+        <h1 id="hero-title"><span>Habilidades en cadena.</span><span>En tu Discord.</span></h1>
+        <p>Convierte un mensaje simple en investigación de mints, rankings de rareza e información de carteras. Configura tu propio agente Hermes y deja que él haga el trabajo pesado.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#guide">Crea tu agente <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a><a class="btn btn-ghost" href="#list">Explora las 31 habilidades</a></div>
+        <div class="hero-meta"><span><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> Unos 20 minutos</span><span><svg class="icon" aria-hidden="true"><use href="#check"></use></svg> Windows, Mac y Linux</span></div>
+      </div>
+      <div class="agent-stage" aria-label="Conversación ilustrativa con el agente">
+        <div class="agent-window">
+          <div class="window-top"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Tu Discord, mejorado</span><span>Ejemplo</span></div>
+          <div class="channel"><span class="hash" aria-hidden="true">#</span> tu-agente-en-cadena <small>Solo pídelo. Se pone a trabajar.</small></div>
+          <div class="chat-body" id="demo-response" role="region" aria-label="Respuesta de ejemplo" aria-live="polite" aria-atomic="true">
+            <div class="message"><div class="avatar" aria-hidden="true">Y</div><div><div class="message-heading">Tú <small>Hoy a las 10:42</small></div><p id="demo-prompt"><span class="mention">@hermes</span> clasifica esta colección y muéstrame las raras</p></div></div>
+            <div class="message"><div class="avatar agent" aria-hidden="true"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg></div><div><div class="message-heading">Hermes <span class="app-tag">APP</span><small>Hoy a las 10:42</small></div><p id="demo-answer">Colección clasificada. Estas son las tres más raras.</p>
+              <div class="result-card"><div class="result-heading"><span id="result-title">Informe de rareza</span><small id="result-subtitle">Colección de demostración</small></div><div id="result-rows" class="result-rows"><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#8b7ab5" d="M0 0h40v40H0z"/><path fill="#e3d0ee" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#5d437e" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0842</span><em>Puesto 1</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#738f8c" d="M0 0h40v40H0z"/><path fill="#c7e3c4" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#436858" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#2106</span><em>Puesto 2</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#bc977e" d="M0 0h40v40H0z"/><path fill="#ecd7b6" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#82563f" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0391</span><em>Puesto 3</em></div></div><div class="result-foot"><svg class="icon" aria-hidden="true"><use href="#shield"></use></svg><span id="result-foot">Solo investigación. No se envió ninguna transacción.</span></div></div>
+            </div></div>
+          </div>
+          <div class="sample-composer" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"></use></svg><span>Un mensaje. Todo un nuevo conjunto de habilidades.</span><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg></div>
+        </div>
+        <div class="skill-sticker" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg><div><strong>31 habilidades, listas para trabajar</strong><small>Investiga. Clasifica. Acuña. Monitorea.</small></div></div>
+        <div class="demo-controls" role="group" aria-label="Elige un ejemplo" hidden><button type="button" data-demo="rarity" aria-pressed="true" aria-controls="demo-response">Rankings de rareza</button><button type="button" data-demo="mint" aria-pressed="false" aria-controls="demo-response">Verificación de mints</button><button type="button" data-demo="wallet" aria-pressed="false" aria-controls="demo-response">Información de carteras</button></div>
+      </div>
+    </div>
+    <div class="hero-bottom shell"><span>Las herramientas detrás de tu agente</span><div class="stack"><span><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> Hermes</span><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Discord</span><span><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> OpenCode</span></div><span>Código abierto. Sin suscripción al kit de herramientas.</span></div>
+  </section>
+  <nav class="journey" aria-label="Tu configuración en tres pasos"><div class="journey-grid shell">
+    <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>Dale un cerebro</strong><small>Instala Hermes y conecta un modelo.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Llévalo a Discord</strong><small>Tu agente, a un mensaje de distancia.</small></div></a>
+    <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>Pon las habilidades a trabajar</strong><small>Instala el kit de herramientas. Pide lo que quieras.</small></div></a>
+  </div></nav>
+  <div class="guide-layout shell" id="guide">
+    <aside class="guide-sidebar" aria-label="Navegación de la guía">
+      <details open id="guide-menu"><summary>En esta guía <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
+        <nav class="toc" aria-label="Capítulos de la guía">
+          <span class="toc-label">Ponte en marcha</span><ol>
+            <li><a href="#need"><span>01</span>Lo que necesitas</a></li><li><a href="#hermes"><span>02</span>Configura Hermes</a></li><li><a href="#discord"><span>03</span>Conecta Discord</a></li><li><a href="#skills"><span>04</span>Instala las habilidades</a></li>
+          </ol><span class="toc-label">Hazlo útil</span><ol start="5">
+            <li><a href="#list"><span>05</span>La biblioteca de habilidades</a></li><li><a href="#hashcats"><span>06</span>Acuña Hashcats</a></li><li><a href="#prompts"><span>07</span>Cosas que pedirle</a></li>
+          </ol><span class="toc-label">Ve un poco más lejos</span><ol start="8">
+            <li><a href="#vercel"><span>08</span>Publica con Vercel</a></li><li><a href="#localvps"><span>09</span>Dónde ejecutarlo</a></li><li><a href="#money"><span>10</span>Cuánto cuesta</a></li><li><a href="#stuck"><span>11</span>Solución de problemas</a></li>
+          </ol>
+        </nav>
+        <div class="setup-progress" hidden><div class="progress-caption"><label for="setup-meter">Tu progreso de configuración</label><span id="progress-count">0 de 4</span></div><progress id="setup-meter" max="4" value="0"></progress><p class="progress-help" id="progress-help">Guardado en este navegador</p></div>
+      </details>
+    </aside>
+    <div class="guide-content">
+      <div class="guide-intro"><div><h2>Un poco de configuración. Después, solo chatea.</h2><p>Empieza aquí. Todo lo que necesitas, en el orden en que lo necesitas.</p></div><span class="reading-time"><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> ~20 min de configuración</span></div>
+<section id="need">
+  <div class="section-title"><h2 class="step"><span>01</span>Lo que necesitas</h2><label class="completion" hidden><input type="checkbox" data-complete="need" aria-label="Marcar Lo que necesitas como completado"> Hecho</label></div>
+  <div class="table-scroll" role="region" aria-label="Tabla de referencia desplazable" tabindex="0"><table>
+    <tr><th scope="col">Necesitas</th><th scope="col">Costo</th><th scope="col">Para qué sirve</th></tr>
+    <tr><td>Una computadora</td><td>Gratis</td><td>Ejecuta el agente. Windows, Mac o Linux, cualquiera de los últimos años</td></tr>
+    <tr><td>Una cuenta de Discord</td><td>Gratis</td><td>Así hablas con el agente, desde tu teléfono o tu computadora</td></tr>
+    <tr><td>Una suscripción a OpenCode</td><td>~$10/mes</td><td>El cerebro del agente. Lo único por lo que realmente tienes que pagar</td></tr>
+    <tr><td>Una cuenta de Vercel <i>(opcional)</i></td><td>Gratis</td><td>Solo si quieres poner una página o un sitio pequeño en línea</td></tr>
+    <tr><td>Un servidor pequeño <i>(opcional)</i></td><td>~$5/mes</td><td>Solo si quieres que el agente siga funcionando con tu computadora apagada</td></tr>
+    <tr><td>Una cuenta de Nous Portal <i>(opcional)</i></td><td>Precios en el Portal</td><td>Nous puede alojar el agente por ti, así nunca tienes que tocar un servidor</td></tr>
+  </table></div>
+  <p>
+    Empieza con las tres primeras. Vercel y el servidor vienen después, y puedes saltarte
+    cualquiera de los dos.
+  </p>
+</section>
+
+<section id="hermes">
+  <div class="section-title"><h2 class="step"><span>02</span>Configura Hermes</h2><label class="completion" hidden><input type="checkbox" data-complete="hermes" aria-label="Marcar Configura Hermes como completado"> Hecho</label></div>
+  <p>
+    Hermes es el agente. Pegas una línea en una ventana de terminal y se instala
+    solo. Eso es lo más técnico de toda esta guía.
+  </p>
+
+<div class="os-tabs" role="tablist" aria-label="Tu sistema operativo" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+  <p>Abre el menú Inicio, escribe <b>PowerShell</b>, ábrelo y pega esto:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+
+</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+  <p>Presiona <b>Command + Space</b>, escribe <b>Terminal</b>, presiona Enter y pega:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+  <p>Abre tu terminal y pega:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div>  <div class="note">
+    Descarga todo lo que necesita por su cuenta y tarda unos minutos. Deja que el texto
+    pase, no necesitas leerlo.
+  </div>
+
+  <h3>Comprueba que funcionó</h3>
+  <p>Cierra la ventana, abre una nueva y escribe:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
+  <p>Esto muestra una lista de comprobación. Verde significa que está bien. Si falta algo,
+    te dice el comando exacto para arreglarlo.</p>
+
+  <h3>Dale un cerebro</h3>
+  <p>
+    El agente necesita un modelo con el que pensar, y esa es la suscripción de $10.
+    Regístrate aquí: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a>.
+  </p>
+  <p>Luego agrega la clave que te da al archivo de configuración.</p>
+  <span class="os">Windows</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
+  <p>Agrega esta línea al final, reemplazando <code>YOUR_KEY_HERE</code> con tu clave,
+    luego guarda y cierra:</p>
+  <pre data-label="Archivo de configuración" data-kind="terminal"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
+  <span class="os">Mac y Linux</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <p>Ahora dile que use la suscripción y salúdalo:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes model
+hermes chat -q "hello, what model are you?"</code></pre>
+  <p>Si responde, el agente funciona. Todo lo que sigue es agregarle cosas.</p>
+</section>
+
+<section id="discord">
+  <div class="section-title"><h2 class="step"><span>03</span>Configura Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="Marcar Configura Discord como completado"> Hecho</label></div>
+  <p>
+    Esta es la parte que lo hace útil. Después de esto ya nunca necesitas la terminal.
+    Solo le escribes un mensaje.
+  </p>
+  <p>
+    Discord cambia sus propios menús de vez en cuando, así que si un botón se movió,
+    busca el más parecido.
+  </p>
+  <ol>
+    <li>Ve a <a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> y haz clic en <b>Nueva
+      aplicación</b>. Ponle el nombre que quieras.</li>
+    <li>En el menú de la izquierda haz clic en <b>Bot</b>. Baja hasta <b>Intents privilegiados
+      de puerta de enlace</b> y activa <b>Intent de contenido de mensajes</b> en <b>ACTIVADO</b>. Este es el más importante:
+      si lo omites, tu bot parecerá totalmente roto.</li>
+    <li>Todavía en esa página, haz clic en <b>Restablecer token</b> y copia lo que aparece. Solo se muestra
+      una vez. Trátalo como una contraseña.</li>
+    <li>En el menú de la izquierda haz clic en <b>Instalación</b>. Activa <b>Instalación en el servidor</b>, y asegúrate de que los permisos
+      incluyan <b>bot</b> y <b>applications.commands</b>. Copia
+      el enlace de instalación que te muestra.</li>
+    <li>Abre ese enlace en tu navegador y agrega el bot a tu servidor. Debes ser dueño
+      o administrador de ese servidor.</li>
+    <li>Encuentra tu propio ID de usuario. En Discord ve a <b>Ajustes → Avanzado</b>, activa
+      <b>Modo desarrollador</b>, luego haz clic derecho sobre tu propio nombre y elige <b>Copiar ID de
+      usuario</b>. Es un número largo.</li>
+    <li>Ejecuta la configuración y pega el token y el ID de usuario:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <p>Elige Discord cuando te lo pregunte. Luego arráncalo y pruébalo:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    Deja esa ventana abierta y envíale un mensaje directo al bot en Discord. Debería
+    responder. Cuando lo haga, presiona <b>Ctrl + C</b> para detenerlo y ejecuta estas dos líneas para que
+    se inicie solo a partir de entonces:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>En mensajes directos</b> responde todo. <b>En un canal de servidor</b> solo responde cuando lo mencionas con @,
+    así nunca llena de spam a tus amigos.
+  </div>
+  <div class="note warn">
+    <b>Si nunca responde</b>, casi siempre es una de dos cosas: el Intent de contenido
+    de mensajes sigue desactivado, o el ID de usuario se copió mal. Repite los pasos 2 y 6.
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title"><h2 class="step"><span>04</span>Descarga las habilidades</h2><label class="completion" hidden><input type="checkbox" data-complete="skills" aria-label="Marcar Descarga las habilidades como completado"> Hecho</label></div>
+  <p>Tres líneas. Esto descarga las habilidades y las instala en tu agente:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
+  <p>
+    Compruébalas cuando quieras con <code>hermes skills list</code>. Volver a ejecutar el instalador
+    más tarde es seguro, no romperá nada.
+  </p>
+  <div class="note">
+    <b>¿No tienes git instalado o no estás seguro?</b> Descarga el ZIP desde
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">este enlace</a>,
+    descomprímelo, abre una terminal dentro de esa carpeta y ejecuta <code>bash install.sh</code>.
+  </div>
+  <p>Lo último: tres pequeños ayudantes que necesitan las habilidades de carteras y trading:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+</section>
+
+<section id="list">
+  <div class="section-title"><h2 class="step"><span>05</span>La biblioteca de habilidades en cadena</h2></div>
+  <p>
+    No tienes que memorizarlas. El agente elige la correcta por su cuenta.
+    Esto es para que sepas qué puedes pedir.
+  </p>
+
+<div class="library-tools" hidden><div class="search-wrap"><svg class="icon" aria-hidden="true"><use href="#search"></use></svg><label class="sr-only" for="skill-search">Busca entre las 31 habilidades</label><input id="skill-search" type="search" placeholder="Prueba rareza, carteras o acuñación…" autocomplete="off" aria-controls="skill-results"></div><div class="filter-list" role="group" aria-label="Filtrar habilidades por categoría"><button type="button" data-filter="all" aria-pressed="true">Todas las habilidades</button><button type="button" data-filter="Minting" aria-pressed="false">Acuñación</button><button type="button" data-filter="Rarity and buying" aria-pressed="false">Rareza</button><button type="button" data-filter="Is this thing real?" aria-pressed="false">Verificación</button><button type="button" data-filter="Wallets" aria-pressed="false">Carteras</button><button type="button" data-filter="Making your own collection" aria-pressed="false">Crear</button><button type="button" data-filter="Tools and research" aria-pressed="false">Investigación y herramientas</button></div><p class="library-count" id="skill-count" role="status">31 habilidades para poner a trabajar</p></div><div id="skill-results"><h3 class="cat">Acuñación</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-mint-recon</span><h4>Averigua qué es realmente un mint</h4><p>Encuentra el contrato real, el precio real, si el mint está realmente abierto y en qué red está. La que evita que te estafen con un precio falso.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-mint-recon">Ver el manual<span class="sr-only"> de nft-mint-recon</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">seadrop-rapid-mint</span><h4>Acuña desde muchas carteras a la vez</h4><p>Para drops que se agotan en segundos. Crea las carteras, te dice exactamente cuánto poner en cada una y las lanza en el momento en que abre el mint.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/seadrop-rapid-mint">Ver el manual<span class="sr-only"> de seadrop-rapid-mint</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-floor-sweep</span><h4>Calcula el precio de comprar todo el suelo</h4><p>Suma cada listado barato de una colección y te da el total real antes de que las compres todas.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-floor-sweep">Ver el manual<span class="sr-only"> de nft-floor-sweep</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>Averigua cómo reclamar</h4><p>Para páginas que ofrecen un mint gratis, un reembolso o un airdrop. Descubre qué hace realmente el sitio antes de que conectes una cartera.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-claim-reverse-engineering">Ver el manual<span class="sr-only"> de onchain-claim-reverse-engineering</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Rareza y compra</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-rarity-engine</span><h4>Clasifica una colección por rareza</h4><p>Puntúa cada NFT y los ordena con las mismas matemáticas que usa OpenSea, así los puestos coinciden. Puede detectar un reveal antes de que OpenSea se actualice.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-rarity-engine">Ver el manual<span class="sr-only"> de nft-rarity-engine</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>Compra las raras baratas</h4><p>Después de un reveal, encuentra los objetos más raros listados a precios de suelo normales y los compra antes de que nadie se dé cuenta.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/rh-chain-rarity-sniping">Ver el manual<span class="sr-only"> de rh-chain-rarity-sniping</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-secondary-buy</span><h4>Compra por ti un NFT listado</h4><p>Compra en el mercado de reventa y siempre prueba la compra primero, así una orden fallida nunca te cuesta una comisión.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-secondary-buy">Ver el manual<span class="sr-only"> de nft-secondary-buy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">¿Esto es real?</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>Comprueba si los compradores eran reales</h4><p>Mira quién acuñó y te dice si eran personas reales o unas pocas carteras fingiendo interés para parecer populares.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-minter-legitimacy-audit">Ver el manual<span class="sr-only"> de nft-minter-legitimacy-audit</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">web3-claim-verification</span><h4>Verifica las afirmaciones de un proyecto</h4><p>Cuando un proyecto dice "hicimos X", esto revisa la cadena de bloques para ver si es verdad.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/web3-claim-verification">Ver el manual<span class="sr-only"> de web3-claim-verification</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-market-analysis</span><h4>Lee el mercado con honestidad</h4><p>Suelos, ventas, tenedores, qué tan rápido se revenden las cosas. Lo que dicen realmente los números.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-market-analysis">Ver el manual<span class="sr-only"> de nft-market-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-collection-price-analysis</span><h4>Evalúa una colección</h4><p>Cuánto vale, qué puede salir mal después de comprar y si el precio tiene sentido para el riesgo.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-price-analysis">Ver el manual<span class="sr-only"> de nft-collection-price-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-exit-discipline</span><h4>Cuándo vender</h4><p>Reglas para tomar ganancias en lugar de aguantar para siempre. La aburrida que ahorra más dinero.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-exit-discipline">Ver el manual<span class="sr-only"> de nft-exit-discipline</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Carteras</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-wallet-operations</span><h4>Crea y mueve carteras de forma segura</h4><p>Crea carteras nuevas, respalda las claves como corresponde y mueve tokens sin exponerlas nunca.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-wallet-operations">Ver el manual<span class="sr-only"> de ethereum-wallet-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">wallet-radar-operations</span><h4>Vigila las carteras que te importan</h4><p>Sigue carteras concretas y te avisa cuando compran algo.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/wallet-radar-operations">Ver el manual<span class="sr-only"> de wallet-radar-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>Convierte carteras en una hoja de cálculo</h4><p>Toma una lista de carteras y te entrega una hoja de cálculo limpia y fácil de compartir.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/productivity/public-wallet-xlsx-delivery">Ver el manual<span class="sr-only"> de public-wallet-xlsx-delivery</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pseudonym-identity-research</span><h4>Conecta cuentas anónimas</h4><p>Vincula alias y carteras anónimas que pertenecen a la misma persona.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/pseudonym-identity-research">Ver el manual<span class="sr-only"> de pseudonym-identity-research</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Crear tu propia colección</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-collection-production</span><h4>Construye una colección desde cero</h4><p>El plan de arte, los rasgos, el precio, la página de mint y la mecánica del contrato, todo en un solo lugar.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-production">Ver el manual<span class="sr-only"> de nft-collection-production</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-taxonomy</span><h4>Organiza los rasgos</h4><p>Mantiene cada atributo consistente y agrupado para que tus metadatos no se vuelvan un desastre.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-taxonomy">Ver el manual<span class="sr-only"> de nft-trait-taxonomy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-curation</span><h4>Revisa la calidad de los rasgos</h4><p>Audita cada rasgo en busca de duplicados y de cualquier cosa que se vea mal antes de lanzar.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-curation">Ver el manual<span class="sr-only"> de nft-trait-curation</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Herramientas e investigación</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-data-pipelines</span><h4>Lee la cadena de bloques gratis</h4><p>Extrae datos en cadena sin pagar por una API. El motor que hay debajo de muchas de las otras.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-data-pipelines">Ver el manual<span class="sr-only"> de ethereum-data-pipelines</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-mint-command-center</span><h4>La sala de control de mints</h4><p>Un panel local para acuñar: planifica un mint, ensáyalo, administra un conjunto de carteras, vigila el suelo y mira qué pasó después.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/rh-mint-command-center">Ver el manual<span class="sr-only"> de rh-mint-command-center</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">mint-field-guide</span><h4>El panel de mints</h4><p>Una pantalla de solo lectura con los próximos mints y el movimiento del mercado, indicando de dónde salió cada número.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/mint-field-guide">Ver el manual<span class="sr-only"> de mint-field-guide</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pow-mint-mining</span><h4>Gestiona los mints resueltos</h4><p>Hashcats, FAB4200 y otros parecidos te dan el objeto por encontrar un número de la suerte en lugar de pagar. Esto ejecuta esa búsqueda por ti.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/pow-mint-mining">Ver el manual<span class="sr-only"> de pow-mint-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-mining</span><h4>El trabajo de cómputo</h4><p>Ejecuta esa búsqueda en tu máquina o en hardware alquilado, con verificación para que nunca desperdicie una transacción.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-mining">Ver el manual<span class="sr-only"> de onchain-puzzle-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-solving</span><h4>Resuelve mints que te hacen pensar</h4><p>Acertijos y pistas ocultas que bloquean algunos drops, encontrados leyendo el propio código del juego.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-solving">Ver el manual<span class="sr-only"> de onchain-puzzle-solving</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Mapea la economía de un juego</h4><p>Desarma un juego en cadena para mostrar de dónde viene el valor.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/onchain-game-economy-analysis">Ver el manual<span class="sr-only"> de onchain-game-economy-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">polymarket</span><h4>Lee los mercados de predicción</h4><p>Comprueba a cuánto cotizan los mercados de apuestas un evento.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/polymarket">Ver el manual<span class="sr-only"> de polymarket</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">proof-of-play-archive</span><h4>Investigación sobre Proof of Play</h4><p>Investigación de fondo sobre Proof of Play y Pirate Nation.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/proof-of-play-archive">Ver el manual<span class="sr-only"> de proof-of-play-archive</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">agent-protocol-identity</span><h4>Le da una identidad a un agente</h4><p>Permite que un agente demuestre quién es cuando publica en línea, así se puede distinguir uno real de uno falso.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/agent-protocol-identity">Ver el manual<span class="sr-only"> de agent-protocol-identity</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">flop-technocore-agent-ops</span><h4>Operar un agente en público</h4><p>Cómo darle a un agente su propia cuenta y hacer que publique sin filtrar nada privado.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/flop-technocore-agent-ops">Ver el manual<span class="sr-only"> de flop-technocore-agent-ops</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">internet-computer-development</span><h4>Construir en el Internet Computer</h4><p>Notas para otra cadena de bloques, el Internet Computer.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/internet-computer-development">Ver el manual<span class="sr-only"> de internet-computer-development</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+</div><div class="empty-state" id="empty-skills" hidden><p>No hay habilidades que coincidan. Prueba con otro término u otra categoría.</p><button type="button" id="reset-search">Mostrar todas las habilidades</button></div></section>
+
+<section id="hashcats">
+  <div class="section-title"><h2 class="step"><span>06</span>Acuña Hashcats (y drops parecidos)</h2></div>
+  <p>
+    Algunos drops no tienen precio. En lugar de pagar, tienes que encontrar un número
+    de la suerte, y quien lo encuentre primero se lleva el gato. Eso es lo que la gente
+    quiere decir cuando dice que un mint se resuelve en lugar de comprarse.
+  </p>
+  <p>
+    Tu laptop puede hacerlo, pero tardaría días, y la gente con grandes computadoras
+    alquiladas los encuentra en minutos. Así que alquilas una por unos minutos. Esa es la
+    única razón de todo esto.
+  </p>
+
+  <h3>Alquila una computadora por unos minutos (gratis para empezar)</h3>
+  <p>
+    <b>Modal</b> alquila computadoras por segundo. No compras nada. Te registras
+    y viene con <b>$30 de cómputo gratis cada mes</b>, que son unas siete
+    horas de sus máquinas rápidas a unos $4 la hora. Para intentos ocasionales,
+    probablemente nunca pagues nada.
+  </p>
+  <ol>
+    <li>Regístrate gratis en <a href="https://modal.com" style="color:var(--accent)">modal.com</a>.
+      Los $30 ya están incluidos.</li>
+    <li>Luego ejecuta estos dos comandos una vez:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install modal
+modal setup</code></pre>
+  <p>El segundo abre un navegador y vincula tu cuenta. Esa es toda la configuración.</p>
+
+  <h3>Qué escribir en Discord</h3>
+  <p>Esta es toda la operación. Menciona tu bot y pega esto:</p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
+  <p>Te reporta la ronda. Cuando quieras ir de verdad por ella:</p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
+  <p>Y para ver cómo te fue:</p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
+
+  <h3>Qué hace por ti</h3>
+  <ul>
+    <li>Revisa toda la configuración primero, así una ejecución nunca empieza rota</li>
+    <li>Hace la búsqueda en la computadora alquilada, no en la tuya</li>
+    <li>Comprueba cada respuesta antes de gastar nada, así una que llegó demasiado tarde nunca te cuesta una comisión</li>
+    <li>Envía la transacción desde tu cartera y te da el enlace</li>
+  </ul>
+
+  <h3>Las dos cosas que solo tú puedes hacer</h3>
+  <ul>
+    <li><b>Pon un poco de ETH en tu cartera.</b> Ganar igual cuesta unos centavos en comisiones. Nada puede hacer esa parte por ti.</li>
+    <li><b>Mantén los intentos cortos.</b> Las rondas avanzan todo el tiempo, y el trabajo hecho para una ronda que ya terminó se desperdicia. Corto y frecuente le gana a una corrida larga.</li>
+  </ul>
+
+  <div class="note warn">
+    <b>Sé honesto con las probabilidades.</b> Estás compitiendo con todos los demás que intentan el mismo
+    drop, y pagas el cómputo ganes o pierdas. Para eso sirve el
+    crédito gratis. Úsalo, mantén los intentos cortos y no recargues
+    esperando un gato garantizado.
+  </div>
+
+  <h3>Otros drops en los que funciona</h3>
+  <p>
+    La misma idea y el mismo tipo de mensaje. Solo nombras el que quieres en su lugar:
+  </p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
+
+</section>
+
+<section id="prompts">
+  <div class="section-title"><h2 class="step"><span>07</span>Cosas que pedirle</h2></div>
+  <p>
+    No hay ninguna fórmula especial. <b>Pega un enlace y di qué quieres.</b> Un
+    enlace de OpenSea, un tuit, un sitio web de mint, una dirección de cartera, una dirección
+    de contrato. Si no entiende lo que quieres decir, te lo pregunta.
+  </p>
+
+  <h3>Pega un enlace de OpenSea</h3>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot rank this whole collection by rarity and show me the top 20
+@yourbot which rare ones here are listed cheap right now?
+@yourbot what is the floor on this and is it going up or down?
+@yourbot are the wallets that minted this real people or bots?
+@yourbot is this worth buying at the current floor?
+@yourbot how many people are holding this, and how concentrated is it?</code></pre>
+
+  <h3>Pega un tuit que diga "acuña esto"</h3>
+  <p>
+    Esta es la útil. Mete el tuit y averigua qué es el mint,
+    cuánto cuesta de verdad, si todavía está abierto y si el proyecto parece
+    real, antes de que nada toque tu cartera.
+  </p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint this
+@yourbot &lt;tweet link&gt; what is this mint and is it real?
+@yourbot &lt;tweet link&gt; can I mint this for free?
+@yourbot &lt;tweet link&gt; what would minting 3 of these actually cost me?
+@yourbot &lt;tweet link&gt; is this the real contract or a copy?
+@yourbot &lt;tweet link&gt; set an alert for when this goes live</code></pre>
+  <div class="note">
+    No va a lanzar una transacción sin más. Lee el tuit, encuentra el
+    contrato, comprueba el precio y la oferta en cadena, te muestra lo que encontró
+    y espera a que le digas que sí.
+  </div>
+
+  <h3>Pega un sitio web de mint, o solo la dirección de un contrato</h3>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot can I mint this for free? &lt;link&gt;
+@yourbot what is the real price on this? the page says 0.05
+@yourbot is this mint still open or already sold out?
+@yourbot how many wallets have minted this so far?
+@yourbot is this contract a copy of another collection?
+@yourbot what does this contract actually do? &lt;address&gt;</code></pre>
+
+  <h3>Pega una dirección de cartera</h3>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot what has this wallet been buying? &lt;address&gt;
+@yourbot is this wallet actually profitable, or just busy?
+@yourbot watch this wallet and message me when it buys something
+@yourbot which collections did this wallet get into early?
+@yourbot does this wallet look like a bot or a person?</code></pre>
+
+  <h3>Pídele que vigile algo por ti</h3>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot watch this collection and message me the moment it reveals
+@yourbot tell me when the floor drops below 0.01
+@yourbot ping me if anything from this collection sells under 0.005
+@yourbot check this every ten minutes and only message me if something changes
+@yourbot remind me when this mint opens in an hour</code></pre>
+
+  <h3>Pídele que compre o acuñe por ti</h3>
+  <p>
+    Cada una de estas comprueba primero y te dice el costo antes de hacer nada.
+    Nada se ejecuta hasta que digas que sí.
+  </p>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 for me, show me the cost and wait for my go ahead
+@yourbot buy the cheapest rare one under 0.01
+@yourbot buy 3 but never spend more than 0.03 in total
+@yourbot don't spend anything without asking me first
+@yourbot what is my wallet holding right now? &lt;address&gt;</code></pre>
+
+  <h3>Pídele que te explique algo</h3>
+  <pre data-label="Mensaje para Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot explain what a proof of work mint is, in simple terms
+@yourbot why is this floor so low?
+@yourbot what does "revealed" mean here?
+@yourbot how do people fake volume on a collection?
+@yourbot what is the difference between a mint and a buy?</code></pre>
+
+  <div class="note">
+    <b>La regla general:</b> si puedes pegarlo, probablemente pueda mirarlo. Enlaces,
+    capturas de pantalla, direcciones, tuits, hojas de cálculo. Si no sabes cómo pedirlo,
+    solo describe lo que intentas hacer y deja que él resuelva el resto.
+  </div>
+
+  <div class="note">
+    <b>¿Quieres cambiar cómo funciona una habilidad en sí?</b> Eso está en una página aparte, porque
+    es lo más útil que puedes aprender aquí:
+    <a href="../prompts/" style="color:var(--accent)">mejora las habilidades hablando</a>.
+  </div>
+</section>
+
+<section id="vercel">
+  <div class="section-title"><h2 class="step"><span>08</span>Configura Vercel</h2></div>
+  <p>
+    Vercel pone un sitio web o una página en internet gratis. No lo necesitas para
+    ejecutar el agente. Lo necesitas si quieres una página pública propia: un enlace que puedas
+    compartir, un portafolio, una página de documentación, esta guía.
+  </p>
+
+  <h3>Crea una cuenta</h3>
+  <p>
+    Regístrate en <a href="https://vercel.com/signup" style="color:var(--accent)">vercel.com/signup</a>
+    con GitHub, Google o correo. El plan gratis alcanza para todo lo de aquí.
+  </p>
+
+  <h3>La forma fácil: conecta un proyecto de GitHub</h3>
+  <ol>
+    <li>En Vercel haz clic en <b>Agregar nuevo → Proyecto</b>.</li>
+    <li>Conecta tu cuenta de GitHub y elige el repositorio que quieres poner en línea.</li>
+    <li>Si tus archivos web están en una carpeta y no en el nivel superior, define <b>Directorio
+      raíz</b> con esa carpeta. Para la página de esta guía, esa carpeta es
+      <code>docs</code>.</li>
+    <li>Haz clic en <b>Deploy</b>. Un minuto después tienes un enlace en vivo.</li>
+  </ol>
+  <p>
+    A partir de ahí, cada vez que subes algo a GitHub, Vercel reconstruye el sitio solo.
+    Ese es todo el flujo de trabajo.
+  </p>
+
+  <h3>La forma con la terminal</h3>
+  <p>Si prefieres desplegar directamente desde tu computadora:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
+vercel login
+
+<span class="c"># then, from inside the folder you want online</span>
+vercel --prod</code></pre>
+  <p>La primera vez te hace un par de preguntas y luego imprime tu enlace en vivo.</p>
+
+  <h3>Despliega la página de esta guía como prueba</h3>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod</code></pre>
+
+  <h3>Tu propio dominio</h3>
+  <p>
+    Opcional. En la sección <b>Ajustes → Dominios</b> del proyecto puedes agregar un dominio
+    propio, o aceptar la dirección <code>your-project.vercel.app</code> gratis que te
+    da.
+  </p>
+
+  <div class="note warn">
+    <b>Lo que Vercel no puede hacer:</b> ejecutar tu agente. Vercel solo sirve sitios web que
+    se cargan bajo demanda. Tu agente es un programa que tiene que permanecer encendido, así que
+    vive en tu computadora o en un servidor. Si alguna vez ves que un despliegue falla con un
+    <b>402</b> error, esa cuenta superó el límite de transferencia del plan gratis.
+    Crea un proyecto nuevo, o usa GitHub Pages o Cloudflare Pages, que sirven los mismos
+    archivos.
+  </div>
+</section>
+
+<section id="localvps">
+  <div class="section-title"><h2 class="step"><span>09</span>¿Tu computadora, un servidor o alojado?</h2></div>
+  <p>
+    Ambas funcionan. La única diferencia real es qué pasa cuando cierras tu laptop.
+  </p>
+  <div class="two">
+    <div class="card">
+      <span class="price">GRATIS</span>
+      <h4>En tu propia computadora</h4>
+      <ul>
+        <li>Nada que configurar más allá de la instalación que ya hiciste</li>
+        <li>Velocidad completa, y puede usar cosas que solo tú tienes: tu navegador, tus archivos, tus carteras</li>
+        <li><b>Se detiene cuando cierras la tapa</b> o la pones a dormir</li>
+        <li>Cualquier tarea programada, alerta o vigilancia nocturna pierde su momento</li>
+        <li>Buena para: probar cosas, uso de día, cualquier cosa que estés vigilando tú mismo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">~$5 / MES</span>
+      <h4>En un servidor pequeño</h4>
+      <ul>
+        <li>Nunca duerme. Una vez iniciado, se mantiene en pie</li>
+        <li>Las vigilancias, alertas y tareas cronometradas sí se activan a las 4 de la mañana</li>
+        <li>Lo alcanzas desde tu teléfono, a través de Discord, desde cualquier lugar</li>
+        <li>Sin pantalla, así que no puedes verlo trabajar más que por el chat</li>
+        <li>Buena para: tareas programadas, vigilancias nocturnas, cualquier cosa que quieras ejecutando todo el tiempo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">PRECIOS EN EL PORTAL</span>
+      <h4>O deja que Nous lo aloje</h4>
+      <ul>
+        <li><b>Hermes Cloud</b> ejecuta la instancia por ti</li>
+        <li>Sin servidor que configurar, actualizar o reiniciar tú mismo</li>
+        <li>Iníciala, deténla y reiníciala desde una página web, o pidiéndoselo a tu propio agente</li>
+        <li>La misma configuración de Discord que en todos los demás casos</li>
+        <li>Buena para: quienes no quieren administrar un servidor de ninguna manera</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>O deja que Nous lo aloje por ti</h3>
+  <p>
+    Si administrar un servidor suena a trabajo que no quieres, <b>Nous Research aloja
+    instancias de Hermes Cloud</b>. Obtienes un agente siempre encendido, sin
+    elegir un proveedor, asegurar una máquina ni mantenerla actualizada.
+  </p>
+  <ol>
+    <li>Crea una <b>Nous Portal</b> cuenta en
+      <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
+    <li>Abre la <b>Agentes</b> página y crea una instancia. Ponle un nombre.</li>
+    <li>Conecta Discord a ella exactamente como en el paso 03. Los mismos comandos, ejecutados en la
+      instancia.</li>
+  </ol>
+  <p>A partir de ahí la administras desde esa página web. Iníciala, deténla, reiníciala o bórrala
+    allí. Los precios están listados en el Portal junto con los planes.</p>
+  <div class="note">
+    <b>Una sola suscripción puede cubrir ambos trabajos.</b> Un plan del Portal también puede ser el
+    cerebro del agente en lugar de una suscripción de modelo aparte: incluye un gran
+    catálogo de modelos más búsqueda web gestionada, generación de imágenes y voz, todo
+    con un solo inicio de sesión. Ejecuta <code>hermes setup --portal</code> y se conecta solo.
+    Si ya pagas OpenCode, no necesitas ambas.
+  </div>
+  <div class="note">
+    <b>¿Ya tienes un agente corriendo localmente?</b> Puedes administrar tus instancias en la nube
+    pidiéndoselo, en lugar de hacer clic por el sitio web. Un comando conecta tu
+    agente local al Portal:
+  </div>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <p>Después de eso puedes decir "lista mis agentes en la nube", "cuánto me está costando
+    esa instancia" o "reinicia la que está detenida".</p>
+
+  <h3>Mudarse a un servidor</h3>
+  <ol>
+    <li>Consigue uno en Hetzner o DigitalOcean, unos $5/mes. Elige <b>Ubuntu</b> como
+      sistema. La opción más pequeña es más que suficiente.</li>
+    <li>Sigue la misma línea de instalación para Linux del paso 02 en ese servidor en lugar de
+      tu computadora.</li>
+    <li>Repite allí los pasos de Discord y de las habilidades. Son los mismos tres comandos.</li>
+    <li>Puedes tener ambos. Tu computadora y el servidor son agentes separados, y cada uno
+      tiene su propio token de bot de Discord si quieres.</li>
+  </ol>
+  <div class="note">
+    <b>La forma sensata de hacerlo:</b> empieza hoy en tu propia computadora, y solo alquila un
+    servidor cuando tengas algo que quieras que siga funcionando mientras duermes.
+  </div>
+</section>
+
+<section id="money">
+  <div class="section-title"><h2 class="step"><span>10</span>Cuánto cuesta</h2></div>
+  <div class="table-scroll" role="region" aria-label="Tabla de referencia desplazable" tabindex="0"><table>
+    <tr><th scope="col">Cosa</th><th scope="col">Costo</th><th scope="col">¿Necesario?</th></tr>
+    <tr><td>Agente Hermes</td><td>Gratis</td><td>Sí</td></tr>
+    <tr><td>Las 31 habilidades</td><td>Gratis</td><td>Sí</td></tr>
+    <tr><td>Suscripción a OpenCode</td><td>~$10/mes</td><td>Sí, este es el cerebro</td></tr>
+    <tr><td>Vercel</td><td>Gratis</td><td>Solo si quieres una página en línea</td></tr>
+    <tr><td>Tu propia computadora</td><td>Gratis</td><td>Sirve, pero duerme</td></tr>
+    <tr><td>Servidor pequeño</td><td>~$5/mes</td><td>Solo para tenerlo funcionando las 24 horas</td></tr>
+    <tr><td>Modal, para resolver drops como Hashcats <i>(opcional)</i></td><td>Gratis, $30/mes incluidos</td><td>Solo si quieres ir por esos drops</td></tr>
+    <tr><td>Nous Portal, alojamiento incluido <i>(opcional)</i></td><td>Listado en el Portal</td><td>En lugar de tu propio servidor, y también puede ser el cerebro</td></tr>
+  </table></div>
+  <p>
+    Total honesto: <b>unos $10 al mes</b>, o $15 si también lo quieres despierto toda
+    la noche.
+  </p>
+</section>
+
+<section id="stuck">
+  <div class="section-title"><h2 class="step"><span>11</span>Si algo sale mal</h2></div>
+  <div class="table-scroll" role="region" aria-label="Tabla de referencia desplazable" tabindex="0"><table>
+    <tr><th scope="col">Lo que ves</th><th scope="col">Qué hacer</th></tr>
+    <tr><td><code>hermes</code> no se reconoce</td><td>Cierra la terminal y abre una nueva. ¿Sigue fallando después de eso? Reinicia la computadora e inténtalo de nuevo.</td></tr>
+    <tr><td>El bot está en línea pero nunca responde</td><td>El Intent de contenido de mensajes está desactivado en la página de desarrollador de Discord. Esta es la causa número uno.</td></tr>
+    <tr><td>Responde en MD, pero calla en un servidor</td><td>Normal. En los servidores solo responde cuando lo mencionas con @.</td></tr>
+    <tr><td>Dice que no tienes permiso</td><td>Tu ID de usuario de Discord está mal. Cópialo otra vez con el Modo desarrollador activado.</td></tr>
+    <tr><td>El despliegue de Vercel falla con 402</td><td>Esa cuenta superó el límite de transferencia gratuito. Proyecto nuevo, o usa GitHub Pages o Cloudflare Pages.</td></tr>
+    <tr><td>El agente se detuvo durante la noche</td><td>Estaba en tu computadora. Eso es lo esperado. Muévelo a un servidor si lo necesitas siempre encendido.</td></tr>
+    <tr><td>Te pide más dinero</td><td>Revisa tu página de uso de OpenCode. Los trabajos largos consumen más que conversar.</td></tr>
+    <tr><td>Las habilidades no aparecen</td><td><code>hermes skills list</code> para confirmar que se instalaron, luego <code>/reload-skills</code> en un chat.</td></tr>
+    <tr><td>Estás perdido</td><td>Ejecuta <code>hermes chat</code> y simplemente describe lo que intentas hacer.</td></tr>
+  </table></div>
+</section>
+      <section class="closing" aria-label="Empezar"><div class="hook"><h3>Tu agente está a una configuración de distancia.</h3><p>La guía y las 31 habilidades son gratis. Conecta una suscripción de modelo, sigue los pasos y hazlo tuyo.</p><div class="hero-actions"><a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">Consigue OpenCode <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a><a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">Consigue el kit de herramientas <svg class="icon" aria-hidden="true"><use href="#github"></use></svg></a></div><p style="font-size:11px;margin-top:17px">El enlace de OpenCode es un enlace de referido. Registrarte a través de él apoya este proyecto.</p></div></section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> Kit de herramientas NFT</a><div class="footer-links"><span>Hecho para ser tuyo.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">Código fuente en GitHub</a><a href="../prompts/">Vibe coding de las habilidades</a><a href="#guide">Volver a la guía</a></div></div><p>Gratis y de código abierto. Nada de esto es asesoramiento financiero. Acuñar y comerciar puede hacerte perder dinero. Ponte un límite antes de empezar y nunca uses dinero que necesites.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es" aria-current="true">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<a class="top" href="#top" aria-label="Volver arriba" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

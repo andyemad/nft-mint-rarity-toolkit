@@ -1,0 +1,141 @@
+/* Internationalisation layer.
+   Loaded after styles.css on every page, including English.
+   Three jobs: the language menu, script-appropriate typography, and
+   right-to-left layout overrides. */
+
+/* ---------------------------------------------------------------- language menu
+   The menu lives inside the dark header, so it uses the header's palette rather
+   than the light content palette. inset-inline-end means it mirrors itself on RTL
+   pages with no extra rule. */
+.lang{margin:0;position:relative}
+.lang>summary{
+  list-style:none;display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  padding:7px 12px;border:1px solid #ffffff2e;border-radius:8px;
+  font-size:12px;color:#f0f0f8;background:#ffffff0d;white-space:nowrap
+}
+.lang>summary:hover{border-color:#ffffff52;background:#ffffff17}
+.lang>summary::-webkit-details-marker{display:none}
+.lang>summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-1px);opacity:.65}
+.lang[open]>summary{border-color:#b9a8f0;color:#fff;background:#ffffff1f}
+.lang[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+.lang .lang-menu{
+  position:absolute;inset-inline-end:0;top:calc(100% + 10px);z-index:60;
+  min-width:196px;margin:0;padding:6px;list-style:none;
+  background:#1b1c30;border:1px solid #ffffff24;border-radius:12px;
+  box-shadow:0 22px 50px #05060f5c;display:grid;gap:2px
+}
+.lang .lang-menu a{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:9px 11px;border-radius:8px;text-decoration:none;
+  color:#e7e7f2;font-size:13px;white-space:nowrap
+}
+.lang .lang-menu a:hover{background:#ffffff17}
+.lang .lang-menu a[aria-current="true"]{color:#c9b8ff;font-weight:600;background:#ffffff0f}
+.lang .lang-menu code{font-family:var(--mono);font-size:10px;color:#9a9ab4;letter-spacing:.06em}
+@media(max-width:700px){
+  .lang>summary{padding:6px 9px;font-size:11px}
+  .lang .lang-menu{min-width:170px;inset-inline-end:-8px}
+}
+
+/* Footer language row. Endonyms only, so it reads in any language. */
+.lang-row{
+  margin:14px 0 0;font-size:12px;color:#ffffff8a;line-height:2;
+  display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center
+}
+.lang-row a{color:#ffffffb8;text-decoration:none;border-bottom:1px solid #ffffff2e;padding-bottom:1px}
+.lang-row a:hover{color:#fff;border-bottom-color:#ffffff7a}
+.lang-row a[aria-current="true"]{color:#fff;border-bottom-color:#b9a8f0}
+@media print{.lang-row{display:none}}
+
+/* ------------------------------------------------------- script-aware typography
+   Sora and DM Sans ship as latin subsets, so every non-latin script needs a real
+   font stack or the browser falls back to something unpredictable. Tight negative
+   letter-spacing (the design uses -3.7px on h1) also damages Arabic, Hebrew and
+   CJK, so it is reset for those scripts and the line height is opened up. */
+
+:lang(zh-Hans),:lang(zh-Hant){
+  --body:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif;
+  --display:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",system-ui,sans-serif
+}
+:lang(ar){
+  --body:"SF Arabic","Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
+  --display:var(--body)
+}
+:lang(he){
+  --body:"SF Hebrew","Arial Hebrew","Noto Sans Hebrew","Segoe UI",Arial,system-ui,sans-serif;
+  --display:var(--body)
+}
+:lang(ru),:lang(uk),:lang(bg){
+  --body:"DM Sans","Segoe UI",Roboto,"Helvetica Neue",Arial,system-ui,sans-serif;
+  --display:Sora,"Segoe UI",Roboto,"Helvetica Neue",Arial,system-ui,sans-serif
+}
+
+:lang(zh-Hans) h1,:lang(zh-Hant) h1,
+:lang(ar) h1,:lang(he) h1{
+  letter-spacing:0;line-height:1.24;font-weight:600
+}
+:lang(zh-Hans) h2,:lang(zh-Hant) h2,
+:lang(ar) h2,:lang(he) h2{letter-spacing:0}
+:lang(zh-Hans) .brand,:lang(zh-Hant) .brand,
+:lang(ar) .brand,:lang(he) .brand{letter-spacing:0}
+:lang(zh-Hans) body,:lang(zh-Hant) body{
+  line-height:1.85;
+  word-break:normal;
+  line-break:strict
+}
+:lang(ar) body,:lang(he) body{line-height:1.9}
+:lang(ar) .lede,:lang(he) .lede{line-height:1.95}
+:lang(zh-Hans) .step>span,:lang(zh-Hant) .step>span,
+:lang(ar) .step>span,:lang(he) .step>span{letter-spacing:0;font-size:12px}
+:lang(zh-Hans) .toc-label,:lang(ar) .toc-label,:lang(he) .toc-label{letter-spacing:0}
+
+/* Never let the display font fake-bold CJK or Arabic. */
+:lang(zh-Hans) h1,:lang(zh-Hans) h2,:lang(zh-Hans) h3,
+:lang(ar) h1,:lang(ar) h2,:lang(ar) h3,
+:lang(he) h1,:lang(he) h2,:lang(he) h3{font-synthesis-weight:none}
+
+/* ------------------------------------------------------------------- RTL layout
+   The stylesheet is written in physical properties (left/right), so an RTL page
+   needs each one mirrored. Logical properties are used here where possible. */
+
+[dir="rtl"] .skip{left:auto;right:20px}
+[dir="rtl"] .brand-sub{
+  border-left:0;border-right:1px solid #ffffff24;
+  padding-left:0;padding-right:16px;margin-left:0;margin-right:4px
+}
+[dir="rtl"] .channel small{margin-left:0;margin-right:auto}
+[dir="rtl"] .message-heading small{margin-left:0;margin-right:2px}
+[dir="rtl"] .result-card{
+  border-left:1px solid #ffffff0b;border-right:2px solid #a99bdc;
+  border-radius:7px 3px 3px 7px
+}
+[dir="rtl"] .skill-sticker{right:auto;left:-19px;transform:rotate(-3deg)}
+[dir="rtl"] .journey-step{border-left:0;border-right:1px solid var(--line)}
+[dir="rtl"] .journey-step:first-child{padding-left:0;padding-right:0}
+[dir="rtl"] .toc-label{padding-left:0;padding-right:12px}
+[dir="rtl"] h2.step>span{margin-right:0;margin-left:12px}
+[dir="rtl"] ul,[dir="rtl"] ol{padding-left:0;padding-right:22px}
+[dir="rtl"] .card ul{padding-left:0;padding-right:16px}
+[dir="rtl"] pre:before{left:auto;right:19px}
+[dir="rtl"] .copy{right:auto;left:9px}
+[dir="rtl"] .note{
+  border-left:1px solid var(--line);border-right:3px solid #a899d2;
+  border-radius:8px 3px 3px 8px
+}
+[dir="rtl"] .note.warn{border-right-color:#d1ae75;border-left-color:#e2dfee}
+[dir="rtl"] table{text-align:right}
+[dir="rtl"] .top{right:auto;left:22px}
+[dir="rtl"] .card .price{float:left}
+[dir="rtl"] .toast{left:50%;transform:translateX(-50%)}
+[dir="rtl"] .journey-step strong{margin-right:0;margin-left:8px}
+
+/* Code, commands and paths stay left-to-right even on an RTL page. Anything the
+   reader has to type must read exactly as it will be typed. */
+[dir="rtl"] pre,[dir="rtl"] code,[dir="rtl"] kbd,[dir="rtl"] samp,[dir="rtl"] .mono{
+  direction:ltr;text-align:left;unicode-bidi:isolate
+}
+[dir="rtl"] pre code{display:inline-block}
+/* Latin brand names inside RTL text should not drag punctuation around. */
+[dir="rtl"] .brand,[dir="rtl"] .brand-sub,[dir="rtl"] .stack span,[dir="rtl"] .hero-label{
+  unicode-bidi:isolate
+}

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ur-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NFT toolkit | Aap ka onchain agent, Discord mein</title>
+<meta name="description" content="Apna Hermes agent 31 free NFT skills ke saath setup karein. Discord se mints research karein, collections rank karein aur wallets follow karein. Ek practical, step by step guide.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="Onchain skills. Aap ke Discord mein.">
+<meta property="og:description" content="Aap ka apna AI agent. 31 free NFT skills. Ek hi baat cheet. Poori setup guide se shuru karein.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/i18n.css">
+<script src="../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ar" href="../ar/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="ru" href="../ru/">
+<link rel="alternate" hreflang="he" href="../he/">
+<link rel="alternate" hreflang="ur-Latn" href="../ur/">
+<script type="application/json" id="i18n-data">{"copy.discord": "Discord prompt copy karein", "copy.terminal": "Terminal command copy karein", "copy.button": "Copy", "copy.done": "Copy ho gaya", "copy.aria": "Clipboard par copy ho gaya", "toast.copied": "Copy ho gaya. Jab tayyar hon to paste kar lein.", "toast.manual": "Khud se copy nahi ho saka. Text select kar diya gaya hai, aap ise copy kar sakte hain.", "progress.count": "4 mein se {n}", "progress.saved": "Is browser mein save hai", "progress.visit": "Progress sirf is visit ke liye save hai", "toast.complete": "Setup mukammal. Agla step: apne agent ko ek message bhejein.", "skills.one": "skill", "skills.many": "skills", "skills.ready": " kaam par lagane ke liye", "skills.found": " mili", "demo.rarity.prompt": "is collection ko rank karein aur rare wale dikhayein", "demo.rarity.answer": "Collection rank ho gayi. Ye teen sab se rare hain.", "demo.rarity.title": "Rarity report", "demo.rarity.subtitle": "Demo collection", "demo.rarity.foot": "Sirf research. Koi transaction nahi bheji gayi.", "demo.mint.prompt": "wallet connect karne se pehle ye mint check karein", "demo.mint.answer": "Pehle contract, price aur supply check karta hoon.", "demo.mint.title": "Mint research", "demo.mint.subtitle": "Misaal checklist", "demo.mint.foot": "Mint approve karne se pehle findings dekhein.", "demo.mint.row1": "Asal contract verify karein", "demo.mint.row2": "Onchain mint price parhein", "demo.mint.row3": "Baqi supply check karein", "demo.mint.tag": "Pehle check", "demo.wallet.prompt": "ye wallet haal hi mein kya kharid raha hai?", "demo.wallet.answer": "Wallet ki public activity ka report bana deta hoon.", "demo.wallet.title": "Wallet intelligence", "demo.wallet.subtitle": "Misaal report", "demo.wallet.foot": "Public wallet data. Private keys ki zarurat nahi.", "demo.wallet.row1": "Haal hi ki kharidari", "demo.wallet.row2": "Rakhe hue collections", "demo.wallet.row3": "Sales aur transfers", "demo.wallet.tag": "Onchain"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#guide">Setup guide par jayein</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14m-1-9H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Zm7-1v4m-2-2h4"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4v8"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h6"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+<symbol id="cat" viewBox="0 0 24 24"><path d="M5 11V4l6 4h2l6-4v7c2 7-2 10-7 10S3 18 5 11Z"/><path d="M8 13h1m6 0h1m-5 4h2"/></symbol>
+</svg>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="#top" aria-label="NFT toolkit ka home page"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>NFT toolkit</span><span class="brand-sub">Apna khud ka agent</span></a>
+    <nav class="topnav" aria-label="Main navigation"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>UR</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn" aria-current="true"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="#guide">Guide</a><a href="#list">Skills</a><a class="pricing-nav" href="#money">Kharchay</a><a class="pricing-nav" href="../prompts/">Vibe coding</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="NFT toolkit GitHub par dekhein"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid shell">
+      <div class="hero-copy">
+        <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> Free tools. Chalane ke liye aap ke.</div>
+        <h1 id="hero-title"><span>Onchain skills.</span><span>Aap ke Discord mein.</span></h1>
+        <p>Ek simple message ko mint research, rarity rankings aur wallet intel mein badlein. Apna Hermes agent setup karein, phir kaam us se karwayein.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#guide">Apna agent banayein <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a><a class="btn btn-ghost" href="#list">31 skills dekhein</a></div>
+        <div class="hero-meta"><span><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> Taqreeban 20 minute</span><span><svg class="icon" aria-hidden="true"><use href="#check"></use></svg> Windows, Mac aur Linux</span></div>
+      </div>
+      <div class="agent-stage" aria-label="Agent ki baat cheet ki misaal">
+        <div class="agent-window">
+          <div class="window-top"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Aap ka Discord, upgrade</span><span>Misaal</span></div>
+          <div class="channel"><span class="hash" aria-hidden="true">#</span> your-onchain-agent <small>Bas poochein. Kaam shuru.</small></div>
+          <div class="chat-body" id="demo-response" role="region" aria-label="Misal ka jawab" aria-live="polite" aria-atomic="true">
+            <div class="message"><div class="avatar" aria-hidden="true">Y</div><div><div class="message-heading">Aap <small>Aaj 10:42</small></div><p id="demo-prompt"><span class="mention">@hermes</span> is collection ko rank karein aur rare wale dikhayein</p></div></div>
+            <div class="message"><div class="avatar agent" aria-hidden="true"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg></div><div><div class="message-heading">Hermes <span class="app-tag">APP</span><small>Aaj 10:42</small></div><p id="demo-answer">Collection rank ho gayi. Ye teen sab se rare hain.</p>
+              <div class="result-card"><div class="result-heading"><span id="result-title">Rarity report</span><small id="result-subtitle">Demo collection</small></div><div id="result-rows" class="result-rows"><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#8b7ab5" d="M0 0h40v40H0z"/><path fill="#e3d0ee" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#5d437e" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0842</span><em>Rank 1</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#738f8c" d="M0 0h40v40H0z"/><path fill="#c7e3c4" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#436858" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#2106</span><em>Rank 2</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#bc977e" d="M0 0h40v40H0z"/><path fill="#ecd7b6" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#82563f" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0391</span><em>Rank 3</em></div></div><div class="result-foot"><svg class="icon" aria-hidden="true"><use href="#shield"></use></svg><span id="result-foot">Sirf research. Koi transaction nahi bheji gayi.</span></div></div>
+            </div></div>
+          </div>
+          <div class="sample-composer" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"></use></svg><span>Ek message. Poori nayi skills.</span><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg></div>
+        </div>
+        <div class="skill-sticker" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg><div><strong>31 skills, kaam ke liye tayyar</strong><small>Research. Rank. Mint. Monitor.</small></div></div>
+        <div class="demo-controls" role="group" aria-label="Ek misaal chunein" hidden><button type="button" data-demo="rarity" aria-pressed="true" aria-controls="demo-response">Rarity rankings</button><button type="button" data-demo="mint" aria-pressed="false" aria-controls="demo-response">Mint checks</button><button type="button" data-demo="wallet" aria-pressed="false" aria-controls="demo-response">Wallet intel</button></div>
+      </div>
+    </div>
+    <div class="hero-bottom shell"><span>Aap ke agent ke peeche ke tools</span><div class="stack"><span><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> Hermes</span><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Discord</span><span><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> OpenCode</span></div><span>Open source. Toolkit ki koi subscription nahi.</span></div>
+  </section>
+  <nav class="journey" aria-label="Aap ka setup teen steps mein"><div class="journey-grid shell">
+    <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>Ise dimagh dein</strong><small>Hermes install karein aur ek model connect karein.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>Ise Discord par le jayein</strong><small>Aap ka agent, bas ek message door.</small></div></a>
+    <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>Skills ko kaam par lagayein</strong><small>Toolkit install karein. Jo chahiye poochein.</small></div></a>
+  </div></nav>
+  <div class="guide-layout shell" id="guide">
+    <aside class="guide-sidebar" aria-label="Guide navigation">
+      <details open id="guide-menu"><summary>Is guide mein <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
+        <nav class="toc" aria-label="Guide ke chapters">
+          <span class="toc-label">Chalana shuru karein</span><ol>
+            <li><a href="#need"><span>01</span>Aap ko kya chahiye</a></li><li><a href="#hermes"><span>02</span>Hermes setup karein</a></li><li><a href="#discord"><span>03</span>Discord connect karein</a></li><li><a href="#skills"><span>04</span>Skills install karein</a></li>
+          </ol><span class="toc-label">Ise kaam ka banayein</span><ol start="5">
+            <li><a href="#list"><span>05</span>Skill library</a></li><li><a href="#hashcats"><span>06</span>Hashcats mint karein</a></li><li><a href="#prompts"><span>07</span>Kya kya pooch sakte hain</a></li>
+          </ol><span class="toc-label">Thora aage jayein</span><ol start="8">
+            <li><a href="#vercel"><span>08</span>Vercel se publish karein</a></li><li><a href="#localvps"><span>09</span>Kahan chalayein</a></li><li><a href="#money"><span>10</span>Kharcha kitna hai</a></li><li><a href="#stuck"><span>11</span>Troubleshooting</a></li>
+          </ol>
+        </nav>
+        <div class="setup-progress" hidden><div class="progress-caption"><label for="setup-meter">Aap ke setup ki progress</label><span id="progress-count">4 mein se 0</span></div><progress id="setup-meter" max="4" value="0"></progress><p class="progress-help" id="progress-help">Is browser mein save hai</p></div>
+      </details>
+    </aside>
+    <div class="guide-content">
+      <div class="guide-intro"><div><h2>Thora setup. Phir bas chat.</h2><p>Yahan se shuru karein. Jo chahiye, usi order mein.</p></div><span class="reading-time"><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> ~20 min setup</span></div>
+<section id="need">
+  <div class="section-title"><h2 class="step"><span>01</span>Aap ko kya chahiye</h2><label class="completion" hidden><input type="checkbox" data-complete="need" aria-label="What you need complete mark karein"> Ho gaya</label></div>
+  <div class="table-scroll" role="region" aria-label="Scroll hone wali reference table" tabindex="0"><table>
+    <tr><th scope="col">Aap ko chahiye</th><th scope="col">Kharcha</th><th scope="col">Kis kaam ke liye</th></tr>
+    <tr><td>Ek computer</td><td>Free</td><td>Agent chalata hai. Windows, Mac ya Linux, pichle kuch saal ka koi bhi</td></tr>
+    <tr><td>Ek Discord account</td><td>Free</td><td>Agent se baat karne ka tareeqa, phone ya desktop se</td></tr>
+    <tr><td>Ek OpenCode subscription</td><td>~$10/month</td><td>Agent ka dimagh. Sirf isi cheez ke paise dene hote hain</td></tr>
+    <tr><td>Ek Vercel account <i>(optional)</i></td><td>Free</td><td>Sirf agar aap koi page ya choti site online dalna chahte hain</td></tr>
+    <tr><td>Ek chhota server <i>(optional)</i></td><td>~$5/month</td><td>Sirf agar aap chahte hain ke computer band ho to bhi agent chalta rahe</td></tr>
+    <tr><td>Ek Nous Portal account <i>(optional)</i></td><td>Portal par pricing dekhein</td><td>Nous aap ke liye agent host kar sakta hai, to server ko haath lagane ki zarurat nahi</td></tr>
+  </table></div>
+  <p>
+    Pehle teen se shuru karein. Vercel aur server baad mein aate hain aur aap dono mein se koi bhi
+    skip kar sakte hain.
+  </p>
+</section>
+
+<section id="hermes">
+  <div class="section-title"><h2 class="step"><span>02</span>Hermes setup karein</h2><label class="completion" hidden><input type="checkbox" data-complete="hermes" aria-label="Set up Hermes complete mark karein"> Ho gaya</label></div>
+  <p>
+    Hermes hi agent hai. Aap terminal window mein ek line paste karte hain aur ye khud install ho
+    jata hai. Is poori guide mein sab se technical cheez yahi hai.
+  </p>
+
+<div class="os-tabs" role="tablist" aria-label="Aap ka operating system" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+  <p>Start menu kholein, likhein <b>PowerShell</b>, ise kholein aur ye paste karein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+
+</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+  <p>Dabayein <b>Command + Space</b>, likhein <b>Terminal</b>, Enter dabayein aur paste karein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+  <p>Apna terminal kholein aur paste karein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div>  <div class="note">
+    Ye jo bhi chahiye khud download kar leta hai aur kuch minute leta hai. Text ko guzarne dein,
+    ise parhne ki zarurat nahi.
+  </div>
+
+  <h3>Check karein ke ho gaya</h3>
+  <p>Window band karein, nayi kholein aur likhein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
+  <p>Ye ek checklist dikhata hai. Green ka matlab theek hai. Agar kuch missing ho to ye batata hai
+    ke usay theek karne wali exact command kya hai.</p>
+
+  <h3>Ise dimagh dein</h3>
+  <p>
+    Agent ko sochne ke liye ek model chahiye, aur wohi $10 wali subscription hai. Yahan sign up
+    karein: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a>.
+  </p>
+  <p>Phir jo key ye deta hai usay settings file mein add karein.</p>
+  <span class="os">Windows</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
+  <p>Neeche ye line add karein, aur iski jagah <code>YOUR_KEY_HERE</code> apni key daalein,
+    phir save kar ke band karein:</p>
+  <pre data-label="Settings file" data-kind="terminal"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
+  <span class="os">Mac aur Linux</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <p>Ab ise batayein ke subscription use kare aur hello kahein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes model
+hermes chat -q "hello, what model are you?"</code></pre>
+  <p>Agar jawab de de to agent chal raha hai. Is ke baad sab kuch usme cheezein add karna hai.</p>
+</section>
+
+<section id="discord">
+  <div class="section-title"><h2 class="step"><span>03</span>Discord setup karein</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="Set up Discord complete mark karein"> Ho gaya</label></div>
+  <p>
+    Yahi woh hissa hai jo ise kaam ka banata hai. Is ke baad terminal ki zarurat kabhi nahi
+    padegi. Aap sirf message karte hain.
+  </p>
+  <p>
+    Discord apne menus waqt waqt par badalta hai, to agar koi button hil gaya ho to sab se milta
+    julta dhoondein.
+  </p>
+  <ol>
+    <li>Yahan jayein <a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> aur click karein <b>New
+      Application</b>. Koi bhi naam dein.</li>
+    <li>Bayein menu mein click karein <b>Bot</b>. Neeche scroll karein <b>Privileged Gateway
+      Intents</b> aur on karein <b>Message Content Intent</b> ko <b>ON</b>. Ye sab se zaroori hai: ise skip kiya to aap ka bot bilkul toota
+      hua lagega.</li>
+    <li>Usi page par rehte hue click karein <b>Reset Token</b> aur jo aaye usay copy karein. Ye sirf ek baar dikhta
+      hai. Isay password ki tarah rakhein.</li>
+    <li>Bayein menu mein click karein <b>Installation</b>. On karein <b>Guild Install</b>, aur
+      check karein ke scopes mein ye shamil hain <b>bot</b> aur <b>applications.commands</b>. Jo install link ye dikhata hai
+      usay copy karein.</li>
+    <li>Us link ko browser mein kholein aur bot ko apne server mein add karein. Us server ke aap owner
+      ya manager hone chahiye.</li>
+    <li>Apni user ID dhoondein. Discord mein jayein <b>Settings → Advanced</b>, on karein
+      <b>Developer Mode</b>, phir apne naam par right-click karein aur chunein <b>Copy User
+      ID</b>. Ye ek lamba number hai.</li>
+    <li>Setup chalayein aur token aur user ID paste karein:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <p>Jab poochhe to Discord chunein. Phir ise start karein aur test karein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    Woh window khuli chhoriye aur Discord mein bot ko direct message bhejein. Ise jawab dena
+    chahiye. Jab de de to dabayein <b>Ctrl + C</b> ise rokne ke liye, aur ye do lines chalayein taake is ke
+    baad ye khud start ho:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>Direct messages mein</b> ye har cheez ka jawab deta hai. <b>Server channel mein</b> ye
+    sirf tab jawab deta hai jab aap @mention karein, to aap ke friends ko spam nahi hoga.
+  </div>
+  <div class="note warn">
+    <b>Agar ye kabhi jawab na de</b>, to taqreeban hamesha do mein se ek baat hoti hai: Message
+    Content Intent abhi bhi off hai, ya user ID ghalat copy hui. Steps 2 aur 6 dobara karein.
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title"><h2 class="step"><span>04</span>Skills download karein</h2><label class="completion" hidden><input type="checkbox" data-complete="skills" aria-label="Download the skills complete mark karein"> Ho gaya</label></div>
+  <p>Teen lines. Ye skills download karta hai aur aap ke agent mein install karta hai:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
+  <p>
+    Kabhi bhi check karne ke liye <code>hermes skills list</code>. Installer dobara
+    chalana safe hai, kuch nahi tootega.
+  </p>
+  <div class="note">
+    <b>Git install nahi hai, ya pata nahi?</b> ZIP yahan se download karein
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">ye link</a>,
+    ise unzip karein, us folder mein terminal kholein aur chalayein <code>bash install.sh</code>.
+  </div>
+  <p>Aakhri baat, teen chhote helpers jo wallet aur trading skills ko chahiye:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+</section>
+
+<section id="list">
+  <div class="section-title"><h2 class="step"><span>05</span>Onchain skill library</h2></div>
+  <p>
+    Inhein yaad karne ki zarurat nahi. Agent khud sahi wala chun leta hai. Ye sirf is liye hai
+    ke aap ko pata ho aap kya maang sakte hain.
+  </p>
+
+<div class="library-tools" hidden><div class="search-wrap"><svg class="icon" aria-hidden="true"><use href="#search"></use></svg><label class="sr-only" for="skill-search">31 skills search karein</label><input id="skill-search" type="search" placeholder="rarity, wallets ya minting try karein…" autocomplete="off" aria-controls="skill-results"></div><div class="filter-list" role="group" aria-label="Skills ko category se filter karein"><button type="button" data-filter="all" aria-pressed="true">Sab skills</button><button type="button" data-filter="Minting" aria-pressed="false">Minting</button><button type="button" data-filter="Rarity and buying" aria-pressed="false">Rarity</button><button type="button" data-filter="Is this thing real?" aria-pressed="false">Verification</button><button type="button" data-filter="Wallets" aria-pressed="false">Wallets</button><button type="button" data-filter="Making your own collection" aria-pressed="false">Create</button><button type="button" data-filter="Tools and research" aria-pressed="false">Research aur tools</button></div><p class="library-count" id="skill-count" role="status">31 skills kaam par lagane ke liye</p></div><div id="skill-results"><h3 class="cat">Minting</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-mint-recon</span><h4>Pata karta hai ke mint asal mein kya hai</h4><p>Asal contract, asal price, mint waqai khula hai ya nahi, aur kis network par hai — sab dhoondta hai. Yahi woh skill hai jo fake price se thagi se bachati hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-mint-recon">Playbook dekhein<span class="sr-only"> nft-mint-recon ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">seadrop-rapid-mint</span><h4>Kai wallets se ek saath mint karta hai</h4><p>Un drops ke liye jo seconds mein bik jate hain. Wallets banata hai, batata hai ke har ek mein kitna dalna hai, aur mint khulte hi fire kar deta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/seadrop-rapid-mint">Playbook dekhein<span class="sr-only"> seadrop-rapid-mint ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-floor-sweep</span><h4>Poora floor kharidne ka hisaab lagata hai</h4><p>Collection ki har sasti listing ka hisaab jorta hai aur sab kharidne se pehle asal total batata hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-floor-sweep">Playbook dekhein<span class="sr-only"> nft-floor-sweep ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>Claim kaise karna hai ye nikalta hai</h4><p>Un pages ke liye jo free mint, refund ya airdrop de rahe hain. Wallet connect karne se pehle ye pata karta hai ke site asal mein kya kar rahi hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-claim-reverse-engineering">Playbook dekhein<span class="sr-only"> onchain-claim-reverse-engineering ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Rarity aur kharidna</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-rarity-engine</span><h4>Collection ko rarity ke hisaab se rank karta hai</h4><p>Har NFT ko score karta hai aur unhi maths se order karta hai jo OpenSea use karta hai, to ranks match karte hain. OpenSea ke khud update hone se pehle reveal pakad sakta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-rarity-engine">Playbook dekhein<span class="sr-only"> nft-rarity-engine ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>Rare wale saste mein kharidta hai</h4><p>Reveal ke baad, normal floor price par listed sab se rare items dhoondta hai aur kisi ko pata chalne se pehle kharid leta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/rh-chain-rarity-sniping">Playbook dekhein<span class="sr-only"> rh-chain-rarity-sniping ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-secondary-buy</span><h4>Aap ke liye listed NFT kharidta hai</h4><p>Resale market se kharidta hai, aur hamesha pehle purchase test karta hai taake kharab order par aap ki fee na lage.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-secondary-buy">Playbook dekhein<span class="sr-only"> nft-secondary-buy ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Ye cheez asli hai?</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>Check karta hai ke kharidne wale asli thay</h4><p>Dekhta hai ke kis ne mint kiya aur batata hai ke woh asli log thay ya kuch wallets jo popular dikhne ke liye interest fake kar rahe thay.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-minter-legitimacy-audit">Playbook dekhein<span class="sr-only"> nft-minter-legitimacy-audit ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">web3-claim-verification</span><h4>Project ke claims ki fact-check karta hai</h4><p>Jab koi project kahe "hum ne X kiya", to ye blockchain par check karta hai ke sach hai ya nahi.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/web3-claim-verification">Playbook dekhein<span class="sr-only"> web3-claim-verification ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-market-analysis</span><h4>Market ko sach ke saath parhta hai</h4><p>Floors, sales, holders, aur cheezein kitni tezi se flip hoti hain. Numbers asal mein kya kehte hain.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-market-analysis">Playbook dekhein<span class="sr-only"> nft-market-analysis ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-collection-price-analysis</span><h4>Collection ka andaza lagata hai</h4><p>Is ki value kya hai, kharidne ke baad kya ghalat ho sakta hai, aur risk ke hisaab se price theek hai ya nahi.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-price-analysis">Playbook dekhein<span class="sr-only"> nft-collection-price-analysis ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-exit-discipline</span><h4>Kab bechein</h4><p>Profit lene ke rules, hamesha hold karne ki jagah. Boring lagti hai lekin sab se zyada paisa bachati hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-exit-discipline">Playbook dekhein<span class="sr-only"> nft-exit-discipline ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Wallets</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-wallet-operations</span><h4>Wallets safe tareeqe se banata aur move karta hai</h4><p>Naye wallets banata hai, keys ka sahi backup leta hai, aur tokens ko kabhi expose kiye baghair move karta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-wallet-operations">Playbook dekhein<span class="sr-only"> ethereum-wallet-operations ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">wallet-radar-operations</span><h4>Un wallets par nazar rakhta hai jo aap ke liye ahem hain</h4><p>Khaas wallets follow karta hai aur jab woh kuch kharidein to aap ko ping karta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/wallet-radar-operations">Playbook dekhein<span class="sr-only"> wallet-radar-operations ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>Wallets ko spreadsheet mein badalta hai</h4><p>Wallets ki list leta hai aur saaf, share karne layak spreadsheet deta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/productivity/public-wallet-xlsx-delivery">Playbook dekhein<span class="sr-only"> public-wallet-xlsx-delivery ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pseudonym-identity-research</span><h4>Anonymous accounts ko jorta hai</h4><p>Un anonymous handles aur wallets ko link karta hai jo ek hi bande ke hain.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/pseudonym-identity-research">Playbook dekhein<span class="sr-only"> pseudonym-identity-research ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Apna collection banana</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-collection-production</span><h4>Collection zero se banata hai</h4><p>Art plan, traits, pricing, mint page aur contract mechanics, sab ek jagah.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-production">Playbook dekhein<span class="sr-only"> nft-collection-production ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-taxonomy</span><h4>Traits ko organise karta hai</h4><p>Har attribute ko consistent aur grouped rakhta hai taake aap ka metadata gadbad na ban jaye.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-taxonomy">Playbook dekhein<span class="sr-only"> nft-trait-taxonomy ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-curation</span><h4>Trait ki quality check karta hai</h4><p>Launch se pehle har trait ko duplicates aur kisi bhi ghalat lagne wali cheez ke liye check karta hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-curation">Playbook dekhein<span class="sr-only"> nft-trait-curation ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">Tools aur research</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-data-pipelines</span><h4>Blockchain ko free mein parhta hai</h4><p>API ke paise diye baghair on-chain data nikalta hai. Bohat si doosri skills ka engine.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-data-pipelines">Playbook dekhein<span class="sr-only"> ethereum-data-pipelines ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-mint-command-center</span><h4>Mint ka control room</h4><p>Minting ke liye local dashboard: mint plan karein, rehearse karein, wallets ka set manage karein, floor dekhein, aur baad mein dekhein ke kya hua.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/rh-mint-command-center">Playbook dekhein<span class="sr-only"> rh-mint-command-center ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">mint-field-guide</span><h4>Mint dashboard</h4><p>Aane wale mints aur market movement ki read-only screen, jismein likha hota hai ke har number kahan se aaya.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/mint-field-guide">Playbook dekhein<span class="sr-only"> mint-field-guide ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pow-mint-mining</span><h4>Solved mints ko handle karta hai</h4><p>Hashcats, FAB4200 aur aise doosre paise dene ki jagah lucky number dhoondne par item dete hain. Ye woh search aap ke liye chalata hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/pow-mint-mining">Playbook dekhein<span class="sr-only"> pow-mint-mining ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-mining</span><h4>Numbers ka kaam</h4><p>Woh search aap ki machine par ya kiraye ke hardware par chalata hai, check ke saath taake koi transaction zaya na ho.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-mining">Playbook dekhein<span class="sr-only"> onchain-puzzle-mining ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-solving</span><h4>Aise mints solve karta hai jinmein dimagh lagta hai</h4><p>Kuch drops ko rokne wali paheliyan aur chhupe clues, game ke apne code ko parh kar dhoonde jate hain.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-solving">Playbook dekhein<span class="sr-only"> onchain-puzzle-solving ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-game-economy-analysis</span><h4>Game ki economy ka naqsha banata hai</h4><p>On-chain game ko khol kar dikhata hai ke value kahan se aati hai.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/onchain-game-economy-analysis">Playbook dekhein<span class="sr-only"> onchain-game-economy-analysis ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">polymarket</span><h4>Prediction markets parhta hai</h4><p>Check karta hai ke betting markets kisi event ki kya price laga rahe hain.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/polymarket">Playbook dekhein<span class="sr-only"> polymarket ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">proof-of-play-archive</span><h4>Proof of Play research</h4><p>Proof of Play aur Pirate Nation par background research.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/proof-of-play-archive">Playbook dekhein<span class="sr-only"> proof-of-play-archive ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">agent-protocol-identity</span><h4>Agent ko ek identity deta hai</h4><p>Agent ko online post karte waqt sabit karne deta hai ke woh kaun hai, taake asli ko fake se pehchana ja sake.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/agent-protocol-identity">Playbook dekhein<span class="sr-only"> agent-protocol-identity ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">flop-technocore-agent-ops</span><h4>Agent ko public mein chalana</h4><p>Agent ko apna account kaise dein aur kuch private leak kiye baghair post kaise karwayein.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/flop-technocore-agent-ops">Playbook dekhein<span class="sr-only"> flop-technocore-agent-ops ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">internet-computer-development</span><h4>Internet Computer par banana</h4><p>Ek doosri blockchain, Internet Computer, ke liye notes.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/internet-computer-development">Playbook dekhein<span class="sr-only"> internet-computer-development ke liye</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+</div><div class="empty-state" id="empty-skills" hidden><p>Koi matching skill nahi mili. Doosra term ya category try karein.</p><button type="button" id="reset-search">Sab skills dikhayein</button></div></section>
+
+<section id="hashcats">
+  <div class="section-title"><h2 class="step"><span>06</span>Hashcats mint karein (aur aise drops)</h2></div>
+  <p>
+    Kuch drops ki koi price nahi hoti. Paise dene ki jagah aap ko ek lucky number dhoondna hota hai,
+    aur jo pehle dhoond le wohi cat le jata hai. Jab log kehte hain ke mint kharida nahi, solve kiya jata hai, to matlab yahi hota hai.
+  </p>
+  <p>
+    Aap ka laptop ye kar sakta hai, lekin din lag jayenge, aur bade kiraye ke computers wale minute
+    mein dhoond lete hain. To aap kuch minute ke liye ek kiraye par lete hain. Is sab ki sirf yahi wajah hai.
+  </p>
+
+  <h3>Kuch minute ke liye computer kiraye par lein (shuru karna free)</h3>
+  <p>
+    <b>Modal</b> second ke hisaab se computers kiraye deta hai. Aap kuch nahi kharidte. Aap sign up karte hain
+    aur is ke saath milta hai <b>har mahine $30 ka free computing</b>, jo taqreeban saat
+    ghante un ki tez machines ka hota hai, lagbhag $4 fi ghanta. Kabhi kabhi try karne ke liye aap
+    ko shayad kabhi paise nahi dene parenge.
+  </p>
+  <ol>
+    <li>Free sign up karein <a href="https://modal.com" style="color:var(--accent)">modal.com</a>.
+      $30 pehle se shamil hai.</li>
+    <li>Phir ye do commands ek baar chalayein:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install modal
+modal setup</code></pre>
+  <p>Doosra browser kholta hai aur aap ka account link karta hai. Poora setup bas itna hai.</p>
+
+  <h3>Discord mein kya likhna hai</h3>
+  <p>Poora kaam bas itna hai. Apne bot ko mention karein aur ye paste karein:</p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
+  <p>Ye round ki report aap ko deta hai. Jab waqai koshish karni ho:</p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
+  <p>Aur ye dekhne ke liye ke kya hua:</p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
+
+  <h3>Ye aap ke liye kya sambhalta hai</h3>
+  <ul>
+    <li>Pehle poora setup check karta hai, to koi run kharab haalat mein shuru nahi hota</li>
+    <li>Searching kiraye ke computer par karta hai, aap ke computer par nahi</li>
+    <li>Kuch kharch karne se pehle har jawab check karta hai, taake der se aane wale jawab par aap ki fee na lage</li>
+    <li>Transaction aap ke wallet se bhejta hai aur link aap ko deta hai</li>
+  </ul>
+
+  <h3>Sirf do kaam jo aap hi kar sakte hain</h3>
+  <ul>
+    <li><b>Apne wallet mein thora ETH daalein.</b> Jeetne par bhi fees mein kuch cents lagte hain. Woh hissa koi aap ke liye nahi kar sakta.</li>
+    <li><b>Koshishein chhoti rakhein.</b> Rounds musalsal badalte rehte hain, aur jo round khatam ho chuka us ka kaam zaya jata hai. Chhoti aur baar baar wali koshish ek lambi run se behtar hai.</li>
+  </ul>
+
+  <div class="note warn">
+    <b>Odds ke baare mein sach kehein.</b> Aap un sab se race kar rahe hain jo wohi drop try kar rahe
+    hain, aur jeetein ya haarein, computing ke paise aap dete hain. Free credit isi ke liye hai.
+    Ise use karein, koshishein chhoti rakhein, aur guaranteed cat ki umeed par paise na daalein.
+  </div>
+
+  <h3>Doosre drops jahan ye kaam karta hai</h3>
+  <p>
+    Wohi idea aur wohi tarah ka prompt. Aap sirf apna wala naam lein:
+  </p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
+
+</section>
+
+<section id="prompts">
+  <div class="section-title"><h2 class="step"><span>07</span>Kya kya pooch sakte hain</h2></div>
+  <p>
+    Koi khaas wording nahi hai. <b>Link paste karein aur batayein aap kya chahte hain.</b> Ek
+    OpenSea link, ek tweet, ek mint website, ek wallet address, ek contract address.
+    Agar samajh na aaye ke aap ka matlab kya hai, to ye pooch leta hai.
+  </p>
+
+  <h3>OpenSea link paste karein</h3>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot rank this whole collection by rarity and show me the top 20
+@yourbot which rare ones here are listed cheap right now?
+@yourbot what is the floor on this and is it going up or down?
+@yourbot are the wallets that minted this real people or bots?
+@yourbot is this worth buying at the current floor?
+@yourbot how many people are holding this, and how concentrated is it?</code></pre>
+
+  <h3>Ek tweet paste karein jismein likha ho "ye mint karein"</h3>
+  <p>
+    Ye sab se kaam ki cheez hai. Tweet daalein aur ye pata kar leta hai ke mint kya hai, asal mein
+    kitne paise lagte hain, abhi bhi khula hai ya nahi, aur project asli lagta hai ya nahi — ye sab
+    wallet ko chhune se pehle.
+  </p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint this
+@yourbot &lt;tweet link&gt; what is this mint and is it real?
+@yourbot &lt;tweet link&gt; can I mint this for free?
+@yourbot &lt;tweet link&gt; what would minting 3 of these actually cost me?
+@yourbot &lt;tweet link&gt; is this the real contract or a copy?
+@yourbot &lt;tweet link&gt; set an alert for when this goes live</code></pre>
+  <div class="note">
+    Ye seedha transaction nahi bhej deta. Tweet parhta hai, contract dhoondta hai, price aur
+    supply on-chain check karta hai, jo mila woh aap ko dikhata hai, aur aap ke haan kehne ka
+    intezar karta hai.
+  </div>
+
+  <h3>Mint website paste karein, ya sirf ek contract address</h3>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot can I mint this for free? &lt;link&gt;
+@yourbot what is the real price on this? the page says 0.05
+@yourbot is this mint still open or already sold out?
+@yourbot how many wallets have minted this so far?
+@yourbot is this contract a copy of another collection?
+@yourbot what does this contract actually do? &lt;address&gt;</code></pre>
+
+  <h3>Wallet address paste karein</h3>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot what has this wallet been buying? &lt;address&gt;
+@yourbot is this wallet actually profitable, or just busy?
+@yourbot watch this wallet and message me when it buys something
+@yourbot which collections did this wallet get into early?
+@yourbot does this wallet look like a bot or a person?</code></pre>
+
+  <h3>Ise kehein ke aap ke liye kisi cheez par nazar rakhe</h3>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot watch this collection and message me the moment it reveals
+@yourbot tell me when the floor drops below 0.01
+@yourbot ping me if anything from this collection sells under 0.005
+@yourbot check this every ten minutes and only message me if something changes
+@yourbot remind me when this mint opens in an hour</code></pre>
+
+  <h3>Ise kehein ke aap ke liye kharide ya mint kare</h3>
+  <p>
+    In mein se har ek pehle check karta hai aur kuch karne se pehle cost batata hai. Jab tak aap
+    haan na kahein, kuch nahi hota.
+  </p>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 for me, show me the cost and wait for my go ahead
+@yourbot buy the cheapest rare one under 0.01
+@yourbot buy 3 but never spend more than 0.03 in total
+@yourbot don't spend anything without asking me first
+@yourbot what is my wallet holding right now? &lt;address&gt;</code></pre>
+
+  <h3>Ise kehein ke koi cheez samjhaye</h3>
+  <pre data-label="Discord prompt" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot explain what a proof of work mint is, in simple terms
+@yourbot why is this floor so low?
+@yourbot what does "revealed" mean here?
+@yourbot how do people fake volume on a collection?
+@yourbot what is the difference between a mint and a buy?</code></pre>
+
+  <div class="note">
+    <b>Aam usool:</b> agar aap usay paste kar sakte hain, to ye us par nazar daal sakta
+    hai. Links, screenshots, addresses, tweets, spreadsheets. Agar samajh na aaye ke kaise poochna
+    hai, to bas batayein aap kya karna chahte hain aur baqi ye khud samajh lega.
+  </div>
+
+  <div class="note">
+    <b>Kisi skill ka apna kaam badalna chahte hain?</b> Woh alag page hai, kyunke
+    yahan seekhne wali sab se kaam ki cheez wohi hai:
+    <a href="../prompts/" style="color:var(--accent)">baat kar ke skills behtar banayein</a>.
+  </div>
+</section>
+
+<section id="vercel">
+  <div class="section-title"><h2 class="step"><span>08</span>Vercel setup karein</h2></div>
+  <p>
+    Vercel internet par free mein website ya page daalta hai. Agent chalane ke liye iski zarurat
+    nahi. Iski zarurat tab hai jab aap ko apna public page chahiye: share karne wala link,
+    portfolio, documentation page, ye guide.
+  </p>
+
+  <h3>Account banayein</h3>
+  <p>
+    Sign up karein <a href="https://vercel.com/signup" style="color:var(--accent)">vercel.com/signup</a>
+    GitHub, Google ya email se. Yahan sab kuch ke liye free plan kaafi hai.
+  </p>
+
+  <h3>Aasan tareeqa: GitHub project connect karein</h3>
+  <ol>
+    <li>Vercel mein click karein <b>Add New → Project</b>.</li>
+    <li>Apna GitHub account connect karein aur woh repository chunein jo online karni hai.</li>
+    <li>Agar aap ki web files top level ki jagah kisi folder mein hain, to set karein <b>Root
+      Directory</b> us folder par. Is guide ke page ka woh folder ye hai
+      <code>docs</code>.</li>
+    <li>Click karein <b>Deploy</b>. Ek minute baad aap ke paas live link hoga.</li>
+  </ol>
+  <p>
+    Is ke baad jab bhi aap GitHub par push karein, Vercel khud site dobara build kar deta hai.
+    Poora workflow bas itna hai.
+  </p>
+
+  <h3>Terminal wala tareeqa</h3>
+  <p>Agar aap seedha apne computer se deploy karna chahein:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
+vercel login
+
+<span class="c"># then, from inside the folder you want online</span>
+vercel --prod</code></pre>
+  <p>Pehli baar do chaar sawal poochta hai aur phir aap ka live link print karta hai.</p>
+
+  <h3>Test ke liye is guide ka page deploy karein</h3>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod</code></pre>
+
+  <h3>Apna domain</h3>
+  <p>
+    Optional. Project ke <b>Settings → Domains</b> mein aap apna domain add kar sakte hain, ya jo free <code>your-project.vercel.app</code> address ye deta
+    hai usay accept kar lein.
+  </p>
+
+  <div class="note warn">
+    <b>Vercel kya nahi kar sakta:</b> aap ka agent chalana. Vercel sirf woh websites serve karta hai jo
+    on demand load hoti hain. Aap ka agent ek program hai jo on rehna hota hai, is liye ye aap ke
+    computer ya server par rehta hai. Agar kabhi deploy aise fail ho
+    <b>402</b> error ke saath, to woh account free plan ki transfer allowance se aage nikal gaya hai.
+    Naya project banayein, ya GitHub Pages ya Cloudflare Pages use karein, jo wohi files serve karte hain.
+  </div>
+</section>
+
+<section id="localvps">
+  <div class="section-title"><h2 class="step"><span>09</span>Aap ka computer, server, ya hosted?</h2></div>
+  <p>
+    Dono chalte hain. Asal farq sirf ye hai ke laptop band karne par kya hota hai.
+  </p>
+  <div class="two">
+    <div class="card">
+      <span class="price">FREE</span>
+      <h4>Apne computer par</h4>
+      <ul>
+        <li>Jo install aap kar chuke hain, us ke ilawa kuch setup nahi karna</li>
+        <li>Poori speed, aur ye sirf aap ki cheezein use kar sakta hai: aap ka browser, aap ki files, aap ke wallets</li>
+        <li><b>Lid band karne par ruk jata hai</b> ya sleep mein daalein</li>
+        <li>Koi bhi scheduled job, alert ya raat bhar ki watch apna waqt kho deti hai</li>
+        <li>In ke liye behtar: kuch try karna, din mein use karna, woh cheezein jo aap khud dekh rahe hain</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">~$5 / MONTH</span>
+      <h4>Ek chhote server par</h4>
+      <ul>
+        <li>Kabhi sota nahi. Ek baar start kiya to chalta rehta hai</li>
+        <li>Watches, alerts aur timed jobs raat 4 baje bhi waqai chalte hain</li>
+        <li>Aap kisi bhi jagah se apne phone par Discord ke zariye is tak pohanch sakte hain</li>
+        <li>Koi screen nahi, to chat ke ilawa ye kaam karta hua nazar nahi aata</li>
+        <li>In ke liye behtar: scheduled jobs, raat bhar ki watches, woh sab jo aap hamesha chalte dekhna chahte hain</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">PORTAL PAR PRICING</span>
+      <h4>Ya Nous se host karwayein</h4>
+      <ul>
+        <li><b>Hermes Cloud</b> aap ke liye instance chalata hai</li>
+        <li>Koi server khud setup, patch ya restart nahi karna</li>
+        <li>Ise web page se, ya apne agent se keh kar start, stop aur restart karein</li>
+        <li>Discord setup wohi jo har jagah hai</li>
+        <li>In ke liye behtar: woh log jo server bilkul nahi chalana chahte</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Ya Nous se host karwayein</h3>
+  <p>
+    Agar server chalana aisa kaam lagta hai jo aap nahi karna chahte, <b>Nous Research
+    Hermes Cloud instances host karta hai</b>. Aap ko hamesha on rehne wala agent milta hai, bina
+    provider chune, bina box secure kiye aur bina usay update rakhe.
+  </p>
+  <ol>
+    <li>Banayein <b>Nous Portal</b> account yahan
+      <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
+    <li>Kholein <b>Agents</b> page aur ek instance banayein. Ise koi naam dein.</li>
+    <li>Discord ko is se bilkul step 03 ki tarah connect karein. Wohi commands, instance par
+      chalayein.</li>
+  </ol>
+  <p>Is ke baad aap usay usi web page se manage karte hain. Wahan se start, stop, restart ya delete
+    karein. Pricing Portal par plans ke saath likhi hoti hai.</p>
+  <div class="note">
+    <b>Ek hi subscription dono kaam kar sakti hai.</b> Portal plan alag model subscription ki jagah agent ka dimagh bhi ban
+    sakta hai: ismein models ka bara catalogue plus managed web search, image generation aur voice
+    shamil hai, sab ek hi login se. Chalayein <code>hermes setup --portal</code> aur ye khud set up
+    ho jata hai. Agar aap pehle se OpenCode ke paise de rahe hain to dono ki zarurat nahi.
+  </div>
+  <div class="note">
+    <b>Pehle se agent locally chala rahe hain?</b> Aap website par clicks karne ki jagah apne agent se keh kar cloud instances manage kar sakte
+    hain. Ek command aap ke local agent ko Portal se connect karti hai:
+  </div>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <p>Is ke baad aap keh sakte hain "mere cloud agents list karein", "woh instance kitna kharcha
+    kar raha hai", ya "jo ruk gaya hai usay restart karein".</p>
+
+  <h3>Server par shift hona</h3>
+  <ol>
+    <li>Hetzner ya DigitalOcean se ek lein, taqreeban $5/month. Chunein <b>Ubuntu</b> system ke
+      liye. Sab se chhota option kaafi hai.</li>
+    <li>Step 02 wali wohi Linux install line apne computer ki jagah us server par
+      chalayein.</li>
+    <li>Wahan Discord aur skills ke steps dobara karein. Wohi teen commands hain.</li>
+    <li>Aap dono chala sakte hain. Aap ka computer aur server alag agents hain, aur chahein to har ek ka
+      apna Discord bot token hota hai.</li>
+  </ol>
+  <div class="note">
+    <b>Samajhdari wala tareeqa:</b> aaj apne computer par shuru karein, aur server sirf tab kiraye par lein jab aap ke
+    paas kuch aisa ho jo sote waqt bhi chalna chahiye.
+  </div>
+</section>
+
+<section id="money">
+  <div class="section-title"><h2 class="step"><span>10</span>Kharcha kitna hai</h2></div>
+  <div class="table-scroll" role="region" aria-label="Scroll hone wali reference table" tabindex="0"><table>
+    <tr><th scope="col">Cheez</th><th scope="col">Kharcha</th><th scope="col">Zaruri?</th></tr>
+    <tr><td>Hermes agent</td><td>Free</td><td>Haan</td></tr>
+    <tr><td>31 skills</td><td>Free</td><td>Haan</td></tr>
+    <tr><td>OpenCode subscription</td><td>~$10/month</td><td>Haan, yehi dimagh hai</td></tr>
+    <tr><td>Vercel</td><td>Free</td><td>Sirf agar aap online page chahte hain</td></tr>
+    <tr><td>Apna computer</td><td>Free</td><td>Theek hai, lekin ye sota hai</td></tr>
+    <tr><td>Chhota server</td><td>~$5/month</td><td>Sirf chaubees ghante chalane ke liye</td></tr>
+    <tr><td>Modal, Hashcats jaise drops solve karne ke liye <i>(optional)</i></td><td>Free, $30/month shamil</td><td>Sirf agar aap un drops ke peeche jana chahte hain</td></tr>
+    <tr><td>Nous Portal, hosting shamil <i>(optional)</i></td><td>Portal par likha hai</td><td>Apne server ki jagah, aur ye dimagh bhi ban sakta hai</td></tr>
+  </table></div>
+  <p>
+    Sach bola to total: <b>taqreeban $10 maheena</b>, ya $15 agar aap chahte hain ke ye raat bhar bhi jaagta rahe.
+  </p>
+</section>
+
+<section id="stuck">
+  <div class="section-title"><h2 class="step"><span>11</span>Agar kuch ghalat ho jaye</h2></div>
+  <div class="table-scroll" role="region" aria-label="Scroll hone wali reference table" tabindex="0"><table>
+    <tr><th scope="col">Aap ko kya dikhta hai</th><th scope="col">Kya karein</th></tr>
+    <tr><td><code>hermes</code> pehchana nahi jata</td><td>Terminal band karein aur nayi kholein. Phir bhi fail ho? Computer restart karein aur dobara try karein.</td></tr>
+    <tr><td>Bot online hai lekin kabhi jawab nahi deta</td><td>Discord developer page par Message Content Intent off hai. Yeh sab se bara sabab hai.</td></tr>
+    <tr><td>DMs mein jawab deta hai, server mein khamosh</td><td>Normal hai. Servers mein ye sirf @mention par jawab deta hai.</td></tr>
+    <tr><td>Kehta hai ke aap ko ijazat nahi</td><td>Aap ki Discord user ID ghalat hai. Developer Mode on kar ke dobara copy karein.</td></tr>
+    <tr><td>Vercel deploy 402 ke saath fail hota hai</td><td>Woh account free transfer allowance se aage nikal gaya. Naya project, ya GitHub Pages ya Cloudflare Pages use karein.</td></tr>
+    <tr><td>Agent raat bhar mein ruk gaya</td><td>Ye aap ke computer par tha. Aisa hona normal hai. Agar hamesha on chahiye to ise server par le jayein.</td></tr>
+    <tr><td>Ye aap se aur paise maangta hai</td><td>Apna OpenCode usage page check karein. Lambe jobs chat se zyada kharch karte hain.</td></tr>
+    <tr><td>Skills nazar nahi aati</td><td><code>hermes skills list</code> ye confirm karne ke liye ke install hui, phir <code>/reload-skills</code> chat mein.</td></tr>
+    <tr><td>Samajh nahi aa raha</td><td>Chalayein <code>hermes chat</code> aur bas batayein aap kya karna chahte hain.</td></tr>
+  </table></div>
+</section>
+      <section class="closing" aria-label="Shuru karein"><div class="hook"><h3>Aap ka agent bas ek setup door hai.</h3><p>Guide aur sab 31 skills free hain. Ek model subscription connect karein, steps follow karein, aur ise apna bana lein.</p><div class="hero-actions"><a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">OpenCode lein <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a><a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">Toolkit lein <svg class="icon" aria-hidden="true"><use href="#github"></use></svg></a></div><p style="font-size:11px;margin-top:17px">OpenCode ka link referral link hai. Is se sign up karna is project ko support karta hai.</p></div></section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> NFT toolkit</a><div class="footer-links"><span>Aap ka banane ke liye bana.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">GitHub par source</a><a href="../prompts/">Skills ki vibe coding</a><a href="#guide">Guide par wapas</a></div></div><p>Free aur open source. Yahan kuch bhi financial advice nahi hai. Minting aur trading mein paisa doob sakta hai. Shuru karne se pehle limit set karein aur kabhi woh paisa use na karein jo aap ko chahiye.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he">עברית</a> · <a href="../ur/" hreflang="ur-Latn" aria-current="true">Urdu (Roman)</a></p></footer>
+<a class="top" href="#top" aria-label="Upar jayein" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

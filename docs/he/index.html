@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ערכת כלים ל-NFT | סוכן האונצ'יין שלך, ב-Discord</title>
+<meta name="description" content="הקם סוכן Hermes משלך עם 31 סקילי NFT בחינם. חקור מינטים, דרג קולקציות ועקוב אחרי ארנקים מ-Discord. מדריך מעשי, שלב אחרי שלב.">
+<meta name="theme-color" content="#17182d">
+<meta property="og:title" content="סקילים אונצ'יין. ב-Discord שלך.">
+<meta property="og:description" content="סוכן AI משלך. 31 סקילי NFT בחינם. שיחה אחת. מתחילים עם המדריך המלא.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andyemad.github.io/nft-mint-rarity-toolkit/">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="preload" href="../assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/i18n.css">
+<script src="../assets/app.js" defer></script>
+
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="zh-Hans" href="../zh/">
+<link rel="alternate" hreflang="ar" href="../ar/">
+<link rel="alternate" hreflang="es" href="../es/">
+<link rel="alternate" hreflang="fr" href="../fr/">
+<link rel="alternate" hreflang="de" href="../de/">
+<link rel="alternate" hreflang="ru" href="../ru/">
+<link rel="alternate" hreflang="he" href="../he/">
+<link rel="alternate" hreflang="ur-Latn" href="../ur/">
+<script type="application/json" id="i18n-data">{"copy.discord": "העתק פרומפט ל-Discord", "copy.terminal": "העתק פקודת טרמינל", "copy.button": "העתק", "copy.done": "הועתק", "copy.aria": "הועתק ללוח", "toast.copied": "הועתק. הדבק אותו כשאתה מוכן.", "toast.manual": "ההעתקה האוטומטית לא זמינה. הטקסט מסומן כדי שתוכל להעתיק אותו.", "progress.count": "{n} מתוך 4", "progress.saved": "נשמר בדפדפן הזה", "progress.visit": "ההתקדמות נשמרת לביקור הזה", "toast.complete": "ההתקנה הושלמה. הצעד הבא שלך: שלח לסוכן הודעה.", "skills.one": "סקיל", "skills.many": "סקילים", "skills.ready": " לעבודה", "skills.found": " נמצאו", "demo.rarity.prompt": "דרג את הקולקציה הזו ותראה לי את הנדירים", "demo.rarity.answer": "הקולקציה דורגה. אלה שלושת הנדירים ביותר.", "demo.rarity.title": "דוח נדירות", "demo.rarity.subtitle": "קולקציית דמו", "demo.rarity.foot": "מחקר בלבד. לא נשלחו עסקאות.", "demo.mint.prompt": "בדוק את המינט הזה לפני שאני מחבר את הארנק", "demo.mint.answer": "אבדוק קודם את החוזה, את המחיר ואת ההיצע.", "demo.mint.title": "מחקר מינט", "demo.mint.subtitle": "רשימת בדיקות לדוגמה", "demo.mint.foot": "עבור על הממצאים לפני שאתה מאשר מינט.", "demo.mint.row1": "אימות החוזה האמיתי", "demo.mint.row2": "קריאת מחיר המינט אונצ'יין", "demo.mint.row3": "בדיקת ההיצע שנותר", "demo.mint.tag": "בדוק קודם", "demo.wallet.prompt": "מה הארנק הזה קנה לאחרונה?", "demo.wallet.answer": "אהפוך את הפעילות הציבורית של הארנק לדוח.", "demo.wallet.title": "מודיעין ארנקים", "demo.wallet.subtitle": "דוח לדוגמה", "demo.wallet.foot": "דאטה ציבורי של הארנק. בלי צורך במפתחות פרטיים.", "demo.wallet.row1": "קניות אחרונות", "demo.wallet.row2": "קולקציות מוחזקות", "demo.wallet.row3": "מכירות והעברות", "demo.wallet.tag": "אונצ'יין"}</script>
+<script>try{window.HERMES_I18N=JSON.parse(document.getElementById('i18n-data').textContent)}catch(e){}</script>
+</head>
+<body id="top">
+<a class="skip" href="#guide">דלג למדריך ההתקנה</a>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<symbol id="mark" viewBox="0 0 36 36"><path d="M18 1 34 10v16l-16 9L2 26V10Z" fill="currentColor" opacity=".18"/><path d="m18 5 11 6.3-11 6.4-11-6.4Zm-12 10 10 5.8v11L6 26Zm14 5.8 10-5.8v11l-10 5.8Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+<symbol id="external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4 10 14m-1-9H5a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-4"/></symbol>
+<symbol id="github" viewBox="0 0 24 24"><path d="M9 20c-4 1-4-2-6-2m12 4v-3.5c0-1 .2-1.8-.5-2.5 3.5-.4 6.5-1.7 6.5-7A5.5 5.5 0 0 0 19.5 5c.2-1 .2-2-.1-3-1.6 0-3 1-3.7 1.5a13 13 0 0 0-7.4 0C7.6 3 6.2 2 4.6 2c-.3 1-.3 2-.1 3A5.5 5.5 0 0 0 3 9c0 5.3 3 6.6 6.5 7-.7.7-.5 1.5-.5 2.5V22"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M15 8V4H4v11h4"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Zm7-1v4m-2-2h4"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+<symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8m-4-4v8"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z"/><path d="M7 9h10M7 13h6"/></symbol>
+<symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+<symbol id="cat" viewBox="0 0 24 24"><path d="M5 11V4l6 4h2l6-4v7c2 7-2 10-7 10S3 18 5 11Z"/><path d="M8 13h1m6 0h1m-5 4h2"/></symbol>
+</svg>
+<header class="site-header">
+  <div class="topbar shell">
+    <a class="brand" href="#top" aria-label="דף הבית של ערכת הכלים ל-NFT"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg><span>ערכת כלים ל-NFT</span><span class="brand-sub">סוכן משל עצמך</span></a>
+    <nav class="topnav" aria-label="ניווט ראשי"><details class="lang" id="lang-menu"><summary aria-label="Language"><span>HE</span></summary><ul class="lang-menu"><li><a href="../" hreflang="en"><span>English</span><code>EN</code></a></li><li><a href="../zh/" hreflang="zh-Hans"><span>中文</span><code>中文</code></a></li><li><a href="../ar/" hreflang="ar"><span>العربية</span><code>AR</code></a></li><li><a href="../es/" hreflang="es"><span>Español</span><code>ES</code></a></li><li><a href="../fr/" hreflang="fr"><span>Français</span><code>FR</code></a></li><li><a href="../de/" hreflang="de"><span>Deutsch</span><code>DE</code></a></li><li><a href="../ru/" hreflang="ru"><span>Русский</span><code>RU</code></a></li><li><a href="../he/" hreflang="he" aria-current="true"><span>עברית</span><code>HE</code></a></li><li><a href="../ur/" hreflang="ur-Latn"><span>Urdu (Roman)</span><code>UR</code></a></li></ul></details>
+      <a href="#guide">המדריך</a><a href="#list">סקילים</a><a class="pricing-nav" href="#money">עלויות</a><a class="pricing-nav" href="../prompts/">וייב קודינג</a>
+      <a class="github-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit" aria-label="צפה בערכת הכלים ל-NFT ב-GitHub"><svg class="icon" aria-hidden="true"><use href="#github"></use></svg><span class="github-text">GitHub</span></a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid shell">
+      <div class="hero-copy">
+        <div class="hero-label"><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> כלים בחינם. שלך להריץ.</div>
+        <h1 id="hero-title"><span>סקילים אונצ'יין.</span><span>ב-Discord שלך.</span></h1>
+        <p>הופכים הודעה אחת למחקר מינטים, דירוגי נדירות ומודיעין ארנקים. הקם סוכן Hermes משלך, ותן לו לעשות את העבודה השחורה.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#guide">בנה את הסוכן שלך <svg class="icon" aria-hidden="true"><use href="#arrow"></use></svg></a><a class="btn btn-ghost" href="#list">גלה את 31 הסקילים</a></div>
+        <div class="hero-meta"><span><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> כ-20 דקות</span><span><svg class="icon" aria-hidden="true"><use href="#check"></use></svg> Windows, Mac ו-Linux</span></div>
+      </div>
+      <div class="agent-stage" aria-label="שיחה להמחשה עם הסוכן">
+        <div class="agent-window">
+          <div class="window-top"><div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> ה-Discord שלך, משודרג</span><span>דוגמה</span></div>
+          <div class="channel"><span class="hash" aria-hidden="true">#</span> your-onchain-agent <small>רק תשאל. הוא מתחיל לעבוד.</small></div>
+          <div class="chat-body" id="demo-response" role="region" aria-label="דוגמה לתשובה" aria-live="polite" aria-atomic="true">
+            <div class="message"><div class="avatar" aria-hidden="true">Y</div><div><div class="message-heading">אתה <small>היום ב-10:42</small></div><p id="demo-prompt"><span class="mention">@hermes</span> דרג את הקולקציה הזו ותראה לי את הנדירים</p></div></div>
+            <div class="message"><div class="avatar agent" aria-hidden="true"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg></div><div><div class="message-heading">Hermes <span class="app-tag">APP</span><small>היום ב-10:42</small></div><p id="demo-answer">הקולקציה דורגה. אלה שלושת הנדירים ביותר.</p>
+              <div class="result-card"><div class="result-heading"><span id="result-title">דוח נדירות</span><small id="result-subtitle">קולקציית דמו</small></div><div id="result-rows" class="result-rows"><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#8b7ab5" d="M0 0h40v40H0z"/><path fill="#e3d0ee" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#5d437e" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0842</span><em>דירוג 1</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#738f8c" d="M0 0h40v40H0z"/><path fill="#c7e3c4" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#436858" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#2106</span><em>דירוג 2</em></div><div class="result-row"><span class="pixel-art"><svg viewBox="0 0 40 40" aria-hidden="true" shape-rendering="crispEdges"><path fill="#bc977e" d="M0 0h40v40H0z"/><path fill="#ecd7b6" d="M8 9h6v5h12V9h6v19h-4v5H12v-5H8z"/><path fill="#82563f" d="M13 19h4v4h-4zm10 0h4v4h-4zm-5 7h5v3h-5z"/></svg></span><span>#0391</span><em>דירוג 3</em></div></div><div class="result-foot"><svg class="icon" aria-hidden="true"><use href="#shield"></use></svg><span id="result-foot">מחקר בלבד. לא נשלחו עסקאות.</span></div></div>
+            </div></div>
+          </div>
+          <div class="sample-composer" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#plus"></use></svg><span>הודעה אחת. סט סקילים שלם.</span><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg></div>
+        </div>
+        <div class="skill-sticker" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#spark"></use></svg><div><strong>31 סקילים, מוכנים לעבודה</strong><small>מחקר. דירוג. מינט. מעקב.</small></div></div>
+        <div class="demo-controls" role="group" aria-label="בחר דוגמה" hidden><button type="button" data-demo="rarity" aria-pressed="true" aria-controls="demo-response">דירוגי נדירות</button><button type="button" data-demo="mint" aria-pressed="false" aria-controls="demo-response">בדיקות מינט</button><button type="button" data-demo="wallet" aria-pressed="false" aria-controls="demo-response">מודיעין ארנקים</button></div>
+      </div>
+    </div>
+    <div class="hero-bottom shell"><span>הכלים שמאחורי הסוכן שלך</span><div class="stack"><span><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> Hermes</span><span><svg class="icon" aria-hidden="true"><use href="#chat"></use></svg> Discord</span><span><svg class="icon" aria-hidden="true"><use href="#code"></use></svg> OpenCode</span></div><span>קוד פתוח. בלי מנוי לערכת הכלים.</span></div>
+  </section>
+  <nav class="journey" aria-label="ההתקנה שלך בשלושה שלבים"><div class="journey-grid shell">
+    <a class="journey-step" href="#hermes"><span class="journey-number">01</span><div><strong>תן לו מוח</strong><small>התקן את Hermes וחבר מודל.</small></div></a>
+    <a class="journey-step" href="#discord"><span class="journey-number">02</span><div><strong>חבר אותו ל-Discord</strong><small>הסוכן שלך, במרחק הודעה אחת.</small></div></a>
+    <a class="journey-step" href="#skills"><span class="journey-number">03</span><div><strong>תן לסקילים לעבוד</strong><small>התקן את ערכת הכלים. בקש כל דבר.</small></div></a>
+  </div></nav>
+  <div class="guide-layout shell" id="guide">
+    <aside class="guide-sidebar" aria-label="ניווט במדריך">
+      <details open id="guide-menu"><summary>במדריך הזה <svg class="icon" aria-hidden="true"><use href="#chevron"></use></svg></summary>
+        <nav class="toc" aria-label="פרקי המדריך">
+          <span class="toc-label">מתחילים לעבוד</span><ol>
+            <li><a href="#need"><span>01</span>מה צריך</a></li><li><a href="#hermes"><span>02</span>התקנת Hermes</a></li><li><a href="#discord"><span>03</span>חיבור Discord</a></li><li><a href="#skills"><span>04</span>התקנת הסקילים</a></li>
+          </ol><span class="toc-label">כדי שזה יהיה שימושי</span><ol start="5">
+            <li><a href="#list"><span>05</span>ספריית הסקילים</a></li><li><a href="#hashcats"><span>06</span>למנט Hashcats</a></li><li><a href="#prompts"><span>07</span>דברים לבקש ממנו</a></li>
+          </ol><span class="toc-label">עוד קצת קדימה</span><ol start="8">
+            <li><a href="#vercel"><span>08</span>לפרסם עם Vercel</a></li><li><a href="#localvps"><span>09</span>איפה להריץ אותו</a></li><li><a href="#money"><span>10</span>כמה זה עולה</a></li><li><a href="#stuck"><span>11</span>פתרון תקלות</a></li>
+          </ol>
+        </nav>
+        <div class="setup-progress" hidden><div class="progress-caption"><label for="setup-meter">התקדמות ההתקנה שלך</label><span id="progress-count">0 מתוך 4</span></div><progress id="setup-meter" max="4" value="0"></progress><p class="progress-help" id="progress-help">נשמר בדפדפן הזה</p></div>
+      </details>
+    </aside>
+    <div class="guide-content">
+      <div class="guide-intro"><div><h2>קצת התקנה. ואז רק צ'אט.</h2><p>מתחילים כאן. כל מה שאתה צריך, בסדר שבו אתה צריך אותו.</p></div><span class="reading-time"><svg class="icon" aria-hidden="true"><use href="#clock"></use></svg> ~20 דק' התקנה</span></div>
+<section id="need">
+  <div class="section-title"><h2 class="step"><span>01</span>מה צריך</h2><label class="completion" hidden><input type="checkbox" data-complete="need" aria-label="סמן את &quot;מה צריך&quot; כבוצע"> בוצע</label></div>
+  <div class="table-scroll" role="region" aria-label="טבלת עזר לגלילה" tabindex="0"><table>
+    <tr><th scope="col">מה צריך</th><th scope="col">עלות</th><th scope="col">למה זה משמש</th></tr>
+    <tr><td>מחשב</td><td>בחינם</td><td>מריץ את הסוכן. Windows, Mac או Linux, כל מחשב מהשנים האחרונות</td></tr>
+    <tr><td>חשבון Discord</td><td>בחינם</td><td>הדרך שבה אתה מדבר עם הסוכן, מהטלפון או מהמחשב</td></tr>
+    <tr><td>מנוי OpenCode</td><td>~$10 לחודש</td><td>המוח של הסוכן. הדבר היחיד שבאמת צריך לשלם עליו</td></tr>
+    <tr><td>חשבון Vercel <i>(אופציונלי)</i></td><td>בחינם</td><td>רק אם אתה רוצה להעלות עמוד או אתר קטן לאינטרנט</td></tr>
+    <tr><td>שרת קטן <i>(אופציונלי)</i></td><td>~$5 לחודש</td><td>רק אם אתה רוצה שהסוכן יעבוד כשהמחשב שלך כבוי</td></tr>
+    <tr><td>חשבון Nous Portal <i>(אופציונלי)</i></td><td>מחיר בפורטל</td><td>Nous יכול לארח את הסוכן בשבילך, כך שאתה אף פעם לא נוגע בשרת</td></tr>
+  </table></div>
+  <p>
+    תתחיל בשלושת הראשונים. Vercel והשרת מגיעים בהמשך, ואפשר לוותר
+    על כל אחד מהם.
+  </p>
+</section>
+
+<section id="hermes">
+  <div class="section-title"><h2 class="step"><span>02</span>התקנת Hermes</h2><label class="completion" hidden><input type="checkbox" data-complete="hermes" aria-label="סמן את התקנת Hermes כבוצעה"> בוצע</label></div>
+  <p>
+    Hermes הוא הסוכן. אתה מדביק שורה אחת בחלון טרמינל והוא מתקין את
+    עצמו. זה הדבר הכי טכני בכל המדריך הזה.
+  </p>
+
+<div class="os-tabs" role="tablist" aria-label="מערכת ההפעלה שלך" hidden><button type="button" role="tab" id="tab-windows" aria-selected="true" aria-controls="os-windows" tabindex="0">Windows</button><button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="os-mac" tabindex="-1">Mac</button><button type="button" role="tab" id="tab-linux" aria-selected="false" aria-controls="os-linux" tabindex="-1">Linux</button></div><div class="os-panel" id="os-windows" role="tabpanel" aria-labelledby="tab-windows" tabindex="0"><h3>Windows</h3>
+  <p>פתח את תפריט Start, הקלד <b>PowerShell</b>, פתח אותו והדבק את זה:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+
+</div><div class="os-panel" id="os-mac" role="tabpanel" aria-labelledby="tab-mac" tabindex="0"><h3>Mac</h3>
+  <p>לחץ <b>Command + Space</b>, הקלד <b>Terminal</b>, לחץ Enter והדבק:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div><div class="os-panel" id="os-linux" role="tabpanel" aria-labelledby="tab-linux" tabindex="0"><h3>Linux</h3>
+  <p>פתח את הטרמינל שלך והדבק:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</code></pre>
+
+</div>  <div class="note">
+    הוא מוריד לבד את כל מה שהוא צריך וזה לוקח כמה דקות. תן לטקסט
+    לרוץ, אתה לא צריך לקרוא אותו.
+  </div>
+
+  <h3>בדוק שזה עבד</h3>
+  <p>סגור את החלון, פתח חלון חדש והקלד:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes doctor</code></pre>
+  <p>זה מדפיס רשימת בדיקות. ירוק זה בסדר. אם משהו חסר, הוא אומר לך
+    את הפקודה המדויקת לתקן.</p>
+
+  <h3>תן לו מוח</h3>
+  <p>
+    הסוכן צריך מודל שיחשוב איתו, וזה המנוי ב-$10. נרשמים
+    כאן: <a href="https://opencode.ai/go?ref=0N4C2C5TNK" style="color:var(--accent)">opencode.ai</a>.
+  </p>
+  <p>ואז הוסף את המפתח שהוא נותן לך לקובץ ההגדרות.</p>
+  <span class="os">Windows</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>notepad $env:USERPROFILE\.hermes\.env</code></pre>
+  <p>הוסף את השורה הזו בסוף, במקום <code>YOUR_KEY_HERE</code> עם המפתח שלך,
+    ואז שמור וסגור:</p>
+  <pre data-label="קובץ הגדרות" data-kind="terminal"><code>OPENCODE_GO_API_KEY=YOUR_KEY_HERE</code></pre>
+  <span class="os">Mac ו-Linux</span>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>printf 'OPENCODE_GO_API_KEY=%s\n' 'YOUR_KEY_HERE' &gt;&gt; ~/.hermes/.env</code></pre>
+  <p>עכשיו תגיד לו להשתמש במנוי ותגיד שלום:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes model
+hermes chat -q "hello, what model are you?"</code></pre>
+  <p>אם הוא עונה, הסוכן עובד. כל מה שאחרי זה זה רק להוסיף לו דברים.</p>
+</section>
+
+<section id="discord">
+  <div class="section-title"><h2 class="step"><span>03</span>הגדרת Discord</h2><label class="completion" hidden><input type="checkbox" data-complete="discord" aria-label="סמן את הגדרת Discord כבוצעה"> בוצע</label></div>
+  <p>
+    זה החלק שהופך אותו לשימושי. אחרי זה אתה כבר לא צריך את הטרמינל.
+    רק שולח לו הודעה.
+  </p>
+  <p>
+    Discord משנה מדי פעם את התפריטים שלו, אז אם כפתור זז, חפש
+    את הדומה ביותר.
+  </p>
+  <ol>
+    <li>היכנס ל- <a href="https://discord.com/developers/applications" style="color:var(--accent)">discord.com/developers/applications</a> ולחץ על <b>New
+      Application</b>. תן לו כל שם.</li>
+    <li>בתפריט השמאלי לחץ על <b>Bot</b>. גלול אל <b>Privileged Gateway
+      Intents</b> והעבר את <b>Message Content Intent</b> ל- <b>ON</b>. זו הקריטית מכולן:
+      אם תדלג עליה, הבוט שלך ייראה לגמרי שבור.</li>
+    <li>עדיין באותו עמוד, לחץ על <b>Reset Token</b> והעתק את מה שמופיע. הוא מוצג
+      פעם אחת בלבד. תתייחס אליו כמו לסיסמה.</li>
+    <li>בתפריט השמאלי לחץ על <b>Installation</b>. הפעל <b>Guild Install</b>, וודא
+      שה-Scopes כוללים את <b>bot</b> ו- <b>applications.commands</b>. העתק
+      את קישור ההתקנה שהוא מציג לך.</li>
+    <li>פתח את הקישור בדפדפן והוסף את הבוט לשרת שלך. אתה צריך
+      להיות הבעלים או המנהל של השרת הזה.</li>
+    <li>מצא את מזהה המשתמש שלך. ב-Discord היכנס ל- <b>Settings → Advanced</b>, הפעל
+      <b>Developer Mode</b>, ואז לחץ ימני על השם שלך ובחר <b>Copy User
+      ID</b>. זה מספר ארוך.</li>
+    <li>הרץ את ההגדרה והדבק את הטוקן ואת מזהה המשתמש:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway setup</code></pre>
+  <p>בחר Discord כשהוא שואל. ואז הפעל ובדוק:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway run</code></pre>
+  <p>
+    השאר את החלון פתוח ושלח לבוט הודעה פרטית ב-Discord. הוא אמור
+    לענות. אחרי שהוא עונה, לחץ <b>Ctrl + C</b> כדי לעצור אותו, והרץ את שתי השורות האלה כדי שהוא
+    יעלה לבד מכאן והלאה:
+  </p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes gateway install
+hermes gateway start</code></pre>
+  <div class="note">
+    <b>בהודעות פרטיות</b> הוא עונה להכול. <b>בערוץ בשרת</b> הוא
+    עונה רק כשמתייגים אותו, כך שהוא אף פעם לא מציף את החברים שלך.
+  </div>
+  <div class="note warn">
+    <b>אם הוא אף פעם לא עונה</b>, זה כמעט תמיד אחד משני דברים: Message
+    Content Intent עדיין כבוי, או שמזהה המשתמש הועתק לא נכון. חזור על שלבים 2 ו-6.
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title"><h2 class="step"><span>04</span>הורדת הסקילים</h2><label class="completion" hidden><input type="checkbox" data-complete="skills" aria-label="סמן את הורדת הסקילים כבוצעה"> בוצע</label></div>
+  <p>שלוש שורות. זה מוריד את הסקילים ומתקין אותם בסוכן שלך:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+./install.sh</code></pre>
+  <p>
+    אפשר לבדוק אותם בכל רגע עם <code>hermes skills list</code>. הרצה חוזרת של המתקין
+    בהמשך היא בטוחה, היא לא תשבור כלום.
+  </p>
+  <div class="note">
+    <b>אין git מותקן, או שאתה לא בטוח?</b> הורד את קובץ ה-ZIP מ-
+    <a href="https://github.com/andyemad/nft-mint-rarity-toolkit/archive/refs/heads/main.zip" style="color:var(--accent)">הקישור הזה</a>,
+    חלץ אותו, פתח טרמינל בתוך התיקייה הזו והרץ <code>bash install.sh</code>.
+  </div>
+  <p>דבר אחרון, שלושה עזרים קטנים שסקילי הארנקים והמסחר צריכים:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install eth-account coincurve pycryptodome</code></pre>
+</section>
+
+<section id="list">
+  <div class="section-title"><h2 class="step"><span>05</span>ספריית הסקילים האונצ'יין</h2></div>
+  <p>
+    אתה לא צריך לזכור אותם בעל פה. הסוכן בוחר את המתאים לבד.
+    זה רק כדי שתדע מה אתה יכול לבקש.
+  </p>
+
+<div class="library-tools" hidden><div class="search-wrap"><svg class="icon" aria-hidden="true"><use href="#search"></use></svg><label class="sr-only" for="skill-search">חפש בין 31 הסקילים</label><input id="skill-search" type="search" placeholder="נסה נדירות, ארנקים או מינט…" autocomplete="off" aria-controls="skill-results"></div><div class="filter-list" role="group" aria-label="סנן סקילים לפי קטגוריה"><button type="button" data-filter="all" aria-pressed="true">כל הסקילים</button><button type="button" data-filter="Minting" aria-pressed="false">מינט</button><button type="button" data-filter="Rarity and buying" aria-pressed="false">נדירות</button><button type="button" data-filter="Is this thing real?" aria-pressed="false">אימות</button><button type="button" data-filter="Wallets" aria-pressed="false">ארנקים</button><button type="button" data-filter="Making your own collection" aria-pressed="false">יצירה</button><button type="button" data-filter="Tools and research" aria-pressed="false">מחקר וכלים</button></div><p class="library-count" id="skill-count" role="status">31 סקילים לעבודה</p></div><div id="skill-results"><h3 class="cat">מינט</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-mint-recon</span><h4>מבין מה המינט באמת</h4><p>מאתר את החוזה האמיתי, את המחיר האמיתי, אם המינט באמת פתוח ואיזו רשת. זה מה שמונע ממך להיעקץ במחיר מזויף.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-mint-recon">צפה בפלייבוק<span class="sr-only"> עבור nft-mint-recon</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">seadrop-rapid-mint</span><h4>למנט מהרבה ארנקים בבת אחת</h4><p>לדרופים שנגמרים בשניות. יוצר את הארנקים, אומר לך בדיוק כמה לשים בכל אחד, ויורה ברגע שהמינט נפתח.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/seadrop-rapid-mint">צפה בפלייבוק<span class="sr-only"> עבור seadrop-rapid-mint</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-floor-sweep</span><h4>מתמחר קנייה של רצפה שלמה</h4><p>מחבר כל ליסטינג זול בקולקציה ונותן לך את הסכום האמיתי לפני שאתה קונה את כולם.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-floor-sweep">צפה בפלייבוק<span class="sr-only"> עבור nft-floor-sweep</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-claim-reverse-engineering</span><h4>מבין איך לממש</h4><p>לעמודים שמציעים מינט חינם, החזר כספי או איירדרופ. הוא מבין מה האתר באמת עושה לפני שאתה מחבר ארנק.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-claim-reverse-engineering">צפה בפלייבוק<span class="sr-only"> עבור onchain-claim-reverse-engineering</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">נדירות וקנייה</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-rarity-engine</span><h4>מדרג קולקציה לפי נדירות</h4><p>נותן ציון לכל NFT ומסדר אותם לפי אותה מתמטיקה ש-OpenSea משתמשת בה, כך שהדירוגים תואמים. הוא יכול לתפוס ריביל לפני ש-OpenSea מתעדכנת.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-rarity-engine">צפה בפלייבוק<span class="sr-only"> עבור nft-rarity-engine</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-chain-rarity-sniping</span><h4>קונה את הנדירים בזול</h4><p>אחרי ריביל, מוצא את הפריטים הנדירים ביותר שרשומים במחירי רצפה רגילים וקונה אותם לפני שמישהו שם לב.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/rh-chain-rarity-sniping">צפה בפלייבוק<span class="sr-only"> עבור rh-chain-rarity-sniping</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-secondary-buy</span><h4>קונה בשבילך NFT שרשום למכירה</h4><p>קונה מהשוק המשני, ותמיד בודק את הקנייה קודם, כך שהזמנה שבורה לא תעלה לך עמלה.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/business/nft-secondary-buy">צפה בפלייבוק<span class="sr-only"> עבור nft-secondary-buy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">זה בכלל אמיתי?</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-minter-legitimacy-audit</span><h4>בודק אם הקונים היו אמיתיים</h4><p>בודק מי עשה מינט ואומר לך אם אלה היו אנשים אמיתיים או כמה ארנקים שמזייפים עניין כדי להיראות פופולריים.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-minter-legitimacy-audit">צפה בפלייבוק<span class="sr-only"> עבור nft-minter-legitimacy-audit</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">web3-claim-verification</span><h4>בודק את הטענות של הפרויקט</h4><p>כשפרויקט אומר "עשינו X", זה בודק בבלוקצ'יין אם זה נכון.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/web3-claim-verification">צפה בפלייבוק<span class="sr-only"> עבור web3-claim-verification</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-market-analysis</span><h4>קורא את השוק בלי לייפות</h4><p>רצפות, מכירות, מחזיקים, כמה מהר דברים מתחלפים. מה שהמספרים באמת אומרים.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-market-analysis">צפה בפלייבוק<span class="sr-only"> עבור nft-market-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-collection-price-analysis</span><h4>מעריך קולקציה</h4><p>כמה היא שווה, מה יכול להשתבש אחרי שתקנה, והאם המחיר הגיוני ביחס לסיכון.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-price-analysis">צפה בפלייבוק<span class="sr-only"> עבור nft-collection-price-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-exit-discipline</span><h4>מתי למכור</h4><p>חוקים לממש רווח במקום להחזיק לנצח. המשעמם ששומר על הכי הרבה כסף.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-exit-discipline">צפה בפלייבוק<span class="sr-only"> עבור nft-exit-discipline</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">ארנקים</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-wallet-operations</span><h4>יוצר ארנקים ומעביר ביניהם בבטחה</h4><p>יוצר ארנקים חדשים, מגבה את המפתחות כמו שצריך, ומעביר טוקנים בלי לחשוף אותם אף פעם.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-wallet-operations">צפה בפלייבוק<span class="sr-only"> עבור ethereum-wallet-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">wallet-radar-operations</span><h4>עוקב אחרי ארנקים שמעניינים אותך</h4><p>עוקב אחרי ארנקים מסוימים ומצפצף לך כשהם קונים משהו.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/wallet-radar-operations">צפה בפלייבוק<span class="sr-only"> עבור wallet-radar-operations</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">public-wallet-xlsx-delivery</span><h4>הופך ארנקים לגיליון</h4><p>לוקח רשימת ארנקים ונותן לך גיליון מסודר שאפשר לשתף.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/productivity/public-wallet-xlsx-delivery">צפה בפלייבוק<span class="sr-only"> עבור public-wallet-xlsx-delivery</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pseudonym-identity-research</span><h4>מחבר חשבונות אנונימיים</h4><p>מקשר כינויים וארנקים אנונימיים ששייכים לאותו אדם.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/pseudonym-identity-research">צפה בפלייבוק<span class="sr-only"> עבור pseudonym-identity-research</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">ליצור קולקציה משלך</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">nft-collection-production</span><h4>בונה קולקציה מאפס</h4><p>תוכנית הארט, התכונות, התמחור, עמוד המינט ומכניקת החוזה — הכול במקום אחד.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-collection-production">צפה בפלייבוק<span class="sr-only"> עבור nft-collection-production</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-taxonomy</span><h4>מסדר את התכונות</h4><p>שומר שכל מאפיין יהיה עקבי ומקובץ, כך שהמטא-דאטה שלך לא יהפוך לבלגן.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-taxonomy">צפה בפלייבוק<span class="sr-only"> עבור nft-trait-taxonomy</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">nft-trait-curation</span><h4>בודק את איכות התכונות</h4><p>בודק כל תכונה לאיתור כפילויות וכל דבר שנראה לא בסדר לפני שאתה משיק.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/nft-trait-curation">צפה בפלייבוק<span class="sr-only"> עבור nft-trait-curation</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+
+  <h3 class="cat">כלים ומחקר</h3>
+  <div class="skills">
+    <article class="skill"><span class="name">ethereum-data-pipelines</span><h4>קורא את הבלוקצ'יין בחינם</h4><p>מושך דאטה אונצ'יין בלי לשלם על API. המנוע שמאחורי הרבה מהאחרים.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/ethereum-data-pipelines">צפה בפלייבוק<span class="sr-only"> עבור ethereum-data-pipelines</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">rh-mint-command-center</span><h4>חדר השליטה של המינט</h4><p>דשבורד מקומי למינט: לתכנן מינט, לתרגל אותו, לנהל סט ארנקים, לעקוב אחרי הרצפה ולראות מה קרה אחר כך.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/rh-mint-command-center">צפה בפלייבוק<span class="sr-only"> עבור rh-mint-command-center</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">mint-field-guide</span><h4>דשבורד המינט</h4><p>מסך לקריאה בלבד של מינטים מתקרבים ותנועת שוק, עם ציון המקור של כל מספר.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/software-development/mint-field-guide">צפה בפלייבוק<span class="sr-only"> עבור mint-field-guide</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">pow-mint-mining</span><h4>מטפל במינטים שדורשים פתרון</h4><p>Hashcats, FAB4200 ואחרים כמוהם נותנים לך את הפריט תמורת מציאת מספר מזל במקום תשלום. זה מריץ את החיפוש הזה בשבילך.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/pow-mint-mining">צפה בפלייבוק<span class="sr-only"> עבור pow-mint-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-mining</span><h4>טחינת המספרים</h4><p>מריץ את החיפוש הזה על המחשב שלך או על חומרה שכורה, עם בדיקות כך שהוא אף פעם לא מבזבז עסקה.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-mining">צפה בפלייבוק<span class="sr-only"> עבור onchain-puzzle-mining</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-puzzle-solving</span><h4>פותר מינטים שדורשים מחשבה</h4><p>חידות ורמזים נסתרים שחוסמים חלק מהדרופים, נמצאים מתוך קריאה של הקוד של המשחק עצמו.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/onchain-puzzle-solving">צפה בפלייבוק<span class="sr-only"> עבור onchain-puzzle-solving</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">onchain-game-economy-analysis</span><h4>ממפה את הכלכלה של משחק</h4><p>מפרק משחק אונצ'יין לגורמים כדי להראות מאיפה מגיע הערך.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/onchain-game-economy-analysis">צפה בפלייבוק<span class="sr-only"> עבור onchain-game-economy-analysis</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">polymarket</span><h4>קורא שוקי תחזיות</h4><p>בודק איך שוקי ההימורים מתמחרים אירוע.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/polymarket">צפה בפלייבוק<span class="sr-only"> עבור polymarket</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">proof-of-play-archive</span><h4>מחקר Proof of Play</h4><p>מחקר רקע על Proof of Play ו-Pirate Nation.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/research/proof-of-play-archive">צפה בפלייבוק<span class="sr-only"> עבור proof-of-play-archive</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">agent-protocol-identity</span><h4>נותן לסוכן זהות</h4><p>מאפשר לסוכן להוכיח מי הוא כשהוא מפרסם באינטרנט, כך שאפשר להבדיל בין אמיתי למזויף.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/agent-protocol-identity">צפה בפלייבוק<span class="sr-only"> עבור agent-protocol-identity</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">flop-technocore-agent-ops</span><h4>להריץ סוכן בפומבי</h4><p>איך לתת לסוכן חשבון משלו ולתת לו לפרסם בלי לחשוף שום דבר פרטי.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/flop-technocore-agent-ops">צפה בפלייבוק<span class="sr-only"> עבור flop-technocore-agent-ops</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+    <article class="skill"><span class="name">internet-computer-development</span><h4>לבנות על ה-Internet Computer</h4><p>הערות על בלוקצ'יין אחר, ה-Internet Computer.</p><a class="skill-link" href="https://github.com/andyemad/nft-mint-rarity-toolkit/tree/main/skills/web3/internet-computer-development">צפה בפלייבוק<span class="sr-only"> עבור internet-computer-development</span> <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a></article>
+  </div>
+</div><div class="empty-state" id="empty-skills" hidden><p>אין סקילים מתאימים. נסה מונח או קטגוריה אחרים.</p><button type="button" id="reset-search">הצג את כל הסקילים</button></div></section>
+
+<section id="hashcats">
+  <div class="section-title"><h2 class="step"><span>06</span>למנט Hashcats (ודרופים דומים)</h2></div>
+  <p>
+    לחלק מהדרופים אין מחיר. במקום לשלם, אתה צריך למצוא מספר מזל,
+    ומי שמוצא אותו ראשון מקבל את החתול. לזה מתכוונים כשהם
+    אומרים שהמינט נפתר ולא נקנה.
+  </p>
+  <p>
+    הלפטופ שלך יכול לעשות את זה, אבל זה ייקח ימים, ואנשים עם מחשבים
+    שכורים וחזקים מוצאים אותם בדקות. אז שוכרים מחשב לכמה דקות. זו הסיבה
+    היחידה לכל העסק הזה.
+  </p>
+
+  <h3>שוכרים מחשב לכמה דקות (חינם להתחלה)</h3>
+  <p>
+    <b>Modal</b> שוכר מחשבים לפי שנייה. אתה לא קונה כלום. נרשמים
+    וזה מגיע עם <b>$30 של מחשוב חינם בכל חודש</b>, שזה בערך שבע שעות
+    במכונות המהירות שלהם, בערך $4 לשעה. לניסיונות מזדמנים
+    סביר שלעולם לא תשלם כלום.
+  </p>
+  <ol>
+    <li>נרשמים בחינם ב- <a href="https://modal.com" style="color:var(--accent)">modal.com</a>.
+      ה-$30 כבר כלולים.</li>
+    <li>ואז הרץ את שתי הפקודות האלה פעם אחת:</li>
+  </ol>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>pip install modal
+modal setup</code></pre>
+  <p>השנייה פותחת דפדפן ומקשרת את החשבון שלך. זה כל מה שצריך.</p>
+
+  <h3>מה להקליד ב-Discord</h3>
+  <p>זו כל הפעולה. תייג את הבוט שלך והדבק את זה:</p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet</code></pre>
+  <p>הוא מדווח לך בחזרה על הסבב. כשאתה באמת רוצה ללכת על זה:</p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes</code></pre>
+  <p>וכדי לראות איך זה הלך:</p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot did we get one? show me the transaction</code></pre>
+
+  <h3>מה הוא עושה בשבילך</h3>
+  <ul>
+    <li>הוא בודק קודם את כל ההתקנה, כך שריצה אף פעם לא מתחילה שבורה</li>
+    <li>הוא עושה את החיפוש על המחשב השכור, לא על שלך</li>
+    <li>הוא בודק כל תשובה לפני שהוא מוציא משהו, כך שתשובה שהגיעה מאוחר מדי לא תעלה לך עמלה</li>
+    <li>הוא שולח את העסקה מהארנק שלך ונותן לך את הקישור</li>
+  </ul>
+
+  <h3>שני הדברים שרק אתה יכול לעשות</h3>
+  <ul>
+    <li><b>שים קצת ETH בארנק.</b> גם ניצחון עולה כמה סנטים בעמלות. שום דבר לא יכול לעשות את החלק הזה בשבילך.</li>
+    <li><b>תשמור על ניסיונות קצרים.</b> הסבבים מתחלפים כל הזמן, ועבודה שנעשתה לסבב שכבר נגמר היא מבוזבזת. קצר ותכוף עדיף על ריצה ארוכה אחת.</li>
+  </ul>
+
+  <div class="note warn">
+    <b>תהיה כן לגבי הסיכויים.</b> אתה מתחרה עם כל מי שמנסה את אותו דרופ,
+    ואתה משלם על המחשוב בין אם תנצח ובין אם תפסיד. בשביל זה יש
+    את הקרדיט החינם. תשתמש בו, תשמור על ניסיונות קצרים, ואל תטען
+    עוד כסף בציפייה לחתול מובטח.
+  </div>
+
+  <h3>עוד דרופים שזה עובד עליהם</h3>
+  <p>
+    אותו רעיון ואותו סוג של פרומפט. רק מזכירים את זה שאתה רוצה במקום:
+  </p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me</code></pre>
+
+</section>
+
+<section id="prompts">
+  <div class="section-title"><h2 class="step"><span>07</span>דברים לבקש ממנו</h2></div>
+  <p>
+    אין ניסוח מיוחד. <b>הדבק קישור ותגיד מה אתה רוצה.</b> קישור
+    ל-OpenSea, ציוץ, אתר מינט, כתובת ארנק, כתובת חוזה.
+    אם הוא לא מבין למה אתה מתכוון, הוא שואל אותך.
+  </p>
+
+  <h3>הדבק קישור של OpenSea</h3>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot rank this whole collection by rarity and show me the top 20
+@yourbot which rare ones here are listed cheap right now?
+@yourbot what is the floor on this and is it going up or down?
+@yourbot are the wallets that minted this real people or bots?
+@yourbot is this worth buying at the current floor?
+@yourbot how many people are holding this, and how concentrated is it?</code></pre>
+
+  <h3>הדבק ציוץ שכתוב בו "למנט את זה"</h3>
+  <p>
+    זה השימושי. תדביק את הציוץ והוא מבין מה המינט, כמה הוא באמת עולה, אם הוא עוד פתוח, ואם הפרויקט נראה אמיתי — לפני שמשהו נוגע בארנק שלך.
+  </p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot &lt;tweet link&gt; mint this
+@yourbot &lt;tweet link&gt; what is this mint and is it real?
+@yourbot &lt;tweet link&gt; can I mint this for free?
+@yourbot &lt;tweet link&gt; what would minting 3 of these actually cost me?
+@yourbot &lt;tweet link&gt; is this the real contract or a copy?
+@yourbot &lt;tweet link&gt; set an alert for when this goes live</code></pre>
+  <div class="note">
+    הוא לא סתם יורה עסקה. הוא קורא את הציוץ, מוצא את החוזה, בודק את המחיר ואת ההיצע אונצ'יין, מראה לך מה הוא מצא, ומחכה שתגיד קדימה.
+  </div>
+
+  <h3>הדבק אתר מינט, או סתם כתובת חוזה</h3>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot can I mint this for free? &lt;link&gt;
+@yourbot what is the real price on this? the page says 0.05
+@yourbot is this mint still open or already sold out?
+@yourbot how many wallets have minted this so far?
+@yourbot is this contract a copy of another collection?
+@yourbot what does this contract actually do? &lt;address&gt;</code></pre>
+
+  <h3>הדבק כתובת ארנק</h3>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot what has this wallet been buying? &lt;address&gt;
+@yourbot is this wallet actually profitable, or just busy?
+@yourbot watch this wallet and message me when it buys something
+@yourbot which collections did this wallet get into early?
+@yourbot does this wallet look like a bot or a person?</code></pre>
+
+  <h3>בקש ממנו לעקוב אחרי משהו בשבילך</h3>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot watch this collection and message me the moment it reveals
+@yourbot tell me when the floor drops below 0.01
+@yourbot ping me if anything from this collection sells under 0.005
+@yourbot check this every ten minutes and only message me if something changes
+@yourbot remind me when this mint opens in an hour</code></pre>
+
+  <h3>בקש ממנו לקנות או למנט בשבילך</h3>
+  <p>
+    כל אחד מאלה בודק קודם ואומר לך את העלות לפני שהוא עושה משהו. שום דבר לא עובר עד שאתה אומר קדימה.
+  </p>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot mint 1 for me, show me the cost and wait for my go ahead
+@yourbot buy the cheapest rare one under 0.01
+@yourbot buy 3 but never spend more than 0.03 in total
+@yourbot don't spend anything without asking me first
+@yourbot what is my wallet holding right now? &lt;address&gt;</code></pre>
+
+  <h3>בקש ממנו להסביר משהו</h3>
+  <pre data-label="פרומפט ל-Discord" data-kind="prompt"><button class="copy" hidden>copy</button><code>@yourbot explain what a proof of work mint is, in simple terms
+@yourbot why is this floor so low?
+@yourbot what does "revealed" mean here?
+@yourbot how do people fake volume on a collection?
+@yourbot what is the difference between a mint and a buy?</code></pre>
+
+  <div class="note">
+    <b>הכלל הכללי:</b> אם אתה יכול להדביק את זה, כנראה שהוא יכול להסתכל על זה. קישורים,
+    צילומי מסך, כתובות, ציוצים, גיליונות. אם אתה לא בטוח איך לבקש,
+    פשוט תאר מה אתה מנסה לעשות ותן לו להבין את השאר.
+  </div>
+
+  <div class="note">
+    <b>רוצה לשנות איך סקיל עצמו עובד?</b> זה עמוד נפרד, כי זה
+    הדבר הכי שימושי שתוכל ללמוד כאן:
+    <a href="../prompts/" style="color:var(--accent)">לשפר את הסקילים פשוט בדיבור</a>.
+  </div>
+</section>
+
+<section id="vercel">
+  <div class="section-title"><h2 class="step"><span>08</span>הגדרת Vercel</h2></div>
+  <p>
+    Vercel מעלה אתר או עמוד לאינטרנט בחינם. אתה לא צריך אותו כדי
+    להריץ את הסוכן. אתה צריך אותו אם בא לך עמוד ציבורי משלך: קישור שאפשר
+    לשתף, תיק עבודות, עמוד תיעוד, המדריך הזה.
+  </p>
+
+  <h3>פתח חשבון</h3>
+  <p>
+    נרשמים ב- <a href="https://vercel.com/signup" style="color:var(--accent)">vercel.com/signup</a>
+    עם GitHub, Google או אימייל. החבילה החינמית מספיקה לכל מה שכאן.
+  </p>
+
+  <h3>הדרך הקלה: לחבר פרויקט GitHub</h3>
+  <ol>
+    <li>ב-Vercel לחץ על <b>Add New → Project</b>.</li>
+    <li>חבר את חשבון ה-GitHub שלך ובחר את הריפו שתרצה להעלות.</li>
+    <li>אם קבצי האתר שלך יושבים בתיקייה ולא בשורש, הגדר <b>Root
+      Directory</b> לתיקייה הזו. בשביל העמוד של המדריך הזה התיקייה היא
+      <code>docs</code>.</li>
+    <li>לחץ על <b>Deploy</b>. דקה אחר כך יש לך קישור חי.</li>
+  </ol>
+  <p>
+    מכאן והלאה, בכל פעם שאתה דוחף ל-GitHub, Vercel בונה את האתר מחדש לבד.
+    זה כל התהליך.
+  </p>
+
+  <h3>הדרך עם הטרמינל</h3>
+  <p>אם אתה מעדיף לפרוס ישר מהמחשב שלך:</p>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>npm install -g vercel
+vercel login
+
+<span class="c"># then, from inside the folder you want online</span>
+vercel --prod</code></pre>
+  <p>הוא שואל כמה שאלות בפעם הראשונה ואז מדפיס את הקישור החי שלך.</p>
+
+  <h3>פרס את העמוד של המדריך הזה כניסיון</h3>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>git clone https://github.com/andyemad/nft-mint-rarity-toolkit.git
+cd nft-mint-rarity-toolkit
+npx vercel deploy docs --prod</code></pre>
+
+  <h3>דומיין משלך</h3>
+  <p>
+    אופציונלי. בהגדרות <b>Settings → Domains</b> של הפרויקט אפשר להוסיף דומיין בבעלותך, או להסתפק
+    בכתובת החינמית <code>your-project.vercel.app</code> שהוא נותן לך.
+  </p>
+
+  <div class="note warn">
+    <b>מה Vercel לא יכולה לעשות:</b> להריץ את הסוכן שלך. Vercel מגישה רק אתרים
+    שנטענים לפי דרישה. הסוכן שלך הוא תוכנית שצריכה להישאר דלוקה, אז היא
+    גרה במחשב שלך או בשרת. אם אי פעם תראה פריסה שנכשלת עם שגיאת
+    <b>402</b>  — החשבון הזה עבר את מכסת ההעברות של החבילה החינמית.
+    פתח פרויקט חדש, או השתמש ב-GitHub Pages או Cloudflare Pages, שמגישים את אותם
+    קבצים.
+  </div>
+</section>
+
+<section id="localvps">
+  <div class="section-title"><h2 class="step"><span>09</span>המחשב שלך, שרת, או אחסון מנוהל?</h2></div>
+  <p>
+    שניהם עובדים. ההבדל האמיתי היחיד הוא מה קורה כשאתה סוגר את הלפטופ.
+  </p>
+  <div class="two">
+    <div class="card">
+      <span class="price">חינם</span>
+      <h4>על המחשב שלך</h4>
+      <ul>
+        <li>אין מה להגדיר מעבר להתקנה שכבר עשית</li>
+        <li>מהירות מלאה, והוא יכול להשתמש במה שיש רק לך: הדפדפן, הקבצים, הארנקים</li>
+        <li><b>נעצר כשאתה סוגר את המכסה</b> או שם אותו לישון</li>
+        <li>כל משימה מתוזמנת, התראה או מעקב לילה מפספסים את החלון שלהם</li>
+        <li>מתאים ל: ניסויים, שימוש בשעות היום, כל דבר שאתה בעצמך עוקב אחריו</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">~$5 / לחודש</span>
+      <h4>על שרת קטן</h4>
+      <ul>
+        <li>אף פעם לא ישן. הופעל פעם אחת, הוא נשאר למעלה</li>
+        <li>מעקבים, התראות ומשימות מתוזמנות באמת רצים ב-4 לפנות בוקר</li>
+        <li>אתה מגיע אליו מהטלפון דרך Discord מכל מקום</li>
+        <li>אין מסך, אז אתה לא רואה אותו עובד חוץ מאשר בצ'אט</li>
+        <li>מתאים ל: משימות מתוזמנות, מעקבי לילה, כל דבר שאתה רוצה שיעבוד כל הזמן</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="price">מחיר בפורטל</span>
+      <h4>או לתת ל-Nous לארח אותו</h4>
+      <ul>
+        <li><b>Hermes Cloud</b> מריץ את המופע בשבילך</li>
+        <li>אין שרת להגדיר, לעדכן או להפעיל מחדש בעצמך</li>
+        <li>להפעיל, לעצור ולהפעיל מחדש מדף אינטרנט, או לבקש מהסוכן שלך</li>
+        <li>אותה הגדרת Discord כמו בכל מקום אחר</li>
+        <li>מתאים ל: מי שלא רוצה להריץ שרת בכלל</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>או לתת ל-Nous לארח אותו בשבילך</h3>
+  <p>
+    אם להריץ שרת נשמע כמו עבודה שאתה לא רוצה, <b>Nous Research מארחת
+    מופעי Hermes Cloud</b>. אתה מקבל סוכן שתמיד עובד, בלי
+    לבחור ספק, לאבטח שרת או לדאוג לעדכונים.
+  </p>
+  <ol>
+    <li>פתח <b>Nous Portal</b> חשבון ב-
+      <a href="https://portal.nousresearch.com" style="color:var(--accent)">portal.nousresearch.com</a>.</li>
+    <li>היכנס ל- <b>Agents</b> צור מופע. תן לו שם.</li>
+    <li>חבר אליו Discord בדיוק כמו בשלב 03. אותן פקודות, רק
+      על המופע.</li>
+  </ol>
+  <p>מכאן והלאה אתה מנהל אותו מהדף הזה. להפעיל, לעצור, להפעיל מחדש או למחוק —
+    הכול שם. המחירים מופיעים בפורטל לצד החבילות.</p>
+  <div class="note">
+    <b>מנוי אחד יכול לכסות את שני התפקידים.</b> חבילה בפורטל יכולה גם להיות
+    המוח של הסוכן במקום מנוי מודל נפרד: היא כוללת קטלוג גדול
+    של מודלים, ובנוסף חיפוש אינטרנט, יצירת תמונות וקול בניהול מלא — הכול
+    דרך התחברות אחת. הרץ <code>hermes setup --portal</code> והוא מתחבר לבד.
+    אם אתה כבר משלם על OpenCode, אתה לא צריך את שניהם.
+  </div>
+  <div class="note">
+    <b>כבר מריץ סוכן מקומית?</b> אתה יכול לנהל את מופעי הענן שלך
+    פשוט בלבקש ממנו, במקום ללחוץ בכל האתר. פקודה אחת מחברת את הסוכן
+    המקומי שלך לפורטל:
+  </div>
+  <pre data-label="Terminal" data-kind="terminal"><button class="copy" hidden>copy</button><code>hermes mcp add --url https://portal.nousresearch.com/mcp --auth oauth hermes-cloud</code></pre>
+  <p>אחרי זה אתה יכול להגיד "תציג את סוכני הענן שלי", "כמה המופע הזה
+    עולה לי", או "תפעיל מחדש את זה שעצור".</p>
+
+  <h3>לעבור לשרת</h3>
+  <ol>
+    <li>קח אחד מ-Hetzner או DigitalOcean, בערך $5 לחודש. בחר <b>Ubuntu</b> כמערכת
+      ההפעלה. האפשרות הקטנה ביותר מספיקה.</li>
+    <li>בצע את אותה שורת התקנה של Linux משלב 02 על השרת הזה במקום
+      על המחשב שלך.</li>
+    <li>חזור על שלבי ה-Discord והסקילים שם. אלה אותן שלוש פקודות.</li>
+    <li>אתה יכול להריץ את שניהם. המחשב והשרת הם סוכנים נפרדים, וכל אחד
+      מקבל טוקן בוט Discord משלו אם תרצה.</li>
+  </ol>
+  <div class="note">
+    <b>דרך הגיונית לעשות את זה:</b> תתחיל על המחשב שלך היום, ותשכור
+    שרת רק כשיש לך משהו שאתה רוצה שירוץ כשאתה ישן.
+  </div>
+</section>
+
+<section id="money">
+  <div class="section-title"><h2 class="step"><span>10</span>כמה זה עולה</h2></div>
+  <div class="table-scroll" role="region" aria-label="טבלת עזר לגלילה" tabindex="0"><table>
+    <tr><th scope="col">דבר</th><th scope="col">עלות</th><th scope="col">צריך?</th></tr>
+    <tr><td>סוכן Hermes</td><td>בחינם</td><td>כן</td></tr>
+    <tr><td>31 הסקילים</td><td>בחינם</td><td>כן</td></tr>
+    <tr><td>מנוי OpenCode</td><td>~$10 לחודש</td><td>כן, זה המוח</td></tr>
+    <tr><td>Vercel</td><td>בחינם</td><td>רק אם אתה רוצה עמוד באינטרנט</td></tr>
+    <tr><td>המחשב שלך</td><td>בחינם</td><td>בסדר, אבל הוא ישן</td></tr>
+    <tr><td>שרת קטן</td><td>~$5 לחודש</td><td>רק כדי שיעבוד מסביב לשעון</td></tr>
+    <tr><td>Modal, לפתרון דרופים כמו Hashcats <i>(אופציונלי)</i></td><td>חינם, $30 לחודש כלולים</td><td>רק אם אתה רוצה ללכת על הדרופים האלה</td></tr>
+    <tr><td>Nous Portal, כולל אחסון <i>(אופציונלי)</i></td><td>מופיע בפורטל</td><td>במקום שרת משלך, והוא יכול להיות גם המוח</td></tr>
+  </table></div>
+  <p>
+    סכום כנה: <b>בערך $10 בחודש</b>, או $15 אם אתה רוצה שהוא יהיה ער כל
+    הלילה.
+  </p>
+</section>
+
+<section id="stuck">
+  <div class="section-title"><h2 class="step"><span>11</span>אם משהו משתבש</h2></div>
+  <div class="table-scroll" role="region" aria-label="טבלת עזר לגלילה" tabindex="0"><table>
+    <tr><th scope="col">מה אתה רואה</th><th scope="col">מה לעשות</th></tr>
+    <tr><td><code>hermes</code> לא מזוהה</td><td>סגור את הטרמינל ופתח חדש. עדיין לא עובד? הפעל מחדש את המחשב ונסה שוב.</td></tr>
+    <tr><td>הבוט מחובר אבל אף פעם לא עונה</td><td>Message Content Intent כבוי בעמוד המפתחים של Discord. זו הסיבה מספר אחת.</td></tr>
+    <tr><td>עונה בהודעות פרטיות, שותק בשרת</td><td>רגיל. בשרתים הוא עונה רק כשמתייגים אותו.</td></tr>
+    <tr><td>הוא אומר שאין לך הרשאה</td><td>מזהה המשתמש שלך ב-Discord שגוי. העתק אותו שוב עם Developer Mode דלוק.</td></tr>
+    <tr><td>פריסה ב-Vercel נכשלת עם 402</td><td>החשבון הזה עבר את מכסת ההעברות החינמית. פרויקט חדש, או להשתמש ב-GitHub Pages או Cloudflare Pages.</td></tr>
+    <tr><td>הסוכן הפסיק לעבוד בלילה</td><td>הוא היה על המחשב שלך. זה צפוי. תעביר אותו לשרת אם אתה צריך שהוא יעבוד כל הזמן.</td></tr>
+    <tr><td>הוא מבקש ממך עוד כסף</td><td>בדוק את עמוד השימוש ב-OpenCode. משימות ארוכות צורכות יותר משיחה.</td></tr>
+    <tr><td>הסקילים לא מופיעים</td><td><code>hermes skills list</code> כדי לוודא שהם הותקנו, ואז <code>/reload-skills</code> בצ'אט.</td></tr>
+    <tr><td>הלכת לאיבוד</td><td>הרץ <code>hermes chat</code> ופשוט תאר מה אתה מנסה לעשות.</td></tr>
+  </table></div>
+</section>
+      <section class="closing" aria-label="מתחילים"><div class="hook"><h3>הסוכן שלך במרחק התקנה אחת.</h3><p>המדריך וכל 31 הסקילים בחינם. חבר מנוי מודל, בצע את השלבים, ותעשה אותו שלך.</p><div class="hero-actions"><a class="btn btn-primary" href="https://opencode.ai/go?ref=0N4C2C5TNK">קבל את OpenCode <svg class="icon" aria-hidden="true"><use href="#external"></use></svg></a><a class="btn btn-ghost" href="https://github.com/andyemad/nft-mint-rarity-toolkit">קבל את ערכת הכלים <svg class="icon" aria-hidden="true"><use href="#github"></use></svg></a></div><p style="font-size:11px;margin-top:17px">הקישור ל-OpenCode הוא קישור מפנה. הרשמה דרכו תומכת בפרויקט הזה.</p></div></section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="shell"><div class="footer-main"><a class="brand" href="#top"><svg class="brand-mark" aria-hidden="true"><use href="#mark"></use></svg> ערכת כלים ל-NFT</a><div class="footer-links"><span>בנוי להיות שלך.</span><a href="https://github.com/andyemad/nft-mint-rarity-toolkit">קוד המקור ב-GitHub</a><a href="../prompts/">וייב קודינג של הסקילים</a><a href="#guide">חזרה למדריך</a></div></div><p>חינם וקוד פתוח. שום דבר כאן אינו ייעוץ פיננסי. מינט ומסחר יכולים להפסיד כסף. קבע לעצמך גבול לפני שאתה מתחיל ולעולם אל תשתמש בכסף שאתה צריך.</p></div><p class="lang-row"><a href="../" hreflang="en">English</a> · <a href="../zh/" hreflang="zh-Hans">中文</a> · <a href="../ar/" hreflang="ar">العربية</a> · <a href="../es/" hreflang="es">Español</a> · <a href="../fr/" hreflang="fr">Français</a> · <a href="../de/" hreflang="de">Deutsch</a> · <a href="../ru/" hreflang="ru">Русский</a> · <a href="../he/" hreflang="he" aria-current="true">עברית</a> · <a href="../ur/" hreflang="ur-Latn">Urdu (Roman)</a></p></footer>
+<a class="top" href="#top" aria-label="חזרה למעלה" hidden><svg class="icon" aria-hidden="true"><use href="#up"></use></svg></a>
+<div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>
