@@ -283,19 +283,19 @@ The second command opens a browser and links your account. That is the whole set
 Mention your bot and paste this:
 
 ```
-@yourbot use the pow-mint-mining skill on hashcats. show me the current round and get everything ready, but don't spend anything yet
+@yourbot use pow-mint-mining on hashcats. show me the round, the difficulty, and my odds before spending anything
 ```
 
 When you want to go for it:
 
 ```
-@yourbot go ahead and mine the current round. stop when you find one, or after 15 minutes
+@yourbot run the current round. stop on a hit or at 15 minutes, and tell me the cost either way
 ```
 
 And to see the result:
 
 ```
-@yourbot did we get one? show me the transaction
+@yourbot did we get one? show me the transaction, then tell me whether another attempt is worth the money
 ```
 
 ### What it handles for you
@@ -319,26 +319,26 @@ for. Use it, keep attempts short, and do not top up expecting a guaranteed cat.
 Same idea, same kind of prompt, just name the one you want:
 
 ```
-@yourbot use the pow-mint-mining skill on FAB4200 and tell me what it would cost me
+@yourbot use pow-mint-mining on FAB4200. what would a full attempt cost me, and is it worth it at today's difficulty?
 ```
 
 ---
 
 ## 7. Things to ask it
 
-There is no special wording. **Paste a link and say what you want.** An OpenSea
-link, a tweet, a mint website, a wallet address, a contract address. If it cannot
-tell what you mean, it asks you.
+There is no special wording, but sharper questions get sharper answers.
+**Paste a link and say what you want.** Give it the contract, not the name. Tell
+it your budget. Tell it when to stop. Ask for the number that decides it.
 
 ### Paste an OpenSea link
 
 ```
-@yourbot rank this whole collection by rarity and show me the top 20
-@yourbot which rare ones here are listed cheap right now?
-@yourbot what is the floor on this and is it going up or down?
-@yourbot are the wallets that minted this real people or bots?
-@yourbot is this worth buying at the current floor?
-@yourbot how many people are holding this, and how concentrated is it?
+@yourbot <collection link> rank it by rarity, then tell me which of the top 50 are listed below floor, the price, and how long each has been sitting
+@yourbot what is the cheapest way into the top 1% of this right now? give me token ids, prices and links
+@yourbot is this floor real? show me the last 20 sales and flag any that look like wash trading
+@yourbot who holds the top 100? if ten wallets own a third of it, say so plainly
+@yourbot i have 0.1 ETH and i want exposure here. what is the best set to buy?
+@yourbot what would make this a bad buy at today's floor? give me three numbers to watch
 ```
 
 ### Paste a tweet that says "mint this"
@@ -348,12 +348,12 @@ it really costs, whether it is still open, and whether the project looks real,
 before anything touches your wallet.
 
 ```
-@yourbot <tweet link> mint this
-@yourbot <tweet link> what is this mint and is it real?
-@yourbot <tweet link> can I mint this for free?
-@yourbot <tweet link> what would minting 3 of these actually cost me?
-@yourbot <tweet link> is this the real contract or a copy?
-@yourbot <tweet link> set an alert for when this goes live
+@yourbot <tweet link> before i touch this: real mint price, supply, how many wallets have minted, and whether this deployer has walked away from a mint before
+@yourbot <tweet link> is the contract a copy of an existing collection? show me what is identical
+@yourbot <tweet link> what does minting 3 cost me all in, gas included?
+@yourbot <tweet link> who is behind it? any public wallet, any linked project
+@yourbot <tweet link> is this still open or already sold out?
+@yourbot <tweet link> watch it and ping me the second it goes live
 ```
 
 It will not just fire off a transaction. It reads the tweet, finds the contract,
@@ -363,32 +363,34 @@ you to say go.
 ### Paste a mint website, or just a contract address
 
 ```
-@yourbot can I mint this for free? <link>
-@yourbot what is the real price on this? the page says 0.05
-@yourbot is this mint still open or already sold out?
-@yourbot how many wallets have minted this so far?
-@yourbot is this contract a copy of another collection?
-@yourbot what does this contract actually do? <address>
+@yourbot <link> the page says free. simulate the mint and tell me what it actually costs
+@yourbot <address> is this a honeypot? simulate a mint and a transfer, then tell me what breaks
+@yourbot <address> what does this contract actually do? plain english, no code
+@yourbot how many wallets have minted, and do the first twenty look like one cluster?
+@yourbot <address> has this deployer shipped other collections? how did those end?
+@yourbot <address> is there an owner switch, a pause, or a supply cap that can change after i mint?
 ```
 
 ### Paste a wallet address
 
 ```
-@yourbot what has this wallet been buying? <address>
-@yourbot is this wallet actually profitable, or just busy?
-@yourbot watch this wallet and message me when it buys something
-@yourbot which collections did this wallet get into early?
-@yourbot does this wallet look like a bot or a person?
+@yourbot <address> trace it: first buys, biggest wins, what it is sitting on now, realised profit and loss
+@yourbot <address> is this a bot? check mint timing, gas bids, and whether it ever sells at a loss
+@yourbot which collections did this wallet get into in the first ten minutes, and what did it do next?
+@yourbot find me ten wallets that were early on the last three collections that did well
+@yourbot is <address> connected to the deployer of <collection>? trace the funding
+@yourbot <address> what is it about to do? any open listings or pending approvals
 ```
 
 ### Ask it to watch something for you
 
 ```
-@yourbot watch this collection and message me the moment it reveals
-@yourbot tell me when the floor drops below 0.01
-@yourbot ping me if anything from this collection sells under 0.005
-@yourbot check this every ten minutes and only message me if something changes
-@yourbot remind me when this mint opens in an hour
+@yourbot watch <collection> and only ping me if the floor drops under 0.05, or three rare ones get listed under floor, or one wallet buys five in an hour
+@yourbot alert me the second <collection> reveals, then rank it before anyone else has seen it
+@yourbot message me when gas is under 12 gwei and the mint i care about is still open
+@yourbot ping me if the deployer moves funds or the supply changes
+@yourbot check every ten minutes and only message me when something actually changes
+@yourbot keep this running for 24 hours, then send me one summary
 ```
 
 ### Ask it to buy or mint for you
@@ -397,21 +399,23 @@ Every one of these checks first and tells you the cost before it does anything.
 Nothing goes through until you say go.
 
 ```
-@yourbot mint 1 for me, show me the cost and wait for my go ahead
-@yourbot buy the cheapest rare one under 0.01
-@yourbot buy 3 but never spend more than 0.03 in total
-@yourbot don't spend anything without asking me first
-@yourbot what is my wallet holding right now? <address>
+@yourbot here is 0.2 ETH. buy up to 3 under 0.04 each, only if the rarity is top 500 and the seller is not the deployer. never spend more than 0.1 total, and show me each one before you send it
+@yourbot mint 2 from <link> when it opens, but only if the real price is 0.01 or less and the contract is not a copy
+@yourbot if a mint fails, retry twice at most and tell me why each time
+@yourbot buy the cheapest rare one, under 0.01, then stop
+@yourbot do not spend anything without asking me first
+@yourbot what am i holding right now? <address>
 ```
 
 ### Ask it to explain something
 
 ```
-@yourbot explain what a proof of work mint is, in simple terms
-@yourbot why is this floor so low?
-@yourbot what does "revealed" mean here?
-@yourbot how do people fake volume on a collection?
-@yourbot what is the difference between a mint and a buy?
+@yourbot why did this floor collapse after reveal? walk me through the wallets that sold
+@yourbot this looks farmed by a syndicate. show me the evidence or drop it
+@yourbot what would have to be true for this to be a good buy? give me three numbers
+@yourbot explain proof of work minting like i am deciding whether to pay for it
+@yourbot what did i get wrong on my last three buys?
+@yourbot what is the difference between a mint and a buy, one line each
 ```
 
 **The general rule:** if you can paste it, it can probably look at it. Links,

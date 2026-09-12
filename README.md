@@ -34,12 +34,14 @@ rollout. There is also material for Ethereum mainnet and Ink.
 
 ## Languages
 
-The guide is published in nine languages, each served from its own path:
+The guide is published in eleven languages, each served from its own path:
 
 | Language | Path |
 |----------|------|
 | English | `/` |
 | Chinese (Simplified) | `/zh/` |
+| Japanese | `/ja/` |
+| Korean | `/ko/` |
 | Arabic | `/ar/` (right to left) |
 | Spanish | `/es/` |
 | French | `/fr/` |
